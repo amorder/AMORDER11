@@ -1,0 +1,29 @@
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.mobileprovision
+credentials*.json
+secrets.*
+*secret*
+*token*
+
+# Local development
+node_modules/
+.venv/
+venv/
+__pycache__/
+.DS_Store
+Thumbs.db
+
+# Build outputs and local renders
+dist/
+build/
+out/
+.cache/
+*.log
+*.tmp
