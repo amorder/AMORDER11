@@ -10,9 +10,12 @@ This public repository is the source of truth for content drafts and reusable cr
 4. Review the copy and asset, then publish or schedule each channel through Buffer.
 5. Update the post file with the Buffer post IDs, public post links (when available), and final status.
 
-## Post-file conventions
+## First workflow test
 
-Include a status, date, asset path, and separate captions for each destination channel. Keep captions within each platform's limits and do not include claims that have not been verified.
+- Post record: [2026-11-06-workflow-test.md](2026-11-06-workflow-test.md)
+- Creative asset: [AMORDER11-workflow-test.jpg](https://github.com/amorder/AMORDER11/blob/daily-content/AMORDER11-workflow-test.jpg)
+- Asset branch: `daily-content`
+- The first creative is a 320×168 JPEG for a publishing smoke test; use a full-resolution asset for normal posts.
 
 ## Current setup
 
