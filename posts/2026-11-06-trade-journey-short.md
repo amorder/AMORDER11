@@ -3,12 +3,15 @@
 - **Purpose:** Test one original short-form educational video across Instagram Reels and YouTube Shorts.
 - **Publication date:** 2026-11-06
 - **Destinations:** Instagram professional account amorder11; YouTube channel AMORDERS.
-- **Format:** Vertical 9:16 MP4, H.264 video, original synthetic voiceover, bilingual English/Marathi motion-graphic captions.
+- **Format:** Vertical 9:16 MP4, H.264 video, AAC audio, original synthetic voiceover, bilingual English/Marathi motion-graphic captions.
+- **Verified render:** 720×1280, 21.859 seconds, H.264 + AAC; GitHub Actions render job succeeded.
 - **Topic sequence:** Research first → Risk before action → Paper simulation → Review every step → No-trade is a valid decision → Process over hype.
 - **Source/storyboard:** [Public storyboard JSON](2026-11-06-trade-journey.short.json)
 - **Creative build:** [Public-safe renderer](../tools/render_public_short.py); [render workflow](../.github/workflows/render-public-short.yml)
-- **Planned asset:** ../assets/amorder-trade-journey-2026-11-06.mp4
+- **Asset:** [AMORDER trade-journey MP4](../assets/amorder-trade-journey-2026-11-06.mp4)
 - **Public asset URL:** https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-trade-journey-2026-11-06.mp4
+- **GitHub render workflow:** https://github.com/amorder/AMORDER11/actions/runs/42174034227
+- **Public repository secret guard:** passed — https://github.com/amorder/AMORDER11/actions/runs/42174033985
 
 ## Instagram Reel caption
 
@@ -31,14 +34,16 @@ Paper-trading education only; not live-money performance; not investment advice;
 
 ## Publishing record
 
-### Instagram
+### Instagram Reels
 
-- **Buffer post ID:** pending
-- **Status:** pending asset render and video validation
-- **Public URL:** not published
+- **Buffer post ID:** 6aed72cfdbada656bef8e1c8
+- **Status:** sent (confirmed by Buffer)
+- **Sent at:** 2026-11-06 11:56:17 IST
+- **Public URL:** https://www.instagram.com/reel/DfY9TVCFCFe/
 
-### YouTube
+### YouTube Shorts
 
-- **Buffer post ID:** pending
-- **Status:** pending asset render and video validation
-- **Public URL:** not published
+- **Buffer post ID:** 6aed72eaf3498efda7740c43
+- **Status:** sent (confirmed by Buffer)
+- **Sent at:** 2026-11-06 11:55:47 IST
+- **Public URL:** https://www.youtube.com/watch?v=tRslFM_yCfk
