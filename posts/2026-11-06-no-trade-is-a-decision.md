@@ -18,6 +18,7 @@ The daily vertical educational short is already published separately. No duplica
 ## Publishing record
 
 ### X
-- **Buffer post ID:** pending
-- **Status:** pending
-- **Public URL:** pending
+- **Buffer post ID:** `6aedf29f0a30a4b11ef252a5`
+- **Status:** scheduled (confirmed by Buffer)
+- **Scheduled time:** 2026-11-06 21:43 IST
+- **Public URL:** pending until sent
