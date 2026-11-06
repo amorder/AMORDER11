@@ -6,6 +6,9 @@ on:
       - 'posts/*.short.json'
 permissions:
   contents: write
+concurrency:
+  group: amorder-public-short-main
+  cancel-in-progress: false
 jobs:
   render:
     runs-on: ubuntu-latest
@@ -26,18 +29,22 @@ jobs:
         run: |
           STORYBOARD=$(find posts -maxdepth 1 -type f -name '*.short.json' | sort | tail -n 1)
           test -n "$STORYBOARD"
-          python tools/render_public_short.py --input "$STORYBOARD" --output assets/amorder-trade-journey-2026-11-06.mp4
-          ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height -of csv=p=0 assets/amorder-trade-journey-2026-11-06.mp4
-          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of csv=p=0 assets/amorder-trade-journey-2026-11-06.mp4
-          ffprobe -v error -show_entries format=duration -of csv=p=0 assets/amorder-trade-journey-2026-11-06.mp4
+          DATE_TAG=$(basename "$STORYBOARD" .short.json | cut -d'-' -f1-3)
+          OUTPUT="assets/amorder-trade-journey-"$DATE_TAG".mp4"
+          python tools/render_public_short.py --input "$STORYBOARD" --output "$OUTPUT"
+          ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height -of csv=p=0 "$OUTPUT"
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of csv=p=0 "$OUTPUT"
+          ffprobe -v error -show_entries format=duration -of csv=p=0 "$OUTPUT"
+          echo "OUTPUT=$OUTPUT" >> "$GITHUB_ENV"
       - name: Commit generated public asset
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/amorder-trade-journey-2026-11-06.mp4
+          git add "$OUTPUT"
           if git diff --cached --quiet; then
             echo "No generated asset changes."
             exit 0
           fi
           git commit -m "content: render AMORDER trade journey short"
-          git push
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
