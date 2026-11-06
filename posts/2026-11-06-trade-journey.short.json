@@ -1,0 +1,37 @@
+{
+  "title": "AMORDER Paper-Trading Journey — Research, Risk, Simulation, Review",
+  "publication_date": "2026-11-06",
+  "topic": "AMORDER educational paper-trading journey",
+  "intended_channels": ["instagram_reels", "youtube_shorts"],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 720,
+    "height": 1280,
+    "fps": 24,
+    "duration_seconds_approx": 22,
+    "video": "MP4 H.264 with original text-to-speech narration",
+    "audio": "Original synthetic voiceover; no third-party music"
+  },
+  "educational_outline": [
+    "Research first: verify data and sources before forming a view.",
+    "Risk before action: understand the downside before considering an order.",
+    "Paper, not live: test the workflow with simulated orders, not real money.",
+    "Review every step: journal the process and learn from each result.",
+    "No trade is a decision: do not force activity when rules do not line up.",
+    "Process over hype: research, risk, paper simulation, review."
+  ],
+  "instagram_caption": "AMORDER चा प्रवास: Research → Risk → Paper Simulation → Review. आधी डेटा आणि स्रोत तपासा. मग जोखीम समजून घ्या. प्रक्रिया फक्त paper simulation मध्ये तपासा आणि प्रत्येक पायरीची नोंद ठेवा. नियम जुळले नाहीत तर NO TRADE हाही योग्य निर्णय आहे.\n\nही शैक्षणिक paper-trading simulation आहे—खऱ्या पैशांची कामगिरी नाही, गुंतवणूक सल्ला नाही आणि परताव्याची हमी नाही.\n\n#AMORDER #PaperTrading #TradingJourney #RiskManagement #BuildInPublic",
+  "youtube_title": "AMORDER Paper-Trading Journey: Research, Risk, Simulation & Review #Shorts",
+  "youtube_description": "A short educational look at the AMORDER process: verify information, define risk, test with paper simulation, review the process, and accept no-trade days. This is a paper-trading education demo—not real-money performance, not investment advice, and no guaranteed returns.\n\n#AMORDER #PaperTrading #TradingJourney #Shorts",
+  "sources": [
+    "https://github.com/amorder/AMORDER11",
+    "https://github.com/amorder/AMORDER11/blob/main/README.md"
+  ],
+  "asset_path": "assets/amorder-trade-journey-2026-11-06.mp4",
+  "asset_url": "https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-trade-journey-2026-11-06.mp4",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "publishing_record": {
+    "instagram": {"status": "pending_render", "buffer_post_id": null, "public_url": null},
+    "youtube": {"status": "pending_render", "buffer_post_id": null, "public_url": null}
+  }
+}
