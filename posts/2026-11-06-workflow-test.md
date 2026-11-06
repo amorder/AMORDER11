@@ -1,6 +1,6 @@
 # AMORDER11 — Workflow Test Post
 Date: 2026-11-06
-Status: Ready for immediate publishing via Buffer
+Status: Publishing immediately via Buffer
 
 ## Purpose
 First end-to-end test of the daily content workflow: store approved post copy in this public GitHub repository, then publish through Buffer to the connected social channels.
@@ -28,6 +28,6 @@ Explore the repo: https://github.com/amorder/AMORDER11
 #AMORDER11 #ContentWorkflow #GitHub #Buffer #DailyUpdates
 
 ## Media
-- Repository path: assets/2026-11-06-workflow-test.jpg (branch: workflow-test-assets)
-- Public image URL: https://raw.githubusercontent.com/amorder/AMORDER11/workflow-test-assets/assets/2026-11-06-workflow-test.jpg
-- Alt text: Announcement graphic explaining that public GitHub repository AMORDER11 will store content for daily publishing through Buffer.
+- Public asset path: assets/2026-11-06-workflow-test.png (branch: workflow-test-assets-v2)
+- Public image URL: https://raw.githubusercontent.com/amorder/AMORDER11/workflow-test-assets-v2/assets/2026-11-06-workflow-test.png
+- Alt text: AMORDER11 content workflow test graphic showing GitHub feeding into Buffer for daily updates.
