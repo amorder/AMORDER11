@@ -20,18 +20,15 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg espeak fonts-noto-core
-          python -m pip install --upgrade pip
           pip install pillow
-      - name: Select storyboard
-        id: story
+      - name: Render vertical video
         shell: bash
         run: |
-          echo "path=$(git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -E '^posts/.*\.short\.json$' | head -n 1)" >> "$GITHUB_OUTPUT"
-      - name: Render vertical video
-        run: |
-          test -n "\${{ steps.story.outputs.path }}"
-          python tools/render_public_short.py --input "\${{ steps.story.outputs.path }}" --output assets/amorder-trade-journey-2026-11-06.mp4
+          STORYBOARD=$(find posts -maxdepth 1 -type f -name '*.short.json' | sort | tail -n 1)
+          test -n "$STORYBOARD"
+          python tools/render_public_short.py --input "$STORYBOARD" --output assets/amorder-trade-journey-2026-11-06.mp4
           ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height -of csv=p=0 assets/amorder-trade-journey-2026-11-06.mp4
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of csv=p=0 assets/amorder-trade-journey-2026-11-06.mp4
           ffprobe -v error -show_entries format=duration -of csv=p=0 assets/amorder-trade-journey-2026-11-06.mp4
       - name: Commit generated public asset
         run: |
