@@ -9,9 +9,26 @@ NAVY=(.008,.018,.042,1); BLUE=(.035,.30,.72,1); CYAN=(.06,.76,.90,1)
 ICE=(.58,.88,.98,1); AMBER=(1,.45,.16,1); WHITE=(.86,.94,1,1)
 
 def mat(name, color):
-    m=bpy.data.materials.get(name) or bpy.data.materials.new(name)
-    m.diffuse_color=color
-    return m
+    material = bpy.data.materials.get(name) or bpy.data.materials.new(name)
+    material.diffuse_color = color
+    material.use_nodes = True
+    shader = material.node_tree.nodes.get("Principled BSDF")
+    if shader:
+        shader.inputs["Base Color"].default_value = color
+        shader.inputs["Metallic"].default_value = .58
+        shader.inputs["Roughness"].default_value = .24
+        if "ice" in name.lower() or "white" in name.lower():
+            shader.inputs["Metallic"].default_value = .24
+            shader.inputs["Roughness"].default_value = .19
+        if "amber" in name.lower() or "cyan" in name.lower():
+            shader.inputs["Metallic"].default_value = .42
+            shader.inputs["Roughness"].default_value = .2
+        if "Coat Weight" in shader.inputs:
+            shader.inputs["Coat Weight"].default_value = .28
+        if "Coat Roughness" in shader.inputs:
+            shader.inputs["Coat Roughness"].default_value = .16
+    return material
+
 
 def finish(obj, color, radius=.07):
     obj.data.materials.clear(); obj.data.materials.append(color); obj.color=color.diffuse_color
@@ -59,24 +76,82 @@ def shield(color):
 def clear():
     bpy.ops.object.select_all(action="SELECT"); bpy.ops.object.delete(use_global=False)
 
-def setup():
-    s=bpy.context.scene; s.render.engine="BLENDER_WORKBENCH"
-    s.render.resolution_x=1080; s.render.resolution_y=1920; s.render.resolution_percentage=100
-    s.render.image_settings.file_format="PNG"; s.render.image_settings.color_mode="RGBA"
-    s.render.threads_mode="FIXED"; s.render.threads=2
-    sh=s.display.shading; sh.light="STUDIO"; sh.color_type="MATERIAL"
-    sh.background_type="WORLD"; sh.show_shadows=True; sh.show_cavity=True; sh.cavity_type="WORLD"
-    try: sh.studio_light="paint.sl"
-    except Exception: sh.studio_light="rim.sl"
-    w=bpy.data.worlds.get("World") or bpy.data.worlds.new("World"); s.world=w
-    w.color=(.008,.016,.034)
-    cd=bpy.data.cameras.new("Portrait camera"); cam=bpy.data.objects.new("Portrait camera",cd)
-    bpy.context.collection.objects.link(cam); cam.location=(0,-24,.2)
-    cam.rotation_euler=(math.pi/2,0,0); cd.type="ORTHO"; cd.ortho_scale=17.8; s.camera=cam
-    box("Midnight stage",(0,2.8,0),(30,.45,36),mat("Midnight",NAVY),0)
-    for i,(x,z) in enumerate([(-4.1,5.8),(3.9,5.2),(-4.2,-2),(4.25,-3.6),(3.4,6.6)]):
-        ball("Ambient point "+str(i),(x,1.8,z),.045,mat("Ambient "+str(i),CYAN))
-    return s
+def area_light(name, location, target, power, color, size):
+    data = bpy.data.lights.new(name, "AREA")
+    data.energy = power
+    data.color = color
+    data.shape = "DISK"
+    data.size = size
+    obj = bpy.data.objects.new(name, data)
+    bpy.context.collection.objects.link(obj)
+    obj.location = location
+    obj.rotation_euler = (Vector(target) - obj.location).to_track_quat("-Z", "Y").to_euler()
+    return obj
+
+
+def setup(width=1080, height=1920):
+    scene = bpy.context.scene
+    engines = {item.identifier for item in scene.render.bl_rna.properties["engine"].enum_items}
+    scene.render.engine = "BLENDER_EEVEE_NEXT" if "BLENDER_EEVEE_NEXT" in engines else "BLENDER_EEVEE"
+    scene.render.resolution_x = width
+    scene.render.resolution_y = height
+    scene.render.resolution_percentage = 100
+    scene.render.image_settings.file_format = "PNG"
+    scene.render.image_settings.color_mode = "RGBA"
+    scene.render.film_transparent = False
+    scene.render.threads_mode = "FIXED"
+    scene.render.threads = 4
+    try:
+        scene.view_settings.view_transform = "AgX"
+        scene.view_settings.look = "AgX - Medium High Contrast"
+    except Exception:
+        pass
+
+    world = bpy.data.worlds.get("World") or bpy.data.worlds.new("World")
+    world.use_nodes = True
+    world.node_tree.nodes["Background"].inputs["Color"].default_value = (.003, .006, .014, 1)
+    world.node_tree.nodes["Background"].inputs["Strength"].default_value = .18
+    scene.world = world
+
+    # Physical graphite studio with carefully shaped softbox lighting.
+    graphite = mat("Graphite set", (.009, .016, .027, 1))
+    box("Seamless dark studio backdrop", (0, 3.4, 1.0), (36, .5, 34), graphite, 0)
+    box("Graphite reflective floor", (0, 0, -.62), (36, 36, .34), graphite, .02)
+    area_light("Large cool key softbox", (4.5, -7, 9), (0, 0, 2.5), 2600, (.72, .86, 1.0), 8)
+    area_light("Warm edge softbox", (-6, 0, 5.8), (0, 0, 2.5), 1800, (1.0, .55, .32), 5)
+    area_light("Cyan rim light", (1.5, 4.5, 7), (0, 0, 2.6), 3200, (.18, .68, 1.0), 5)
+    area_light("Low fill", (0, -4, -.2), (0, 0, 2.3), 500, (.46, .62, .82), 7)
+
+    camera_data = bpy.data.cameras.new("Cinematic portrait camera")
+    camera = bpy.data.objects.new("Cinematic portrait camera", camera_data)
+    bpy.context.collection.objects.link(camera)
+    camera.location = (.2, -19.5, 2.6)
+    target = Vector((0, 0, 2.55))
+    camera.rotation_euler = (target - camera.location).to_track_quat("-Z", "Y").to_euler()
+    camera_data.type = "PERSP"
+    camera_data.lens = 52
+    camera_data.dof.use_dof = True
+    focus = bpy.data.objects.new("Focus plane", None)
+    bpy.context.collection.objects.link(focus)
+    focus.location = target
+    camera_data.dof.focus_object = focus
+    camera_data.dof.aperture_fstop = 7.1
+    scene.camera = camera
+
+    scene.use_nodes = True
+    tree = scene.node_tree
+    tree.nodes.clear()
+    render_layers = tree.nodes.new("CompositorNodeRLayers")
+    glare = tree.nodes.new("CompositorNodeGlare")
+    glare.glare_type = "FOG_GLOW"
+    glare.quality = "HIGH"
+    glare.threshold = 1.4
+    glare.size = 7
+    composite = tree.nodes.new("CompositorNodeComposite")
+    tree.links.new(render_layers.outputs["Image"], glare.inputs["Image"])
+    tree.links.new(glare.outputs["Image"], composite.inputs["Image"])
+    return scene
+
 
 def build(key):
     blue=mat("Cobalt",BLUE); cyan=mat("Cyan",CYAN); ice=mat("Ice",ICE)
