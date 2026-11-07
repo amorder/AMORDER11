@@ -1,0 +1,94 @@
+{
+  "title": "Data First. Decisions Second. — AMORDER Daily Short",
+  "publication_date": "2026-11-07",
+  "render_slug": "amorder-data-first",
+  "topic": "Data-quality discipline before decisions",
+  "language": "en",
+  "audience": "global",
+  "intended_channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds_target": "20–32",
+    "video": "MP4 H.264, AAC narration",
+    "visual_engine": "Blender Workbench 3D scenes",
+    "post_production": "FFmpeg",
+    "voiceover_model": "Kokoro-82M ONNX",
+    "voice": "af_heart",
+    "music": "No copyrighted music; voiceover-led mix"
+  },
+  "creative_direction": {
+    "style": "Premium dark-stage 3D motion graphics, restrained cyan and amber accents, strong light-dark contrast, one visual metaphor per scene, stable camera language, spacious typography and clear holds.",
+    "motion_design_reference": "https://github.com/Vincentwei1021/video-shotcraft",
+    "motion_design_notes": "Shotcraft-informed pacing and visual restraint; original Blender geometry and captions are created for AMORDER. No third-party footage, templates, logos or music are copied.",
+    "voiceover_direction": "Clear, calm, confident English narration for a broad international audience; moderate pace and natural pauses."
+  },
+  "scenes": [
+    {
+      "visual": "idea",
+      "title": "A CHART CAN LOOK RIGHT",
+      "overlay": "And still be wrong.",
+      "narration": "A chart can look perfect and still be wrong."
+    },
+    {
+      "visual": "timestamp",
+      "title": "CHECK THE TIMESTAMP",
+      "overlay": "Is the data fresh?",
+      "narration": "Start with the timestamp. Is the data fresh?"
+    },
+    {
+      "visual": "gaps",
+      "title": "LOOK FOR MISSING DATA",
+      "overlay": "Gaps break context.",
+      "narration": "Check for missing bars and gaps."
+    },
+    {
+      "visual": "source",
+      "title": "KNOW YOUR SOURCE",
+      "overlay": "Understand its coverage.",
+      "narration": "Know what your data source actually covers."
+    },
+    {
+      "visual": "stand_down",
+      "title": "NO TRUST. NO TRADE.",
+      "overlay": "Stale or incomplete? Stand aside.",
+      "narration": "If the information is stale, incomplete, or unclear, stop. No reliable data means no trade."
+    },
+    {
+      "visual": "brand",
+      "title": "DATA FIRST. DECISIONS SECOND.",
+      "overlay": "AMORDER  /  Paper-trading education.",
+      "narration": "AMORDER. Data first. Decisions second."
+    }
+  ],
+  "instagram_caption": "A clean-looking chart is not proof of clean data.\n\nCheck the timestamp. Look for missing bars. Understand what your data source actually covers. When the information is stale or incomplete, step aside.\n\nData first. Decisions second.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #DataQuality #PaperTrading #RiskDiscipline #TradingEducation",
+  "youtube_title": "Data First. Decisions Second. | AMORDER #Shorts",
+  "youtube_description": "A practical reminder for anyone studying markets: check timestamps, look for missing data, understand your feed's coverage, and avoid acting on information you cannot trust.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #DataQuality #PaperTrading #Shorts",
+  "sources": [
+    "https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX",
+    "https://github.com/thewh1teagle/kokoro-onnx",
+    "https://docs.blender.org/manual/en/latest/advanced/command_line/render.html",
+    "https://ffmpeg.org/documentation.html",
+    "https://github.com/Vincentwei1021/video-shotcraft"
+  ],
+  "asset_path": "assets/amorder-data-first-2026-11-07.mp4",
+  "asset_url": "https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-data-first-2026-11-07.mp4",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "publishing_record": {
+    "instagram": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    },
+    "youtube": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    }
+  }
+}
