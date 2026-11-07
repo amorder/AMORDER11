@@ -1,42 +1,91 @@
-name: Render public AMORDER short
+name: Render English public AMORDER short
 on:
   push:
     branches: [main]
     paths:
       - 'posts/*.short.json'
+  workflow_dispatch:
+
 permissions:
   contents: write
+
 concurrency:
   group: amorder-public-short-main
   cancel-in-progress: false
+
 jobs:
   render:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
           persist-credentials: true
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install media tools
+
+      - name: Install open-source media tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg espeak fonts-noto-core
-          pip install pillow
-      - name: Render vertical video
+          sudo apt-get install -y blender ffmpeg espeak-ng fontconfig fonts-noto-core
+          python -m pip install --upgrade pip
+          python -m pip install pillow numpy soundfile kokoro-onnx
+
+      - name: Cache public Kokoro model files
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/amorder-kokoro
+          key: amorder-kokoro-onnx-v1.1-kokoro-82m
+
+      - name: Download public Kokoro model files
         shell: bash
         run: |
+          set -euo pipefail
+          MODEL_DIR="$HOME/.cache/amorder-kokoro"
+          mkdir -p "$MODEL_DIR"
+          test -s "$MODEL_DIR/kokoro-v1.0.onnx" ||             curl --fail --location --retry 3 --retry-delay 2               https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.1/kokoro-v1.0.onnx               -o "$MODEL_DIR/kokoro-v1.0.onnx"
+          test -s "$MODEL_DIR/voices-v1.0.bin" ||             curl --fail --location --retry 3 --retry-delay 2               https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.1/voices-v1.0.bin               -o "$MODEL_DIR/voices-v1.0.bin"
+          echo "MODEL_DIR=$MODEL_DIR" >> "$GITHUB_ENV"
+
+      - name: Render Blender scenes, English narration and vertical MP4
+        shell: bash
+        run: |
+          set -euo pipefail
           STORYBOARD=$(find posts -maxdepth 1 -type f -name '*.short.json' | sort | tail -n 1)
           test -n "$STORYBOARD"
-          DATE_TAG=$(basename "$STORYBOARD" .short.json | cut -d'-' -f1-3)
-          OUTPUT="assets/amorder-trade-journey-"$DATE_TAG".mp4"
-          python tools/render_public_short.py --input "$STORYBOARD" --output "$OUTPUT"
-          ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height -of csv=p=0 "$OUTPUT"
-          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of csv=p=0 "$OUTPUT"
-          ffprobe -v error -show_entries format=duration -of csv=p=0 "$OUTPUT"
+          BASE=$(basename "$STORYBOARD" .short.json)
+          DATE_TAG=$(printf '%s' "$BASE" | cut -d'-' -f1-3)
+          SLUG=$(python -c 'import json,sys; print(json.load(open(sys.argv[1], encoding="utf-8"))["render_slug"])' "$STORYBOARD")
+          case "$SLUG" in
+            ''|*[!a-z0-9-]*) echo "Invalid public render_slug"; exit 1 ;;
+          esac
+          OUTPUT="assets/${SLUG}-${DATE_TAG}.mp4"
+          python tools/render_public_short.py             --input "$STORYBOARD"             --output "$OUTPUT"             --model "$MODEL_DIR/kokoro-v1.0.onnx"             --voices "$MODEL_DIR/voices-v1.0.bin"             --voice af_heart             --speed 0.96
           echo "OUTPUT=$OUTPUT" >> "$GITHUB_ENV"
-      - name: Commit generated public asset
+
+      - name: Independently validate the final MP4
+        run: |
+          python - <<'PY'
+          import json, os, subprocess
+          path = os.environ["OUTPUT"]
+          info = json.loads(subprocess.check_output([
+              "ffprobe", "-v", "error", "-show_entries",
+              "stream=codec_type,codec_name,width,height", "-show_entries",
+              "format=duration", "-of", "json", path], text=True))
+          streams = info["streams"]
+          video = next(s for s in streams if s["codec_type"] == "video")
+          audio = next(s for s in streams if s["codec_type"] == "audio")
+          duration = float(info["format"]["duration"])
+          assert (video["codec_name"], video["width"], video["height"]) == ("h264", 1080, 1920)
+          assert audio["codec_name"] == "aac"
+          assert 15 <= duration <= 45, duration
+          assert os.path.getsize(path) > 100_000
+          print(f"PASS: {path} | 1080x1920 | H.264 + AAC | {duration:.2f}s")
+          PY
+
+      - name: Commit generated approved public asset
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -45,6 +94,6 @@ jobs:
             echo "No generated asset changes."
             exit 0
           fi
-          git commit -m "content: render AMORDER trade journey short"
+          git commit -m "content: render English AMORDER data-first short"
           git pull --rebase origin "$GITHUB_REF_NAME"
           git push origin "HEAD:$GITHUB_REF_NAME"
