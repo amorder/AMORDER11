@@ -4,8 +4,8 @@
 - **Intended channels:** Instagram Reels; YouTube Shorts
 - **Audience and language:** Global audience; English only
 - **Topic:** Data-quality checks before forming a market view
-- **Format target:** 9:16 vertical, 1080×1920, 30 fps, H.264 MP4 with AAC narration, 15–45 seconds
-- **Creative approach:** Cinematic Blender 3D scenes, spacious typography, concise overlays, smooth FFmpeg camera motion and a calm English narration.
+- **Final format:** 9:16 vertical, 1080×1920, 30 fps, H.264 MP4 with AAC narration; **22.937 seconds**
+- **Creative approach:** Six original Blender Workbench 3D scene plates, spacious English typography, concise overlays, smooth FFmpeg camera motion, and a calm English narration.
 - **Voiceover model:** Kokoro-82M ONNX, voice `af_heart`; no external TTS API or credential.
 - **Open-source production stack:** Blender, Kokoro ONNX, FFmpeg/ffprobe, Pillow. Motion-design QA reference: [video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft).
 - **Sources:** [Kokoro ONNX model](https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX), [Kokoro ONNX runtime](https://github.com/thewh1teagle/kokoro-onnx), [Blender headless rendering](https://docs.blender.org/manual/en/latest/advanced/command_line/render.html), [FFmpeg documentation](https://ffmpeg.org/documentation.html).
@@ -57,16 +57,26 @@ Paper-trading education only; not live-money performance; not investment advice;
 - **Renderer:** [tools/render_public_short.py](../tools/render_public_short.py)
 - **Blender scene generator:** [tools/blender_scenes.py](../tools/blender_scenes.py)
 - **Render workflow:** [.github/workflows/render-public-short.yml](../.github/workflows/render-public-short.yml)
-- **Target asset:** `assets/amorder-data-first-2026-11-07.mp4`
+- **Final asset:** [assets/amorder-data-first-2026-11-07.mp4](../assets/amorder-data-first-2026-11-07.mp4) — 1,899,395 bytes
 - **Public asset URL:** https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-data-first-2026-11-07.mp4
-- **Render status:** pending_render — do not publish until GitHub Actions, ffprobe validation, and public HTTPS asset availability are confirmed.
+- **Asset commit:** [d27f8c9d05a98ca586d01dbc9ae298480337817b](https://github.com/amorder/AMORDER11/commit/d27f8c9d05a98ca586d01dbc9ae298480337817b)
+- **Render workflow:** [Run #4 — success](https://github.com/amorder/AMORDER11/actions/runs/42353471510)
+- **Independent media validation:** PASS — H.264, 1080×1920, AAC, 22.937 seconds. GitHub Actions ffprobe output confirmed the final file.
+- **Public repository secret guard:** PASS — [Run #24](https://github.com/amorder/AMORDER11/actions/runs/42353471509).
+- **Public media hosting:** asset committed in the public AMORDER11 repository; Buffer accepted the exact raw HTTPS MP4 URL and generated its video thumbnail.
 
 ### Instagram Reels
-- **Buffer post ID:** not submitted
-- **Status:** draft / pending approved MP4
-- **Public URL:** not available
+
+- **Buffer post ID:** `6aeedae5004e4879a7403d51`
+- **Status:** **scheduled** (Buffer detail rechecked; not yet sent)
+- **Scheduling:** 2026-11-07 13:46 IST; automatic queue
+- **Public URL:** pending until sent
+- **Format:** Reel, shared to feed; AI-generated label enabled.
 
 ### YouTube Shorts
-- **Buffer post ID:** not submitted
-- **Status:** draft / pending approved MP4
-- **Public URL:** not available
+
+- **Buffer post ID:** `6aeedae7af7e526d430aacc3`
+- **Status:** **scheduled** (Buffer detail rechecked; not yet sent)
+- **Scheduling:** 2026-11-07 19:18 IST; automatic queue
+- **Public URL:** pending until sent
+- **Metadata:** Education (category 27), public, not made for kids; AI-generated label enabled.
