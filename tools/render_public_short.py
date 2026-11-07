@@ -1,97 +1,149 @@
 #!/usr/bin/env python3
-"""Render a public-safe AMORDER educational vertical short; no broker data or secrets."""
-import argparse, json, math, shutil, subprocess, tempfile
-from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont
+"""Render English global-audience AMORDER shorts with Blender, Kokoro TTS and FFmpeg.
 
-W, H, FPS, DURATION = 720, 1280, 24, 3.65
-SCENES = [
-    ("01  RESEARCH FIRST", "आधी डेटा तपासा", "Verify the data and sources before forming a view.", "No assumptions. No invented facts."),
-    ("02  RISK BEFORE ACTION", "आधी जोखीम ठरवा", "Understand the downside before considering an order.", "Risk control is part of the process."),
-    ("03  PAPER, NOT LIVE", "फक्त सिम्युलेशन", "Test the workflow with simulated orders—not real money.", "Paper trading is a process test."),
-    ("04  REVIEW EVERY STEP", "प्रत्येक पायरी नोंदवा", "Journal the process and learn from each result.", "A signal is not a fill."),
-    ("05  NO TRADE IS A DECISION", "व्यवहार नाही हाही निर्णय", "When the rules do not line up, do not force a trade.", "Patience is a valid outcome."),
-    ("PROCESS OVER HYPE", "शिस्त • शिकणे • नोंद", "Research  •  Risk  •  Paper  •  Review", "PAPER SIMULATION  •  EDUCATION ONLY"),
-]
-NARRATION = ("Here's the AMORDER journey. We start with research and verify the data before acting. "
-             "Then we define risk before considering an order. We test the workflow through paper "
-             "simulation, not real money. Every step is reviewed and journaled. If the rules do not "
-             "line up, no trade is a valid decision. Process over hype.")
+Only reviewed public storyboards are consumed. No broker, account, trading ledger,
+private research, credentials, or social publishing APIs are accessed here.
+"""
+from __future__ import annotations
+import argparse, json, shutil, subprocess, tempfile
+from pathlib import Path
+import numpy as np
+import soundfile as sf
+from PIL import Image, ImageDraw, ImageFont
+from kokoro_onnx import Kokoro
+
+WIDTH, HEIGHT, FPS = 1080, 1920, 30
+DISCLOSURE = "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
+
+def run(command):
+    subprocess.run(command, check=True)
 
 def font_path():
-    try:
-        p = subprocess.check_output(["fc-match", "-f", "%{file}", "Noto Sans Devanagari"], text=True).strip()
-        if p and Path(p).exists(): return p
-    except Exception: pass
-    return "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+    for family in ("Noto Sans", "DejaVu Sans"):
+        try:
+            path=subprocess.check_output(["fc-match","-f","%{file}",family],text=True,stderr=subprocess.DEVNULL).strip()
+            if path and Path(path).exists(): return path
+        except (FileNotFoundError,subprocess.CalledProcessError): pass
+    raise RuntimeError("No readable sans-serif font found; install fonts-noto-core")
 
-def font(fp, size):
-    try: return ImageFont.truetype(fp, size)
-    except OSError: return ImageFont.load_default()
+def wrap(draw,text,font,max_width):
+    lines=[]; current=""
+    for word in text.split():
+        candidate=(current+" "+word).strip()
+        if current and draw.textbbox((0,0),candidate,font=font)[2]>max_width:
+            lines.append(current); current=word
+        else: current=candidate
+    if current: lines.append(current)
+    return lines
 
-def centered(d, text, y, f, color):
-    b = d.textbbox((0, 0), text, font=f)
-    d.text((max(28, (W-(b[2]-b[0]))//2), y), text, font=f, fill=color)
+def centered(draw,text,y,font,fill,max_width=950,spacing=14):
+    lines=wrap(draw,text,font,max_width)
+    heights=[draw.textbbox((0,0),line,font=font)[3] for line in lines]
+    total=sum(heights)+spacing*max(0,len(lines)-1)
+    for line,height in zip(lines,heights):
+        box=draw.textbbox((0,0),line,font=font); width=box[2]-box[0]
+        draw.text(((WIDTH-width)/2,y),line,font=font,fill=fill); y+=height+spacing
+    return total
 
-def frame(scene, idx, local_t, fonts):
-    title, mr, body, note = scene
-    im = Image.new("RGB", (W, H), (7, 16, 42)); d = ImageDraw.Draw(im)
-    d.rounded_rectangle((42, 38, 678, 100), 30, fill=(16, 31, 65), outline=(47, 69, 110), width=2)
-    d.ellipse((66, 56, 92, 82), fill=(70, 174, 255))
-    d.text((112, 52), "AMORDER  /  JOURNEY", font=fonts["small"], fill=(230, 240, 255))
-    d.rounded_rectangle((42, 130, 678, 145), 8, fill=(27, 43, 77))
-    d.rounded_rectangle((42, 130, 42+int(636*(idx+local_t)/len(SCENES)), 145), 8, fill=(67, 172, 255))
-    d.rounded_rectangle((42, 220, 678, 1000), 42, fill=(11, 27, 58), outline=(47, 70, 113), width=2)
-    pts = [(95+j*88, 365+int(40*math.sin(j*.9+local_t*1.8+idx))) for j in range(7)]
-    d.line(pts, fill=(74, 161, 222), width=5)
-    for j,(x,y) in enumerate(pts):
-        r = 8 if j < int(local_t*2)+1 else 6
-        d.ellipse((x-r,y-r,x+r,y+r), fill=(124,207,255))
-    centered(d, title, 500, fonts["title"], (245,248,255))
-    centered(d, mr, 590, fonts["marathi"], (104,202,255))
-    words, lines, line = body.split(), [], ""
-    for word in words:
-        candidate = (line+" "+word).strip()
-        if d.textbbox((0,0),candidate,font=fonts["body"])[2] > 570 and line:
-            lines.append(line); line=word
-        else: line=candidate
-    if line: lines.append(line)
-    y = 700-(len(lines)-1)*14
-    for s in lines:
-        centered(d,s,y,fonts["body"],(222,232,247)); y += 55
-    centered(d,note,865,fonts["small"],(148,171,205))
-    labels=["RESEARCH","RISK","PAPER","REVIEW"]
-    for k,label in enumerate(labels):
-        x=54+k*157; active=(idx==k or (idx==5 and k==3))
-        d.rounded_rectangle((x,1040,x+145,1092),18,fill=(20,48,83) if active else (13,28,54),
-                            outline=(75,178,255) if active else (42,58,87),width=2)
-        b=d.textbbox((0,0),label,font=fonts["tiny"]); tw=b[2]-b[0]
-        d.text((x+(145-tw)//2,1057),label,font=fonts["tiny"],
-               fill=(145,215,255) if active else (105,126,158))
-    centered(d,"PAPER SIMULATION  •  EDUCATION ONLY",1155,fonts["tiny"],(225,235,251))
-    centered(d,"No live-money performance  •  No guaranteed returns",1205,fonts["tiny"],(139,158,190))
-    return im
+def render_overlay(scene,index,count,font_file,path):
+    im=Image.new("RGBA",(WIDTH,HEIGHT),(0,0,0,0)); d=ImageDraw.Draw(im)
+    label=ImageFont.truetype(font_file,30); title=ImageFont.truetype(font_file,82)
+    support=ImageFont.truetype(font_file,42); foot=ImageFont.truetype(font_file,24)
+    disclosure=ImageFont.truetype(font_file,27)
+    d.rounded_rectangle((66,82,1014,160),radius=36,fill=(7,21,44,218),outline=(80,148,196,150),width=2)
+    d.text((100,104),"AMORDER  /  DATA DISCIPLINE",font=label,fill=(220,239,250,255))
+    page=f"{index:02d} / {count:02d}"; pb=d.textbbox((0,0),page,font=label)
+    d.text((970-(pb[2]-pb[0]),104),page,font=label,fill=(95,210,233,255))
+    d.rounded_rectangle((86,1045,994,1052),radius=4,fill=(43,74,102,180))
+    x=86+int(908*index/count)
+    d.rounded_rectangle((86,1045,max(90,x),1052),radius=4,fill=(58,205,226,245))
+    th=centered(d,scene["title"],1120,title,(246,250,255,255),930,12)
+    centered(d,scene["overlay"],1120+th+44,support,(174,215,235,255),900,10)
+    if index==count:
+        d.rounded_rectangle((65,1588,1015,1818),radius=28,fill=(5,15,34,235),outline=(68,133,168,180),width=2)
+        centered(d,"PAPER-TRADING EDUCATION ONLY",1622,label,(112,220,234,255),880,8)
+        centered(d,DISCLOSURE,1688,disclosure,(228,237,247,255),850,10)
+    else:
+        d.text((88,1718),"PAPER SIMULATION  •  EDUCATION ONLY",font=foot,fill=(166,193,216,235))
+    im.save(path)
+
+def validate_story(story):
+    if story.get("language")!="en" or story.get("audience")!="global":
+        raise ValueError("Only English-language, global-audience storyboards are accepted")
+    if story.get("disclosure")!=DISCLOSURE:
+        raise ValueError("Required paper-trading disclosure is missing or changed")
+    scenes=story.get("scenes")
+    if not isinstance(scenes,list) or not 4<=len(scenes)<=8:
+        raise ValueError("Storyboard must contain 4–8 scenes")
+    for number,scene in enumerate(scenes,1):
+        for key in ("visual","title","overlay","narration"):
+            if not isinstance(scene.get(key),str) or not scene[key].strip():
+                raise ValueError(f"Scene {number} is missing {key}")
+        if any(ord(c)>127 for c in scene["title"]+scene["overlay"]+scene["narration"]):
+            raise ValueError(f"Scene {number} contains non-ASCII copy; English-only copy required")
 
 def main():
-    ap=argparse.ArgumentParser(); ap.add_argument("--input",required=True); ap.add_argument("--output",required=True)
-    a=ap.parse_args(); story=json.loads(Path(a.input).read_text(encoding="utf-8"))
-    if story.get("topic") != "AMORDER educational paper-trading journey": raise SystemExit("Unsafe storyboard topic")
-    out=Path(a.output); out.parent.mkdir(parents=True,exist_ok=True); fp=font_path()
-    fonts={"title":font(fp,43),"marathi":font(fp,34),"body":font(fp,28),"small":font(fp,22),"tiny":font(fp,18)}
+    p=argparse.ArgumentParser()
+    p.add_argument("--input",required=True); p.add_argument("--output",required=True)
+    p.add_argument("--model",required=True); p.add_argument("--voices",required=True)
+    p.add_argument("--blender",default="blender"); p.add_argument("--voice",default="af_heart")
+    p.add_argument("--speed",type=float,default=.96); a=p.parse_args()
+    story_path=Path(a.input).resolve(); script=Path(__file__).with_name("blender_scenes.py").resolve()
+    output=Path(a.output).resolve(); output.parent.mkdir(parents=True,exist_ok=True)
+    story=json.loads(story_path.read_text(encoding="utf-8")); validate_story(story)
+    scenes=story["scenes"]
+    if not shutil.which(a.blender): raise RuntimeError("Blender missing; refusing flat-card fallback")
+    if not shutil.which("ffmpeg") or not shutil.which("ffprobe"): raise RuntimeError("FFmpeg and ffprobe required")
+    font_file=font_path(); tts=Kokoro(a.model,a.voices)
+
     with tempfile.TemporaryDirectory(prefix="amorder-short-") as td:
-        fd=Path(td)/"frames"; fd.mkdir(); n=round(DURATION*FPS); i=0
-        for j,s in enumerate(SCENES):
-            for k in range(n):
-                frame(s,j,k/n,fonts).save(fd/f"{i:05d}.png",optimize=True); i+=1
-        silent=Path(td)/"visual.mp4"
-        subprocess.run(["ffmpeg","-y","-loglevel","error","-framerate",str(FPS),"-i",str(fd/"%05d.png"),
-                        "-c:v","libx264","-preset","veryfast","-crf","25","-pix_fmt","yuv420p","-an",str(silent)],check=True)
-        wav=Path(td)/"narration.wav"
-        if shutil.which("espeak"):
-            subprocess.run(["espeak","-v","en-us","-s","148","-w",str(wav),NARRATION],check=True)
-            subprocess.run(["ffmpeg","-y","-loglevel","error","-i",str(silent),"-i",str(wav),"-map","0:v:0","-map","1:a:0",
-                            "-c:v","copy","-c:a","aac","-b:a","64k","-shortest","-movflags","+faststart",str(out)],check=True)
-        else: shutil.copyfile(silent,out)
-    print(f"Rendered {out} ({out.stat().st_size} bytes)")
+        temp=Path(td); plates=temp/"plates"; plates.mkdir()
+        run([a.blender,"--background","--python",str(script),"--","--input",str(story_path),"--output-dir",str(plates)])
+        clips=[]
+        for index,scene in enumerate(scenes,1):
+            samples,sr=tts.create(scene["narration"].strip(),voice=a.voice,speed=a.speed,lang="en-us")
+            audio=np.asarray(samples,dtype=np.float32).reshape(-1)
+            if audio.size==0 or float(np.max(np.abs(audio)))<.015:
+                raise RuntimeError(f"Kokoro returned empty or near-silent narration for scene {index}")
+            wav=temp/f"voice-{index:02d}.wav"; sf.write(wav,audio,sr,subtype="PCM_16")
+            plate=plates/f"{index:02d}.png"
+            if not plate.exists() or plate.stat().st_size<10000: raise RuntimeError(f"Missing Blender scene plate {plate}")
+            overlay=temp/f"overlay-{index:02d}.png"; render_overlay(scene,index,len(scenes),font_file,overlay)
+            duration=audio.size/sr+(.68 if index==len(scenes) else .48)
+            clip=temp/f"clip-{index:02d}.mp4"; zoom="min(zoom+0.00032,1.045)"
+            fc=(f"[0:v]zoompan=z='{zoom}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
+                f"d=1:s={WIDTH}x{HEIGHT}:fps={FPS},setsar=1[base];"
+                "[base][1:v]overlay=0:0:format=auto,format=yuv420p[v]")
+            run(["ffmpeg","-y","-hide_banner","-loglevel","error",
+                 "-loop","1","-framerate",str(FPS),"-i",str(plate),
+                 "-loop","1","-framerate",str(FPS),"-i",str(overlay),"-i",str(wav),
+                 "-filter_complex",fc,"-map","[v]","-map","2:a:0","-af",
+                 "apad=pad_dur=0.75,loudnorm=I=-16:TP=-1.5:LRA=11",
+                 "-t",f"{duration:.3f}","-r",str(FPS),"-c:v","libx264","-preset","medium",
+                 "-crf","18","-pix_fmt","yuv420p","-c:a","aac","-b:a","192k","-ar","48000",
+                 "-movflags","+faststart",str(clip)])
+            clips.append(clip)
+        concat=temp/"concat.txt"
+        concat.write_text("".join(f"file '{x.as_posix()}'\n" for x in clips),encoding="utf-8")
+        run(["ffmpeg","-y","-hide_banner","-loglevel","error","-f","concat","-safe","0","-i",str(concat),
+             "-c:v","libx264","-preset","medium","-crf","18","-pix_fmt","yuv420p",
+             "-c:a","aac","-b:a","192k","-ar","48000","-movflags","+faststart",str(output)])
+
+    raw=subprocess.check_output(["ffprobe","-v","error","-show_entries",
+        "stream=codec_type,codec_name,width,height","-show_entries","format=duration",
+        "-of","json",str(output)],text=True)
+    meta=json.loads(raw); streams=meta.get("streams",[])
+    video=next((s for s in streams if s.get("codec_type")=="video"),None)
+    audio=next((s for s in streams if s.get("codec_type")=="audio"),None)
+    duration=float(meta.get("format",{}).get("duration",0))
+    if not video or (video.get("codec_name"),video.get("width"),video.get("height"))!=("h264",WIDTH,HEIGHT):
+        raise RuntimeError(f"Video validation failed: {video}")
+    if not audio or audio.get("codec_name")!="aac": raise RuntimeError(f"Audio validation failed: {audio}")
+    if not 15<=duration<=45: raise RuntimeError(f"Duration {duration:.2f}s is outside 15–45s")
+    if output.stat().st_size<100000: raise RuntimeError("Rendered MP4 is unexpectedly small")
+    print(json.dumps({"output":str(output),"bytes":output.stat().st_size,"width":WIDTH,"height":HEIGHT,
+        "fps":FPS,"duration_seconds":round(duration,3),"video_codec":"h264","audio_codec":"aac",
+        "tts_model":"Kokoro-82M","voice":a.voice,"language":"English","audience":"global",
+        "disclosure_verified":True},indent=2))
 
 if __name__=="__main__": main()
