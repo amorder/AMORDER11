@@ -90,5 +90,7 @@
       "public_url": null,
       "status": "pending_render"
     }
-  }
+  },
+  "render_revision": 2,
+  "render_note": "Retry after adding missing Blender EGL/OpenGL runtime libraries to the public render workflow."
 }
