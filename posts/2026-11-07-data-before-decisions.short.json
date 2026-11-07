@@ -91,6 +91,6 @@
       "status": "pending_render"
     }
   },
-  "render_revision": 4,
-  "render_note": "Rerender after correcting the Blender cinematic scene CLI."
+  "render_revision": 5,
+  "render_note": "Retry after removing Blender 5 incompatible compositor access."
 }
