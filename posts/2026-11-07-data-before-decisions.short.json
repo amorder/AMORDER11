@@ -91,6 +91,6 @@
       "status": "pending_render"
     }
   },
-  "render_revision": 3,
-  "render_note": "Upgrade to Eevee PBR cinematic Blender scenes and clean editorial typography."
+  "render_revision": 4,
+  "render_note": "Rerender after correcting the Blender cinematic scene CLI."
 }
