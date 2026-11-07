@@ -64,37 +64,37 @@
       "visual": "idea",
       "title": "NO TRADE IS NOT FAILURE",
       "overlay": "Sometimes the best decision is to wait.",
-      "narration": "A trading system is not measured only by the orders it places. It is also measured by the orders it refuses to place. In the latest AMORDER paper review, no trade was confirmed. That was a valid result because the required evidence did not line up. A quiet session can still be a productive session when the process is followed."
+      "narration": "A trading system is not measured only by the orders it places. It is also measured by the orders it refuses to place. In the latest AMORDER paper review, no trade was confirmed. That was a valid result because the required evidence did not line up. A quiet session can still be a productive session when the process is followed. The objective is not to predict every move; it is to avoid acting without a clear reason."
     },
     {
       "visual": "timestamp",
       "title": "CHECK THE DATA FIRST",
       "overlay": "Freshness. Completeness. Source coverage.",
-      "narration": "Before any setup can be considered, the system checks its timestamps, completed bars and data source. Old or incomplete information can make a chart look more convincing than it really is. If freshness or coverage cannot be verified, the decision is simple: stop and investigate instead of guessing."
+      "narration": "Before any setup can be considered, the system checks its timestamps, completed bars and data source. Old or incomplete information can make a chart look more convincing than it really is. If freshness or coverage cannot be verified, the decision is simple: stop and investigate instead of guessing. A deliberate pause protects the quality of the decision and the trustworthiness of the record."
     },
     {
       "visual": "gaps",
       "title": "A SCORE IS NOT A SIGNAL",
       "overlay": "Research and execution need separate checks.",
-      "narration": "A strong research score only earns a closer look. It does not create an entry. Liquidity, spread, fresh quotes and completed-bar confirmation still need to pass. When even one essential gate fails, the system waits. The rules matter most when the market makes it tempting to improvise."
+      "narration": "A strong research score only earns a closer look. It does not create an entry. Liquidity, spread, fresh quotes and completed-bar confirmation still need to pass. When even one essential gate fails, the system waits. The rules matter most when the market makes it tempting to improvise. A useful ranking is a research tool, not a promise that a position should be opened."
     },
     {
       "visual": "source",
       "title": "UNDERSTAND YOUR FEED",
       "overlay": "Every data source has limits.",
-      "narration": "A feed may cover only part of the market. That does not make it useless, but it does mean its scope must be understood. A decision is only as reliable as the evidence behind it. Never turn missing coverage into false certainty."
+      "narration": "A feed may cover only part of the market. That does not make it useless, but it does mean its scope must be understood. A decision is only as reliable as the evidence behind it. Never turn missing coverage into false certainty. Knowing what the data misses is just as important as knowing what the data actually shows."
     },
     {
       "visual": "stand_down",
       "title": "RISK COMES BEFORE ACTIVITY",
       "overlay": "No forced trades. No shortcuts.",
-      "narration": "Position size, available cash, exposure limits and protective orders matter before an entry. A submitted order is not a fill, and an unfinished candle is not confirmation. The system must be willing to stand aside when its own rules say conditions are not ready."
+      "narration": "Position size, available cash, exposure limits and protective orders matter before an entry. A submitted order is not a fill, and an unfinished candle is not confirmation. The system must be willing to stand aside when its own rules say conditions are not ready. Rules matter most when they are applied consistently, especially on emotional or fast-moving days."
     },
     {
       "visual": "brand",
       "title": "PATIENCE IS A PROCESS",
       "overlay": "Data first. Risk second. Decisions last.",
-      "narration": "No trade does not prove a strategy works. It does show whether the rules were respected when the evidence was incomplete. Record the decision, learn from it and return when the next session provides valid conditions. AMORDER is built around evidence, risk and consistency."
+      "narration": "No trade does not prove a strategy works. It does show whether the rules were respected when the evidence was incomplete. Record the decision, learn from it and return when the next session provides valid conditions. AMORDER is built around evidence, risk and consistency. The same discipline should be visible in the next review, whatever the market eventually does."
     }
   ],
   "sources": [
