@@ -14,16 +14,17 @@ It is not the trading system, research database, paper-trading ledger, or applic
 
 ## Daily content workflow
 
-1. Create or update one Markdown post record under posts/, named YYYY-MM-DD-short-title.md.
+1. Create or update one Markdown post record under posts/, named YYYY-MM-DD-short-title.md or YYYY-MM-DD-episode.md.
 2. Keep the post title, publication date, factual source links, platform-specific copy, disclosure, approved asset references, and publishing record in that file.
-3. For daily video content, add a content-only storyboard at posts/YYYY-MM-DD-short-title.short.json. The secret-free workflow .github/workflows/render-public-short.yml turns that storyboard into a vertical MP4 in assets/.
-4. The renderer creates original educational motion graphics and narration only. It does not access broker accounts, trading records, or private research. It uses no Buffer, Alpaca, or user-supplied secrets.
-5. Publish or queue each connected destination through the existing AMORDER daily automation and connected Buffer integration. X remains text-first; Instagram uses Reels; YouTube uses vertical Shorts. The same approved MP4 may be adapted with separate platform metadata and captions.
-6. Update the same Markdown file with each Buffer post ID, public URL (when available), and confirmed status: sent, scheduled, draft, or error. Never label a failed post as published, and check for duplicates before retrying.
+3. For the daily trailer, add a public-safe storyboard at posts/YYYY-MM-DD-short-title.short.json. The secret-free workflow .github/workflows/render-public-short.yml creates a vertical MP4 in assets/.
+4. For the long-form episode, add a reviewed storyboard at posts/YYYY-MM-DD-episode.episode.json with separate YouTube and Instagram scene tracks. The workflow .github/workflows/render-public-episode.yml creates a 4–8 minute 16:9 YouTube master, a 2.5–3 minute vertical Instagram episode, and subtitle sidecars.
+5. Both renderers create original Blender Eevee PBR scenes, cinematic lighting, restrained camera motion, English Kokoro narration and FFmpeg finishing. They do not access broker accounts, trading records, private research, Buffer, Alpaca or user-supplied secrets.
+6. Publish or queue each connected destination through the existing AMORDER daily automation and connected Buffer integration. X remains text-first; Instagram uses Reels; YouTube uses long-form video and vertical Shorts. Use separate platform metadata and captions.
+7. Update the same Markdown file with each Buffer post ID, public URL (when available), and confirmed status: sent, scheduled, draft, or error. Never label a failed post as published, and check for duplicates before retrying.
 
 ## Open-source creative toolchain
 
-- **Blender Workbench:** original 3D scene plates and abstract visual metaphors, rendered headlessly.
+- **Blender Eevee PBR:** original cinematic 3D scene plates with physically based materials, controlled depth of field, softbox lighting and restrained color accents, rendered headlessly.
 - **Kokoro-82M ONNX:** English synthetic narration; model weights from the public Hugging Face model family. No inference API key is required.
 - **FFmpeg / ffprobe:** motion finishing, H.264/AAC encoding, and independent output validation.
 - **Pillow:** crisp, high-resolution typography and caption overlays.
