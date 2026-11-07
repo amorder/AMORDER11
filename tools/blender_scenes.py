@@ -205,14 +205,21 @@ def build(key):
         raise ValueError("Unsupported Blender visual: "+str(key))
 
 def main():
-    if "--" not in sys.argv: raise SystemExit("Expected -- followed by --input and --output-dir")
-    p=argparse.ArgumentParser(); p.add_argument("--input",required=True); p.add_argument("--output-dir",required=True)
-    a=p.parse_args(sys.argv[sys.argv.index("--")+1:])
-    story=json.loads(Path(a.input).read_text(encoding="utf-8")); scenes=story.get("scenes",[])
-    if story.get("language")!="en" or not scenes: raise SystemExit("English storyboard required")
-    out=Path(a.output_dir); out.mkdir(parents=True,exist_ok=True)
-    for i,item in enumerate(scenes,1):
-        clear(); scene=setup(); build(item.get("visual"))
-        scene.render.filepath=str(out/f"{i:02d}.png"); bpy.ops.render.render(write_still=True)
-        print(f"Rendered Blender scene {i}/{len(scenes)}")
-if __name__=="__main__": main()
+    if "--" not in sys.argv:
+        raise SystemExit("Expected -- followed by --visual and --output")
+    p = argparse.ArgumentParser()
+    p.add_argument("--visual", required=True)
+    p.add_argument("--output", required=True)
+    p.add_argument("--width", type=int, default=1080)
+    p.add_argument("--height", type=int, default=1920)
+    a = p.parse_args(sys.argv[sys.argv.index("--") + 1:])
+    clear()
+    scene = setup(a.width, a.height)
+    build(a.visual)
+    scene.render.filepath = str(Path(a.output).resolve())
+    bpy.ops.render.render(write_still=True)
+    print("Rendered cinematic scene:", a.visual, a.width, a.height)
+
+
+if __name__ == "__main__":
+    main()
