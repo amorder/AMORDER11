@@ -16,16 +16,16 @@
     "fps": 30,
     "duration_seconds_target": "20–32",
     "video": "MP4 H.264, AAC narration",
-    "visual_engine": "Blender Workbench 3D scenes",
-    "post_production": "FFmpeg",
+    "visual_engine": "Blender Eevee with physically based materials, cinematic softboxes and depth of field",
+    "post_production": "FFmpeg slow camera motion, gentle fades, restrained sound mastering",
     "voiceover_model": "Kokoro-82M ONNX",
     "voice": "af_heart",
     "music": "No copyrighted music; voiceover-led mix"
   },
   "creative_direction": {
-    "style": "Premium dark-stage 3D motion graphics, restrained cyan and amber accents, strong light-dark contrast, one visual metaphor per scene, stable camera language, spacious typography and clear holds.",
+    "style": "Ultra-realistic cinematic product-film language: dark graphite studio, physically based metal and ceramic surfaces, reflective set, softbox lighting, controlled depth of field, restrained cyan and warm amber accents, spacious editorial typography and deliberate camera movement.",
     "motion_design_reference": "https://github.com/Vincentwei1021/video-shotcraft",
-    "motion_design_notes": "Shotcraft-informed pacing and visual restraint; original Blender geometry and captions are created for AMORDER. No third-party footage, templates, logos or music are copied.",
+    "motion_design_notes": "Shotcraft is a pacing and visual-QA reference only. AMORDER geometry and scenes are original. Every shot communicates one idea; no flat slide templates, clutter or excessive effects.",
     "voiceover_direction": "Clear, calm, confident English narration for a broad international audience; moderate pace and natural pauses."
   },
   "scenes": [
@@ -91,6 +91,6 @@
       "status": "pending_render"
     }
   },
-  "render_revision": 2,
-  "render_note": "Retry after adding missing Blender EGL/OpenGL runtime libraries to the public render workflow."
+  "render_revision": 3,
+  "render_note": "Upgrade to Eevee PBR cinematic Blender scenes and clean editorial typography."
 }
