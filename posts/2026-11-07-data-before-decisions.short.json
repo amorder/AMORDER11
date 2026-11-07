@@ -91,6 +91,6 @@
       "status": "pending_render"
     }
   },
-  "render_revision": 5,
-  "render_note": "Retry after removing Blender 5 incompatible compositor access."
+  "render_revision": 6,
+  "render_note": "Final retry after restoring the Blender scene return value."
 }
