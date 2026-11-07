@@ -138,7 +138,8 @@ def setup(width=1080, height=1920):
     camera_data.dof.aperture_fstop = 7.1
     scene.camera = camera
 
-    # Skip version-specific compositor nodes; PBR lighting and FFmpeg finishing remain.\n    return scene
+    # Skip version-specific compositor nodes; PBR lighting and FFmpeg finishing remain.
+    return scene
 
 
 def build(key):
