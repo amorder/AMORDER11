@@ -1,0 +1,97 @@
+name: Render cinematic AMORDER long-form episode
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'posts/*.episode.json'
+      - 'tools/render_public_episode.py'
+      - 'tools/blender_scenes.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: amorder-public-episode-main
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install open-source media tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y blender ffmpeg espeak-ng fontconfig fonts-noto-core libegl1 libgl1 libxkbcommon0 libxrender1 libxi6 libxxf86vm1 libsm6 libxext6 libxfixes3
+          python -m pip install --upgrade pip
+          python -m pip install pillow numpy soundfile kokoro-onnx
+
+      - name: Cache public Kokoro model files
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/amorder-kokoro
+          key: amorder-kokoro-onnx-v1.1-kokoro-82m
+
+      - name: Download public Kokoro model files
+        shell: bash
+        run: |
+          set -euo pipefail
+          MODEL_DIR="$HOME/.cache/amorder-kokoro"
+          mkdir -p "$MODEL_DIR"
+          test -s "$MODEL_DIR/kokoro-v1.0.onnx" || curl --fail --location --retry 3 --retry-delay 2 https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.1/kokoro-v1.0.onnx -o "$MODEL_DIR/kokoro-v1.0.onnx"
+          test -s "$MODEL_DIR/voices-v1.0.bin" || curl --fail --location --retry 3 --retry-delay 2 https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.1/voices-v1.0.bin -o "$MODEL_DIR/voices-v1.0.bin"
+          echo "MODEL_DIR=$MODEL_DIR" >> "$GITHUB_ENV"
+
+      - name: Render YouTube master and Instagram episode
+        shell: bash
+        run: |
+          set -euo pipefail
+          STORYBOARD=$(find posts -maxdepth 1 -type f -name '*.episode.json' | sort | tail -n 1)
+          test -n "$STORYBOARD"
+          python tools/render_public_episode.py --input "$STORYBOARD" --output-dir assets --model "$MODEL_DIR/kokoro-v1.0.onnx" --voices "$MODEL_DIR/voices-v1.0.bin" --voice af_heart --speed 0.96
+
+      - name: Independently validate long-form media
+        run: |
+          python - <<'PY'
+          import json, pathlib, subprocess
+          root = pathlib.Path("assets")
+          manifests = sorted(root.glob("*-manifest-*.json"))
+          assert manifests, "No render manifest found"
+          manifest = json.loads(manifests[-1].read_text())
+          assert len(manifest["outputs"]) == 2
+          for item in manifest["outputs"]:
+              path = pathlib.Path(item["file"])
+              assert path.exists() and path.stat().st_size > 500_000, path
+              meta = json.loads(subprocess.check_output([
+                  "ffprobe", "-v", "error", "-show_entries",
+                  "stream=codec_type,codec_name,width,height", "-show_entries",
+                  "format=duration", "-of", "json", str(path)], text=True))
+              video = next(s for s in meta["streams"] if s["codec_type"] == "video")
+              audio = next(s for s in meta["streams"] if s["codec_type"] == "audio")
+              assert video["codec_name"] == "h264"
+              assert audio["codec_name"] == "aac"
+              assert item["subtitle"] and pathlib.Path(item["subtitle"]).exists()
+              print("PASS", path, item["duration_seconds"], video["width"], video["height"])
+          PY
+
+      - name: Commit generated episode videos and subtitles
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/*-youtube-*.mp4 assets/*-instagram-*.mp4 assets/*-manifest-*.json subtitles/*.srt
+          if git diff --cached --quiet; then
+            echo "No generated long-form asset changes."
+            exit 0
+          fi
+          git commit -m "content: render cinematic no-trade episode"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
