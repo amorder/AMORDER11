@@ -85,4 +85,11 @@ US equities are closed today. Calendar before candidates. No forced trades, no i
 | YouTube Short trailer | Pending | Pending | pending_render |
 | Instagram Reel trailer | Pending | Pending | pending_render |
 
-**Release gate:** The previous Instagram long-form cut failed its minimum duration check (142.6 seconds against a 150–180 second requirement). This day's Instagram narration has been expanded to 364 words; the render workflow must confirm the final encoded duration. Automated codec checks are not a substitute for watching and listening to the exact exports. Human creative approval remains pending, so no video will be published or queued until that review is recorded.
+**Release gate:** The previous Instagram long-form cut failed its minimum duration check (142.6 seconds against a 150–180 second requirement). This day's Instagram narration has been expanded to 364 words; the render workflow must confirm the final encoded duration. The renderer has also been updated to burn English SRT captions into both formats, move scene headings into the upper safe area, generate a 16:9 YouTube thumbnail, and export chapter timestamps. A lightweight regression test now checks the caption and thumbnail contract.
+
+- Caption-enabled long-form render: run 42494417363 (pending behind the earlier render).
+- Caption-enabled short render: run 42494420135 (pending behind the earlier short render).
+- Public secret guard on the latest content commit: passed.
+- X Buffer post: 6af092309214322f685f123b, scheduled for 2026-11-08 21:30 IST.
+
+Automated codec checks are not a substitute for watching and listening to the exact exports. The current Blender pipeline still uses original PBR scene plates with FFmpeg camera movement rather than fully keyframed object animation. Human creative approval remains pending, so no video will be published or queued until the final encoded motion, captions and audio are reviewed.
