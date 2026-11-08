@@ -1,0 +1,92 @@
+{
+  "title": "Calendar Before Candidates | AMORDER Daily Short",
+  "publication_date": "2026-11-08",
+  "render_slug": "amorder-calendar-before-candidates",
+  "topic": "Check the market calendar and broker clock before researching a setup",
+  "language": "en",
+  "audience": "global",
+  "intended_channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds_target": "20-35",
+    "video": "MP4 H.264, AAC narration",
+    "visual_engine": "Blender Eevee with physically based materials, cinematic softboxes and depth of field",
+    "post_production": "FFmpeg controlled camera motion, gentle fades and restrained sound mastering",
+    "voiceover_model": "Kokoro-82M ONNX",
+    "voice": "af_heart",
+    "music": "No copyrighted music; voiceover-led mix"
+  },
+  "creative_direction": {
+    "style": "Ultra-realistic cinematic product-film language: dark graphite studio, physically based metal and ceramic surfaces, reflective set, softbox lighting, controlled depth of field, restrained cyan and warm amber accents, spacious editorial typography and deliberate camera movement.",
+    "voiceover_direction": "Clear, calm, confident English narration for a broad international audience; moderate pace and natural pauses.",
+    "overlay_direction": "One short headline and one supporting line per scene. Keep typography large, minimal and within mobile safe areas."
+  },
+  "scenes": [
+    {
+      "visual": "timestamp",
+      "title": "THE MARKET IS CLOSED",
+      "overlay": "A calendar fact, not a signal.",
+      "narration": "The US regular session is closed today. That is a calendar fact, not a signal."
+    },
+    {
+      "visual": "source",
+      "title": "CHECK THE SESSION FIRST",
+      "overlay": "Calendar. Then broker clock.",
+      "narration": "Check the market calendar and broker clock before scanning for setups."
+    },
+    {
+      "visual": "gaps",
+      "title": "YESTERDAY IS NOT LIVE DATA",
+      "overlay": "Read the timestamp.",
+      "narration": "Yesterday's chart is not today's fresh quote. Check the timestamp."
+    },
+    {
+      "visual": "idea",
+      "title": "CLOSED IS NOT BROKEN",
+      "overlay": "Label normal closure accurately.",
+      "narration": "A closed session is not a broken feed. Label conditions accurately."
+    },
+    {
+      "visual": "stand_down",
+      "title": "NO TRADE IS VALID",
+      "overlay": "Never force activity.",
+      "narration": "No trade is a valid result. Never force activity to fill a schedule."
+    },
+    {
+      "visual": "brand",
+      "title": "CALENDAR FIRST. DATA SECOND.",
+      "overlay": "Paper-trading education only.",
+      "narration": "AMORDER. Calendar first. Data second. Risk before execution."
+    }
+  ],
+  "instagram_caption": "The market calendar is the first risk control.\n\nA closed session is not a signal and not a broken feed. Check the clock, label the data correctly and never force a trade to fill a content schedule.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #MarketEducation",
+  "youtube_title": "Calendar Before Candidates | AMORDER #Shorts",
+  "youtube_description": "A quick reminder: verify the US market session and broker clock before scanning for setups. A closed market is a valid no-trade condition, not a signal.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #Shorts",
+  "sources": [
+    "https://www.nyse.com/trade/trading-information",
+    "https://docs.alpaca.markets/us/docs/paper-trading"
+  ],
+  "asset_path": "assets/amorder-calendar-before-candidates-2026-11-08.mp4",
+  "asset_url": "https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-calendar-before-candidates-2026-11-08.mp4",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "publishing_record": {
+    "instagram": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    },
+    "youtube": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    }
+  },
+  "render_revision": 1,
+  "render_note": "English global-audience short about the Sunday US market closure. Original Blender PBR scene plates, Kokoro English narration and FFmpeg finishing."
+}
