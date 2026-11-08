@@ -67,7 +67,7 @@ Paper-trading education only; not live-money performance; not investment advice;
 
 ## X copy
 
-US equities are closed today. Calendar before candidates. No forced trades, no invented results. Paper-trading education only; not live-money performance or advice. https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-08-market-closed-still-matters.md
+US equities are closed today. Calendar before candidates. No forced trades, no invented results. Paper-trading education only—not live-money performance, investment advice, or guaranteed returns. #AMORDER
 
 ## Assets
 - YouTube master: `assets/amorder-market-closed-discipline-youtube-2026-11-08.mp4` (pending render).
@@ -93,3 +93,12 @@ US equities are closed today. Calendar before candidates. No forced trades, no i
 - X Buffer post: 6af092309214322f685f123b, scheduled for 2026-11-08 21:30 IST.
 
 Automated codec checks are not a substitute for watching and listening to the exact exports. The current Blender pipeline still uses original PBR scene plates with FFmpeg camera movement rather than fully keyframed object animation. Human creative approval remains pending, so no video will be published or queued until the final encoded motion, captions and audio are reviewed.
+
+
+## Follow-up production and publishing check — 2026-11-08 21:08 IST
+- X copy was updated in Buffer to include the complete public disclosure. Buffer post ID: `6af092309214322f685f123b`; status remains `scheduled` for 21:30 IST using automatic queue.
+- Instagram and YouTube channels are connected. No matching 2026-11-08 video posts are sent or scheduled in Buffer; prior-day short posts are already sent and were not duplicated.
+- Long-form render run `42493890395` is still in progress. Caption/thumbnail revision-2 run `42494417363` is pending behind it.
+- Caption-enabled vertical short render run `42494420135` is still in progress. The earlier pre-caption render is not approved for publishing.
+- Release remains HOLD. The current Blender generator renders static PBR scene plates; FFmpeg applies zoompan motion. This does not yet demonstrate the required genuine keyframed camera/object animation. The exact final exports also require human watch/listen approval. No video has been queued or published.
+- Buffer video records remain pending render/review; no failed or pending asset is reported as published.
