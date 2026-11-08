@@ -115,18 +115,18 @@ def subtitles_for_scenes(scenes, durations, output):
     current = 0.0
     number = 1
     for scene, duration in zip(scenes, durations):
-        sentences = [x.strip() for x in re.split(r"(?<=[.!?])\\s+", scene["narration"].strip()) if x.strip()]
+        sentences = [x.strip() for x in re.split(r"(?<=[.!?])\s+", scene["narration"].strip()) if x.strip()]
         weights = [max(1, len(x.split())) for x in sentences]
         total = sum(weights) or 1
         cursor = current
         for sentence, weight in zip(sentences, weights):
             end = cursor + duration * weight / total
-            cues.append(f"{number}\\n{srt_time(cursor)} --> {srt_time(end)}\\n{sentence}\\n")
+            cues.append(f"{number}\n{srt_time(cursor)} --> {srt_time(end)}\n{sentence}\n")
             cursor = end
             number += 1
         current += duration
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text("\\n".join(cues), encoding="utf-8")
+    output.write_text("\n".join(cues), encoding="utf-8")
 
 
 def main():
