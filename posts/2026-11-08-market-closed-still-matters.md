@@ -102,3 +102,12 @@ Automated codec checks are not a substitute for watching and listening to the ex
 - Caption-enabled vertical short render run `42494420135` is still in progress. The earlier pre-caption render is not approved for publishing.
 - Release remains HOLD. The current Blender generator renders static PBR scene plates; FFmpeg applies zoompan motion. This does not yet demonstrate the required genuine keyframed camera/object animation. The exact final exports also require human watch/listen approval. No video has been queued or published.
 - Buffer video records remain pending render/review; no failed or pending asset is reported as published.
+
+
+## Render commit incident and controlled recovery — 2026-11-08 21:12 IST
+- Captioned short render run `42494420135` completed Blender scenes, Kokoro narration, FFmpeg encoding and independent validation: 29.60 seconds, 1080x1920, H.264/AAC, burned English captions and an SRT sidecar.
+- Its final asset commit failed because `git pull --rebase` could not merge a changed MP4 at the same path. The output was not committed to the public repository and was not published.
+- Verified fix: both short and long render workflows now fetch the latest main branch, reset the index without discarding the generated worktree files, and retry a fast-forward asset commit up to three times. Regression checks were added to `tools/test_caption_contract.py`.
+- Controlled short rerender: run `42496257159` is in progress. Long-form rerender: run `42496260924` is pending behind the earlier long render `42493890395`.
+- The public secret guard passed on the short rerender storyboard commit; the guard for the long-form rerender is still running.
+- No Instagram Reel, YouTube Short or long-form video has been queued or published. Release remains HOLD pending committed/publicly downloadable outputs, genuine keyframed motion review, and human watch/listen approval.
