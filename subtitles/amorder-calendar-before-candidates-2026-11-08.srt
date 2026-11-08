@@ -1,0 +1,51 @@
+1
+00:00:00,000 --> 00:00:02,558
+The US regular session is closed today.
+
+2
+00:00:02,558 --> 00:00:05,481
+That is a calendar fact, not a signal.
+
+3
+00:00:05,481 --> 00:00:09,852
+Check the market calendar and broker clock before scanning for setups.
+
+4
+00:00:09,852 --> 00:00:12,986
+Yesterday's chart is not today's fresh quote.
+
+5
+00:00:12,986 --> 00:00:14,329
+Check the timestamp.
+
+6
+00:00:14,329 --> 00:00:17,843
+A closed session is not a broken feed.
+
+7
+00:00:17,843 --> 00:00:19,161
+Label conditions accurately.
+
+8
+00:00:19,161 --> 00:00:21,493
+No trade is a valid result.
+
+9
+00:00:21,493 --> 00:00:24,213
+Never force activity to fill a schedule.
+
+10
+00:00:24,213 --> 00:00:24,881
+AMORDER.
+
+11
+00:00:24,881 --> 00:00:26,216
+Calendar first.
+
+12
+00:00:26,216 --> 00:00:27,551
+Data second.
+
+13
+00:00:27,551 --> 00:00:29,554
+Risk before execution.
