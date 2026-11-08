@@ -104,6 +104,6 @@
     "https://ffmpeg.org/documentation.html",
     "https://github.com/thewh1teagle/kokoro-onnx"
   ],
-  "render_revision": 1,
-  "render_note": "English global-audience episode for the verified Sunday market closure. The Instagram narration is 364 words to meet the renderer's 150–180 second duration gate. No private broker details or performance data are included."
+  "render_revision": 2,
+  "render_note": "English global-audience episode for the verified Sunday market closure. The Instagram narration is 364 words to meet the renderer's 150–180 second duration gate. No private broker details or performance data are included. Revision 2: burned English subtitles, exact chapter timing and a 16:9 thumbnail are now generated and validated by the renderer."
 }
