@@ -119,7 +119,7 @@ def overlay(scene, index, count, width, height, font_file, output, disclosure):
             margin + int((width - 2 * margin) * index / count), int(height * .105)),
            fill=(65, 183, 203, 235), width=max(2, int(3 * scale)))
 
-    y = int(height * (.69 if width > height else .65))
+    y = int(height * (.20 if width > height else .22))
     y = draw_block(d, scene["title"], margin, y, title_font,
                    (247, 250, 251, 255), width - 2 * margin, max(5, int(7 * scale)))
     y += int(13 * scale)
@@ -167,6 +167,31 @@ def subtitles_for_scenes(scenes, durations, output):
     output.write_text("\n".join(cues), encoding="utf-8")
 
 
+def create_thumbnail(plate, scene, font_file, output):
+    image = Image.open(plate).convert("RGB")
+    target_w, target_h = 1280, 720
+    scale = max(target_w / image.width, target_h / image.height)
+    image = image.resize((int(image.width * scale), int(image.height * scale)), Image.LANCZOS)
+    left = (image.width - target_w) // 2
+    top = (image.height - target_h) // 2
+    image = image.crop((left, top, left + target_w, top + target_h)).convert("RGBA")
+    shade = Image.new("RGBA", (target_w, target_h), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(shade)
+    for y in range(390, target_h):
+        alpha = int(24 + 190 * ((y - 390) / (target_h - 390)))
+        draw.line((0, y, target_w, y), fill=(3, 8, 14, alpha))
+    image.alpha_composite(shade)
+    draw = ImageDraw.Draw(image)
+    micro = ImageFont.truetype(font_file, 24)
+    headline = ImageFont.truetype(font_file, 48)
+    draw.text((72, 54), "AMORDER / PAPER-TRADING EDUCATION", font=micro,
+              fill=(185, 211, 222, 255))
+    draw_block(draw, scene["title"], 72, 470, headline,
+               (248, 250, 251, 255), 1130, 7)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    image.convert("RGB").save(output, "JPEG", quality=92, optimize=True)
+
+
 def render_variant(scenes, width, height, minimum, maximum, output, subtitle_path,
                    story_path, blender, tts, voice, speed, font_file, temp_root):
     script = Path(__file__).with_name("blender_scenes.py").resolve()
@@ -175,6 +200,7 @@ def render_variant(scenes, width, height, minimum, maximum, output, subtitle_pat
     plates.mkdir(parents=True, exist_ok=True)
     clips_dir.mkdir(parents=True, exist_ok=True)
     clips, durations = [], []
+    thumbnail_path = output.parent / f"{output.stem.replace('-youtube-', '-thumbnail-')}.jpg" if width > height else None
 
     for index, scene in enumerate(scenes, 1):
         plate = plates / f"{index:02d}.png"
@@ -185,6 +211,8 @@ def render_variant(scenes, width, height, minimum, maximum, output, subtitle_pat
         ])
         if not plate.exists() or plate.stat().st_size < 12000:
             raise RuntimeError(f"Missing cinematic Blender plate: {plate}")
+        if index == 1 and thumbnail_path:
+            create_thumbnail(plate, scene, font_file, thumbnail_path)
 
         samples, sample_rate = tts.create(scene["narration"].strip(), voice=voice,
                                           speed=speed, lang="en-us")
@@ -242,6 +270,21 @@ def render_variant(scenes, width, height, minimum, maximum, output, subtitle_pat
         "-ar", "48000", "-movflags", "+faststart", str(output)
     ])
     subtitles_for_scenes(scenes, durations, subtitle_path)
+    captioned = output.with_name(output.stem + "-captioned.mp4")
+    font_size = 27 if width > height else 34
+    margin_v = 72 if width > height else 270
+    style = (f"FontName=Noto Sans,FontSize={font_size},PrimaryColour=&H00FFFFFF,"
+             f"OutlineColour=&HAA000000,BorderStyle=1,Outline=2,Shadow=1,"
+             f"Alignment=2,MarginV={margin_v}")
+    subtitle_filter = f"subtitles=filename='{subtitle_path.as_posix()}':force_style='{style}'"
+    run([
+        "ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
+        "-i", str(output), "-vf", subtitle_filter,
+        "-c:v", "libx264", "-preset", "medium", "-crf", "18",
+        "-pix_fmt", "yuv420p", "-c:a", "copy", "-movflags", "+faststart",
+        str(captioned)
+    ])
+    captioned.replace(output)
 
     metadata = probe(output)
     streams = metadata.get("streams", [])
@@ -262,7 +305,9 @@ def render_variant(scenes, width, height, minimum, maximum, output, subtitle_pat
         "file": str(output), "subtitle": str(subtitle_path), "bytes": output.stat().st_size,
         "duration_seconds": round(actual, 2), "width": width, "height": height,
         "fps": FPS, "video_codec": "h264", "audio_codec": "aac",
-        "voice": voice, "disclosure": "verified"
+        "voice": voice, "disclosure": "verified", "captions_burned": True,
+        "scene_durations_seconds": [round(x, 2) for x in durations],
+        "thumbnail": str(thumbnail_path) if thumbnail_path else None
     }
 
 
@@ -314,11 +359,17 @@ def main():
         ))
         if instagram.stat().st_size > 300 * 1024 * 1024:
             raise RuntimeError("Instagram video exceeds 300 MB API upload limit")
+        chapters = []
+        elapsed = 0.0
+        for scene, duration in zip(story["youtube_scenes"], results[0]["scene_durations_seconds"]):
+            minutes, seconds = divmod(int(elapsed), 60)
+            chapters.append({"timestamp": f"{minutes:02d}:{seconds:02d}", "title": scene["title"]})
+            elapsed += duration
         manifest = {
             "title": title, "publication_date": date_tag, "language": "English",
             "audience": "global", "visual_engine": "Blender Eevee PBR cinematic",
-            "post_production": "FFmpeg", "narration": "Kokoro-82M ONNX",
-            "outputs": results, "disclosure": DISCLOSURE
+            "post_production": "FFmpeg with burned English captions", "narration": "Kokoro-82M ONNX",
+            "outputs": results, "chapters": chapters, "disclosure": DISCLOSURE
         }
         manifest_path = output_dir / f"{slug}-manifest-{date_tag}.json"
         manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
