@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Static regression checks for public AMORDER caption and thumbnail exports."""
+"""Static regression checks for AMORDER public render and asset publishing contracts."""
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
 episode = (root / "tools" / "render_public_episode.py").read_text(encoding="utf-8")
 short = (root / "tools" / "render_public_short.py").read_text(encoding="utf-8")
+short_workflow = (root / ".github" / "workflows" / "render-public-short.yml").read_text(encoding="utf-8")
+episode_workflow = (root / ".github" / "workflows" / "render-public-episode.yml").read_text(encoding="utf-8")
 
 checks = {
     "long-form SRT generation": "subtitles_for_scenes(scenes, durations, subtitle_path)" in episode,
@@ -14,19 +16,6 @@ checks = {
     "short-form SRT generation": "subtitles_for_scenes(scenes,durations,subtitle)" in short,
     "short-form burned captions": "subtitles=filename=" in short and '"captions_burned":True' in short,
 }
-compile(episode, str(root / "tools" / "render_public_episode.py"), "exec")
-compile(short, str(root / "tools" / "render_public_short.py"), "exec")
-print("PASS: both renderer scripts compile")
-
-failed = [name for name, passed in checks.items() if not passed]
-for name, passed in checks.items():
-    print(("PASS" if passed else "FAIL") + ": " + name)
-if failed:
-    raise SystemExit("Caption/thumbnail contract regression: " + ", ".join(failed))
-print("PASS: all public video caption and thumbnail contract checks")
-
-short_workflow = (root / ".github" / "workflows" / "render-public-short.yml").read_text(encoding="utf-8")
-episode_workflow = (root / ".github" / "workflows" / "render-public-episode.yml").read_text(encoding="utf-8")
 
 def collision_safe_commit(workflow: str) -> bool:
     return (
@@ -39,3 +28,14 @@ def collision_safe_commit(workflow: str) -> bool:
 
 checks["short workflow safely replaces same-path binary assets"] = collision_safe_commit(short_workflow)
 checks["episode workflow safely replaces same-path binary assets"] = collision_safe_commit(episode_workflow)
+
+compile(episode, str(root / "tools" / "render_public_episode.py"), "exec")
+compile(short, str(root / "tools" / "render_public_short.py"), "exec")
+print("PASS: both renderer scripts compile")
+
+failed = [name for name, passed in checks.items() if not passed]
+for name, passed in checks.items():
+    print(("PASS" if passed else "FAIL") + ": " + name)
+if failed:
+    raise SystemExit("Public video render contract regression: " + ", ".join(failed))
+print("PASS: all public render, caption, thumbnail and binary-commit contract checks")
