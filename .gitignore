@@ -11,6 +11,34 @@ credentials*.json
 secrets.*
 *secret*
 *token*
+*.jks
+*.keystore
+
+# Private AMORDER system data — never publish these from a local workspace
+/private/
+/secrets/
+/research/
+/trading/
+/broker/
+/ledger/
+/journals/
+/data/
+/logs/
+/exports/
+/reports/private/
+/raw-footage/
+/recordings/
+/drafts-private/
+
+# Databases and private data exports
+*.db
+*.sqlite
+*.sqlite3
+*.duckdb
+*.parquet
+*.feather
+*.csv
+*.jsonl
 
 # Local development
 node_modules/
@@ -19,11 +47,16 @@ venv/
 __pycache__/
 .DS_Store
 Thumbs.db
+*.local
+*.bak
+*.swp
 
-# Build outputs and local renders
+# Build outputs, caches and local renders
 dist/
 build/
 out/
 .cache/
+tmp/
+temp/
 *.log
 *.tmp
