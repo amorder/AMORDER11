@@ -79,7 +79,7 @@ US equities are closed today. Calendar before candidates. No forced trades, no i
 
 | Destination | Buffer post ID | Public URL | Status |
 |---|---|---|---|
-| X | Pending | Pending | pending_review |
+| X | `6af092309214322f685f123b` | Pending | scheduled (Buffer `addToQueue`, automatic; due 2026-11-08 21:30 IST) |
 | YouTube full episode | Pending | Pending | pending_render |
 | Instagram vertical episode | Pending | Pending | pending_render |
 | YouTube Short trailer | Pending | Pending | pending_render |
