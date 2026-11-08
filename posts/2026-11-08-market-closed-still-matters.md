@@ -109,5 +109,12 @@ Automated codec checks are not a substitute for watching and listening to the ex
 - Its final asset commit failed because `git pull --rebase` could not merge a changed MP4 at the same path. The output was not committed to the public repository and was not published.
 - Verified fix: both short and long render workflows now fetch the latest main branch, reset the index without discarding the generated worktree files, and retry a fast-forward asset commit up to three times. Regression checks were added to `tools/test_caption_contract.py`.
 - Controlled short rerender: run `42496257159` is in progress. Long-form rerender: run `42496260924` is pending behind the earlier long render `42493890395`.
-- The public secret guard passed on the short rerender storyboard commit; the guard for the long-form rerender is still running.
+- Public secret guard passed on the short rerender storyboard commit (run `42496257186`) and the long-form rerender commit (run `42496260982`). The follow-up content-record scan (run `42496323021`) also passed.
 - No Instagram Reel, YouTube Short or long-form video has been queued or published. Release remains HOLD pending committed/publicly downloadable outputs, genuine keyframed motion review, and human watch/listen approval.
+
+
+## Follow-up status check — 2026-11-08 21:15 IST
+- Captioned short rerender `42496257159`: still in the Blender/Kokoro render step; the new caption/thumbnail/asset-commit regression check passed before rendering.
+- Long-form revision-3 run `42496260924`: pending behind the original long render `42493890395`, which remains in progress.
+- Public secret guard passed on the latest content record before this update. This record update will trigger another read-only scan.
+- X post remains scheduled for 21:30 IST. No Instagram or YouTube video posts have been created; release remains on hold pending assets and review.
