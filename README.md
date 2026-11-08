@@ -1,57 +1,65 @@
-# AMORDER11 — Content automation only
+# AMORDER11 — Public Content Publishing Repository
 
-AMORDER11 is the public content operations repository for AMORDER. It stores reviewed post copy, platform-specific captions, approved public creative assets, source links, video storyboards, and Buffer publishing records.
+AMORDER11 is the public-facing content repository for AMORDER. It holds reviewed, public-safe post copy, captions, storyboards, final creative assets and publication status for YouTube, Instagram and other approved channels.
 
-It is not the trading system, research database, paper-trading ledger, or application-code repository. Those functions remain in the separate private repository amorder/AMORDER.
+The core AMORDER application, trading system, strategy implementation, research database and operational records are maintained separately in the private repository amorder/AMORDER.
+
+## Public means downloadable
+
+This repository is intentionally public. Anyone can view, clone, fork or download its contents. This includes committed source files, post records, storyboards, videos, commit history and information exposed in workflow logs. Removing a file in a later commit does not erase earlier copies from Git history or third-party caches.
+
+Do not treat this repository as private storage. Publish only material approved for worldwide release. Do not commit secrets, private data, unreleased research or code whose implementation must remain confidential.
+
+The current tools/ renderer scripts and GitHub Actions workflows are also public source code and can be copied. They are content-rendering utilities, not the AMORDER trading engine. Any proprietary renderer, unpublished production process or intellectual property that must not be copied must be moved to the private repository before further development there.
 
 ## Language and audience
 
 - Default language: English.
 - Default audience: a broad global audience.
-- Do not mix languages or rely on region-specific slang unless explicitly requested.
-- Use clear, natural voiceover, short on-screen headlines, readable captions, and restrained wording.
-- Every video must keep the paper-trading disclosure visible in the creative and complete on the closing card.
+- Use clear, natural voiceover, short on-screen headlines, readable captions and restrained wording.
+- Every video must keep the complete paper-trading disclosure visible on its closing card.
+- Do not invent performance, fills, returns, sources or trading outcomes.
 
 ## Daily content workflow
 
-1. Create or update one Markdown post record under posts/, named YYYY-MM-DD-short-title.md or YYYY-MM-DD-episode.md.
-2. Keep the post title, publication date, factual source links, platform-specific copy, disclosure, approved asset references, and publishing record in that file.
-3. For the daily trailer, add a public-safe storyboard at posts/YYYY-MM-DD-short-title.short.json. The secret-free workflow .github/workflows/render-public-short.yml creates a vertical MP4 in assets/.
-4. For the long-form episode, add a reviewed storyboard at posts/YYYY-MM-DD-episode.episode.json with separate YouTube and Instagram scene tracks. The workflow .github/workflows/render-public-episode.yml creates a 4–8 minute 16:9 YouTube master, a 2.5–3 minute vertical Instagram episode, and subtitle sidecars.
-5. Both renderers create original Blender Eevee PBR scenes, cinematic lighting, restrained camera motion, English Kokoro narration and FFmpeg finishing. They do not access broker accounts, trading records, private research, Buffer, Alpaca or user-supplied secrets.
-6. Publish or queue each connected destination through the existing AMORDER daily automation and connected Buffer integration. X remains text-first; Instagram uses Reels; YouTube uses long-form video and vertical Shorts. Use separate platform metadata and captions.
-7. Update the same Markdown file with each Buffer post ID, public URL (when available), and confirmed status: sent, scheduled, draft, or error. Never label a failed post as published, and check for duplicates before retrying.
+1. Create or update a reviewed Markdown record under posts/, named YYYY-MM-DD-short-title.md or YYYY-MM-DD-episode.md.
+2. Keep only approved public copy, verified public sources, disclosure, approved asset references and public-safe publishing status.
+3. A reviewed short storyboard at posts/YYYY-MM-DD-short-title.short.json can trigger .github/workflows/render-public-short.yml, which creates a vertical MP4 in assets/.
+4. A reviewed long-form storyboard at posts/YYYY-MM-DD-episode.episode.json can trigger .github/workflows/render-public-episode.yml, which creates a YouTube master, an Instagram episode and subtitle sidecars.
+5. The renderers use Blender Eevee, Kokoro-82M ONNX, FFmpeg and Pillow. They do not connect to broker accounts, trading records, private research, Buffer or social publishing APIs.
+6. Publish or queue approved posts through the separate AMORDER automation and connected Buffer integration. These GitHub rendering workflows do not publish directly to YouTube or Instagram.
+7. Record only public-safe status and destination URLs. Do not store access tokens, account identifiers, private analytics or unpublished platform payloads.
+8. Check existing publication status before retrying. Never label a failed post as published.
 
-## Open-source creative toolchain
+## Public repository boundary
 
-- **Blender Eevee PBR:** original cinematic 3D scene plates with physically based materials, controlled depth of field, softbox lighting and restrained color accents, rendered headlessly.
-- **Kokoro-82M ONNX:** English synthetic narration; model weights from the public Hugging Face model family. No inference API key is required.
-- **FFmpeg / ffprobe:** motion finishing, H.264/AAC encoding, and independent output validation.
-- **Pillow:** crisp, high-resolution typography and caption overlays.
-- **video-shotcraft:** motion-design reference for pacing, shot restraint, and visual QA. AMORDER scenes and copy remain original; no third-party footage, marks, or music are copied.
+Allowed: reviewed captions and scripts, educational storyboards, approved final videos/images, public source links and public-safe publishing records.
 
-## Repository boundary
+Never store: trading or strategy source code, private renderer implementation, candidate scans, symbol-specific research, raw market/broker data, private journals, account/order IDs, balances, positions, fills, trade-by-trade details, P&L/performance statistics, broker payloads, credentials, tokens, .env files, internal logs, unpublished creative or personal data.
 
-Allowed here: reviewed post copy, captions, educational scripts/storyboards, approved public images/videos, public source URLs, content calendar metadata, and Buffer publishing IDs/URLs/statuses.
+Content may explain general research, data quality, paper-trading and risk-management concepts. Do not publish buy/sell calls, price targets, confidential strategy parameters or fabricated metrics. Every paper-trading disclosure must state that activity is simulated, is not live-money performance, is not investment advice and is not a promise of returns.
 
-Never store here: trading or strategy source code, candidate scans, symbol-specific research, raw market/broker data, private journals, account/order IDs, balances, positions, fills, trade-by-trade details, P&L/performance statistics, broker payloads, credentials, tokens, .env files, or internal logs.
+## Security and ownership
 
-Content may explain general research, data-quality, paper-trading, and risk-management concepts. Any paper-trading disclosure must clearly say it is simulated activity, not live-money performance, not investment advice, and not a promise of returns. Do not publish buy/sell calls, price targets, or fabricated metrics.
+- The secret guard scans current files and Git history. A scan is a safety net, not permission to commit sensitive material.
+- Rendering workflows use a repository-scoped GitHub token only to commit generated public assets. Keep external publishing, broker and personal credentials out of this repository and its workflow variables.
+- The connected Buffer integration is used by the separate AMORDER automation. Never paste Buffer, Alpaca, Hugging Face or personal access tokens into files, logs or commit messages.
+- CODEOWNERS identifies @amorder as the owner; GitHub branch rules must also require owner review for that file to be enforced.
+- No separate open-source licence is granted for AMORDER branding or original content. See NOTICE.md.
 
-## Publishing and security
+## Creative toolchain
 
-- Buffer workspace: My organization
-- Connected destinations: Instagram professional account amorder11, YouTube channel AMORDERS, and X profile amorder11
-- Time zone: Asia/Kolkata
-- The existing daily AMORDER automation orchestrates publishing using the connected Buffer integration.
-- The GitHub Actions secret guard is read-only. The short-render workflow only creates public creative media; it does not publish content and does not use stored secrets.
-- GitHub Actions uses its repository-scoped generated token only to commit the rendered public asset.
-- Never add Buffer, Alpaca, Hugging Face, or personal credentials to this public repo.
+- Blender Eevee PBR for original cinematic 3D scenes.
+- Kokoro-82M ONNX for English synthetic narration.
+- FFmpeg / ffprobe for editing, H.264/AAC encoding and output validation.
+- Pillow for high-resolution typography and caption overlays.
+- video-shotcraft is used only as a reference for pacing and visual QA; AMORDER scenes and copy remain original.
 
-## Initial workflow test
+## Initial workflow references
 
-- 2026-11-06 content workflow test: posts/2026-11-06-workflow-test.md
-- 2026-11-06 AMORDER public workflow post: posts/2026-11-06-building-amorder-in-public.md
-- AMORDER video renderer: tools/render_public_short.py
+- Short renderer: tools/render_public_short.py
 - Blender scene generator: tools/blender_scenes.py
-- Short render workflow: .github/workflows/render-public-short.yml
+- Long-form renderer: tools/render_public_episode.py
+- Short workflow: .github/workflows/render-public-short.yml
+- Long-form workflow: .github/workflows/render-public-episode.yml
+- Secret guard: .github/workflows/secret-guard.yml
