@@ -92,15 +92,25 @@ jobs:
           print(f"PASS: {path} | 1080x1920 | H.264 + AAC | {duration:.2f}s | burned captions + SRT")
           PY
 
-      - name: Commit generated approved public asset
+      - name: Commit generated approved public asset without binary rebase conflicts
+        shell: bash
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$OUTPUT" "$SUBTITLE"
-          if git diff --cached --quiet; then
-            echo "No generated asset changes."
-            exit 0
-          fi
-          git commit -m "content: render English AMORDER calendar short with captions"
-          git pull --rebase origin "$GITHUB_REF_NAME"
-          git push origin "HEAD:$GITHUB_REF_NAME"
+          for attempt in 1 2 3; do
+            git fetch origin "$GITHUB_REF_NAME"
+            git reset --mixed "origin/$GITHUB_REF_NAME"
+            git add "$OUTPUT" "$SUBTITLE"
+            if git diff --cached --quiet; then
+              echo "No generated asset changes."
+              exit 0
+            fi
+            git commit -m "content: render English AMORDER calendar short with captions"
+            if git push origin "HEAD:$GITHUB_REF_NAME"; then
+              exit 0
+            fi
+            echo "Push raced with another content commit; retrying from updated main (attempt $attempt)." >&2
+          done
+          echo "Failed to publish generated assets after three fast-forward attempts." >&2
+          exit 1
