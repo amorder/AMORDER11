@@ -63,3 +63,10 @@ Content may explain general research, data quality, paper-trading and risk-manag
 - Short workflow: .github/workflows/render-public-short.yml
 - Long-form workflow: .github/workflows/render-public-episode.yml
 - Secret guard: .github/workflows/secret-guard.yml
+
+
+## Video production skill library
+
+The uploaded DOCS production skill has been curated into the root [DOCS/](DOCS/README.md) folder. Start with the [Video & Motion Creation skill](DOCS/skills/video-motion-creation/skill.md) and the [Delivery Quality Gate](DOCS/DELIVERY_QUALITY_GATE.md).
+
+The standards set the default for future AMORDER videos: global English, natural professional narration, minimal cinematic realism, genuine camera/object motion, source and rights tracking, and human review before release. They complement the existing renderers; they do not activate a second renderer or publisher.
