@@ -24,3 +24,18 @@ for name, passed in checks.items():
 if failed:
     raise SystemExit("Caption/thumbnail contract regression: " + ", ".join(failed))
 print("PASS: all public video caption and thumbnail contract checks")
+
+short_workflow = (root / ".github" / "workflows" / "render-public-short.yml").read_text(encoding="utf-8")
+episode_workflow = (root / ".github" / "workflows" / "render-public-episode.yml").read_text(encoding="utf-8")
+
+def collision_safe_commit(workflow: str) -> bool:
+    return (
+        'git fetch origin "$GITHUB_REF_NAME"' in workflow
+        and 'git reset --mixed "origin/$GITHUB_REF_NAME"' in workflow
+        and 'git push origin "HEAD:$GITHUB_REF_NAME"' in workflow
+        and "git pull --rebase" not in workflow
+        and "for attempt in 1 2 3" in workflow
+    )
+
+checks["short workflow safely replaces same-path binary assets"] = collision_safe_commit(short_workflow)
+checks["episode workflow safely replaces same-path binary assets"] = collision_safe_commit(episode_workflow)
