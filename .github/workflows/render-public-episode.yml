@@ -26,6 +26,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Verify public video caption and thumbnail contract
+        run: python tools/test_caption_contract.py
+
       - name: Install open-source media tools
         run: |
           sudo apt-get update
@@ -78,18 +81,23 @@ jobs:
               assert video["codec_name"] == "h264"
               assert audio["codec_name"] == "aac"
               assert item["subtitle"] and pathlib.Path(item["subtitle"]).exists()
-              print("PASS", path, item["duration_seconds"], video["width"], video["height"])
+              assert item.get("captions_burned") is True
+              if item["width"] > item["height"]:
+                  thumbnail = pathlib.Path(item["thumbnail"])
+                  assert thumbnail.exists() and thumbnail.stat().st_size > 50_000, thumbnail
+              print("PASS", path, item["duration_seconds"], video["width"], video["height"], "burned captions")
+          assert manifest.get("chapters"), "Missing chapter timestamps"
           PY
 
       - name: Commit generated episode videos and subtitles
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/*-youtube-*.mp4 assets/*-instagram-*.mp4 assets/*-manifest-*.json subtitles/*.srt
+          git add assets/*-youtube-*.mp4 assets/*-instagram-*.mp4 assets/*-manifest-*.json assets/*-thumbnail-*.jpg subtitles/*.srt
           if git diff --cached --quiet; then
             echo "No generated long-form asset changes."
             exit 0
           fi
-          git commit -m "content: render cinematic no-trade episode"
+          git commit -m "content: render cinematic market-closed episode with captions"
           git pull --rebase origin "$GITHUB_REF_NAME"
           git push origin "HEAD:$GITHUB_REF_NAME"
