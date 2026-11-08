@@ -5,7 +5,7 @@ Only reviewed public storyboards are consumed. No broker, account, trading ledge
 private research, credentials, or social publishing APIs are accessed here.
 """
 from __future__ import annotations
-import argparse, json, shutil, subprocess, tempfile
+import argparse, json, re, shutil, subprocess, tempfile
 from pathlib import Path
 import numpy as np
 import soundfile as sf
@@ -70,7 +70,7 @@ def render_overlay(scene, index, count, font_file, path):
     d.line((82, 154, 82 + int((WIDTH - 164) * index / count), 154),
            fill=(64, 180, 201, 235), width=3)
 
-    y = 1260
+    y = 1000
     y += centered(d, scene["title"], y, title, (247, 250, 251, 255), 900, 8)
     y += 20
     centered(d, scene["overlay"], y, support, (180, 214, 224, 255), 850, 9)
@@ -101,14 +101,44 @@ def validate_story(story):
         if any(ord(c)>127 for c in scene["title"]+scene["overlay"]+scene["narration"]):
             raise ValueError(f"Scene {number} contains non-ASCII copy; English-only copy required")
 
+
+def srt_time(seconds):
+    ms = int(round(seconds * 1000))
+    h, ms = divmod(ms, 3600000)
+    m, ms = divmod(ms, 60000)
+    s, ms = divmod(ms, 1000)
+    return f"{h:02d}:{m:02d}:{s:02d},{ms:03d}"
+
+
+def subtitles_for_scenes(scenes, durations, output):
+    cues = []
+    current = 0.0
+    number = 1
+    for scene, duration in zip(scenes, durations):
+        sentences = [x.strip() for x in re.split(r"(?<=[.!?])\\s+", scene["narration"].strip()) if x.strip()]
+        weights = [max(1, len(x.split())) for x in sentences]
+        total = sum(weights) or 1
+        cursor = current
+        for sentence, weight in zip(sentences, weights):
+            end = cursor + duration * weight / total
+            cues.append(f"{number}\\n{srt_time(cursor)} --> {srt_time(end)}\\n{sentence}\\n")
+            cursor = end
+            number += 1
+        current += duration
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text("\\n".join(cues), encoding="utf-8")
+
+
 def main():
     p=argparse.ArgumentParser()
     p.add_argument("--input",required=True); p.add_argument("--output",required=True)
     p.add_argument("--model",required=True); p.add_argument("--voices",required=True)
     p.add_argument("--blender",default="blender"); p.add_argument("--voice",default="af_heart")
-    p.add_argument("--speed",type=float,default=.96); a=p.parse_args()
+    p.add_argument("--speed",type=float,default=.96); p.add_argument("--subtitle",default=None); a=p.parse_args()
     story_path=Path(a.input).resolve(); script=Path(__file__).with_name("blender_scenes.py").resolve()
     output=Path(a.output).resolve(); output.parent.mkdir(parents=True,exist_ok=True)
+    subtitle=Path(a.subtitle).resolve() if a.subtitle else output.parent.parent/"subtitles"/f"{output.stem}.srt"
+    subtitle.parent.mkdir(parents=True,exist_ok=True)
     story=json.loads(story_path.read_text(encoding="utf-8")); validate_story(story)
     scenes=story["scenes"]
     if not shutil.which(a.blender): raise RuntimeError("Blender missing; refusing flat-card fallback")
@@ -117,7 +147,7 @@ def main():
 
     with tempfile.TemporaryDirectory(prefix="amorder-short-") as td:
         temp=Path(td); plates=temp/"plates"; plates.mkdir()
-        clips=[]
+        clips=[]; durations=[]
         for index,scene in enumerate(scenes,1):
             plate=plates/f"{index:02d}.png"
             run([a.blender,"--background","--python",str(script),"--","--visual",scene["visual"],
@@ -130,6 +160,7 @@ def main():
             if not plate.exists() or plate.stat().st_size<10000: raise RuntimeError(f"Missing Blender scene plate {plate}")
             overlay=temp/f"overlay-{index:02d}.png"; render_overlay(scene,index,len(scenes),font_file,overlay)
             duration=audio.size/sr+(.6 if index==len(scenes) else .35)
+            durations.append(duration)
             fade_out=max(duration-.42,.05)
             clip=temp/f"clip-{index:02d}.mp4"; zoom="min(zoom+0.00019,1.035)"
             fc=(f"[0:v]zoompan=z='{zoom}':x='iw/2-(iw/zoom/2)+sin(on/117)*5':"
@@ -152,6 +183,15 @@ def main():
              "-c:v","libx264","-preset","medium","-crf","17","-pix_fmt","yuv420p",
              "-c:a","aac","-b:a","192k","-ar","48000","-movflags","+faststart",str(output)])
 
+        subtitles_for_scenes(scenes,durations,subtitle)
+        captioned=output.with_name(output.stem+"-captioned.mp4")
+        style="FontName=Noto Sans,FontSize=34,PrimaryColour=&H00FFFFFF,OutlineColour=&HAA000000,BorderStyle=1,Outline=2,Shadow=1,Alignment=2,MarginV=290"
+        subtitle_filter=f"subtitles=filename='{subtitle.as_posix()}':force_style='{style}'"
+        run(["ffmpeg","-y","-hide_banner","-loglevel","error","-i",str(output),"-vf",subtitle_filter,
+             "-c:v","libx264","-preset","medium","-crf","17","-pix_fmt","yuv420p",
+             "-c:a","copy","-movflags","+faststart",str(captioned)])
+        captioned.replace(output)
+
     raw=subprocess.check_output(["ffprobe","-v","error","-show_entries",
         "stream=codec_type,codec_name,width,height","-show_entries","format=duration",
         "-of","json",str(output)],text=True)
@@ -164,7 +204,8 @@ def main():
     if not audio or audio.get("codec_name")!="aac": raise RuntimeError(f"Audio validation failed: {audio}")
     if not 15<=duration<=45: raise RuntimeError(f"Duration {duration:.2f}s is outside 15–45s")
     if output.stat().st_size<100000: raise RuntimeError("Rendered MP4 is unexpectedly small")
-    print(json.dumps({"output":str(output),"bytes":output.stat().st_size,"width":WIDTH,"height":HEIGHT,
+    if not subtitle.exists() or subtitle.stat().st_size<100: raise RuntimeError("Subtitle sidecar missing or unexpectedly small")
+    print(json.dumps({"output":str(output),"subtitle":str(subtitle),"captions_burned":True,"bytes":output.stat().st_size,"width":WIDTH,"height":HEIGHT,
         "fps":FPS,"duration_seconds":round(duration,3),"video_codec":"h264","audio_codec":"aac",
         "visual_engine":"Blender Eevee PBR cinematic scenes","post_production":"FFmpeg",
         "tts_model":"Kokoro-82M","voice":a.voice,"language":"English","audience":"global",
