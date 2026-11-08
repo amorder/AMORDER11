@@ -1,0 +1,109 @@
+{
+  "title": "The Market Is Closed. The Process Is Not. | AMORDER",
+  "publication_date": "2026-11-08",
+  "render_slug": "amorder-market-closed-discipline",
+  "topic": "Why a market-closed day is a valid no-trade outcome and how to use the time responsibly",
+  "language": "en",
+  "audience": "global",
+  "youtube_title": "The Market Is Closed. The Process Is Not. | AMORDER Paper-Trading Discipline",
+  "youtube_description": "A cinematic educational episode about why a disciplined paper-trading process does not force activity when the US regular equity session is closed. We explain the calendar gate, broker clock, stale-versus-current data, the difference between normal market closure and a data failure, and what a useful weekend review can accomplish. No stock calls, private account details, trade outcomes or performance claims are included.\n\nChapters will be finalized from the rendered subtitle timings before publication.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\nSubscribe for clear, evidence-led lessons on research, risk and systematic decision-making.",
+  "instagram_caption": "A closed market is not a missed opportunity. It is a condition to respect.\n\nThis episode explains why the calendar comes before candidate research, why yesterday's chart is not today's quote, and how a quiet day can still improve the process.\n\nWatch the full episode on YouTube after release.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #TradingDiscipline #RiskManagement #MarketEducation",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "youtube_scenes": [
+    {
+      "visual": "timestamp",
+      "title": "THE MARKET IS CLOSED. THE PROCESS IS NOT.",
+      "overlay": "Calendar first. No forced activity.",
+      "narration": "Today is Sunday, November 8, 2026. The connected US equity market clock reports that the regular session is closed. The next scheduled open is Monday, November 9 at 9:30 a.m. Eastern Time. That is a calendar condition, not a market opinion. A disciplined system should not invent a setup, submit an order, or turn a quiet day into a fake trading story. The first decision is simply to recognize when the market is not available for regular-hours execution."
+    },
+    {
+      "visual": "source",
+      "title": "CHECK THE CALENDAR BEFORE THE CANDIDATES",
+      "overlay": "A weekday is not always a trading day.",
+      "narration": "Before research begins, check the trading calendar and the broker clock. These answer different but related questions: is today a trading day, and is the regular session open now? A weekday alone is not enough. Holidays, shortened sessions, outages, and daylight-saving changes can alter the schedule. If the clock says closed, the entry gate stays shut. The system records the reason and does not queue a fresh entry for later without a new, complete safety check. A schedule check is a safety control, not administrative decoration."
+    },
+    {
+      "visual": "gaps",
+      "title": "YESTERDAY'S CHART IS NOT TODAY'S QUOTE",
+      "overlay": "Every observation needs a timestamp.",
+      "narration": "Why does this matter? Because a market chart can still display yesterday's prices on a Sunday. A screen that updates visually is not proof that a new, tradable quote exists. Historical bars remain useful for education and review, but they cannot replace a fresh quote, a completed intraday candle, or a regular-session check. Mixing old observations with today's clock can create false urgency. Always label the timestamp and the session it belongs to. A moving chart interface can still be showing an old observation."
+    },
+    {
+      "visual": "idea",
+      "title": "CLOSED IS NOT THE SAME AS BROKEN",
+      "overlay": "Separate normal closure from bad data.",
+      "narration": "A closed market is not the same as a failed data feed. The market clock can be correct while historical data remains available. A missing quote during a closed session is not automatically an outage, and a stale quote should never be treated as fresh. Good operations distinguish normal closure, delayed data, incomplete history, and a genuine service error. Each condition needs its own label. That makes the report useful and stops uncertainty from being disguised as a trading signal. The report should say exactly which condition was verified and which was not."
+    },
+    {
+      "visual": "stand_down",
+      "title": "NO TRADE IS A VALID OUTPUT",
+      "overlay": "A ranking is not permission to enter.",
+      "narration": "No trade is a valid output. It does not mean that the system found a hidden opportunity and chose to ignore it. It means the required conditions for a permitted entry were not present. On a closed day, the session gate alone is decisive. During an open session, research, liquidity, spread, completed-bar confirmation, cash, exposure, and protection checks still have to agree. A ranking is only a way to organize research; it is never permission to bypass the next gate. The same discipline applies when a candidate looks exciting or a market moves quickly."
+    },
+    {
+      "visual": "source",
+      "title": "PAPER SIMULATION IS NOT LIVE PERFORMANCE",
+      "overlay": "A useful test still has limitations.",
+      "narration": "Paper trading helps test the mechanics of a process, but it is still a simulation. It does not reproduce every feature of real execution. Alpaca explains that simulated fills can differ from live outcomes, including market impact, queue position, and slippage. That is why a paper result must be described honestly and why a no-trade record should not be dressed up as performance. The useful question is whether the rules were followed, not whether the dashboard looks busy. That distinction protects viewers from confusing a technical test with a promise."
+    },
+    {
+      "visual": "timestamp",
+      "title": "USE THE QUIET DAY TO REVIEW",
+      "overlay": "Reconcile. Document. Improve.",
+      "narration": "A weekend review can still produce real work. Reconcile orders and fills, confirm that open positions have matching protection, check the data source's coverage, and record any engineering issue that actually occurred. Keep private broker records in the private repository. Public content should share the lesson, not account values, order identifiers, position details, or private research. Separating those records protects privacy and makes the public explanation easier for a global audience to understand."
+    },
+    {
+      "visual": "brand",
+      "title": "THE NEXT SESSION STARTS WITH SAFETY",
+      "overlay": "Calendar first. Data second. Risk before execution.",
+      "narration": "On the next regular session, the process starts again from the beginning. Read the account and configuration. Confirm the clock. Reconcile positions and orders. Verify that the data is fresh. Only then can the system consider a candidate, and only a fully confirmed paper fill counts as a trade. If the evidence is incomplete, wait. There is no target for activity. AMORDER: calendar first, data second, risk before execution."
+    }
+  ],
+  "instagram_scenes": [
+    {
+      "visual": "timestamp",
+      "title": "IT IS A CLOSED SESSION",
+      "overlay": "Sunday is a calendar condition, not a signal.",
+      "narration": "It is Sunday, November 8, and the connected US equity clock says the regular session is closed. The next scheduled open is Monday, November 9 at 9:30 a.m. Eastern Time. That is not a forecast. It is the calendar. A disciplined system does not invent a trade just because a daily post is due. The system's job is to respect that fact, not to force a story."
+    },
+    {
+      "visual": "source",
+      "title": "CALENDAR BEFORE CANDIDATES",
+      "overlay": "Check the session before the scan.",
+      "narration": "Start with the calendar, then confirm the broker clock. Weekdays are not always trading days. Holidays, early closes, outages and daylight-saving changes can affect the session. When the clock says closed, the regular-hours entry gate stays shut. No fresh order is submitted and no later fill is assumed. A schedule check is a safety control, not administrative decoration."
+    },
+    {
+      "visual": "gaps",
+      "title": "A CHART CAN SHOW OLD INFORMATION",
+      "overlay": "Check the timestamp, not the animation.",
+      "narration": "Yesterday's prices may still appear on a chart. That does not make them a fresh quote today. Historical bars are useful for review, but they cannot replace a current quote or completed intraday candles. Always check the timestamp and the session it belongs to before using the information. A moving chart interface can still be showing an old observation."
+    },
+    {
+      "visual": "idea",
+      "title": "CLOSED DOES NOT MEAN BROKEN",
+      "overlay": "Normal closure and bad data are different.",
+      "narration": "A closed market is not automatically a broken data feed. Historical data can remain available while live quotes are quiet. A stale quote, missing bar and genuine service error are different conditions. Label each one correctly. Clear reporting prevents normal closure from being mistaken for an opportunity. The report should say exactly which condition was verified and which was not."
+    },
+    {
+      "visual": "stand_down",
+      "title": "NO TRADE IS A VALID RESULT",
+      "overlay": "Never force activity to fill a schedule.",
+      "narration": "No trade is a valid result. On a closed day, the session gate is enough. During an open session, research, liquidity, spread, completed bars, cash, exposure and protection still need to pass. A high research score is not an instruction to buy. It only tells the system what deserves another look. The same discipline applies when a candidate looks exciting or a market moves quickly."
+    },
+    {
+      "visual": "brand",
+      "title": "CALENDAR FIRST. DATA SECOND.",
+      "overlay": "Risk before execution. AMORDER.",
+      "narration": "Paper trading is a simulation, not live-money performance. Use quiet days to reconcile records, test the process and improve the explanation. Keep private broker details private. On the next session, begin with the safety checks again. Calendar first. Data second. Risk before execution. That distinction protects viewers from confusing a technical test with a promise."
+    }
+  ],
+  "sources": [
+    "https://www.nyse.com/trade/trading-information",
+    "https://docs.alpaca.markets/us/docs/paper-trading",
+    "https://docs.blender.org/manual/en/latest/advanced/command_line/render.html",
+    "https://ffmpeg.org/documentation.html",
+    "https://github.com/thewh1teagle/kokoro-onnx"
+  ],
+  "render_revision": 1,
+  "render_note": "English global-audience episode for the verified Sunday market closure. The Instagram narration is 364 words to meet the renderer's 150–180 second duration gate. No private broker details or performance data are included."
+}
