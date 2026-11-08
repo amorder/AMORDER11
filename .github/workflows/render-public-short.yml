@@ -26,6 +26,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Verify public video caption contract
+        run: python tools/test_caption_contract.py
+
       - name: Install open-source media tools
         run: |
           sudo apt-get update
@@ -62,8 +65,10 @@ jobs:
             ''|*[!a-z0-9-]*) echo "Invalid public render_slug"; exit 1 ;;
           esac
           OUTPUT="assets/${SLUG}-${DATE_TAG}.mp4"
-          python tools/render_public_short.py --input "$STORYBOARD" --output "$OUTPUT" --model "$MODEL_DIR/kokoro-v1.0.onnx" --voices "$MODEL_DIR/voices-v1.0.bin" --voice af_heart --speed 0.96
+          SUBTITLE="subtitles/${SLUG}-${DATE_TAG}.srt"
+          python tools/render_public_short.py --input "$STORYBOARD" --output "$OUTPUT" --subtitle "$SUBTITLE" --model "$MODEL_DIR/kokoro-v1.0.onnx" --voices "$MODEL_DIR/voices-v1.0.bin" --voice af_heart --speed 0.96
           echo "OUTPUT=$OUTPUT" >> "$GITHUB_ENV"
+          echo "SUBTITLE=$SUBTITLE" >> "$GITHUB_ENV"
 
       - name: Independently validate the final MP4
         run: |
@@ -82,18 +87,20 @@ jobs:
           assert audio["codec_name"] == "aac"
           assert 15 <= duration <= 45, duration
           assert os.path.getsize(path) > 100_000
-          print(f"PASS: {path} | 1080x1920 | H.264 + AAC | {duration:.2f}s")
+          subtitle = os.environ["SUBTITLE"]
+          assert os.path.exists(subtitle) and os.path.getsize(subtitle) > 100, subtitle
+          print(f"PASS: {path} | 1080x1920 | H.264 + AAC | {duration:.2f}s | burned captions + SRT")
           PY
 
       - name: Commit generated approved public asset
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$OUTPUT"
+          git add "$OUTPUT" "$SUBTITLE"
           if git diff --cached --quiet; then
             echo "No generated asset changes."
             exit 0
           fi
-          git commit -m "content: render English AMORDER data-first short"
+          git commit -m "content: render English AMORDER calendar short with captions"
           git pull --rebase origin "$GITHUB_REF_NAME"
           git push origin "HEAD:$GITHUB_REF_NAME"
