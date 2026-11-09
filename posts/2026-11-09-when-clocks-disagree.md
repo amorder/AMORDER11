@@ -115,3 +115,11 @@ A paper fill is not a win. The KO PAPER case study is about evidence, risk sizin
 - Current Buffer Ideas: short `6af1ea7ceed3532d12fca6c4`; long `6af1ea7feed3532d12fca6e2`. Both are drafts, not published posts.
 - X post `6af1e8a47fbb6ac6d2f058f4` was edited and re-read; status remains scheduled for 21:44 IST, with case-study copy. No video link is added until an approved public asset exists.
 - The earlier timestamp-only render runs are obsolete for publishing. The latest case-study render runs must complete, commit the assets, pass independent validation, and pass visual/audio review before any Instagram or YouTube post is created.
+
+
+## Final case-study workflow check — 2026-11-09 21:16 IST
+- Case-study short render run [42647701454](https://github.com/amorder/AMORDER11/actions/runs/42647701454): **pending** behind earlier render work.
+- Case-study long-form render run [42647705404](https://github.com/amorder/AMORDER11/actions/runs/42647705404): **pending** behind earlier render work.
+- Secret guard for the current case-study storyboard commits passed: [42647705248](https://github.com/amorder/AMORDER11/actions/runs/42647705248) and [42647699877](https://github.com/amorder/AMORDER11/actions/runs/42647699877).
+- Secret guard for the latest public content-record commit passed: [42647859251](https://github.com/amorder/AMORDER11/actions/runs/42647859251).
+- No final case-study MP4 or subtitle sidecar has been committed yet. Instagram and YouTube remain drafts; no Buffer video post exists.
