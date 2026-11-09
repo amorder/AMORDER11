@@ -83,3 +83,15 @@ Two clocks disagree? Stop. A quote is only useful when its timestamp, market ses
 | YouTube full episode | Pending | Pending | pending_render |
 
 **Public disclosure:** Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
+
+
+## Buffer and render follow-up — 2026-11-09 21:01 IST
+
+- **X:** Buffer post `6af1e8a47fbb6ac6d2f058f4`; independently re-read with Buffer; status **scheduled**; automatic queue due 2026-11-09 21:44 IST. It is not yet sent.
+- **Instagram and YouTube short copy:** saved as Buffer Idea `6af1e8d8eed3532d12fc995a` for Instagram and YouTube. This is an idea/draft, not a post.
+- **Instagram and YouTube long-form copy:** saved as Buffer Idea `6af1e8d97804356f938ad938` for Instagram and YouTube. This is an idea/draft, not a post.
+- **Long-form render:** run [42646401844](https://github.com/amorder/AMORDER11/actions/runs/42646401844) is in progress; the caption/thumbnail contract check passed and media-tool installation is underway.
+- **Short render:** run [42646394096](https://github.com/amorder/AMORDER11/actions/runs/42646394096) is still rendering the initial storyboard revision. The narration was tightened to 78 words to fit the 15–45 second gate; corrected rerender run [42646440947](https://github.com/amorder/AMORDER11/actions/runs/42646440947) is pending behind it.
+- **Public secret guard:** latest content-record scan [42646506483](https://github.com/amorder/AMORDER11/actions/runs/42646506483) passed.
+- No Instagram Reel, YouTube Short or long-form video post has been created. Both video ideas remain drafts until the current assets are committed, downloadable over public HTTPS, validated and reviewed.
+- Creative quality remains on hold: Blender renders original PBR 3D scene plates, while the current renderer adds controlled FFmpeg pan/zoom. Fully keyframed camera/object animation has not yet been implemented, so no claim of complete cinematic 3D animation is made.
