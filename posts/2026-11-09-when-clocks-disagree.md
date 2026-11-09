@@ -12,7 +12,7 @@
 - Ultra-realistic, minimal product-film language: dark graphite studio, brushed metal and glass-like PBR surfaces, softbox reflections, controlled depth of field, restrained cyan and warm amber accents, clean negative space and large mobile-safe typography.
 - Original Blender Eevee 3D scene plates; Kokoro-82M ONNX English narration; FFmpeg finishing, AAC audio, burned English captions and SRT sidecars.
 - Current renderer applies controlled FFmpeg camera movement to Blender 3D scene renders. Fully keyframed camera/object animation is still a quality upgrade gap; do not describe it as completed. Final encoded motion, caption timing and narration must be reviewed before video release.
-- No copyrighted music, stock footage, fake charts, symbols, fabricated results or profit claims.
+- No copyrighted music, stock footage, fake charts, unrelated symbols, fabricated results or profit claims.
 
 ## X copy
 
@@ -111,7 +111,7 @@ A paper fill is not a win. The KO PAPER case study is about evidence, risk sizin
 
 
 ## Case-study render status — 2026-11-09
-- Current render revision: 3; the latest storyboard is a KO PAPER case study, not the earlier timestamp-only episode.
+- Current render revision: 4; the latest storyboard is a KO PAPER case study, not the earlier timestamp-only episode.
 - Current Buffer Ideas: short `6af1ea7ceed3532d12fca6c4`; long `6af1ea7feed3532d12fca6e2`. Both are drafts, not published posts.
 - X post `6af1e8a47fbb6ac6d2f058f4` was edited and re-read; status remains scheduled for 21:44 IST, with case-study copy. No video link is added until an approved public asset exists.
 - The earlier timestamp-only render runs are obsolete for publishing. The latest case-study render runs must complete, commit the assets, pass independent validation, and pass visual/audio review before any Instagram or YouTube post is created.
@@ -123,3 +123,14 @@ A paper fill is not a win. The KO PAPER case study is about evidence, risk sizin
 - Secret guard for the current case-study storyboard commits passed: [42647705248](https://github.com/amorder/AMORDER11/actions/runs/42647705248) and [42647699877](https://github.com/amorder/AMORDER11/actions/runs/42647699877).
 - Secret guard for the latest public content-record commit passed: [42647859251](https://github.com/amorder/AMORDER11/actions/runs/42647859251).
 - No final case-study MP4 or subtitle sidecar has been committed yet. Instagram and YouTube remain drafts; no Buffer video post exists.
+
+
+## Render reliability fix and revision 4 — 2026-11-09 21:17 IST
+- Verified bottleneck: obsolete timestamp-only renders were still occupying the workflow concurrency groups, delaying the newer fill-confirmed case study.
+- Focused fix: both public render workflows now set `cancel-in-progress: true`, so a newer approved storyboard supersedes an older render. Regression checks were added to `tools/test_caption_contract.py` for both workflows.
+- Workflow commits: episode concurrency fix `2aedcac772f57c7a9e338b90337982d3e621e05b`; short concurrency fix `2820609a9c82bd0aa1a94192179f20e3a77b6549`; regression test `46dfcfcec950cba54947d5e4bbf5dc80e2ab0494`.
+- Revision 4 case-study short render [42648221495](https://github.com/amorder/AMORDER11/actions/runs/42648221495): **in progress**.
+- Revision 4 case-study long-form render [42648250665](https://github.com/amorder/AMORDER11/actions/runs/42648250665): **queued**.
+- Superseded long-form render [42647705404](https://github.com/amorder/AMORDER11/actions/runs/42647705404) was cancelled as intended. The revision-4 runs are the only outputs eligible for release.
+- Secret guard passed for the workflow/test changes and revision-4 storyboards: [42648189563](https://github.com/amorder/AMORDER11/actions/runs/42648189563), [42648196325](https://github.com/amorder/AMORDER11/actions/runs/42648196325), [42648201893](https://github.com/amorder/AMORDER11/actions/runs/42648201893), [42648221704](https://github.com/amorder/AMORDER11/actions/runs/42648221704), and [42648250600](https://github.com/amorder/AMORDER11/actions/runs/42648250600).
+- No final MP4 or subtitle sidecar is committed yet. No Instagram or YouTube post has been created.
