@@ -14,7 +14,7 @@
       "visual": "timestamp",
       "title": "WHEN TWO CLOCKS DISAGREE, STOP",
       "overlay": "Time is part of the evidence.",
-      "narration": "What should a trading system do when the market clock and a quote timestamp disagree? It should stop. In today's paper-only cycle, the time references could not be reconciled, so no entry was authorized. That is not a market prediction and it is not a missed opportunity. It is a data-integrity decision. A price can look convincing on screen, but if the time attached to it is uncertain, the system cannot prove that the observation belongs to the session it thinks it is evaluating. The safest output is a clear pause."
+      "narration": "What should a trading system do when the market clock and a quote timestamp disagree? It should stop. During today's first check, the time references could not be reconciled, so the process paused. A fresh check later aligned them. That is not a market prediction and it is not a missed opportunity. It is a data-integrity decision. A price can look convincing on screen, but if the time attached to it is uncertain, the system cannot prove that the observation belongs to the session it thinks it is evaluating. The safest output is a clear pause until the evidence is consistent."
     },
     {
       "visual": "idea",
@@ -64,7 +64,7 @@
       "visual": "timestamp",
       "title": "TWO CLOCKS. ONE DECISION.",
       "overlay": "If timestamps disagree, stop.",
-      "narration": "What should a system do when its market clock and quote timestamps do not agree? Pause. Today's paper-only cycle could not reconcile those time references, so no entry was authorized. That is a data-integrity decision, not a market prediction. A price without a trustworthy time is incomplete evidence, even when the screen looks active and convincing. The pause protects the next decision from being built on a clock that may be wrong."
+      "narration": "What should a system do when its market clock and quote timestamps do not agree? Pause. The first check stopped because those references did not reconcile. A fresh check later aligned them. That is a data-integrity decision, not a market prediction. A price without a trustworthy time is incomplete evidence, even when the screen looks active and convincing. Recheck the clock before any decision."
     },
     {
       "visual": "idea",
@@ -105,6 +105,6 @@
     "https://ffmpeg.org/documentation.html",
     "https://github.com/thewh1teagle/kokoro-onnx"
   ],
-  "render_revision": 1,
-  "render_note": "English global-audience episode about the verified timestamp-integrity pause. Public-safe educational copy only; no symbols, account values, broker identifiers, orders, positions, fills, private research, strategy thresholds or performance data. Instagram narration is 407 words to target the 150-180 second renderer gate. Blender Eevee PBR scene renders, Kokoro English narration and FFmpeg finishing. The current motion path uses controlled FFmpeg camera movement over Blender 3D scene renders; fully keyframed camera/object animation remains a creative upgrade and human review is required before release."
+  "render_revision": 2,
+  "render_note": "English global-audience episode about the verified timestamp-integrity pause. Public-safe educational copy only; no symbols, account values, broker identifiers, orders, positions, fills, private research, strategy thresholds or performance data. Instagram narration is 407 words to target the 150-180 second renderer gate. Blender Eevee PBR scene renders, Kokoro English narration and FFmpeg finishing. The current motion path uses controlled FFmpeg camera movement over Blender 3D scene renders; fully keyframed camera/object animation remains a creative upgrade and human review is required before release. Revision 2 clarifies that the initial time-integrity check paused the process and a fresh recheck later aligned the references. No order, fill, account or symbol details are disclosed."
 }
