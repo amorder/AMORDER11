@@ -76,7 +76,7 @@ Two clocks disagree? Stop. A quote is only useful when its timestamp, market ses
 
 | Destination | Buffer post ID | Public URL | Status |
 |---|---|---|---|
-| X | Pending | Pending | pending_queue |
+| X | `6af1e8a47fbb6ac6d2f058f4` | Pending until sent | scheduled (Buffer automatic queue; due 2026-11-09 21:44 IST) |
 | Instagram Reel | Pending | Pending | pending_render |
 | YouTube Short | Pending | Pending | pending_render |
 | Instagram long-form episode | Pending | Pending | pending_render |
