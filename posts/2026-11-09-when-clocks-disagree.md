@@ -1,9 +1,9 @@
-# When Two Clocks Disagree, Stop — AMORDER
+# A Paper Fill Is Not a Result — KO PAPER Case Study | AMORDER
 
 - **Publication date:** 2026-11-09
 - **Audience and language:** Global audience; clear natural English.
-- **Topic:** Why an automated paper-trading process must pause when market-clock and quote timestamps cannot be reconciled.
-- **Verified public-safe context:** The first pass paused at the time-integrity gate because the market clock and quote timestamps could not be reconciled. A fresh clock-and-quote check later aligned the references, allowing the process to resume through the remaining checks. The public story explains the pause-and-recheck discipline and makes no claim about a trade outcome. No symbols, private broker details, account values, orders, fills, positions or performance figures are disclosed.
+- **Topic:** A broker-confirmed PAPER case study about setup evidence, risk sizing, protective orders and managing an open position without claiming an outcome.
+- **Verified public-safe context:** A broker-confirmed Alpaca PAPER fill exists for KO, the NYSE ticker for The Coca-Cola Company. The first time check paused when the market clock and quote timestamps did not reconcile; a fresh comparison later aligned them before the remaining entry checks. The position remains open and a separate trailing stop was verified. No exact prices, quantities, account values, order IDs, dollar P&L, returns or private logs are disclosed.
 - **Intended channels:** X; Instagram Reels; YouTube full episode; YouTube Shorts.
 - **Disclosure:** Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
 
@@ -16,14 +16,14 @@
 
 ## X copy
 
-Two clocks disagree? Stop. A quote is only useful when its timestamp, market session and completed bars can be reconciled. No guesswork. No forced entries. Paper-trading education only - not live-money performance, not investment advice, no guaranteed returns. #AMORDER
+A paper fill is not a win. The KO PAPER case study is about evidence, risk sizing and verified protection. The position remains open; no exit or result is claimed. Paper-trading education only - not live-money performance, not investment advice, no guaranteed returns. #AMORDER
 
 ## YouTube long-form episode
 
-- **Title:** When Two Clocks Disagree, Stop | AMORDER Paper-Trading Discipline
+- **Title:** A Paper Fill Is Not a Result | KO Paper-Trading Case Study | AMORDER
 - **Target:** 16:9, 1920x1080, H.264 MP4, AAC narration, 4–8 minutes.
 - **Story:** A strong opening question; the role of market, quote and bar timestamps; normal market closure versus data failure; completed-bar discipline; research and intraday confirmation as separate gates; risk controls; the practical lesson that NO TRADE is a valid output.
-- **Description:** What should an automated paper-trading system do when its market clock and quote timestamps do not agree? This episode explains why time is part of the evidence, how to distinguish a closed session from a data problem, why completed bars matter, and why a ranking is never permission to bypass the next safety gate. The practical lesson is simple: pause, preserve the evidence and resume only when the data can be trusted. No stock calls, private broker details or performance claims.
+- **Description:** A verified paper-trading case study using KO, the NYSE ticker for The Coca-Cola Company. We explain the high-level evidence behind the setup, the weaker volume confirmation that remained a caveat, the timestamp recheck before entry, risk-based position sizing, and the separate trailing stop verified after the broker confirmed the fill. The paper position remains open and no exit fill has been confirmed, so this episode makes no claim about a closed-trade result, profit or future performance. The symbol appears only because a broker-confirmed PAPER fill exists; this is not a buy or sell recommendation.
   
   Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
 - **Chapter timestamps:** To be generated from final narration timings and verified after render.
@@ -33,7 +33,7 @@ Two clocks disagree? Stop. A quote is only useful when its timestamp, market ses
 ## Instagram vertical episode
 
 - **Target:** 9:16, 1080x1920, H.264 MP4, AAC narration, 2.5–3 minutes.
-- **Caption:** Two clocks disagree? The disciplined response is to pause. This episode explains why a quote needs a trustworthy timestamp, why completed bars matter, and why a ranking can never override data quality or risk controls.
+- **Caption:** A paper fill is not a win. This KO PAPER case study is about the evidence behind an entry, the caveats that remained, risk-based sizing and the protective order verified after the fill. The position remains open. No exit or outcome is claimed.
 
   Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
 
@@ -43,18 +43,18 @@ Two clocks disagree? Stop. A quote is only useful when its timestamp, market ses
 
 ## Short trailer — Instagram Reel and YouTube Short
 
-- **Topic:** Two clocks disagree; verify before deciding.
+- **Topic:** A confirmed paper fill starts the management phase; it does not prove an outcome.
 - **Target runtime:** 20–35 seconds; 9:16, 1080x1920, 30 fps, H.264 MP4 with AAC narration.
 - **Instagram caption:** A quote without a trustworthy timestamp is incomplete evidence. Check the session, compare the time references and use completed bars. If the data cannot be reconciled, pause. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER #PaperTrading
-- **YouTube title:** Two Clocks. One Decision. | AMORDER #Shorts
-- **YouTube description:** A short reminder that time is part of market data. Verify the session, quote timestamp and completed bars before any paper-trading decision. If the references disagree, pause instead of guessing.
+- **YouTube title:** A Paper Fill Is Not a Win | KO Paper Case Study | AMORDER #Shorts
+- **YouTube description:** A short lesson from a broker-confirmed paper fill: a setup is only the beginning. Verify the evidence, keep caveats visible, size for risk and confirm protection. The position remains open; no exit or performance claim is made.
 
   Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
 - **Pinned comment suggestion:** "Would you rather see constant activity or a clear explanation when an automated system chooses to wait?"
 
 ## Sources
 
-- NYSE trading information: https://www.nyse.com/trade/trading-information
+- NYSE trading information: https://investors.coca-colacompany.com/shareowners/faqs (ticker/exchange verification only)
 - Alpaca paper-trading limitations: https://docs.alpaca.markets/us/docs/paper-trading
 - Alpaca market-data documentation: https://docs.alpaca.markets/us/docs/market-data
 - Blender rendering reference: https://docs.blender.org/manual/en/latest/advanced/command_line/render.html
@@ -65,9 +65,9 @@ Two clocks disagree? Stop. A quote is only useful when its timestamp, market ses
 
 - Episode storyboard: `posts/2026-11-09-when-clocks-disagree.episode.json`
 - Short storyboard: `posts/2026-11-09-when-clocks-disagree.short.json`
-- YouTube master: `assets/amorder-two-clocks-youtube-2026-11-09.mp4` — pending render.
-- Instagram vertical episode: `assets/amorder-two-clocks-instagram-2026-11-09.mp4` — pending render.
-- Short trailer: `assets/amorder-two-clocks-2026-11-09.mp4` — pending render.
+- YouTube master: `assets/amorder-ko-paper-case-study-youtube-2026-11-09.mp4` — pending render.
+- Instagram vertical episode: `assets/amorder-ko-paper-case-study-instagram-2026-11-09.mp4` — pending render.
+- Short trailer: `assets/amorder-ko-paper-case-study-2026-11-09.mp4` — pending render.
 - Subtitle sidecars and 16:9 thumbnail: pending render.
 - Public HTTPS asset URLs: pending commit and validation.
 - Release gate: inspect representative frames, verify safe zones and burned captions, listen to the final narration, confirm duration/codecs and public HTTPS download, then verify no duplicate Buffer post exists.
@@ -100,3 +100,10 @@ Two clocks disagree? Stop. A quote is only useful when its timestamp, market ses
 ## Editorial accuracy update — 2026-11-09
 - The storyboard now distinguishes the initial timestamp pause from the later fresh recheck that aligned the references. It does not claim that the entire session ended with no order or that an order became a trade.
 - The episode and short storyboards were revised to preserve that distinction. Public copy continues to exclude symbols, order identifiers, quantities, account values, fills, positions and performance figures.
+
+
+## Case-study revision — 2026-11-09
+- A confirmed PAPER fill was reconciled after the initial timestamp pause and fresh recheck. The daily episode was upgraded from a general timestamp lesson to a high-level KO case study, as required for a fill-confirmed cycle.
+- Public disclosure is limited to the symbol, high-level technical context, risk-sizing principles, verified protective-order state, open-position status and absence of an exit. Exact prices, quantities, account values, broker/order IDs, dollar P&L and performance claims remain private.
+- Official company source is used only to confirm that KO is The Coca-Cola Company's NYSE ticker; no company profitability or investment-quality claim is made.
+- New storyboard render revision: 3. The earlier timestamp-only render runs are obsolete for publishing; the latest case-study storyboard must render and pass all quality gates before release.
