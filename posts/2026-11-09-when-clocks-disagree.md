@@ -130,7 +130,9 @@ A paper fill is not a win. The KO PAPER case study is about evidence, risk sizin
 - Focused fix: both public render workflows now set `cancel-in-progress: true`, so a newer approved storyboard supersedes an older render. Regression checks were added to `tools/test_caption_contract.py` for both workflows.
 - Workflow commits: episode concurrency fix `2aedcac772f57c7a9e338b90337982d3e621e05b`; short concurrency fix `2820609a9c82bd0aa1a94192179f20e3a77b6549`; regression test `46dfcfcec950cba54947d5e4bbf5dc80e2ab0494`.
 - Revision 4 case-study short render [42648221495](https://github.com/amorder/AMORDER11/actions/runs/42648221495): **in progress**.
-- Revision 4 case-study long-form render [42648250665](https://github.com/amorder/AMORDER11/actions/runs/42648250665): **queued**.
+- Revision 4 case-study long-form render [42648250665](https://github.com/amorder/AMORDER11/actions/runs/42648250665): **in progress** (media-tool installation stage).
 - Superseded long-form render [42647705404](https://github.com/amorder/AMORDER11/actions/runs/42647705404) was cancelled as intended. The revision-4 runs are the only outputs eligible for release.
 - Secret guard passed for the workflow/test changes and revision-4 storyboards: [42648189563](https://github.com/amorder/AMORDER11/actions/runs/42648189563), [42648196325](https://github.com/amorder/AMORDER11/actions/runs/42648196325), [42648201893](https://github.com/amorder/AMORDER11/actions/runs/42648201893), [42648221704](https://github.com/amorder/AMORDER11/actions/runs/42648221704), and [42648250600](https://github.com/amorder/AMORDER11/actions/runs/42648250600).
 - No final MP4 or subtitle sidecar is committed yet. No Instagram or YouTube post has been created.
+
+- Latest secret guard for this final status update: [42648351443](https://github.com/amorder/AMORDER11/actions/runs/42648351443) passed. Both current case-study render jobs have passed their storyboard/caption contract checks and are installing open-source media tools; final MP4 validation and asset commits are still pending.
