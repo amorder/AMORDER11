@@ -54,7 +54,7 @@ A paper fill is not a win. The KO PAPER case study is about evidence, risk sizin
 
 ## Sources
 
-- NYSE trading information: https://investors.coca-colacompany.com/shareowners/faqs (ticker/exchange verification only)
+- The Coca-Cola Company investor FAQ: https://investors.coca-colacompany.com/shareowners/faqs (ticker/exchange verification only)
 - Alpaca paper-trading limitations: https://docs.alpaca.markets/us/docs/paper-trading
 - Alpaca market-data documentation: https://docs.alpaca.markets/us/docs/market-data
 - Blender rendering reference: https://docs.blender.org/manual/en/latest/advanced/command_line/render.html
