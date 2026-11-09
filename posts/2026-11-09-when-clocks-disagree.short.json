@@ -1,0 +1,93 @@
+{
+  "title": "Two Clocks. One Decision. | AMORDER Daily Short",
+  "publication_date": "2026-11-09",
+  "render_slug": "amorder-two-clocks",
+  "topic": "Pause when market-clock and quote timestamps cannot be reconciled",
+  "language": "en",
+  "audience": "global",
+  "intended_channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds_target": "20-35",
+    "video": "MP4 H.264, AAC narration",
+    "visual_engine": "Blender Eevee PBR original 3D scenes with softbox lighting and depth of field",
+    "post_production": "FFmpeg controlled camera movement, fades, burned captions and sound mastering",
+    "voiceover_model": "Kokoro-82M ONNX",
+    "voice": "af_heart",
+    "music": "No copyrighted music; voiceover-led mix"
+  },
+  "creative_direction": {
+    "style": "Ultra-realistic cinematic product-film language: dark graphite studio, precision metal and glass-like PBR surfaces, softbox reflections, restrained cyan and warm amber accents, spacious editorial typography and deliberate motion.",
+    "voiceover_direction": "Clear, calm, confident natural English narration for a broad international audience; moderate pace and natural pauses.",
+    "overlay_direction": "One concise headline and one supporting line per scene. Keep typography large, minimal and inside mobile safe areas."
+  },
+  "scenes": [
+    {
+      "visual": "timestamp",
+      "title": "TWO CLOCKS. ONE DECISION.",
+      "overlay": "If timestamps disagree, stop.",
+      "narration": "What should a system do when its market clock and quote timestamps do not agree? Pause. Today's paper-only cycle could not reconcile those time references, so no entry was authorized."
+    },
+    {
+      "visual": "idea",
+      "title": "TIME IS PART OF THE DATA",
+      "overlay": "Every quote needs a reliable timestamp.",
+      "narration": "A price without a trustworthy time is incomplete evidence. The market clock, quote time and bar interval must make sense together before a system can act."
+    },
+    {
+      "visual": "gaps",
+      "title": "CHECK COMPLETED BARS",
+      "overlay": "A partial candle is not final evidence.",
+      "narration": "A candle can keep changing until its interval ends. Confirm the session, compare timestamps and use completed bars only. Never guess."
+    },
+    {
+      "visual": "source",
+      "title": "FILTERS MUST AGREE",
+      "overlay": "Spread. Liquidity. Volume. Context.",
+      "narration": "A strong-looking chart cannot override weak liquidity, a wide spread or missing confirmation. A ranking is a research priority, not permission to enter."
+    },
+    {
+      "visual": "stand_down",
+      "title": "NO TRADE IS VALID",
+      "overlay": "Do not guess to keep moving.",
+      "narration": "When the time references conflict, pause, record the reason and resume only when the data can be trusted. No trade is a valid result."
+    },
+    {
+      "visual": "brand",
+      "title": "VERIFY. THEN DECIDE.",
+      "overlay": "Paper-trading education only.",
+      "narration": "AMORDER: verify the clock, verify the data, then decide. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
+    }
+  ],
+  "instagram_caption": "Two clocks disagree? Pause. A quote without a trustworthy timestamp is incomplete evidence. Check the session, compare the time references and use completed bars. If the data cannot be reconciled, stop instead of guessing.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #DataQuality",
+  "youtube_title": "Two Clocks. One Decision. | AMORDER #Shorts",
+  "youtube_description": "A short reminder that time is part of market data. Verify the session, quote timestamp and completed bars before any paper-trading decision. If the references disagree, pause instead of guessing.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #Shorts",
+  "sources": [
+    "https://www.nyse.com/trade/trading-information",
+    "https://docs.alpaca.markets/us/docs/paper-trading",
+    "https://docs.alpaca.markets/us/docs/market-data"
+  ],
+  "asset_path": "assets/amorder-two-clocks-2026-11-09.mp4",
+  "asset_url": "https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-two-clocks-2026-11-09.mp4",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "publishing_record": {
+    "instagram": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    },
+    "youtube": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    }
+  },
+  "render_revision": 1,
+  "render_note": "English global-audience short about timestamp integrity and a disciplined pause. Six original Blender Eevee PBR scenes, Kokoro English narration, FFmpeg finishing and burned captions. Current motion is controlled FFmpeg movement over Blender 3D scene renders; human review is required before release."
+}
