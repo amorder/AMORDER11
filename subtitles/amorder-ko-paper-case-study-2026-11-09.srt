@@ -1,0 +1,43 @@
+1
+00:00:00,000 --> 00:00:02,766
+A paper fill is not a win.
+
+2
+00:00:02,766 --> 00:00:07,112
+Today's KO case study is a PAPER simulation, not a recommendation.
+
+3
+00:00:07,112 --> 00:00:12,077
+Trend and relative strength aligned, but volume confirmation was weaker.
+
+4
+00:00:12,077 --> 00:00:14,063
+Keep the caveat visible.
+
+5
+00:00:14,063 --> 00:00:16,646
+The clock mismatch paused the process.
+
+6
+00:00:16,646 --> 00:00:20,089
+A fresh check aligned the references before entry.
+
+7
+00:00:20,089 --> 00:00:24,983
+After the broker confirmed the fill, a separate trailing stop was verified.
+
+8
+00:00:24,983 --> 00:00:26,998
+The position remains open.
+
+9
+00:00:26,998 --> 00:00:31,027
+No exit, no realized result, no performance claim.
+
+10
+00:00:31,027 --> 00:00:34,249
+AMORDER: evidence first, risk always.
+
+11
+00:00:34,249 --> 00:00:41,981
+Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
