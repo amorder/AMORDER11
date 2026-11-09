@@ -32,37 +32,37 @@
       "visual": "timestamp",
       "title": "TWO CLOCKS. ONE DECISION.",
       "overlay": "If timestamps disagree, stop.",
-      "narration": "What should a system do when its market clock and quote timestamps do not agree? Pause. Today's paper-only cycle could not reconcile those time references, so no entry was authorized."
+      "narration": "Two clocks disagree? Pause. The paper cycle stopped because the time references could not be reconciled."
     },
     {
       "visual": "idea",
       "title": "TIME IS PART OF THE DATA",
       "overlay": "Every quote needs a reliable timestamp.",
-      "narration": "A price without a trustworthy time is incomplete evidence. The market clock, quote time and bar interval must make sense together before a system can act."
+      "narration": "A price without a trustworthy timestamp is incomplete evidence."
     },
     {
       "visual": "gaps",
       "title": "CHECK COMPLETED BARS",
       "overlay": "A partial candle is not final evidence.",
-      "narration": "A candle can keep changing until its interval ends. Confirm the session, compare timestamps and use completed bars only. Never guess."
+      "narration": "Check the session and use completed bars, never a candle still forming."
     },
     {
       "visual": "source",
       "title": "FILTERS MUST AGREE",
       "overlay": "Spread. Liquidity. Volume. Context.",
-      "narration": "A strong-looking chart cannot override weak liquidity, a wide spread or missing confirmation. A ranking is a research priority, not permission to enter."
+      "narration": "A ranking cannot override weak liquidity, wide spreads or missing confirmation."
     },
     {
       "visual": "stand_down",
       "title": "NO TRADE IS VALID",
       "overlay": "Do not guess to keep moving.",
-      "narration": "When the time references conflict, pause, record the reason and resume only when the data can be trusted. No trade is a valid result."
+      "narration": "If the data conflicts, record the reason and wait."
     },
     {
       "visual": "brand",
       "title": "VERIFY. THEN DECIDE.",
       "overlay": "Paper-trading education only.",
-      "narration": "AMORDER: verify the clock, verify the data, then decide. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
+      "narration": "AMORDER. Verify the clock, verify the data, then decide. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
     }
   ],
   "instagram_caption": "Two clocks disagree? Pause. A quote without a trustworthy timestamp is incomplete evidence. Check the session, compare the time references and use completed bars. If the data cannot be reconciled, stop instead of guessing.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #DataQuality",
