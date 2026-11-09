@@ -1,110 +1,110 @@
 {
-  "title": "When Two Clocks Disagree, Stop | AMORDER",
+  "title": "A Paper Fill Is Not a Result | AMORDER KO Case Study",
   "publication_date": "2026-11-09",
-  "render_slug": "amorder-two-clocks",
-  "topic": "Why an automated paper-trading process must pause when market-clock and quote timestamps cannot be reconciled",
+  "render_slug": "amorder-ko-paper-case-study",
+  "topic": "A broker-confirmed paper-trading case study about setup evidence, risk sizing, protective orders and managing an open position without claiming an outcome",
   "language": "en",
   "audience": "global",
-  "youtube_title": "When Two Clocks Disagree, Stop | AMORDER Paper-Trading Discipline",
-  "youtube_description": "What should an automated paper-trading system do when its market clock and quote timestamps do not agree? This episode explains why time is part of the evidence, how to distinguish a closed session from a data problem, why completed bars matter, and why a ranking is never permission to bypass the next safety gate. The practical lesson is simple: pause, preserve the evidence and resume only when the data can be trusted. No stock calls, private broker details or performance claims.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\nSubscribe for clear, evidence-led lessons on research, risk and systematic decision-making.",
-  "instagram_caption": "Two clocks disagree? The disciplined response is to pause.\n\nThis episode explains why a quote needs a trustworthy timestamp, why completed bars matter, and why a ranking can never override data quality or risk controls.\n\nWatch the full educational episode on YouTube after release.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #DataQuality #RiskDiscipline",
+  "youtube_title": "A Paper Fill Is Not a Result | KO Paper-Trading Case Study | AMORDER",
+  "youtube_description": "A verified paper-trading case study using KO, the NYSE ticker for The Coca-Cola Company. We explain the high-level evidence behind the setup, the weaker volume confirmation that remained a caveat, the timestamp recheck before entry, risk-based position sizing, and the separate trailing stop verified after the broker confirmed the fill. The paper position remains open and no exit fill has been confirmed, so this episode makes no claim about a closed-trade result, profit or future performance. The symbol appears only because a broker-confirmed PAPER fill exists; this is not a buy or sell recommendation.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\nSubscribe for clear, evidence-led lessons on research, risk and systematic decision-making.",
+  "instagram_caption": "A paper fill is not a win. This KO PAPER case study is about the evidence behind an entry, the caveats that remained, risk-based sizing and the protective order verified after the fill. The position remains open. No exit or outcome is claimed.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #RiskManagement #TradingEducation",
   "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
   "youtube_scenes": [
     {
       "visual": "timestamp",
-      "title": "WHEN TWO CLOCKS DISAGREE, STOP",
-      "overlay": "Time is part of the evidence.",
-      "narration": "What should a trading system do when the market clock and a quote timestamp disagree? It should stop. During today's first check, the time references could not be reconciled, so the process paused. A fresh check later aligned them. That is not a market prediction and it is not a missed opportunity. It is a data-integrity decision. A price can look convincing on screen, but if the time attached to it is uncertain, the system cannot prove that the observation belongs to the session it thinks it is evaluating. The safest output is a clear pause until the evidence is consistent."
-    },
-    {
-      "visual": "idea",
-      "title": "TIME IS PART OF THE DATA",
-      "overlay": "Every observation needs a trustworthy time.",
-      "narration": "Time is part of the data, not a decorative label. Every quote, trade and candle arrives with a timestamp. The market clock describes the exchange session. A quote timestamp tells us when that bid and ask were observed. A bar timestamp identifies the interval represented by its open, high, low, close and volume. These clocks serve different purposes. They should be close enough and internally consistent for the decision being made. If one reference is ahead, delayed or otherwise impossible to reconcile, the system must not guess which one is right."
-    },
-    {
-      "visual": "timestamp",
-      "title": "CONFIRM THE SESSION FIRST",
-      "overlay": "Calendar. Broker clock. Completed bar.",
-      "narration": "Start by confirming the session. A weekday does not prove that the regular market is open, and a chart that changes on screen does not prove that a fresh quote exists. Check the exchange calendar and the broker clock. Then compare the quote time with the current session and inspect the latest completed bar. Do not confuse a bar that has started with one that has finished. A candle still forming can change its close, volume and shape. A disciplined process waits for the interval to complete before using it as evidence."
-    },
-    {
-      "visual": "gaps",
-      "title": "CLOSED IS NOT BROKEN",
-      "overlay": "Label each data condition correctly.",
-      "narration": "Next, separate normal market conditions from data problems. A closed session is not the same as a broken feed. A delayed feed is not the same as a missing bar. A valid historical candle is not the same as a live executable quote. Each condition needs its own label. This distinction matters because the response should match the cause. When the market is closed, wait for the next session. When history is incomplete, repair or exclude the data. When timestamps disagree, stop and investigate. Never turn uncertainty into a signal just to keep a workflow moving."
+      "title": "A PAPER FILL IS NOT A RESULT",
+      "overlay": "The real work starts after execution.",
+      "narration": "A paper fill is not a win. It is the moment a process becomes responsible for managing an open position. Today's case study uses KO, the NYSE ticker for The Coca-Cola Company, only because a broker-confirmed PAPER fill exists. This is not a recommendation, a live-money result, or a claim about the company's profitability. The position remains open. There is no exit fill, so there is no closed-trade outcome to celebrate. The real story is what had to be checked before entry and what protection had to follow."
     },
     {
       "visual": "source",
-      "title": "RESEARCH STARTS AFTER TIME CHECKS",
-      "overlay": "Trend. Momentum. Volume. Liquidity.",
-      "narration": "Only after the time checks pass should research begin. A broad scan can organize active, tradable US-listed stocks, but it is only a first pass. Historical bars must be complete and sufficiently deep. Trend, relative strength and momentum should be measured from consistent observations. Volume needs context. Liquidity and quoted spread matter because a chart can look active while the executable market is thin. Volatility matters because the same price move can carry very different risk in different instruments. A high ranking is a research priority, not permission to place an order."
+      "title": "WHAT THE SETUP ACTUALLY SHOWED",
+      "overlay": "Trend and momentum are evidence, not promises.",
+      "narration": "The daily research showed an aligned trend structure and positive relative strength and momentum versus a broad-market reference. Liquidity and quoted spread were acceptable in the connected feed, and measured volatility stayed within the process limits. One important caveat: volume confirmation was weaker than required for full scoring credit. That did not disappear from the review. A setup score is a ranking of evidence, not a forecast. It does not prove that a company is profitable, that a stock will rise, or that the next trade will work."
+    },
+    {
+      "visual": "timestamp",
+      "title": "THE FIRST CHECK SAID WAIT",
+      "overlay": "Reconcile the clock before the chart.",
+      "narration": "Before the entry, the first time check exposed a mismatch between the market clock and quote timestamps. The process paused. A fresh clock-and-quote comparison later aligned the references. Only then did the system recheck the latest completed intraday bars. The quote was above session VWAP, the latest completed short-interval closes were rising, and price had not moved too far from its reference. Incomplete candles were excluded. The lesson is not to trust a single screen. It is to make independent data sources agree before an order is considered."
     },
     {
       "visual": "idea",
-      "title": "INTRADAY CONFIRMATION IS SEPARATE",
-      "overlay": "Never promote an unfinished candle.",
-      "narration": "Intraday confirmation is a separate gate. The quote must be fresh, the price must be in a sensible relationship to session VWAP, and the completed short-interval candles must support the required direction. Do not use an unfinished candle to make the evidence look stronger. Do not chase a price that has already moved too far from its reference. A setup can pass its daily research checks and still fail the intraday test. That is not a contradiction. It is the reason the process uses multiple independent checks."
+      "title": "SIZE BEFORE YOU SEND",
+      "overlay": "Risk budget. Exposure cap. Available cash.",
+      "narration": "Position sizing was calculated before execution. The process compared three constraints: the amount that could be risked if the protective trigger were reached, the maximum portfolio exposure allowed for one position, and the cash actually available. The smallest permitted size won. This keeps a strong-looking setup from consuming too much capital. The exact account size, share count and order details stay private. A paper simulation can test whether the sizing rules are applied consistently, but it cannot guarantee a particular fill or a maximum loss."
     },
     {
       "visual": "stand_down",
-      "title": "RISK CONTROLS COME BEFORE EXECUTION",
-      "overlay": "Paper environment. Reconciled orders. Protection.",
-      "narration": "Risk controls come before execution, not after it. The account must be in the intended paper environment, trading restrictions must be verified, positions and orders must reconcile, and exposure must remain within the configured limits. A confirmed fill is different from an order submission. An open position is different from a closed trade. A trailing stop is an order trigger, not a guaranteed loss cap; gaps and slippage can still produce a worse fill. Paper simulation helps test mechanics, but it does not prove live execution quality or future returns."
+      "title": "PROTECTION AFTER A CONFIRMED FILL",
+      "overlay": "A separate trailing stop was verified.",
+      "narration": "The entry was submitted as a paper limit order during the regular US session. The system did not count the submission as a trade. It waited for the broker to confirm the actual filled quantity and average fill price. After that confirmation, it submitted a separate native trailing stop for exactly the protected quantity and verified that the order was open. This separation matters because protection cannot be assumed to exist just because an entry was accepted. If the stop had failed, the unprotected quantity would have needed to be closed."
+    },
+    {
+      "visual": "gaps",
+      "title": "A TRAILING STOP IS NOT A PROMISE",
+      "overlay": "Gaps and execution still matter.",
+      "narration": "A trailing stop follows the position's high-water mark and can move upward as the market advances. It is not a fixed profit target, and this process did not add a take-profit order. It is also not a guaranteed maximum loss. A fast move, a price gap or poor execution can produce a fill below the displayed stop. Trailing stops trigger during regular market hours, so their behavior outside the session must not be assumed. Protection is a control, not a promise."
+    },
+    {
+      "visual": "source",
+      "title": "WHAT WOULD INVALIDATE THE SETUP?",
+      "overlay": "Weakening evidence means reassess.",
+      "narration": "What would invalidate the setup? A loss of the trend structure, deterioration in relative strength, a failed intraday reference, unreliable data, or a triggered protective stop. The process does not average down or add simply because the position moves against it. At this review, the paper position remains open and the trailing stop is still present. There is no exit fill. That means no realized result can be reported, and an open mark-to-market change must never be presented as a closed-trade win."
     },
     {
       "visual": "brand",
-      "title": "NO TRADE IS A VALID OUTPUT",
-      "overlay": "Verify the clock. Verify the data. Then decide.",
-      "narration": "The practical lesson is simple: when two clocks disagree, do not average them, ignore one, or invent a compromise. Pause, record the exact condition, preserve the evidence, and resume only after the data can be trusted. No trade is a valid outcome. It protects the quality of the process and keeps the public story honest. What would you rather see from an automated system: constant activity, or a clear explanation when it chooses to wait? AMORDER. Verify the clock. Verify the data. Then decide."
+      "title": "A FILL STARTS THE MANAGEMENT PHASE",
+      "overlay": "Evidence first. Risk always. No promises.",
+      "narration": "The practical lesson is that a confirmed fill starts the management phase; it does not finish the story. Record the evidence that existed at entry, verify protection, monitor the invalidation conditions, and report the actual exit only when the broker confirms it. Keep the symbol and case-study context separate from private account information. What matters most in an automated system: finding a candidate, or proving that every step after the fill is controlled? AMORDER. Evidence first. Risk always. No promises."
     }
   ],
   "instagram_scenes": [
     {
       "visual": "timestamp",
-      "title": "TWO CLOCKS. ONE DECISION.",
-      "overlay": "If timestamps disagree, stop.",
-      "narration": "What should a system do when its market clock and quote timestamps do not agree? Pause. The first check stopped because those references did not reconcile. A fresh check later aligned them. That is a data-integrity decision, not a market prediction. A price without a trustworthy time is incomplete evidence, even when the screen looks active and convincing. Recheck the clock before any decision."
-    },
-    {
-      "visual": "idea",
-      "title": "TIME IS PART OF THE DATA",
-      "overlay": "Every quote needs a reliable timestamp.",
-      "narration": "The market clock describes the session. A quote timestamp tells us when a bid and ask were observed. A bar timestamp identifies the interval behind its open, high, low, close and volume. These references serve different jobs. They must make sense together before the system can act. A quote can be current while a chart still shows an earlier interval. A historical bar can be accurate without being an executable quote right now."
-    },
-    {
-      "visual": "gaps",
-      "title": "CHECK COMPLETED BARS",
-      "overlay": "A partial candle is not final evidence.",
-      "narration": "A chart can keep moving while the latest candle is still forming. Its close and volume can change before the interval ends. Confirm the session, compare timestamps and use completed bars only. If the data is delayed, incomplete or inconsistent, label the problem instead of guessing. A completed candle is a record; an unfinished candle is still changing. Treat them differently in both research and reporting."
+      "title": "A PAPER FILL IS NOT A WIN",
+      "overlay": "The real work starts after execution.",
+      "narration": "A paper fill is not a win. Today's case study uses KO, the NYSE ticker for The Coca-Cola Company, because a broker-confirmed PAPER fill exists. This is an educational example, not a recommendation or live-money result. The position remains open, and no exit fill has been confirmed. The real lesson is what had to be checked before entry and what protection had to follow."
     },
     {
       "visual": "source",
-      "title": "FILTERS MUST AGREE",
-      "overlay": "Spread. Liquidity. Volume. Context.",
-      "narration": "A strong-looking chart cannot override weak liquidity, a wide spread or missing volume confirmation. Daily research and intraday confirmation are separate checks. A ranking only tells the system what deserves another look. It never gives permission to skip the next safety gate. Check what the feed covers and whether the displayed spread represents a useful market view. If coverage is limited, say so clearly."
+      "title": "WHAT THE SETUP SHOWED",
+      "overlay": "Trend and momentum are evidence, not promises.",
+      "narration": "The daily research showed an aligned trend structure and positive relative strength and momentum versus a broad-market reference. Liquidity and spread checks were acceptable in the connected feed, while volume confirmation was weaker. That caveat matters. A setup ranking organizes evidence; it does not predict the next move or prove company profitability. It also does not replace a fresh quote or a completed intraday candle."
+    },
+    {
+      "visual": "timestamp",
+      "title": "THE FIRST CHECK SAID WAIT",
+      "overlay": "Reconcile the clock before the chart.",
+      "narration": "The first time check found a mismatch between the market clock and quote timestamps, so the process paused. A fresh comparison later aligned them. Only then did the system recheck completed intraday bars. The quote was above session VWAP, the latest completed short-interval closes were rising, and price had not moved too far from its reference. Partial candles were excluded. This is why a recheck is a safety step, not a formality."
+    },
+    {
+      "visual": "idea",
+      "title": "SIZE BEFORE YOU SEND",
+      "overlay": "Risk budget. Exposure cap. Available cash.",
+      "narration": "Position sizing was decided before execution. The process compared the risk budget, the maximum exposure allowed for one position, and available cash. The smallest permitted size won. After the broker confirmed the actual fill, a separate native trailing stop was placed for the protected quantity and verified open. No take-profit target was added. The stop is not a guaranteed loss cap."
     },
     {
       "visual": "stand_down",
-      "title": "NO TRADE IS VALID",
-      "overlay": "Do not guess to keep moving.",
-      "narration": "When the time references conflict, the right action is to pause. Record the reason, preserve the evidence and resume only when the data can be trusted. No trade is a valid result. It is better than inventing certainty or forcing activity for a daily post. The goal is not to find a reason to trade. It is to test whether every required piece of evidence is present."
+      "title": "THE POSITION IS STILL OPEN",
+      "overlay": "No exit means no result.",
+      "narration": "What could invalidate the setup? A loss of the trend structure, weaker relative strength, a failed intraday reference, stale data, or a triggered protective stop. The process does not average down or add simply because a position moves against it. The position remains open and the protective stop remains in place. No exit fill exists, so no closed-trade result is reported."
     },
     {
       "visual": "brand",
-      "title": "VERIFY. THEN DECIDE.",
-      "overlay": "AMORDER / Paper-trading education only.",
-      "narration": "Build a process that can explain when it waits, not just when it acts. A reliable system should describe uncertainty in plain language, without hiding behind confident graphics or busy dashboards. Paper results test mechanics; they do not promise real fills or future returns. AMORDER: verify the clock, verify the data, then decide. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
+      "title": "EVIDENCE FIRST. RISK ALWAYS.",
+      "overlay": "Paper-trading education only.",
+      "narration": "A confirmed fill starts the management phase; it does not finish the story. Record the entry evidence, verify protection, monitor invalidation conditions and report the actual exit only when the broker confirms it. This is a paper simulation, not live-money performance. AMORDER: evidence first, risk always, no promises. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
     }
   ],
   "sources": [
-    "https://www.nyse.com/trade/trading-information",
+    "https://investors.coca-colacompany.com/shareowners/faqs",
     "https://docs.alpaca.markets/us/docs/paper-trading",
     "https://docs.alpaca.markets/us/docs/market-data",
     "https://docs.blender.org/manual/en/latest/advanced/command_line/render.html",
     "https://ffmpeg.org/documentation.html",
     "https://github.com/thewh1teagle/kokoro-onnx"
   ],
-  "render_revision": 2,
-  "render_note": "English global-audience episode about the verified timestamp-integrity pause. Public-safe educational copy only; no symbols, account values, broker identifiers, orders, positions, fills, private research, strategy thresholds or performance data. Instagram narration is 407 words to target the 150-180 second renderer gate. Blender Eevee PBR scene renders, Kokoro English narration and FFmpeg finishing. The current motion path uses controlled FFmpeg camera movement over Blender 3D scene renders; fully keyframed camera/object animation remains a creative upgrade and human review is required before release. Revision 2 clarifies that the initial time-integrity check paused the process and a fresh recheck later aligned the references. No order, fill, account or symbol details are disclosed."
+  "render_revision": 3,
+  "render_note": "English global-audience case study created only after a broker-confirmed Alpaca PAPER fill. The Coca-Cola investor-relations source is used only to verify that KO is the company's NYSE ticker, not to claim profitability or investment quality. Public copy includes high-level setup context only and excludes exact prices, quantities, account values, buying power, order IDs, dollar P&L, returns, private logs and credentials. Instagram narration is 399 words to target the 150-180 second gate. Blender Eevee PBR scene renders, Kokoro English narration and FFmpeg finishing. Current motion uses controlled FFmpeg camera movement over Blender 3D scene renders; fully keyframed camera/object animation remains a creative upgrade and human review is required before release."
 }
