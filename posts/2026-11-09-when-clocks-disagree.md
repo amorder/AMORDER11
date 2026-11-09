@@ -22,13 +22,13 @@ A paper fill is not a win. The KO PAPER case study is about evidence, risk sizin
 
 - **Title:** A Paper Fill Is Not a Result | KO Paper-Trading Case Study | AMORDER
 - **Target:** 16:9, 1920x1080, H.264 MP4, AAC narration, 4–8 minutes.
-- **Story:** A strong opening question; the role of market, quote and bar timestamps; normal market closure versus data failure; completed-bar discipline; research and intraday confirmation as separate gates; risk controls; the practical lesson that NO TRADE is a valid output.
+- **Story:** A strong opening question; high-level KO setup thesis; the weaker volume-confirmation caveat; the timestamp recheck; risk-based sizing; broker-confirmed fill; separate trailing-stop verification; invalidation conditions; open-position management; and why no exit means no result.
 - **Description:** A verified paper-trading case study using KO, the NYSE ticker for The Coca-Cola Company. We explain the high-level evidence behind the setup, the weaker volume confirmation that remained a caveat, the timestamp recheck before entry, risk-based position sizing, and the separate trailing stop verified after the broker confirmed the fill. The paper position remains open and no exit fill has been confirmed, so this episode makes no claim about a closed-trade result, profit or future performance. The symbol appears only because a broker-confirmed PAPER fill exists; this is not a buy or sell recommendation.
   
   Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
 - **Chapter timestamps:** To be generated from final narration timings and verified after render.
-- **Thumbnail concept:** A precision metal clock suspended between two glass time markers, with one clean cyan line and a restrained warm edge light. Headline: "WHEN TWO CLOCKS DISAGREE, STOP." No tickers, account screens or charts.
-- **Pinned comment suggestion:** "What should an automated system do when its data sources disagree: guess, or pause and explain why?"
+- **Thumbnail concept:** A precision metal shield behind an abstract rising orbital trail, with a restrained paper tag and warm edge light. Headline: "A PAPER FILL IS NOT A RESULT." No prices, quantities, account screens or P&L.
+- **Pinned comment suggestion:** "What control should be verified immediately after a paper fill?"
 
 ## Instagram vertical episode
 
@@ -38,19 +38,19 @@ A paper fill is not a win. The KO PAPER case study is about evidence, risk sizin
   Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
 
   #AMORDER #PaperTrading #DataQuality #RiskDiscipline
-- **Alt text:** Original cinematic 3D clock and data-gateway scene representing timestamp checks before a paper-trading decision.
+- **Alt text:** Original cinematic 3D shield and rising orbital trail representing protective order management after a paper fill.
 - **Call to action:** Watch the full educational episode on YouTube after release.
 
 ## Short trailer — Instagram Reel and YouTube Short
 
 - **Topic:** A confirmed paper fill starts the management phase; it does not prove an outcome.
 - **Target runtime:** 20–35 seconds; 9:16, 1080x1920, 30 fps, H.264 MP4 with AAC narration.
-- **Instagram caption:** A quote without a trustworthy timestamp is incomplete evidence. Check the session, compare the time references and use completed bars. If the data cannot be reconciled, pause. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER #PaperTrading
+- **Instagram caption:** A paper fill is not a win. This KO PAPER case study shows why evidence, caveats, risk-based sizing and verified protection matter. The position remains open; no exit or outcome is claimed. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER #PaperTrading
 - **YouTube title:** A Paper Fill Is Not a Win | KO Paper Case Study | AMORDER #Shorts
 - **YouTube description:** A short lesson from a broker-confirmed paper fill: a setup is only the beginning. Verify the evidence, keep caveats visible, size for risk and confirm protection. The position remains open; no exit or performance claim is made.
 
   Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
-- **Pinned comment suggestion:** "Would you rather see constant activity or a clear explanation when an automated system chooses to wait?"
+- **Pinned comment suggestion:** "A fill is not a win. What is the first control you would verify after execution?"
 
 ## Sources
 
@@ -88,8 +88,9 @@ A paper fill is not a win. The KO PAPER case study is about evidence, risk sizin
 ## Buffer and render follow-up — 2026-11-09 21:01 IST
 
 - **X:** Buffer post `6af1e8a47fbb6ac6d2f058f4`; independently re-read with Buffer; status **scheduled**; automatic queue due 2026-11-09 21:44 IST. It is not yet sent.
-- **Instagram and YouTube short copy:** saved as Buffer Idea `6af1e8d8eed3532d12fc995a` for Instagram and YouTube. This is an idea/draft, not a post.
-- **Instagram and YouTube long-form copy:** saved as Buffer Idea `6af1e8d97804356f938ad938` for Instagram and YouTube. This is an idea/draft, not a post.
+- **Superseded timestamp-only ideas:** `6af1e8d8eed3532d12fc995a` (short) and `6af1e8d97804356f938ad938` (long) remain drafts and are not used for publishing.
+- **Current case-study short copy:** saved as Buffer Idea `6af1ea7ceed3532d12fca6c4` for Instagram and YouTube. This is an idea/draft, not a post.
+- **Current case-study long-form copy:** saved as Buffer Idea `6af1ea7feed3532d12fca6e2` for Instagram and YouTube. This is an idea/draft, not a post.
 - **Long-form render:** run [42646401844](https://github.com/amorder/AMORDER11/actions/runs/42646401844) is in progress; the caption/thumbnail contract check passed and media-tool installation is underway.
 - **Short render:** run [42646394096](https://github.com/amorder/AMORDER11/actions/runs/42646394096) is still rendering the initial storyboard revision. The narration was tightened to 78 words to fit the 15–45 second gate; corrected rerender run [42646440947](https://github.com/amorder/AMORDER11/actions/runs/42646440947) is pending behind it.
 - **Public secret guard:** latest content-record scan [42646506483](https://github.com/amorder/AMORDER11/actions/runs/42646506483) passed.
@@ -98,8 +99,8 @@ A paper fill is not a win. The KO PAPER case study is about evidence, risk sizin
 
 
 ## Editorial accuracy update — 2026-11-09
-- The storyboard now distinguishes the initial timestamp pause from the later fresh recheck that aligned the references. It does not claim that the entire session ended with no order or that an order became a trade.
-- The episode and short storyboards were revised to preserve that distinction. Public copy continues to exclude symbols, order identifiers, quantities, account values, fills, positions and performance figures.
+- The storyboard distinguishes the initial timestamp pause from the later fresh recheck that aligned the references.
+- After a broker-confirmed PAPER fill was reconciled, the public case-study exception was used to disclose KO and high-level setup context only. Exact prices, quantities, order identifiers, account values, fills-by-quantity, dollar P&L and performance figures remain private.
 
 
 ## Case-study revision — 2026-11-09
@@ -107,3 +108,10 @@ A paper fill is not a win. The KO PAPER case study is about evidence, risk sizin
 - Public disclosure is limited to the symbol, high-level technical context, risk-sizing principles, verified protective-order state, open-position status and absence of an exit. Exact prices, quantities, account values, broker/order IDs, dollar P&L and performance claims remain private.
 - Official company source is used only to confirm that KO is The Coca-Cola Company's NYSE ticker; no company profitability or investment-quality claim is made.
 - New storyboard render revision: 3. The earlier timestamp-only render runs are obsolete for publishing; the latest case-study storyboard must render and pass all quality gates before release.
+
+
+## Case-study render status — 2026-11-09
+- Current render revision: 3; the latest storyboard is a KO PAPER case study, not the earlier timestamp-only episode.
+- Current Buffer Ideas: short `6af1ea7ceed3532d12fca6c4`; long `6af1ea7feed3532d12fca6e2`. Both are drafts, not published posts.
+- X post `6af1e8a47fbb6ac6d2f058f4` was edited and re-read; status remains scheduled for 21:44 IST, with case-study copy. No video link is added until an approved public asset exists.
+- The earlier timestamp-only render runs are obsolete for publishing. The latest case-study render runs must complete, commit the assets, pass independent validation, and pass visual/audio review before any Instagram or YouTube post is created.
