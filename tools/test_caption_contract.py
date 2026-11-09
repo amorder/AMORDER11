@@ -28,6 +28,8 @@ def collision_safe_commit(workflow: str) -> bool:
 
 checks["short workflow safely replaces same-path binary assets"] = collision_safe_commit(short_workflow)
 checks["episode workflow safely replaces same-path binary assets"] = collision_safe_commit(episode_workflow)
+checks["short workflow cancels superseded renders"] = "cancel-in-progress: true" in short_workflow
+checks["episode workflow cancels superseded renders"] = "cancel-in-progress: true" in episode_workflow
 
 compile(episode, str(root / "tools" / "render_public_episode.py"), "exec")
 compile(short, str(root / "tools" / "render_public_short.py"), "exec")
