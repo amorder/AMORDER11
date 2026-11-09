@@ -3,7 +3,7 @@
 - **Publication date:** 2026-11-09
 - **Audience and language:** Global audience; clear natural English.
 - **Topic:** Why an automated paper-trading process must pause when market-clock and quote timestamps cannot be reconciled.
-- **Verified public-safe context:** Today's paper-only cycle paused at the time-integrity gate. The system did not authorize an entry when the time references could not be reconciled. No symbols, private broker details, account values, orders, fills, positions or performance figures are disclosed.
+- **Verified public-safe context:** The first pass paused at the time-integrity gate because the market clock and quote timestamps could not be reconciled. A fresh clock-and-quote check later aligned the references, allowing the process to resume through the remaining checks. The public story explains the pause-and-recheck discipline and makes no claim about a trade outcome. No symbols, private broker details, account values, orders, fills, positions or performance figures are disclosed.
 - **Intended channels:** X; Instagram Reels; YouTube full episode; YouTube Shorts.
 - **Disclosure:** Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
 
@@ -95,3 +95,8 @@ Two clocks disagree? Stop. A quote is only useful when its timestamp, market ses
 - **Public secret guard:** latest content-record scan [42646506483](https://github.com/amorder/AMORDER11/actions/runs/42646506483) passed.
 - No Instagram Reel, YouTube Short or long-form video post has been created. Both video ideas remain drafts until the current assets are committed, downloadable over public HTTPS, validated and reviewed.
 - Creative quality remains on hold: Blender renders original PBR 3D scene plates, while the current renderer adds controlled FFmpeg pan/zoom. Fully keyframed camera/object animation has not yet been implemented, so no claim of complete cinematic 3D animation is made.
+
+
+## Editorial accuracy update — 2026-11-09
+- The storyboard now distinguishes the initial timestamp pause from the later fresh recheck that aligned the references. It does not claim that the entire session ended with no order or that an order became a trade.
+- The episode and short storyboards were revised to preserve that distinction. Public copy continues to exclude symbols, order identifiers, quantities, account values, fills, positions and performance figures.
