@@ -32,7 +32,7 @@
       "visual": "timestamp",
       "title": "TWO CLOCKS. ONE DECISION.",
       "overlay": "If timestamps disagree, stop.",
-      "narration": "Two clocks disagree? Pause. The paper cycle stopped because the time references could not be reconciled."
+      "narration": "Two clocks disagree? Pause. The first check stopped because the time references did not align. Recheck before any decision."
     },
     {
       "visual": "idea",
@@ -88,6 +88,6 @@
       "status": "pending_render"
     }
   },
-  "render_revision": 1,
-  "render_note": "English global-audience short about timestamp integrity and a disciplined pause. Six original Blender Eevee PBR scenes, Kokoro English narration, FFmpeg finishing and burned captions. Current motion is controlled FFmpeg movement over Blender 3D scene renders; human review is required before release."
+  "render_revision": 2,
+  "render_note": "English global-audience short about timestamp integrity and a disciplined pause. Six original Blender Eevee PBR scenes, Kokoro English narration, FFmpeg finishing and burned captions. Current motion is controlled FFmpeg movement over Blender 3D scene renders; human review is required before release. Revision 2 clarifies that the first time check paused the process and a fresh recheck later aligned the references. No order, fill or account details are disclosed."
 }
