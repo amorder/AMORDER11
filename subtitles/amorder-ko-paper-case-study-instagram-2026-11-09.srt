@@ -1,0 +1,127 @@
+1
+00:00:00,000 --> 00:00:02,793
+A paper fill is not a win.
+
+2
+00:00:02,793 --> 00:00:09,977
+Today's case study uses KO, the NYSE ticker for The Coca-Cola Company, because a broker-confirmed PAPER fill exists.
+
+3
+00:00:09,977 --> 00:00:14,366
+This is an educational example, not a recommendation or live-money result.
+
+4
+00:00:14,366 --> 00:00:18,756
+The position remains open, and no exit fill has been confirmed.
+
+5
+00:00:18,756 --> 00:00:25,540
+The real lesson is what had to be checked before entry and what protection had to follow.
+
+6
+00:00:25,540 --> 00:00:32,924
+The daily research showed an aligned trend structure and positive relative strength and momentum versus a broad-market reference.
+
+7
+00:00:32,924 --> 00:00:39,077
+Liquidity and spread checks were acceptable in the connected feed, while volume confirmation was weaker.
+
+8
+00:00:39,077 --> 00:00:40,307
+That caveat matters.
+
+9
+00:00:40,307 --> 00:00:46,871
+A setup ranking organizes evidence; it does not predict the next move or prove company profitability.
+
+10
+00:00:46,871 --> 00:00:52,203
+It also does not replace a fresh quote or a completed intraday candle.
+
+11
+00:00:52,203 --> 00:00:58,808
+The first time check found a mismatch between the market clock and quote timestamps, so the process paused.
+
+12
+00:00:58,808 --> 00:01:01,010
+A fresh comparison later aligned them.
+
+13
+00:01:01,010 --> 00:01:04,312
+Only then did the system recheck completed intraday bars.
+
+14
+00:01:04,312 --> 00:01:12,751
+The quote was above session VWAP, the latest completed short-interval closes were rising, and price had not moved too far from its reference.
+
+15
+00:01:12,751 --> 00:01:14,219
+Partial candles were excluded.
+
+16
+00:01:14,219 --> 00:01:18,622
+This is why a recheck is a safety step, not a formality.
+
+17
+00:01:18,622 --> 00:01:21,168
+Position sizing was decided before execution.
+
+18
+00:01:21,168 --> 00:01:27,957
+The process compared the risk budget, the maximum exposure allowed for one position, and available cash.
+
+19
+00:01:27,957 --> 00:01:30,079
+The smallest permitted size won.
+
+20
+00:01:30,079 --> 00:01:38,990
+After the broker confirmed the actual fill, a separate native trailing stop was placed for the protected quantity and verified open.
+
+21
+00:01:38,990 --> 00:01:41,111
+No take-profit target was added.
+
+22
+00:01:41,111 --> 00:01:44,506
+The stop is not a guaranteed loss cap.
+
+23
+00:01:44,506 --> 00:01:46,497
+What could invalidate the setup?
+
+24
+00:01:46,497 --> 00:01:54,464
+A loss of the trend structure, weaker relative strength, a failed intraday reference, stale data, or a triggered protective stop.
+
+25
+00:01:54,464 --> 00:02:00,438
+The process does not average down or add simply because a position moves against it.
+
+26
+00:02:00,438 --> 00:02:04,820
+The position remains open and the protective stop remains in place.
+
+27
+00:02:04,820 --> 00:02:08,803
+No exit fill exists, so no closed-trade result is reported.
+
+28
+00:02:08,803 --> 00:02:14,856
+A confirmed fill starts the management phase; it does not finish the story.
+
+29
+00:02:14,856 --> 00:02:24,168
+Record the entry evidence, verify protection, monitor invalidation conditions and report the actual exit only when the broker confirms it.
+
+30
+00:02:24,168 --> 00:02:27,894
+This is a paper simulation, not live-money performance.
+
+31
+00:02:27,894 --> 00:02:31,153
+AMORDER: evidence first, risk always, no promises.
+
+32
+00:02:31,153 --> 00:02:36,741
+Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.

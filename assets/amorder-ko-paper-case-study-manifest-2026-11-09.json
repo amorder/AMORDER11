@@ -1,0 +1,94 @@
+{
+  "title": "A Paper Fill Is Not a Result | KO Paper-Trading Case Study | AMORDER",
+  "publication_date": "2026-11-09",
+  "language": "English",
+  "audience": "global",
+  "visual_engine": "Blender Eevee PBR cinematic",
+  "post_production": "FFmpeg with burned English captions",
+  "narration": "Kokoro-82M ONNX",
+  "outputs": [
+    {
+      "file": "/home/runner/work/AMORDER11/AMORDER11/assets/amorder-ko-paper-case-study-youtube-2026-11-09.mp4",
+      "subtitle": "/home/runner/work/AMORDER11/AMORDER11/subtitles/amorder-ko-paper-case-study-youtube-2026-11-09.srt",
+      "bytes": 25452640,
+      "duration_seconds": 277.9,
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "voice": "af_heart",
+      "disclosure": "verified",
+      "captions_burned": true,
+      "scene_durations_seconds": [
+        35.23,
+        35.7,
+        35.99,
+        36.85,
+        34.97,
+        30.5,
+        33.44,
+        35.16
+      ],
+      "thumbnail": "/home/runner/work/AMORDER11/AMORDER11/assets/amorder-ko-paper-case-study-thumbnail-2026-11-09.jpg"
+    },
+    {
+      "file": "/home/runner/work/AMORDER11/AMORDER11/assets/amorder-ko-paper-case-study-instagram-2026-11-09.mp4",
+      "subtitle": "/home/runner/work/AMORDER11/AMORDER11/subtitles/amorder-ko-paper-case-study-instagram-2026-11-09.srt",
+      "bytes": 13571694,
+      "duration_seconds": 156.82,
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "voice": "af_heart",
+      "disclosure": "verified",
+      "captions_burned": true,
+      "scene_durations_seconds": [
+        25.54,
+        26.66,
+        26.42,
+        25.88,
+        24.3,
+        27.94
+      ],
+      "thumbnail": null
+    }
+  ],
+  "chapters": [
+    {
+      "timestamp": "00:00",
+      "title": "A PAPER FILL IS NOT A RESULT"
+    },
+    {
+      "timestamp": "00:35",
+      "title": "WHAT THE SETUP ACTUALLY SHOWED"
+    },
+    {
+      "timestamp": "01:10",
+      "title": "THE FIRST CHECK SAID WAIT"
+    },
+    {
+      "timestamp": "01:46",
+      "title": "SIZE BEFORE YOU SEND"
+    },
+    {
+      "timestamp": "02:23",
+      "title": "PROTECTION AFTER A CONFIRMED FILL"
+    },
+    {
+      "timestamp": "02:58",
+      "title": "A TRAILING STOP IS NOT A PROMISE"
+    },
+    {
+      "timestamp": "03:29",
+      "title": "WHAT WOULD INVALIDATE THE SETUP?"
+    },
+    {
+      "timestamp": "04:02",
+      "title": "A FILL STARTS THE MANAGEMENT PHASE"
+    }
+  ],
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
+}
