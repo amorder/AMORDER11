@@ -1,6 +1,6 @@
 # AMORDER publishing automation standard
 
-This document defines safe publishing requirements. It does not create credentials, enable new platform APIs or prove that any account is currently connected.
+This document defines safe publishing requirements. It does not create credentials, enable new platform APIs or prove that any account is currently connected. The account owner has granted standing authorization for automatic publication of public-safe AMORDER educational content to the already-connected channels; per-asset human approval is not required while that authorization is active.
 
 ## Core rule
 
@@ -12,11 +12,11 @@ Publishing is downstream of creative approval; it is not part of video rendering
 
 Use a separate state per destination:
 
-DRAFT → VALIDATED → RENDERED → TECH_QA_PASSED → EDITORIAL_APPROVED → QUEUED → PUBLISHING → PUBLISHED_VERIFIED
+DRAFT → VALIDATED → RENDERED → TECH_QA_PASSED → AUTOMATED_RELEASE_GATE_PASSED → QUEUED → PUBLISHING → PUBLISHED_VERIFIED
 
 Failure states include HOLD, PUBLISH_FAILED, UNKNOWN_REMOTE_STATUS and CANCELLED.
 
-Only an export with confirmed rights, fact-checks, required disclosures, technical validation and human creative approval may enter the queue. If an account, destination, asset URL, permission or status is unclear, HOLD.
+Only an export with confirmed rights, fact-checks, required disclosures, technical validation and passed automated editorial/release checks may enter the queue under the owner's standing authorization. If an account, destination, asset URL, permission, source, rights status or file integrity is unclear, HOLD.
 
 ## Duplicate and retry protection
 
@@ -46,10 +46,10 @@ Do not publish when:
 - required factual sources or disclosures are missing;
 - any media rights are unknown or unsuitable;
 - technical validation fails;
-- human creative approval is missing;
+- the owner standing auto-publishing authorization is absent or revoked;
 - the destination/account differs from the intended one;
 - a duplicate may already exist;
 - upload status is ambiguous;
 - the platform reports a warning or policy rejection.
 
-Automation may report errors and recommend corrections. It must not override a stop condition or mark its own work human-approved.
+Automation may report errors and recommend corrections. It must not override a stop condition or claim human approval. It may mark only the documented automated release checks as passed.
