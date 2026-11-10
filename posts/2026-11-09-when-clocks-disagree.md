@@ -153,13 +153,15 @@ This section supersedes earlier pending-render statements above.
 
 The long-form GitHub Actions run [42648250665](https://github.com/amorder/AMORDER11/actions/runs/42648250665) completed successfully. Its media validation step passed and the generated videos, subtitle sidecars, manifest and thumbnail were committed.
 
-### Short-form recovery
+### Short asset and concurrent-commit hardening
 
-The prior long-form workflow staged broad asset globs after resetting its working tree to a newer main branch. During concurrent commits this staged deletion of the independently rendered short MP4 and SRT. The long-form workflow has been patched to stage only exact files listed by its current render manifest, and the regression test now checks this behavior.
+**Correction after rechecking the commit diff and current main tree:** the long-form job log showed the short MP4 and SRT as unstaged working-tree deletions after a mixed reset, but those deletions were not included in its commit. The long-form commit changed only its six long-form outputs; the short MP4 and SRT remained present on main. The earlier diagnosis that the short assets had been deleted was too strong.
 
-- Fix commit: [686924dbc52b47110ac5b1e7cbd49d03d0cecd2d](https://github.com/amorder/AMORDER11/commit/686924dbc52b47110ac5b1e7cbd49d03d0cecd2d).
+The long-form workflow has nevertheless been hardened to stage only exact files listed by its current render manifest, and the regression test now checks this behavior. This reduces the risk of a concurrent render staging unrelated asset changes.
+
+- Workflow hardening commit: [686924dbc52b47110ac5b1e7cbd49d03d0cecd2d](https://github.com/amorder/AMORDER11/commit/686924dbc52b47110ac5b1e7cbd49d03d0cecd2d).
 - Regression-test commit: [391ea1d18509c15ee462f2690073adcf79eddf37](https://github.com/amorder/AMORDER11/commit/391ea1d18509c15ee462f2690073adcf79eddf37).
-- Short restoration run: [42842006407](https://github.com/amorder/AMORDER11/actions/runs/42842006407) — started; final result must be checked before using its asset URL.
+- Revision 5 short render run: [42842006407](https://github.com/amorder/AMORDER11/actions/runs/42842006407) — in progress at the last check. The existing short MP4 and SRT remain available at their stable public URLs.
 
 ### Social publishing and release gate
 
