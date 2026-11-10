@@ -248,25 +248,27 @@ def animate_scene(scene, visual, duration, fps):
         camera.keyframe_insert(data_path="location", frame=frame)
         camera.keyframe_insert(data_path="rotation_euler", frame=frame)
 
-    pivot = None
+    clock_pivots = {}
     if visual == "timestamp":
-        pivot = bpy.data.objects.new("Clockwork animation pivot", None)
-        scene.collection.objects.link(pivot)
-        pivot.location = (0, -.4, 2.5)
         for name in ("Minute hand", "Second hand"):
             obj = bpy.data.objects.get(name)
             if obj:
+                pivot = bpy.data.objects.new(name + " clock pivot", None)
+                scene.collection.objects.link(pivot)
+                pivot.location = (0, -.4, 2.5)
                 world = obj.matrix_world.copy()
                 obj.parent = pivot
                 obj.matrix_parent_inverse = pivot.matrix_world.inverted()
                 obj.matrix_world = world
+                clock_pivots[name] = pivot
 
     for obj_index, obj in enumerate(scene.objects):
         if obj.type != "MESH" or obj.name in {
-            "Seamless dark studio backdrop", "Graphite reflective floor"
+            "Seamless dark studio backdrop", "Graphite reflective floor",
+            "Anodised circular presentation stage"
         }:
             continue
-        if pivot and obj.parent == pivot:
+        if obj.parent in clock_pivots.values():
             continue
         base_loc = obj.location.copy()
         base_rot = obj.rotation_euler.copy()
@@ -278,7 +280,11 @@ def animate_scene(scene, visual, duration, fps):
         for frame in key_frames:
             p = (frame - 1) / max(1, frame_end - 1)
             wave = math.sin(math.tau * p + phase)
-            if "ring" in name or "orbit" in name or "bezel" in name or "track" in name:
+            if "stage perimeter" in name:
+                obj.rotation_euler = base_rot.copy()
+                obj.rotation_euler[2] += math.tau * p
+                obj.location = base_loc
+            elif "ring" in name or "orbit" in name or "bezel" in name or "track" in name:
                 obj.rotation_euler = base_rot.copy()
                 obj.rotation_euler[1] += math.tau * p
                 obj.location = base_loc
@@ -302,10 +308,11 @@ def animate_scene(scene, visual, duration, fps):
             obj.keyframe_insert(data_path="rotation_euler", frame=frame)
             obj.keyframe_insert(data_path="scale", frame=frame)
 
-    if pivot:
+    for name, pivot in clock_pivots.items():
         for frame in key_frames:
             p = (frame - 1) / max(1, frame_end - 1)
-            pivot.rotation_euler = (0, -math.tau * p, 0)
+            revolutions = 1.0 if name == "Second hand" else (1.0 / 60.0)
+            pivot.rotation_euler = (0, -math.tau * revolutions * p, 0)
             pivot.keyframe_insert(data_path="rotation_euler", frame=frame)
     scene.frame_set(1)
 
