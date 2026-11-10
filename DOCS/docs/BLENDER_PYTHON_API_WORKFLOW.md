@@ -44,6 +44,10 @@ A worker should receive a validated job manifest, a restricted input directory, 
 
 Reject path traversal, unexpected external paths, excessive frame counts/resolution, unbounded render time and uncontrolled output size. Return a non-zero exit on failure and clean only the worker's own temporary files.
 
+## Vertical Shorts/Reels render contract
+
+The current public short renderer invokes Blender with a scene duration and a 12 fps render rate. The camera and scene objects must be keyframed for the scene duration. FFmpeg motion-compensates those scene frames to a 30 fps portrait export. A static PNG plate does not satisfy the production motion requirement. The final short is 1080x1920, H.264/AAC, with burned English captions and an SRT sidecar, and its encoded duration must be strictly below 160 seconds (2:40). The render manifest must mark genuine Blender keyframed animation and provide the visual-coverage percentage.
+
 ## Validation
 
 Smoke-test on the exact installed Blender version. Reopen the saved .blend file, inspect frames at full size, play the sequence at real speed and decode the final video. Check for missing/frozen/black frames, flicker, material artifacts, camera jumps, bad typography and audio-sync errors. A human must review the complete export before release.
