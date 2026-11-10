@@ -46,3 +46,29 @@ A revision 5 short render is currently running against the latest storyboard and
 **Automatic release gate:** the owner has authorized automatic publication of public-safe AMORDER educational media. No per-video human signoff is required. Before Buffer publishing, the automation must still complete technical validation, full-file decode, representative-frame and motion checks, subtitle/safe-zone checks, narration/audio checks, source/rights/factual review, disclosure verification, and duplicate/status checks. Any failed or uncertain check keeps the affected destination on HOLD.
 
 **Disclosure on every public video:** Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
+
+## Visual production upgrade — November 10, 2026
+
+The AMORDER renderers now use a hybrid cinematic pipeline:
+
+- **Blender Eevee PBR hero scenes:** graphite/anodised stage, additional edge softbox, subtle surface micro-detail, restrained emissive cyan/amber accents and scene-specific 3D compositions.
+- **Animated motion design across the full edit:** FFmpeg overlays for tracking sweeps, moving signal nodes, orbital markers, pulsing data bars and pause/bracket motifs, chosen by the shot's visual key and rendered at 30 fps.
+- **Editorial continuity:** overlays remain restrained and avoid the caption areas; scene cuts, narration, subtitles and paper-trading disclosure remain part of the existing production pipeline.
+- **Performance-conscious rendering:** one Blender scene render per shot, with motion graphics composited at delivery frame rate. This avoids impractical per-frame full-resolution Blender renders in GitHub Actions.
+
+### Source changes
+
+- [Blender PBR scene builder](https://github.com/amorder/AMORDER11/blob/main/tools/blender_scenes.py)
+- [Animated motion-graphics library](https://github.com/amorder/AMORDER11/blob/main/tools/motion_graphics.py)
+- [Short-form renderer](https://github.com/amorder/AMORDER11/blob/main/tools/render_public_short.py)
+- [Long-form renderer](https://github.com/amorder/AMORDER11/blob/main/tools/render_public_episode.py)
+- [Regression checks](https://github.com/amorder/AMORDER11/blob/main/tools/test_caption_contract.py)
+
+### Render status
+
+- Short, visual revision 7: [GitHub Actions run](https://github.com/amorder/AMORDER11/actions/runs/42849598771) — rendering; technical MP4 validation and final asset commit are pending.
+- Long-form, visual revision 6: [GitHub Actions run](https://github.com/amorder/AMORDER11/actions/runs/42849607033) — rendering; technical MP4 validation and final asset commit are pending.
+- Secret-guard scans for both storyboard revisions passed.
+
+The existing MP4 links above continue to resolve to the last committed versions until the new render runs pass validation and commit their replacements. Do not treat an in-progress render as a finished or published upgrade.
+
