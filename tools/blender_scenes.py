@@ -27,6 +27,23 @@ def mat(name, color):
             shader.inputs["Coat Weight"].default_value = .28
         if "Coat Roughness" in shader.inputs:
             shader.inputs["Coat Roughness"].default_value = .16
+        if "cyan" in name.lower() or "amber" in name.lower() or "blue" in name.lower():
+            emission_socket = shader.inputs.get("Emission Color") or shader.inputs.get("Emission")
+            if emission_socket:
+                emission_socket.default_value = color
+            if "Emission Strength" in shader.inputs:
+                shader.inputs["Emission Strength"].default_value = .16
+        if "graphite" in name.lower():
+            nodes = material.node_tree.nodes
+            links = material.node_tree.links
+            noise = nodes.new("ShaderNodeTexNoise")
+            noise.inputs["Scale"].default_value = 145
+            noise.inputs["Detail"].default_value = 2
+            bump = nodes.new("ShaderNodeBump")
+            bump.inputs["Strength"].default_value = .075
+            bump.inputs["Distance"].default_value = .018
+            links.new(noise.outputs["Fac"], bump.inputs["Height"])
+            links.new(bump.outputs["Normal"], shader.inputs["Normal"])
     return material
 
 
@@ -121,6 +138,17 @@ def setup(width=1080, height=1920):
     area_light("Warm edge softbox", (-6, 0, 5.8), (0, 0, 2.5), 1800, (1.0, .55, .32), 5)
     area_light("Cyan rim light", (1.5, 4.5, 7), (0, 0, 2.6), 3200, (.18, .68, 1.0), 5)
     area_light("Low fill", (0, -4, -.2), (0, 0, 2.3), 500, (.46, .62, .82), 7)
+    area_light("Top edge softbox", (0, 1.5, 10), (0, 0, 2.4), 1500, (.58, .75, 1.0), 7)
+
+    # Raised anodised display stage with a restrained cyan edge accent.
+    stage_material = mat("Anodised graphite stage", (.014, .025, .042, 1))
+    bpy.ops.mesh.primitive_cylinder_add(vertices=128, radius=4.15, depth=.18,
+                                        location=(0, 0, -.34))
+    stage = bpy.context.object
+    stage.name = "Anodised circular presentation stage"
+    finish(stage, stage_material, .08)
+    ring("Stage perimeter cyan inlay", (0, 0, -.245), 4.02, .018,
+         mat("Stage cyan accent", CYAN), rotation=(0, 0, 0))
 
     camera_data = bpy.data.cameras.new("Cinematic portrait camera")
     camera = bpy.data.objects.new("Cinematic portrait camera", camera_data)
