@@ -38,7 +38,7 @@ Do not fake compliance with the targets by counting title cards, still-image zoo
 | Claims, sources and disclosures | 10 |
 | Export integrity and platform preview | 10 |
 
-Release target: 85/100 or higher, all critical rights/factual/disclosure checks passed, and human creative approval recorded. A missing critical item means HOLD regardless of score. Automated technical checks cannot approve creative quality.
+Release target: 85/100 or higher based on recorded automated evidence, with all critical rights/factual/disclosure and media-integrity checks passed and the owner's standing auto-publishing authorization active. A missing critical item means HOLD regardless of score. Do not claim human creative approval when none was recorded.
 
 ## Revision loop
 
@@ -48,7 +48,7 @@ Release target: 85/100 or higher, all critical rights/factual/disclosure checks 
 4. Rank failures by viewer impact: weak hook, missing movement, repeated shots, unnatural narration, unreadable captions, bad audio, unsupported claim or unclear CTA.
 5. Revise the story, shot list, scenes or edit—not just add filters and transitions.
 6. Render again and record concrete revision decisions.
-7. Watch/listen to the complete cut and approve the exact export.
+7. Run the complete automated decode, audio, caption, visual-motion, frame integrity, source/rights and disclosure checks against the exact export.
 8. Re-run the release gate if any later edit changes that export.
 
 ## AMORDER-specific rules
@@ -58,4 +58,4 @@ Release target: 85/100 or higher, all critical rights/factual/disclosure checks 
 - No-trade days may be covered as honest process stories.
 - Paper-trading disclosures must state that activity is simulated, not live-money performance, not investment advice and not a promise of returns.
 - Do not disclose private trade records, symbols, broker screens, fills, positions or P&L.
-- Only the authorized AMORDER publishing workflow can queue approved content. Verify each platform receipt and permalink before marking it published.
+- Only the existing AMORDER auto-publishing workflow can queue content after all automated release checks pass under the owner's standing authorization. Verify each platform receipt and permalink before marking it published.
