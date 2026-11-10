@@ -11,201 +11,201 @@ It is the moment a process becomes responsible for managing an open position.
 Today's case study uses KO, the NYSE ticker for The Coca-Cola Company, only because a broker-confirmed PAPER fill exists.
 
 4
-00:00:15,615 --> 00:00:21,621
+00:00:15,615 --> 00:00:21,620
 This is not a recommendation, a live-money result, or a claim about the company's profitability.
 
 5
-00:00:21,621 --> 00:00:23,223
+00:00:21,620 --> 00:00:23,222
 The position remains open.
 
 6
-00:00:23,223 --> 00:00:28,428
+00:00:23,222 --> 00:00:28,427
 There is no exit fill, so there is no closed-trade outcome to celebrate.
 
 7
-00:00:28,428 --> 00:00:35,235
+00:00:28,427 --> 00:00:35,233
 The real story is what had to be checked before entry and what protection had to follow.
 
 8
-00:00:35,235 --> 00:00:42,537
+00:00:35,233 --> 00:00:42,536
 The daily research showed an aligned trend structure and positive relative strength and momentum versus a broad-market reference.
 
 9
-00:00:42,537 --> 00:00:49,840
+00:00:42,536 --> 00:00:49,839
 Liquidity and quoted spread were acceptable in the connected feed, and measured volatility stayed within the process limits.
 
 10
-00:00:49,840 --> 00:00:55,115
+00:00:49,839 --> 00:00:55,113
 One important caveat: volume confirmation was weaker than required for full scoring credit.
 
 11
-00:00:55,115 --> 00:00:57,955
+00:00:55,113 --> 00:00:57,953
 That did not disappear from the review.
 
 12
-00:00:57,955 --> 00:01:02,417
+00:00:57,953 --> 00:01:02,416
 A setup score is a ranking of evidence, not a forecast.
 
 13
-00:01:02,417 --> 00:01:10,937
+00:01:02,416 --> 00:01:10,936
 It does not prove that a company is profitable, that a stock will rise, or that the next trade will work.
 
 14
-00:01:10,937 --> 00:01:17,890
+00:01:10,936 --> 00:01:17,885
 Before the entry, the first time check exposed a mismatch between the market clock and quote timestamps.
 
 15
-00:01:17,890 --> 00:01:19,117
+00:01:17,885 --> 00:01:19,111
 The process paused.
 
 16
-00:01:19,117 --> 00:01:22,389
+00:01:19,111 --> 00:01:22,381
 A fresh clock-and-quote comparison later aligned the references.
 
 17
-00:01:22,389 --> 00:01:26,888
+00:01:22,381 --> 00:01:26,877
 Only then did the system recheck the latest completed intraday bars.
 
 18
-00:01:26,888 --> 00:01:36,295
+00:01:26,877 --> 00:01:36,278
 The quote was above session VWAP, the latest completed short-interval closes were rising, and price had not moved too far from its reference.
 
 19
-00:01:36,295 --> 00:01:37,931
+00:01:36,278 --> 00:01:37,913
 Incomplete candles were excluded.
 
 20
-00:01:37,931 --> 00:01:41,612
+00:01:37,913 --> 00:01:41,592
 The lesson is not to trust a single screen.
 
 21
-00:01:41,612 --> 00:01:46,929
+00:01:41,592 --> 00:01:46,906
 It is to make independent data sources agree before an order is considered.
 
 22
-00:01:46,929 --> 00:01:49,530
+00:01:46,906 --> 00:01:49,506
 Position sizing was calculated before execution.
 
 23
-00:01:49,530 --> 00:02:02,538
+00:01:49,506 --> 00:02:02,506
 The process compared three constraints: the amount that could be risked if the protective trigger were reached, the maximum portfolio exposure allowed for one position, and the cash actually available.
 
 24
-00:02:02,538 --> 00:02:04,706
+00:02:02,506 --> 00:02:04,673
 The smallest permitted size won.
 
 25
-00:02:04,706 --> 00:02:09,041
+00:02:04,673 --> 00:02:09,006
 This keeps a strong-looking setup from consuming too much capital.
 
 26
-00:02:09,041 --> 00:02:13,811
+00:02:09,006 --> 00:02:13,773
 The exact account size, share count and order details stay private.
 
 27
-00:02:13,811 --> 00:02:23,783
+00:02:13,773 --> 00:02:23,739
 A paper simulation can test whether the sizing rules are applied consistently, but it cannot guarantee a particular fill or a maximum loss.
 
 28
-00:02:23,783 --> 00:02:29,163
+00:02:23,739 --> 00:02:29,119
 The entry was submitted as a paper limit order during the regular US session.
 
 29
-00:02:29,163 --> 00:02:33,005
+00:02:29,119 --> 00:02:32,961
 The system did not count the submission as a trade.
 
 30
-00:02:33,005 --> 00:02:38,769
+00:02:32,961 --> 00:02:38,725
 It waited for the broker to confirm the actual filled quantity and average fill price.
 
 31
-00:02:38,769 --> 00:02:47,222
+00:02:38,725 --> 00:02:47,178
 After that confirmation, it submitted a separate native trailing stop for exactly the protected quantity and verified that the order was open.
 
 32
-00:02:47,222 --> 00:02:53,370
+00:02:47,178 --> 00:02:53,326
 This separation matters because protection cannot be assumed to exist just because an entry was accepted.
 
 33
-00:02:53,370 --> 00:02:58,749
+00:02:53,326 --> 00:02:58,705
 If the stop had failed, the unprotected quantity would have needed to be closed.
 
 34
-00:02:58,749 --> 00:03:04,773
+00:02:58,705 --> 00:03:04,729
 A trailing stop follows the position's high-water mark and can move upward as the market advances.
 
 35
-00:03:04,773 --> 00:03:10,798
+00:03:04,729 --> 00:03:10,754
 It is not a fixed profit target, and this process did not add a take-profit order.
 
 36
-00:03:10,798 --> 00:03:13,810
+00:03:10,754 --> 00:03:13,766
 It is also not a guaranteed maximum loss.
 
 37
-00:03:13,810 --> 00:03:20,210
+00:03:13,766 --> 00:03:20,166
 A fast move, a price gap or poor execution can produce a fill below the displayed stop.
 
 38
-00:03:20,210 --> 00:03:26,611
+00:03:20,166 --> 00:03:26,567
 Trailing stops trigger during regular market hours, so their behavior outside the session must not be assumed.
 
 39
-00:03:26,611 --> 00:03:29,247
+00:03:26,567 --> 00:03:29,203
 Protection is a control, not a promise.
 
 40
-00:03:29,247 --> 00:03:31,286
+00:03:29,203 --> 00:03:31,242
 What would invalidate the setup?
 
 41
-00:03:31,286 --> 00:03:39,850
+00:03:31,242 --> 00:03:39,806
 A loss of the trend structure, deterioration in relative strength, a failed intraday reference, unreliable data, or a triggered protective stop.
 
 42
-00:03:39,850 --> 00:03:45,967
+00:03:39,806 --> 00:03:45,923
 The process does not average down or add simply because the position moves against it.
 
 43
-00:03:45,967 --> 00:03:52,085
+00:03:45,923 --> 00:03:52,041
 At this review, the paper position remains open and the trailing stop is still present.
 
 44
-00:03:52,085 --> 00:03:54,124
+00:03:52,041 --> 00:03:54,080
 There is no exit fill.
 
 45
-00:03:54,124 --> 00:04:02,688
+00:03:54,080 --> 00:04:02,644
 That means no realized result can be reported, and an open mark-to-market change must never be presented as a closed-trade win.
 
 46
-00:04:02,688 --> 00:04:10,599
+00:04:02,644 --> 00:04:10,555
 The practical lesson is that a confirmed fill starts the management phase; it does not finish the story.
 
 47
-00:04:10,599 --> 00:04:21,147
+00:04:10,555 --> 00:04:21,103
 Record the evidence that existed at entry, verify protection, monitor the invalidation conditions, and report the actual exit only when the broker confirms it.
 
 48
-00:04:21,147 --> 00:04:25,981
+00:04:21,103 --> 00:04:25,937
 Keep the symbol and case-study context separate from private account information.
 
 49
-00:04:25,981 --> 00:04:34,771
+00:04:25,937 --> 00:04:34,727
 What matters most in an automated system: finding a candidate, or proving that every step after the fill is controlled?
 
 50
-00:04:34,771 --> 00:04:35,210
+00:04:34,727 --> 00:04:35,166
 AMORDER.
 
 51
-00:04:35,210 --> 00:04:36,089
+00:04:35,166 --> 00:04:36,045
 Evidence first.
 
 52
-00:04:36,089 --> 00:04:36,968
+00:04:36,045 --> 00:04:36,924
 Risk always.
 
 53
-00:04:36,968 --> 00:04:37,847
+00:04:36,924 --> 00:04:37,803
 No promises.
