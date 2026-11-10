@@ -4,6 +4,8 @@ This is the default release standard for AMORDER promotional and educational Ree
 
 ## Creative bar
 
+For AMORDER YouTube Shorts and Instagram Reels, one shared 9:16 master must be strictly under 160 seconds (2:40). The preferred story target is 105–145 seconds where it is narratively justified; never pad or rush narration to hit a number. Deliver 1080x1920, 30 fps, H.264/AAC, burned English captions and an SRT sidecar.
+
 The goal is a directed short-form film: a strong first-second visual hook, clear narrative progression, authentic footage or purposeful original animation, intentional sound, carefully art-directed graphics and one useful action at the end.
 
 A Reel must not be a slideshow with slow zooms, Ken Burns movement, static illustration cards or animated text over repeated stills. Typography-led motion graphics are valid only when the brief specifically calls for that format and the design itself carries the story.
@@ -12,7 +14,7 @@ A Reel must not be a slideshow with slow zooms, Ken Burns movement, static illus
 
 Unless the brief documents a meaningful exception:
 
-- Five or more distinct moving-footage/original-animation setups.
+- Five or more distinct moving-footage/original-animation setups, with Blender keyframed camera and object motion for AMORDER 3D scenes.
 - Eight or more distinct visual assets across footage, 2D/3D animation, detail, environment, interface or data graphics.
 - At least 60% of picture time from rights-cleared moving footage or original 2D/3D sequences with genuine object/camera animation.
 - A meaningful visual/action hook in the first 1.5 seconds.
