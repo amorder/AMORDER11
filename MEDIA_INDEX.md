@@ -1,6 +1,6 @@
 # AMORDER public media library
 
-This is the public share index for approved AMORDER educational media. Files linked here are stored in this repository and served from GitHub's raw-content HTTPS host for direct download and Buffer ingestion.
+This is the public share index for public-safe AMORDER educational media. Files linked here are stored in this repository and served from GitHub's raw-content HTTPS host for direct download and Buffer ingestion.
 
 > **Public repository notice:** Every linked file is publicly accessible and can be copied. Only reviewed, public-safe media belongs here. Do not add broker records, credentials, private analytics, internal logs or confidential implementation details.
 
@@ -43,6 +43,6 @@ The short MP4 and SRT remained present on main after the long-form render commit
 
 A revision 5 short render is currently running against the latest storyboard and updated regression check. The direct URLs are stable and will resolve to the latest committed file after that run finishes.
 
-**Editorial release gate:** automated technical validation is not human creative approval. The exact final exports still require a full watch/listen, source and rights review, subtitle/safe-zone review, and a recorded human approval before social publishing.
+**Automatic release gate:** the owner has authorized automatic publication of public-safe AMORDER educational media. No per-video human signoff is required. Before Buffer publishing, the automation must still complete technical validation, full-file decode, representative-frame and motion checks, subtitle/safe-zone checks, narration/audio checks, source/rights/factual review, disclosure verification, and duplicate/status checks. Any failed or uncertain check keeps the affected destination on HOLD.
 
 **Disclosure on every public video:** Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
