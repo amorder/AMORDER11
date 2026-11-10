@@ -293,7 +293,7 @@ def configure_animation_output(scene, output, fps):
     scene.render.ffmpeg.maxrate = 24000
     scene.render.ffmpeg.buffersize = 32000
     scene.render.ffmpeg.audio_codec = "NONE"
-    scene.render.filepath = str(Path(output).resolve())
+    scene.render.filepath = str(Path(output).resolve().with_suffix(""))
     scene.render.use_file_extension = True
     if hasattr(scene.render, "use_motion_blur"):
         scene.render.use_motion_blur = True
