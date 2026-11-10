@@ -28,6 +28,11 @@ def collision_safe_commit(workflow: str) -> bool:
 
 checks["short workflow safely replaces same-path binary assets"] = collision_safe_commit(short_workflow)
 checks["episode workflow safely replaces same-path binary assets"] = collision_safe_commit(episode_workflow)
+checks["episode workflow stages only manifest-listed outputs"] = (
+    'subprocess.run(["git", "add", "--", *[str(path) for path in paths]], check=True)' in episode_workflow
+    and 'for field in ("file", "subtitle", "thumbnail")' in episode_workflow
+    and "git add assets/*-youtube-*.mp4" not in episode_workflow
+)
 checks["short workflow cancels superseded renders"] = "cancel-in-progress: true" in short_workflow
 checks["episode workflow cancels superseded renders"] = "cancel-in-progress: true" in episode_workflow
 
