@@ -118,6 +118,11 @@ def setup(width=1080, height=1920):
     scene.render.film_transparent = False
     scene.render.threads_mode = "FIXED"
     scene.render.threads = 4
+    eevee = getattr(scene, "eevee", None)
+    if eevee is not None and hasattr(eevee, "taa_render_samples"):
+        eevee.taa_render_samples = 64
+    if eevee is not None and hasattr(eevee, "taa_samples"):
+        eevee.taa_samples = 32
     try:
         scene.view_settings.view_transform = "AgX"
         scene.view_settings.look = "AgX - Medium High Contrast"
@@ -239,11 +244,22 @@ def animate_scene(scene, visual, duration, fps):
                              max(2, (frame_end * 3) // 4), frame_end]))
     for frame in key_frames:
         p = (frame - 1) / max(1, frame_end - 1)
-        camera.location = base_camera + Vector((
-            .34 * math.sin(math.tau * p),
-            .10 * (1 - math.cos(math.tau * p)),
-            .12 * math.sin(2 * math.tau * p)
-        ))
+        # Give each story beat its own motivated camera path instead of repeating
+        # the same generic orbit for every visual.
+        if visual == "timestamp":
+            offset = (.42 * math.sin(math.pi * p), -.10 * p, .16 * math.sin(math.tau * p))
+        elif visual == "source":
+            offset = (.62 * (p - .5), -.12 * math.sin(math.pi * p), .08 * math.sin(math.tau * p))
+        elif visual == "gaps":
+            offset = (.16 * math.sin(math.pi * p), -.78 * p, .06 * math.sin(math.tau * p))
+        elif visual == "stand_down":
+            offset = (.10 * math.sin(math.tau * p), -.48 * p, .18 * math.sin(math.pi * p))
+        elif visual == "brand":
+            offset = (.54 * math.sin(math.tau * p), -.16 * (1 - math.cos(math.tau * p)), .24 * math.sin(math.tau * p))
+        else:
+            offset = (.34 * math.sin(math.tau * p), .10 * (1 - math.cos(math.tau * p)),
+                      .12 * math.sin(2 * math.tau * p))
+        camera.location = base_camera + Vector(offset)
         camera.rotation_euler = (target - camera.location).to_track_quat("-Z", "Y").to_euler()
         camera.keyframe_insert(data_path="location", frame=frame)
         camera.keyframe_insert(data_path="rotation_euler", frame=frame)
