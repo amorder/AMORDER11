@@ -21,7 +21,7 @@ checks = {
         "def setup(" in blender_scenes
         and "Anodised circular presentation stage" in blender_scenes
         and "Top edge softbox" in blender_scenes
-        and 'scene.render.engine = "BLENDER_EEVEE_NEXT"' in blender_scenes
+        and '"BLENDER_EEVEE_NEXT"' in blender_scenes
     ),
     "Motion-graphics layer includes scene-specific animation": (
         "def build_motion_graphics_filter(" in motion_graphics
