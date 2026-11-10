@@ -335,7 +335,11 @@ def animate_scene(scene, visual, duration, fps):
 
 def configure_animation_output(scene, output, fps):
     scene.render.fps = fps
-    scene.render.image_settings.file_format = "FFMPEG"
+    image_settings = scene.render.image_settings
+    # Blender 5.0 separates image/video output types. Set VIDEO before FFMPEG.
+    if hasattr(image_settings, "media_type"):
+        image_settings.media_type = "VIDEO"
+    image_settings.file_format = "FFMPEG"
     scene.render.ffmpeg.format = "MPEG4"
     scene.render.ffmpeg.codec = "H264"
     scene.render.ffmpeg.constant_rate_factor = "HIGH"
