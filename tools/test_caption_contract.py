@@ -23,6 +23,12 @@ checks = {
         and "Top edge softbox" in blender_scenes
         and '"BLENDER_EEVEE_NEXT"' in blender_scenes
     ),
+    "Blender 5 video output media type is set before FFmpeg": (
+        'image_settings.media_type = "VIDEO"' in blender_scenes
+        and 'image_settings.file_format = "FFMPEG"' in blender_scenes
+        and blender_scenes.index('image_settings.media_type = "VIDEO"')
+            < blender_scenes.index('image_settings.file_format = "FFMPEG"')
+    ),
     "Motion-graphics layer includes scene-specific animation": (
         "def build_motion_graphics_filter(" in motion_graphics
         and all(key in motion_graphics for key in ("timestamp", "idea", "source", "gaps", "stand_down", "brand"))
