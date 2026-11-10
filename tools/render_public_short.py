@@ -208,7 +208,7 @@ def main():
 
         concat=temp/"concat.txt"
         concat.write_text("".join(
-            f"file '{(clips_dir/f'clip-{i:02d}.mp4').as_posix()}'\\n"
+            f"file '{(clips_dir/f'clip-{i:02d}.mp4').as_posix()}'\n"
             for i in range(1,len(scenes)+1)
         ),encoding="utf-8")
         run(["ffmpeg","-y","-hide_banner","-loglevel","error","-f","concat","-safe","0","-i",str(concat),
@@ -271,3 +271,6 @@ def main():
         "visual_engine":manifest["visual_engine"],"motion_graphics":manifest["motion_graphics"],
         "blender_keyframed_animation":True,"tts_model":"Kokoro-82M","voice":a.voice,
         "language":"English","audience":"global","disclosure_verified":True},indent=2))
+
+if __name__ == "__main__":
+    main()
