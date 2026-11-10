@@ -136,3 +136,36 @@ A paper fill is not a win. The KO PAPER case study is about evidence, risk sizin
 - No final MP4 or subtitle sidecar is committed yet. No Instagram or YouTube post has been created.
 
 - Latest secret guard for this final status update: [42648351443](https://github.com/amorder/AMORDER11/actions/runs/42648351443) passed. Both current case-study render jobs have passed their storyboard/caption contract checks and are installing open-source media tools; final MP4 validation and asset commits are still pending.
+
+---
+
+## Authoritative asset status — 2026-11-10
+
+This section supersedes earlier pending-render statements above.
+
+### Rendered and committed to the public repository
+
+- **YouTube master:** [Download MP4](https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-ko-paper-case-study-youtube-2026-11-09.mp4) — 277.9 seconds, 1920×1080, 30 fps, H.264/AAC; burned captions and a separate [SRT](https://raw.githubusercontent.com/amorder/AMORDER11/main/subtitles/amorder-ko-paper-case-study-youtube-2026-11-09.srt).
+- **Instagram vertical episode:** [Download MP4](https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-ko-paper-case-study-instagram-2026-11-09.mp4) — 156.82 seconds, 1080×1920, 30 fps, H.264/AAC; burned captions and a separate [SRT](https://raw.githubusercontent.com/amorder/AMORDER11/main/subtitles/amorder-ko-paper-case-study-instagram-2026-11-09.srt).
+- **Thumbnail:** [Download JPG](https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-ko-paper-case-study-thumbnail-2026-11-09.jpg).
+- **Manifest:** [Technical metadata](https://github.com/amorder/AMORDER11/blob/main/assets/amorder-ko-paper-case-study-manifest-2026-11-09.json).
+- **Public share index:** [MEDIA_INDEX.md](https://github.com/amorder/AMORDER11/blob/main/MEDIA_INDEX.md).
+
+The long-form GitHub Actions run [42648250665](https://github.com/amorder/AMORDER11/actions/runs/42648250665) completed successfully. Its media validation step passed and the generated videos, subtitle sidecars, manifest and thumbnail were committed.
+
+### Short-form recovery
+
+The prior long-form workflow staged broad asset globs after resetting its working tree to a newer main branch. During concurrent commits this staged deletion of the independently rendered short MP4 and SRT. The long-form workflow has been patched to stage only exact files listed by its current render manifest, and the regression test now checks this behavior.
+
+- Fix commit: [686924dbc52b47110ac5b1e7cbd49d03d0cecd2d](https://github.com/amorder/AMORDER11/commit/686924dbc52b47110ac5b1e7cbd49d03d0cecd2d).
+- Regression-test commit: [391ea1d18509c15ee462f2690073adcf79eddf37](https://github.com/amorder/AMORDER11/commit/391ea1d18509c15ee462f2690073adcf79eddf37).
+- Short restoration run: [42842006407](https://github.com/amorder/AMORDER11/actions/runs/42842006407) — started; final result must be checked before using its asset URL.
+
+### Social publishing and release gate
+
+- The YouTube and Instagram Buffer channels are connected.
+- No Buffer video post has yet been created from these November 9 long-form assets.
+- Automated render and codec validation are not human creative approval. The final encoded videos still require a full watch/listen, visual-motion review, caption/safe-zone check, source/rights review and recorded human approval under DOCS/DELIVERY_QUALITY_GATE.md.
+- Until that review is recorded, their state is RENDERED_TECH_VALIDATED_AWAITING_HUMAN_REVIEW, not PUBLISHED.
+- Public disclosure: Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
+
