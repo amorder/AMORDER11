@@ -29,10 +29,17 @@ checks = {
         and "drawbox=" in motion_graphics
         and "mod(t*" in motion_graphics
     ),
-    "Short renderer composites animated motion graphics over Blender plates": (
+    "Short renderer uses real keyframed Blender scene animation": (
         "from motion_graphics import build_motion_graphics_filter" in short
-        and "motion=build_motion_graphics_filter(WIDTH,HEIGHT,duration,scene[\"visual\"])" in short
-        and "[0:v]{motion}" in short
+        and '"--duration",f"{duration:.3f}"' in short
+        and '"--fps",str(BLENDER_FPS)' in short
+        and "minterpolate=fps=" in short
+        and '"blender_keyframed_animation":True' in short
+    ),
+    "Short renderer enforces sub-2:40 runtime": (
+        "MAX_RUNTIME_SECONDS = 159.0" in short
+        and "duration<MAX_RUNTIME_SECONDS" in short
+        and "duration<MAX_RUNTIME_SECONDS" in short
     ),
     "Episode renderer composites animated motion graphics over Blender plates": (
         "from motion_graphics import build_motion_graphics_filter" in episode
