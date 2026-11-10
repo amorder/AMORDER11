@@ -73,4 +73,4 @@ Content may explain general research, data quality, paper-trading and risk-manag
 
 The uploaded DOCS production skill has been curated into the root [DOCS/](DOCS/README.md) folder. Start with the [Video & Motion Creation skill](DOCS/skills/video-motion-creation/skill.md) and the [Delivery Quality Gate](DOCS/DELIVERY_QUALITY_GATE.md).
 
-The standards set the default for future AMORDER videos: global English, natural professional narration, minimal cinematic realism, genuine camera/object motion, source and rights tracking, and automated review before release under the owner's standing auto-publishing authorization. They complement the existing renderers; they do not activate a second renderer or publisher.
+The standards set the default for future AMORDER videos: global English, natural professional narration, minimal cinematic realism, Blender PBR hero scenes, scene-specific animated motion graphics, source and rights tracking, and automated release checks under the owner's standing auto-publishing authorization. They complement the existing renderers; they do not activate a second renderer or publisher.
