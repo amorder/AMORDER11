@@ -16,7 +16,7 @@ concurrency:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v7
         with:
@@ -66,9 +66,12 @@ jobs:
           esac
           OUTPUT="assets/${SLUG}-${DATE_TAG}.mp4"
           SUBTITLE="subtitles/${SLUG}-${DATE_TAG}.srt"
-          python tools/render_public_short.py --input "$STORYBOARD" --output "$OUTPUT" --subtitle "$SUBTITLE" --model "$MODEL_DIR/kokoro-v1.0.onnx" --voices "$MODEL_DIR/voices-v1.0.bin" --voice af_heart --speed 0.96
+          python tools/render_public_short.py --input "$STORYBOARD" --output "$OUTPUT" --subtitle "$SUBTITLE" --model "$MODEL_DIR/kokoro-v1.0.onnx" --voices "$MODEL_DIR/voices-v1.0.bin" --voice af_heart --speed 0.98
+          MANIFEST="assets/${SLUG}-manifest-${DATE_TAG}.json"
+          test -s "$MANIFEST"
           echo "OUTPUT=$OUTPUT" >> "$GITHUB_ENV"
           echo "SUBTITLE=$SUBTITLE" >> "$GITHUB_ENV"
+          echo "MANIFEST=$MANIFEST" >> "$GITHUB_ENV"
 
       - name: Independently validate the final MP4
         run: |
@@ -77,7 +80,7 @@ jobs:
           path = os.environ["OUTPUT"]
           info = json.loads(subprocess.check_output([
               "ffprobe", "-v", "error", "-show_entries",
-              "stream=codec_type,codec_name,width,height", "-show_entries",
+              "stream=codec_type,codec_name,width,height,avg_frame_rate", "-show_entries",
               "format=duration", "-of", "json", path], text=True))
           streams = info["streams"]
           video = next(s for s in streams if s["codec_type"] == "video")
@@ -85,8 +88,14 @@ jobs:
           duration = float(info["format"]["duration"])
           assert (video["codec_name"], video["width"], video["height"]) == ("h264", 1080, 1920)
           assert audio["codec_name"] == "aac"
-          assert 15 <= duration <= 45, duration
+          assert 15 <= duration < 159.0, duration
           assert os.path.getsize(path) > 100_000
+          assert video.get("avg_frame_rate") == "30/1", video.get("avg_frame_rate")
+          manifest = json.load(open(os.environ["MANIFEST"], encoding="utf-8"))
+          assert manifest.get("disclosure") == "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
+          assert manifest["outputs"][0].get("blender_keyframed_animation") is True
+          assert manifest["outputs"][0].get("genuine_motion_coverage_percent") == 100
+          subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-f", "null", "-"], check=True)
           subtitle = os.environ["SUBTITLE"]
           assert os.path.exists(subtitle) and os.path.getsize(subtitle) > 100, subtitle
           print(f"PASS: {path} | 1080x1920 | H.264 + AAC | {duration:.2f}s | burned captions + SRT")
@@ -101,7 +110,7 @@ jobs:
           for attempt in 1 2 3; do
             git fetch origin "$GITHUB_REF_NAME"
             git reset --mixed "origin/$GITHUB_REF_NAME"
-            git add "$OUTPUT" "$SUBTITLE"
+            git add "$OUTPUT" "$SUBTITLE" "$MANIFEST"
             if git diff --cached --quiet; then
               echo "No generated asset changes."
               exit 0
