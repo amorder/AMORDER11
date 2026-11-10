@@ -12,6 +12,7 @@ import numpy as np
 import soundfile as sf
 from PIL import Image, ImageDraw, ImageFont
 from kokoro_onnx import Kokoro
+from motion_graphics import build_motion_graphics_filter
 
 DISCLOSURE = "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
 FPS = 30
@@ -202,7 +203,6 @@ def render_variant(scenes, width, height, minimum, maximum, output, subtitle_pat
     clips, durations = [], []
     thumbnail_path = output.parent / f"{output.stem.replace('-youtube-', '-thumbnail-')}.jpg" if width > height else None
 
-    blender_fps = 15
     for index, scene in enumerate(scenes, 1):
         samples, sample_rate = tts.create(scene["narration"].strip(), voice=voice,
                                           speed=speed, lang="en-us")
@@ -215,45 +215,31 @@ def render_variant(scenes, width, height, minimum, maximum, output, subtitle_pat
         duration = spoken + (.65 if index == len(scenes) else .35)
         durations.append(duration)
 
-        animation = plates / f"{index:02d}.mp4"
+        plate = plates / f"{index:02d}.png"
         run([
             blender, "--background", "--python", str(script), "--",
-            "--visual", scene["visual"], "--output", str(animation),
-            "--width", str(width), "--height", str(height),
-            "--duration", f"{duration:.3f}", "--fps", str(blender_fps)
+            "--visual", scene["visual"], "--output", str(plate),
+            "--width", str(width), "--height", str(height)
         ])
-        if not animation.exists() or animation.stat().st_size < 100000:
-            raise RuntimeError(f"Missing Blender animation render: {animation}")
-        animation_meta = probe(animation)
-        animation_streams = animation_meta.get("streams", [])
-        animation_video = next((x for x in animation_streams if x.get("codec_type") == "video"), None)
-        if not animation_video or (animation_video.get("codec_name"), animation_video.get("width"),
-                                   animation_video.get("height")) != ("h264", width, height):
-            raise RuntimeError(f"Invalid Blender animation stream: {animation_video}")
-
+        if not plate.exists() or plate.stat().st_size < 12000:
+            raise RuntimeError(f"Missing Blender PBR hero scene: {plate}")
         if index == 1 and thumbnail_path:
-            hero_frame = plates / "thumbnail-frame.png"
-            run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
-                 "-ss", f"{min(2.0, duration / 2):.3f}", "-i", str(animation),
-                 "-frames:v", "1", str(hero_frame)])
-            if not hero_frame.exists() or hero_frame.stat().st_size < 12000:
-                raise RuntimeError("Could not extract a representative Blender animation frame for thumbnail")
-            create_thumbnail(hero_frame, scene, font_file, thumbnail_path)
+            create_thumbnail(plate, scene, font_file, thumbnail_path)
 
         overlay_path = temp_root / f"{output.stem}-overlay-{index:02d}.png"
         overlay(scene, index, len(scenes), width, height, font_file,
                 overlay_path, DISCLOSURE)
 
         fade_out = max(duration - .5, .05)
+        motion = build_motion_graphics_filter(width, height, duration, scene["visual"])
         video_filter = (
-            f"[0:v]minterpolate=fps={FPS}:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1,"
-            f"fade=t=in:st=0:d=0.45,fade=t=out:st={fade_out:.3f}:d=0.45,"
+            f"[0:v]{motion},fade=t=in:st=0:d=0.45,fade=t=out:st={fade_out:.3f}:d=0.45,"
             "setsar=1[base];[base][1:v]overlay=0:0:format=auto,format=yuv420p[v]"
         )
         clip = clips_dir / f"clip-{index:02d}.mp4"
         run([
             "ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
-            "-i", str(animation),
+            "-loop", "1", "-framerate", str(FPS), "-i", str(plate),
             "-loop", "1", "-framerate", str(FPS), "-i", str(overlay_path),
             "-i", str(wav), "-filter_complex", video_filter,
             "-map", "[v]", "-map", "2:a:0",
@@ -378,10 +364,9 @@ def main():
             elapsed += duration
         manifest = {
             "title": title, "publication_date": date_tag, "language": "English",
-            "audience": "global", "visual_engine": "Blender Eevee PBR with keyframed camera and object animation",
-            "blender_animation_fps": 15,
-            "motion_interpolation": "FFmpeg motion-compensated interpolation to 30 fps",
-            "post_production": "FFmpeg motion-compensated editing with burned English captions", "narration": "Kokoro-82M ONNX",
+            "audience": "global", "visual_engine": "Blender Eevee PBR 3D hero scenes with FFmpeg animated motion graphics",
+            "motion_graphics": "Animated scene-specific vector overlays, scan sweeps, orbiting markers and pulsing data accents at 30 fps",
+            "post_production": "FFmpeg motion-design compositing with burned English captions", "narration": "Kokoro-82M ONNX",
             "outputs": results, "chapters": chapters, "disclosure": DISCLOSURE
         }
         manifest_path = output_dir / f"{slug}-manifest-{date_tag}.json"
