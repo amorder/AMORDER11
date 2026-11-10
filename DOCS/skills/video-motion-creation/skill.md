@@ -34,6 +34,8 @@ When details are missing, use conservative assumptions and record them. Never in
 
 Write the idea before generating pictures. Define what the viewer should wonder at the beginning and understand by the end.
 
+A vertical Short/Reel should be story-led and normally target 105–145 seconds when the subject supports it, with a hard maximum strictly below 160 seconds (2:40). Use 9:16 at 1080x1920, H.264/AAC, 30 fps, burned English captions and an SRT sidecar. Do not pad the runtime.
+
 A short-form sequence should usually progress through:
 1. Hook: immediate, honest visual or question. Avoid a long logo animation.
 2. Context: explain why the subject matters.
@@ -79,7 +81,7 @@ The first 1.5 seconds must contain a meaningful image/action, not a title slate.
 
 Use Blender for procedural scenes, camera rigs, physically based materials, lighting, object motion, motion graphics and compositing. Use FFmpeg/ffprobe for edit finishing, motion-compensated frame interpolation, encoding and full-file decode checks. Use Python/Pillow/SVG for precise graphics. Optional local image/video/speech models require model and output licensing review. Preserve source scripts, model/checkpoint revisions, workflow settings and generated-asset provenance.
 
-Use Blender for high-quality PBR hero scenes, procedural environments, physically grounded geometry, controlled reflections, micro-surface detail, motivated key/fill/rim lighting and restrained depth of field. The production renderer exports native-resolution Blender Eevee scene plates, then composes scene-specific animated 2D motion graphics in FFmpeg at the 30 fps delivery rate: tracking sweeps, orbit markers, moving signal nodes, pulsing bars and pause/bracket motifs. Motion graphics must be meaningful, restrained, safe-area-aware and active throughout the narration; they must not imply measured market data unless sourced. Avoid a still plate with only a slow digital zoom. Use deliberate composition differences between scenes and do not reuse one motion loop as a substitute for a sequence. Pin and smoke-test the installed Blender version.
+Use Blender for high-quality PBR scenes with genuine keyframed camera and object motion in every setup: procedural geometry, physically based materials, controlled reflections, micro-surface detail, motivated key/fill/rim lighting and restrained depth of field. AMORDER11 renders Blender Eevee scenes at 12 fps with shot-specific camera/object animation, then uses FFmpeg motion-compensated interpolation and scene-specific animated motion graphics to deliver 30 fps. This is a true animated 3D scene path—not a still plate with a slow digital zoom. Require at least five distinct animated visual setups, use purposeful establishing/macro/tracking/reveal moves, and target at least 60% of picture time from genuinely animated 2D/3D sequences. Preserve a safe-area-aware overlay, full-file decode evidence, Blender version, render settings and source/rights metadata. Pin and smoke-test the installed Blender version.
 
 ## Audio
 
