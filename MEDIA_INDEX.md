@@ -36,7 +36,12 @@ This is the public share index for approved AMORDER educational media. Files lin
 
 The long-form render workflow completed successfully and committed both long-form MP4s, subtitle sidecars, manifest and thumbnail. Its independent validation step confirmed H.264/AAC, the expected dimensions, captions and non-empty files.
 
-The short MP4 and SRT are being restored by a rerender after a concurrent Git staging defect was fixed in the long-form workflow. Do not use a stale short-video URL until the asset is present on main.
+The short MP4 and SRT remained present on main after the long-form render commit. The current files are available here:
+
+- **Short trailer:** [Download MP4](https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-ko-paper-case-study-2026-11-09.mp4)
+- **Short subtitles:** [SRT](https://raw.githubusercontent.com/amorder/AMORDER11/main/subtitles/amorder-ko-paper-case-study-2026-11-09.srt)
+
+A revision 5 short render is currently running against the latest storyboard and updated regression check. The direct URLs are stable and will resolve to the latest committed file after that run finishes.
 
 **Editorial release gate:** automated technical validation is not human creative approval. The exact final exports still require a full watch/listen, source and rights review, subtitle/safe-zone review, and a recorded human approval before social publishing.
 
