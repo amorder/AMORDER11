@@ -193,6 +193,114 @@ def build(key):
     else:
         raise ValueError("Unsupported Blender visual: "+str(key))
 
+def animate_scene(scene, visual, duration, fps):
+    """Keyframe the camera and scene geometry in Blender (not a still-image zoom)."""
+    frame_end = max(2, int(math.ceil(duration * fps)))
+    scene.frame_start = 1
+    scene.frame_end = frame_end
+    scene.render.fps = fps
+
+    camera = scene.camera
+    focus = bpy.data.objects.get("Focus plane")
+    if camera is None or focus is None:
+        raise RuntimeError("Cinematic camera/focus rig was not created")
+
+    base_camera = camera.location.copy()
+    target = focus.location.copy()
+    key_frames = sorted(set([1, max(2, frame_end // 4), max(2, frame_end // 2),
+                             max(2, (frame_end * 3) // 4), frame_end]))
+    for frame in key_frames:
+        p = (frame - 1) / max(1, frame_end - 1)
+        camera.location = base_camera + Vector((
+            .34 * math.sin(math.tau * p),
+            .10 * (1 - math.cos(math.tau * p)),
+            .12 * math.sin(2 * math.tau * p)
+        ))
+        camera.rotation_euler = (target - camera.location).to_track_quat("-Z", "Y").to_euler()
+        camera.keyframe_insert(data_path="location", frame=frame)
+        camera.keyframe_insert(data_path="rotation_euler", frame=frame)
+
+    pivot = None
+    if visual == "timestamp":
+        pivot = bpy.data.objects.new("Clockwork animation pivot", None)
+        scene.collection.objects.link(pivot)
+        pivot.location = (0, -.4, 2.5)
+        for name in ("Minute hand", "Second hand"):
+            obj = bpy.data.objects.get(name)
+            if obj:
+                world = obj.matrix_world.copy()
+                obj.parent = pivot
+                obj.matrix_parent_inverse = pivot.matrix_world.inverted()
+                obj.matrix_world = world
+
+    for obj_index, obj in enumerate(scene.objects):
+        if obj.type != "MESH" or obj.name in {
+            "Seamless dark studio backdrop", "Graphite reflective floor"
+        }:
+            continue
+        if pivot and obj.parent == pivot:
+            continue
+        base_loc = obj.location.copy()
+        base_rot = obj.rotation_euler.copy()
+        base_scale = obj.scale.copy()
+        token = sum(ord(ch) for ch in obj.name) + obj_index * 17
+        phase = (token % 97) / 97 * math.tau
+        name = obj.name.lower()
+
+        for frame in key_frames:
+            p = (frame - 1) / max(1, frame_end - 1)
+            wave = math.sin(math.tau * p + phase)
+            if "ring" in name or "orbit" in name or "bezel" in name or "track" in name:
+                obj.rotation_euler = base_rot.copy()
+                obj.rotation_euler[1] += math.tau * p
+                obj.location = base_loc
+            elif "satellite" in name or "output node" in name or "focus core" in name:
+                obj.location = base_loc + Vector((
+                    .10 * math.sin(math.tau * p + phase) - .10 * math.sin(phase),
+                    0,
+                    .12 * (math.cos(math.tau * p + phase) - math.cos(phase))
+                ))
+                pulse = 1 + .045 * (math.cos(math.tau * p + phase) - math.cos(phase))
+                obj.scale = base_scale * pulse
+            elif "clock marker" in name:
+                pulse = 1 + .025 * math.sin(math.tau * p + phase)
+                obj.scale = base_scale * pulse
+            else:
+                obj.location = base_loc + Vector((.025 * wave, 0, .065 * wave))
+                obj.rotation_euler = base_rot.copy()
+                obj.rotation_euler[2] += .025 * wave
+
+            obj.keyframe_insert(data_path="location", frame=frame)
+            obj.keyframe_insert(data_path="rotation_euler", frame=frame)
+            obj.keyframe_insert(data_path="scale", frame=frame)
+
+    if pivot:
+        for frame in key_frames:
+            p = (frame - 1) / max(1, frame_end - 1)
+            pivot.rotation_euler = (0, -math.tau * p, 0)
+            pivot.keyframe_insert(data_path="rotation_euler", frame=frame)
+    scene.frame_set(1)
+
+
+def configure_animation_output(scene, output, fps):
+    scene.render.fps = fps
+    scene.render.image_settings.file_format = "FFMPEG"
+    scene.render.ffmpeg.format = "MPEG4"
+    scene.render.ffmpeg.codec = "H264"
+    scene.render.ffmpeg.constant_rate_factor = "HIGH"
+    scene.render.ffmpeg.ffmpeg_preset = "GOOD"
+    scene.render.ffmpeg.video_bitrate = 16000
+    scene.render.ffmpeg.maxrate = 24000
+    scene.render.ffmpeg.buffersize = 32000
+    scene.render.ffmpeg.audio_codec = "NONE"
+    scene.render.filepath = str(Path(output).resolve())
+    scene.render.use_file_extension = True
+    if hasattr(scene.render, "use_motion_blur"):
+        scene.render.use_motion_blur = True
+        if hasattr(scene.render, "motion_blur_shutter"):
+            scene.render.motion_blur_shutter = .35
+
+
 def main():
     if "--" not in sys.argv:
         raise SystemExit("Expected -- followed by --visual and --output")
@@ -201,13 +309,25 @@ def main():
     p.add_argument("--output", required=True)
     p.add_argument("--width", type=int, default=1080)
     p.add_argument("--height", type=int, default=1920)
+    p.add_argument("--duration", type=float, default=0)
+    p.add_argument("--fps", type=int, default=15)
     a = p.parse_args(sys.argv[sys.argv.index("--") + 1:])
     clear()
     scene = setup(a.width, a.height)
     build(a.visual)
-    scene.render.filepath = str(Path(a.output).resolve())
-    bpy.ops.render.render(write_still=True)
-    print("Rendered cinematic scene:", a.visual, a.width, a.height)
+    if a.duration > 0:
+        animate_scene(scene, a.visual, a.duration, a.fps)
+        configure_animation_output(scene, a.output, a.fps)
+        bpy.ops.render.render(animation=True)
+        output = Path(a.output).resolve()
+        if not output.exists() or output.stat().st_size < 100000:
+            raise RuntimeError("Blender animation export is missing or unexpectedly small")
+        print("Rendered genuine Blender camera/object animation:", a.visual,
+              a.width, a.height, a.duration, "seconds at", a.fps, "fps")
+    else:
+        scene.render.filepath = str(Path(a.output).resolve())
+        bpy.ops.render.render(write_still=True)
+        print("Rendered cinematic Blender still:", a.visual, a.width, a.height)
 
 
 if __name__ == "__main__":
