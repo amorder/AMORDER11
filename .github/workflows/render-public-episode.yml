@@ -89,7 +89,7 @@ jobs:
           assert manifest.get("chapters"), "Missing chapter timestamps"
           PY
 
-      - name: Commit generated episode videos and subtitles without binary rebase conflicts
+      - name: Commit only this run's generated episode assets without binary rebase conflicts
         shell: bash
         run: |
           set -euo pipefail
@@ -98,12 +98,45 @@ jobs:
           for attempt in 1 2 3; do
             git fetch origin "$GITHUB_REF_NAME"
             git reset --mixed "origin/$GITHUB_REF_NAME"
-            git add assets/*-youtube-*.mp4 assets/*-instagram-*.mp4 assets/*-manifest-*.json assets/*-thumbnail-*.jpg subtitles/*.srt
+            python - <<'PY'
+          import json
+          import pathlib
+          import subprocess
+
+          root = pathlib.Path.cwd()
+          manifests = sorted((root / "assets").glob("*-manifest-*.json"))
+          if not manifests:
+              raise SystemExit("No episode render manifest found")
+          manifest_path = manifests[-1]
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+          outputs = manifest.get("outputs", [])
+          if len(outputs) != 2:
+              raise SystemExit(f"Expected exactly two episode outputs, found {len(outputs)}")
+
+          paths = [manifest_path]
+          for item in outputs:
+              for field in ("file", "subtitle", "thumbnail"):
+                  value = item.get(field)
+                  if not value:
+                      continue
+                  path = pathlib.Path(value)
+                  if path.is_absolute():
+                      path = path.relative_to(root)
+                  if not path.is_file() or path.stat().st_size == 0:
+                      raise SystemExit(f"Missing or empty manifest asset: {path}")
+                  paths.append(path)
+
+          paths = list(dict.fromkeys(paths))
+          subprocess.run(["git", "add", "--", *[str(path) for path in paths]], check=True)
+          print("Staged only files named by the current episode manifest:")
+          for path in paths:
+              print(f" - {path}")
+          PY
             if git diff --cached --quiet; then
               echo "No generated long-form asset changes."
               exit 0
             fi
-            git commit -m "content: render cinematic market-closed episode with captions"
+            git commit -m "content: render cinematic episode assets and subtitles"
             if git push origin "HEAD:$GITHUB_REF_NAME"; then
               exit 0
             fi
