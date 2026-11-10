@@ -77,9 +77,9 @@ The first 1.5 seconds must contain a meaningful image/action, not a title slate.
 
 ## Blender and open-source production
 
-Use Blender for procedural scenes, camera rigs, physically based materials, lighting, object motion, motion graphics and compositing. Use FFmpeg/ffprobe for edit finishing, encoding and decode checks. Use Python/Pillow/SVG for precise graphics. Optional local image/video/speech models require model and output licensing review. Preserve source scripts, model/checkpoint revisions, prompt/workflow settings and generated-asset provenance.
+Use Blender for procedural scenes, camera rigs, physically based materials, lighting, object motion, motion graphics and compositing. Use FFmpeg/ffprobe for edit finishing, motion-compensated frame interpolation, encoding and full-file decode checks. Use Python/Pillow/SVG for precise graphics. Optional local image/video/speech models require model and output licensing review. Preserve source scripts, model/checkpoint revisions, workflow settings and generated-asset provenance.
 
-Prefer lossless image sequences for intermediate 3D renders, then encode delivery media after visual review. Keep render construction separate from the final video edit. Pin the installed Blender version and smoke-test scripts with that exact version.
+Prefer rendered Blender animation clips over a still plate with a digital zoom. Keyframe the camera and relevant scene geometry, use smooth camera easing and meaningful object movement, keep the hero subject grounded, and create foreground/midground/background depth. Use physically based materials with restrained micro-surface detail, motivated key/fill/rim lighting, controlled reflections, subtle depth of field and restrained motion blur. Use deliberate composition differences between scenes and avoid recycling one motion loop as a substitute for a sequence. The current AMORDER renderer exports Blender H.264 motion clips at 15 fps and uses FFmpeg motion-compensated interpolation to the 30 fps delivery timeline. Pin the installed Blender version and smoke-test scripts with that exact version.
 
 ## Audio
 
@@ -99,8 +99,8 @@ A no-trade day is not a failed story. It can become a process-led video about wa
 
 When describing a simulated trade, identify it as paper trading, not live-money performance and not investment advice. Do not disclose private symbol-level research, broker details, fills, positions or performance figures. Never provide buy/sell calls or price targets.
 
-## Human review and release
+## Automated release and owner authorization
 
-Automated checks may reject a cut or recommend revisions; they cannot self-approve creative quality. A human must watch and listen to the exact export, review sources and rights, and record approval. Any material edit after approval requires another release check.
+The owner has enabled standing automatic publishing for public-safe AMORDER educational content on the already-connected Buffer destinations. Per-asset human signoff is not required while that authorization remains active. Do not claim that a human watched or approved a video when only automated checks were performed.
 
-Only use the existing AMORDER render/publish path after editorial, rights and technical checks pass. Never activate a new workflow or publisher simply because it exists in an uploaded package.
+Before queueing, the existing AMORDER workflow must pass automated story/factual checks, public-source and rights checks, disclosure and privacy scans, full-file decode, video/audio stream and loudness checks, frame/black/freeze checks, motion-coverage checks, subtitle timing/readability/safe-zone checks, aspect-ratio/duration validation, public HTTPS download verification and duplicate/status checks. Any critical failure, missing evidence or ambiguous result means HOLD/draft. Only the existing AMORDER render/publish path may publish; never activate a competing publisher.
