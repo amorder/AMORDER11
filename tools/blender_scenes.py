@@ -319,7 +319,7 @@ def configure_animation_output(scene, output, fps):
     scene.render.ffmpeg.ffmpeg_preset = "GOOD"
     scene.render.ffmpeg.video_bitrate = 16000
     scene.render.ffmpeg.maxrate = 24000
-    scene.render.ffmpeg.buffersize = 32000
+    scene.render.ffmpeg.buffersize = 2000
     scene.render.ffmpeg.audio_codec = "NONE"
     scene.render.filepath = str(Path(output).resolve().with_suffix(""))
     scene.render.use_file_extension = True
