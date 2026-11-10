@@ -3,6 +3,8 @@
 Mark every item PASS, FAIL or N/A and record evidence. Any critical failure blocks release. A high score cannot override missing rights, incorrect facts, missing disclosure or absent owner authorization. AMORDER has standing owner authorization for automatic publication of public-safe educational content; per-asset human signoff is not required while that authorization remains active. Never claim a human watched or approved a file when only automated checks were performed.
 
 ## A. Story and editorial
+- [ ] For Shorts/Reels, encoded runtime is strictly under 160 seconds (2:40); target 105–145 seconds where the narrative supports it.
+- [ ] The story is designed for a 9:16 vertical master, not a blind crop of landscape content.
 - [ ] One clear viewer promise and central question.
 - [ ] Opening is immediately engaging and factually honest.
 - [ ] Every scene adds information, perspective, emotion or a deliberate pause.
@@ -25,6 +27,7 @@ Mark every item PASS, FAIL or N/A and record evidence. Any critical failure bloc
 - [ ] Timecoded shot list records purpose, framing, camera/object movement and source/rights status.
 - [ ] First 1.5 seconds has a meaningful visual/action hook.
 - [ ] Moving footage/animation coverage meets the Reel standard or an exception is documented.
+- [ ] Blender scenes use genuine keyframed camera and object motion; the manifest records Blender FPS, delivery FPS and motion coverage.
 - [ ] No still-image zooms are counted as genuine moving-shot coverage.
 - [ ] No asset is repeated merely to pad runtime.
 - [ ] Footage does not falsely imply an event, place, time or person.
