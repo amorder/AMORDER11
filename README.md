@@ -20,6 +20,10 @@ The current tools/ renderer scripts and GitHub Actions workflows are also public
 - Every video must keep the complete paper-trading disclosure visible on its closing card.
 - Do not invent performance, fills, returns, sources or trading outcomes.
 
+## Public media library and share links
+
+Final, public-safe MP4 exports, thumbnails, subtitle sidecars and render manifests are catalogued in [MEDIA_INDEX.md](MEDIA_INDEX.md). The index provides direct GitHub raw HTTPS download links that can be shared or supplied to the authorized Buffer publisher. The files remain versioned in this repository; keep the release status truthful and do not treat a render passing technical checks as human creative approval.
+
 ## Daily content workflow
 
 1. Create or update a reviewed Markdown record under posts/, named YYYY-MM-DD-short-title.md or YYYY-MM-DD-episode.md.
