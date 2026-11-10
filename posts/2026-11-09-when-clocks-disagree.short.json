@@ -87,6 +87,6 @@
       "status": "pending_render"
     }
   },
-  "render_revision": 5,
-  "render_note": "English global-audience short based on a broker-confirmed PAPER fill. Public-safe high-level context only; no exact prices, quantities, account data, order IDs, dollar P&L or performance claims. Six Blender Eevee PBR scenes, Kokoro English narration and FFmpeg finishing. Current motion is controlled FFmpeg movement over Blender 3D scene renders; human review is required before release. Revision 4 triggers a fresh render after the workflow concurrency fix that cancels superseded storyboard runs. Revision 5 re-renders the short after fixing the long-form workflow to stage only manifest-listed files, preventing a concurrent episode render from deleting the short MP4 or SRT."
+  "render_revision": 6,
+  "render_note": "English global-audience short based on a broker-confirmed PAPER fill. Public-safe high-level context only; no exact prices, quantities, account data, order IDs, dollar P&L or performance claims. Six Blender Eevee PBR scenes, Kokoro English narration and FFmpeg finishing. Current motion is controlled FFmpeg movement over Blender 3D scene renders; human review is required before release. Revision 4 triggers a fresh render after the workflow concurrency fix that cancels superseded storyboard runs. Revision 5 re-renders the short after fixing the long-form workflow to stage only manifest-listed files, preventing a concurrent episode render from deleting the short MP4 or SRT. Revision 6 uses genuine Blender Eevee keyframed camera and object animation, the refined PBR studio stage and lighting, controlled motion blur, and FFmpeg motion-compensated interpolation to a 30 fps delivery. Static still-image zooms are no longer the primary motion source."
 }
