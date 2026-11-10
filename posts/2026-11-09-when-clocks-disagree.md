@@ -167,7 +167,7 @@ The long-form workflow has nevertheless been hardened to stage only exact files 
 
 - The YouTube and Instagram Buffer channels are connected.
 - No Buffer video post has yet been created from these November 9 long-form assets.
-- Automated render and codec validation are not human creative approval. The final encoded videos still require a full watch/listen, visual-motion review, caption/safe-zone check, source/rights review and recorded human approval under DOCS/DELIVERY_QUALITY_GATE.md.
+- The owner granted standing authorization for automatic publishing on 2026-11-10. No per-asset human signoff is required. Before Buffer publishing, the daily automation must complete the automated checks in DOCS/DELIVERY_QUALITY_GATE.md; any failure or uncertainty keeps the affected destination on HOLD.
 - Until that review is recorded, their state is RENDERED_TECH_VALIDATED_AWAITING_HUMAN_REVIEW, not PUBLISHED.
 - Public disclosure: Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
 
