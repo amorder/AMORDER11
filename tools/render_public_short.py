@@ -148,28 +148,35 @@ def main():
     with tempfile.TemporaryDirectory(prefix="amorder-short-") as td:
         temp=Path(td); plates=temp/"plates"; plates.mkdir()
         clips=[]; durations=[]
+        blender_fps = 15
         for index,scene in enumerate(scenes,1):
-            plate=plates/f"{index:02d}.png"
-            run([a.blender,"--background","--python",str(script),"--","--visual",scene["visual"],
-                 "--output",str(plate),"--width",str(WIDTH),"--height",str(HEIGHT)])
             samples,sr=tts.create(scene["narration"].strip(),voice=a.voice,speed=a.speed,lang="en-us")
             audio=np.asarray(samples,dtype=np.float32).reshape(-1)
             if audio.size==0 or float(np.max(np.abs(audio)))<.015:
                 raise RuntimeError(f"Kokoro returned empty or near-silent narration for scene {index}")
             wav=temp/f"voice-{index:02d}.wav"; sf.write(wav,audio,sr,subtype="PCM_16")
-            if not plate.exists() or plate.stat().st_size<10000: raise RuntimeError(f"Missing Blender scene plate {plate}")
-            overlay=temp/f"overlay-{index:02d}.png"; render_overlay(scene,index,len(scenes),font_file,overlay)
             duration=audio.size/sr+(.6 if index==len(scenes) else .35)
             durations.append(duration)
+            animation=plates/f"{index:02d}.mp4"
+            run([a.blender,"--background","--python",str(script),"--","--visual",scene["visual"],
+                 "--output",str(animation),"--width",str(WIDTH),"--height",str(HEIGHT),
+                 "--duration",f"{duration:.3f}","--fps",str(blender_fps)])
+            if not animation.exists() or animation.stat().st_size<100000:
+                raise RuntimeError(f"Missing Blender animation render {animation}")
+            animation_probe=json.loads(subprocess.check_output(["ffprobe","-v","error","-show_entries",
+                "stream=codec_type,codec_name,width,height","-show_entries","format=duration",
+                "-of","json",str(animation)],text=True))
+            animation_video=next((s for s in animation_probe.get("streams",[]) if s.get("codec_type")=="video"),None)
+            if not animation_video or (animation_video.get("codec_name"),animation_video.get("width"),animation_video.get("height"))!=("h264",WIDTH,HEIGHT):
+                raise RuntimeError(f"Blender animation stream invalid: {animation_video}")
+            overlay=temp/f"overlay-{index:02d}.png"; render_overlay(scene,index,len(scenes),font_file,overlay)
             fade_out=max(duration-.42,.05)
-            clip=temp/f"clip-{index:02d}.mp4"; zoom="min(zoom+0.00019,1.035)"
-            fc=(f"[0:v]zoompan=z='{zoom}':x='iw/2-(iw/zoom/2)+sin(on/117)*5':"
-                f"y='ih/2-(ih/zoom/2)+sin(on/151)*4':d=1:s={WIDTH}x{HEIGHT}:fps={FPS},"
+            clip=temp/f"clip-{index:02d}.mp4"
+            fc=(f"[0:v]minterpolate=fps={FPS}:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1,"
                 f"fade=t=in:st=0:d=0.35,fade=t=out:st={fade_out:.3f}:d=0.35,setsar=1[base];"
                 "[base][1:v]overlay=0:0:format=auto,format=yuv420p[v]")
             run(["ffmpeg","-y","-hide_banner","-loglevel","error",
-                 "-loop","1","-framerate",str(FPS),"-i",str(plate),
-                 "-loop","1","-framerate",str(FPS),"-i",str(overlay),"-i",str(wav),
+                 "-i",str(animation),"-loop","1","-framerate",str(FPS),"-i",str(overlay),"-i",str(wav),
                  "-filter_complex",fc,"-map","[v]","-map","2:a:0","-af",
                  "apad=pad_dur=0.65,afade=t=in:st=0:d=0.2,afade=t=out:st="
                  + f"{fade_out:.3f}:d=0.35,loudnorm=I=-16:TP=-1.5:LRA=11",
@@ -207,7 +214,7 @@ def main():
     if not subtitle.exists() or subtitle.stat().st_size<100: raise RuntimeError("Subtitle sidecar missing or unexpectedly small")
     print(json.dumps({"output":str(output),"subtitle":str(subtitle),"captions_burned":True,"bytes":output.stat().st_size,"width":WIDTH,"height":HEIGHT,
         "fps":FPS,"duration_seconds":round(duration,3),"video_codec":"h264","audio_codec":"aac",
-        "visual_engine":"Blender Eevee PBR cinematic scenes","post_production":"FFmpeg",
+        "visual_engine":"Blender Eevee PBR with keyframed camera and object animation","blender_animation_fps":15,"motion_interpolation":"FFmpeg motion-compensated interpolation to 30 fps","post_production":"FFmpeg motion-compensated edit and finishing",
         "tts_model":"Kokoro-82M","voice":a.voice,"language":"English","audience":"global",
         "disclosure_verified":True},indent=2))
 
