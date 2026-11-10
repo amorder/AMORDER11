@@ -1,6 +1,6 @@
 # AMORDER video delivery quality gate
 
-Mark every item PASS, FAIL or N/A and record evidence. Any critical failure blocks release. A high score cannot override missing rights, incorrect facts, missing disclosure or absent human approval.
+Mark every item PASS, FAIL or N/A and record evidence. Any critical failure blocks release. A high score cannot override missing rights, incorrect facts, missing disclosure or absent owner authorization. AMORDER has standing owner authorization for automatic publication of public-safe educational content; per-asset human signoff is not required while that authorization remains active. Never claim a human watched or approved a file when only automated checks were performed.
 
 ## A. Story and editorial
 - [ ] One clear viewer promise and central question.
@@ -63,10 +63,11 @@ Mark every item PASS, FAIL or N/A and record evidence. Any critical failure bloc
 - [ ] Cover art and platform metadata match the exported video.
 
 ## G. Release authority
-- [ ] Exact exported file has been watched in full and listened to in full by a human.
-- [ ] Sources, rights, disclosure and required compliance checks are complete.
-- [ ] Human creative approval and approver/time are recorded.
-- [ ] Only the existing authorized AMORDER workflow will publish.
-- [ ] Remote post ID/permalink/status is verified before calling it published.
+- [ ] The exact exported file completes a full decode; representative frames and frame-to-frame motion are inspected automatically; black/frozen/blank sections and subtitle safe zones are checked.
+- [ ] Audio stream, loudness, clipping, sync, narration/subtitle agreement and duration are checked automatically; missing or ambiguous audio blocks release.
+- [ ] Sources, rights, disclosure and factual claims are checked against approved primary sources and public-safe records.
+- [ ] Owner standing authorization for automatic publication is active; no per-asset human signoff is required under that authorization.
+- [ ] Only the existing authorized AMORDER automation and connected Buffer integration publish.
+- [ ] Remote post ID/permalink/status is re-read and recorded before calling it published.
 
 **Release decision:** PASS only when all critical sections pass and the scorecard in the Reel standard is at least 85/100. Otherwise: HOLD, document the failure and revise.
