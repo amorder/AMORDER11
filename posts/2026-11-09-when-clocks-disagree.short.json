@@ -14,13 +14,14 @@
     "width": 1080,
     "height": 1920,
     "fps": 30,
-    "duration_seconds_target": "20-35",
+    "duration_seconds_target": "105-145",
     "video": "MP4 H.264, AAC narration",
-    "visual_engine": "Blender Eevee PBR original 3D scenes with softbox lighting and depth of field",
+    "visual_engine": "Blender Eevee PBR with genuine keyframed camera and object animation, FFmpeg motion-compensated interpolation and scene-specific animated motion graphics",
     "post_production": "FFmpeg controlled camera movement, fades, burned captions and sound mastering",
     "voiceover_model": "Kokoro-82M ONNX",
     "voice": "af_heart",
-    "music": "No copyrighted music; voiceover-led mix"
+    "music": "No copyrighted music; voiceover-led mix",
+    "duration_seconds_max_exclusive": 159
   },
   "creative_direction": {
     "style": "Ultra-realistic cinematic product-film language: dark graphite studio, precision metal and glass-like PBR surfaces, softbox reflections, restrained cyan and warm amber accents, spacious editorial typography and deliberate motion.",
@@ -87,6 +88,6 @@
       "status": "pending_render"
     }
   },
-  "render_revision": 7,
-  "render_note": "English global-audience short based on a broker-confirmed PAPER fill. Public-safe high-level context only; no exact prices, quantities, account data, order IDs, dollar P&L or performance claims. Six Blender Eevee PBR scenes, Kokoro English narration and FFmpeg finishing. Current motion is controlled FFmpeg movement over Blender 3D scene renders; human review is required before release. Revision 4 triggers a fresh render after the workflow concurrency fix that cancels superseded storyboard runs. Revision 5 re-renders the short after fixing the long-form workflow to stage only manifest-listed files, preventing a concurrent episode render from deleting the short MP4 or SRT. Revision 6 uses genuine Blender Eevee keyframed camera and object animation, the refined PBR studio stage and lighting, controlled motion blur, and FFmpeg motion-compensated interpolation to a 30 fps delivery. Static still-image zooms are no longer the primary motion source. Revision 7 uses the production hybrid pipeline: Blender Eevee PBR 3D hero scenes with a precision graphite studio stage, followed by full-timeline 30 fps scene-specific animated FFmpeg motion graphics (tracking sweeps, orbiting markers, moving signal nodes, pulsing data bars and pause brackets). This avoids per-frame full-resolution Blender animation renders while preserving continuous motion design throughout the narration."
+  "render_revision": 8,
+  "render_note": "English global-audience short based on a broker-confirmed PAPER fill. Public-safe high-level context only; no exact prices, quantities, account data, order IDs, dollar P&L or performance claims. Six Blender Eevee PBR scenes, Kokoro English narration and FFmpeg finishing. Current motion is controlled FFmpeg movement over Blender 3D scene renders; human review is required before release. Revision 4 triggers a fresh render after the workflow concurrency fix that cancels superseded storyboard runs. Revision 5 re-renders the short after fixing the long-form workflow to stage only manifest-listed files, preventing a concurrent episode render from deleting the short MP4 or SRT. Revision 6 uses genuine Blender Eevee keyframed camera and object animation, the refined PBR studio stage and lighting, controlled motion blur, and FFmpeg motion-compensated interpolation to a 30 fps delivery. Static still-image zooms are no longer the primary motion source. Revision 7 uses the production hybrid pipeline: Blender Eevee PBR 3D hero scenes with a precision graphite studio stage, followed by full-timeline 30 fps scene-specific animated FFmpeg motion graphics (tracking sweeps, orbiting markers, moving signal nodes, pulsing data bars and pause brackets). This avoids per-frame full-resolution Blender animation renders while preserving continuous motion design throughout the narration. Revision 8: enforce sub-2:40 maximum (strictly under 159 seconds), aim for 105-145 seconds where narration supports it, render every Blender scene as genuine keyframed camera/object animation at 12 fps, motion-compensate to 30 fps, master at high quality and emit a one-output vertical manifest for YouTube Shorts and Instagram Reels."
 }
