@@ -14,7 +14,7 @@ A concise explanation of the high-water mark, the one-way trailing rule, market-
 - **Target runtime:** 105-145 seconds; hard maximum strictly below 159 seconds.
 - **Delivery:** 1080x1920, 9:16, 30 fps, H.264 MP4, AAC English narration, burned captions and SRT sidecar.
 - **Voice:** Kokoro-82M ONNX, af_heart; restrained original sound design only.
-- **Improvement:** the last sent vertical asset measured 156.82 seconds, close to the 159-second cap. This release targets 105-145 seconds and makes the trigger-versus-fill point explicit in the opening beat. Six supported Blender visual keys provide scene variety. No audience metrics were available, so no retention or growth claim is made.
+- **Improvement:** the last sent vertical case-study asset measured 156.82 seconds, only 3.18 seconds below the 159-second cap. This release targets 105-145 seconds and makes the trigger-versus-fill point explicit in the opening beat. The previous three short storyboards contained 50, 68 and 87 narration words; matching short manifests were not available, so no prior runtime or motion-coverage comparison is claimed. Six supported Blender visual keys provide scene variety. No audience metrics were available, so no retention or growth claim is made.
 
 ## YouTube
 **Title:** A Trailing Stop Is Not a Price Promise | AMORDER #Shorts
