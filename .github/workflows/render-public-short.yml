@@ -69,6 +69,7 @@ jobs:
           python tools/render_public_short.py --input "$STORYBOARD" --output "$OUTPUT" --subtitle "$SUBTITLE" --model "$MODEL_DIR/kokoro-v1.0.onnx" --voices "$MODEL_DIR/voices-v1.0.bin" --voice af_heart --speed 0.98
           MANIFEST="assets/${SLUG}-manifest-${DATE_TAG}.json"
           test -s "$MANIFEST"
+          echo "STORYBOARD=$STORYBOARD" >> "$GITHUB_ENV"
           echo "OUTPUT=$OUTPUT" >> "$GITHUB_ENV"
           echo "SUBTITLE=$SUBTITLE" >> "$GITHUB_ENV"
           echo "MANIFEST=$MANIFEST" >> "$GITHUB_ENV"
@@ -100,6 +101,9 @@ jobs:
           assert os.path.exists(subtitle) and os.path.getsize(subtitle) > 100, subtitle
           print(f"PASS: {path} | 1080x1920 | H.264 + AAC | {duration:.2f}s | burned captions + SRT")
           PY
+
+      - name: Run independent visual, subtitle, audio and source release gates
+        run: python tools/validate_public_short.py --storyboard "$STORYBOARD" --video "$OUTPUT" --subtitle "$SUBTITLE" --manifest "$MANIFEST"
 
       - name: Commit generated approved public asset without binary rebase conflicts
         shell: bash
