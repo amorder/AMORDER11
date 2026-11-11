@@ -9,6 +9,7 @@ short_workflow = (root / ".github" / "workflows" / "render-public-short.yml").re
 episode_workflow = (root / ".github" / "workflows" / "render-public-episode.yml").read_text(encoding="utf-8")
 blender_scenes = (root / "tools" / "blender_scenes.py").read_text(encoding="utf-8")
 motion_graphics = (root / "tools" / "motion_graphics.py").read_text(encoding="utf-8")
+validator = (root / "tools" / "validate_public_short.py").read_text(encoding="utf-8")
 
 checks = {
     "long-form SRT generation": "subtitles_for_scenes(scenes, durations, subtitle_path)" in episode,
@@ -74,12 +75,23 @@ checks["episode workflow stages only manifest-listed outputs"] = (
     and "git add assets/*-youtube-*.mp4" not in episode_workflow
 )
 checks["short workflow cancels superseded renders"] = "cancel-in-progress: true" in short_workflow
+checks["short workflow runs the independent release validator"] = (
+    "validate_public_short.py" in short_workflow
+    and 'echo "STORYBOARD=$STORYBOARD"' in short_workflow
+)
+checks["short validator checks motion, black/frozen frames, SRT, audio and safe zones"] = (
+    all(key in validator for key in (
+        "black_frame_count", "longest_frozen_run_seconds", "motion_coverage_percent",
+        "parse_srt_text", "volumedetect", "validate_safe_zones", "validate_scene_variation"
+    ))
+)
 checks["episode workflow cancels superseded renders"] = "cancel-in-progress: true" in episode_workflow
 
 compile(episode, str(root / "tools" / "render_public_episode.py"), "exec")
 compile(short, str(root / "tools" / "render_public_short.py"), "exec")
 compile(blender_scenes, str(root / "tools" / "blender_scenes.py"), "exec")
 compile(motion_graphics, str(root / "tools" / "motion_graphics.py"), "exec")
+compile(validator, str(root / "tools" / "validate_public_short.py"), "exec")
 print("PASS: both renderer scripts compile")
 
 failed = [name for name, passed in checks.items() if not passed]
@@ -87,4 +99,4 @@ for name, passed in checks.items():
     print(("PASS" if passed else "FAIL") + ": " + name)
 if failed:
     raise SystemExit("Public video render contract regression: " + ", ".join(failed))
-print("PASS: all public render, Blender 3D scene, animated motion-graphics, caption, thumbnail and binary-commit contract checks")
+print("PASS: public render, Blender animation, subtitle, audio, safe-zone, source and release-gate contracts")
