@@ -68,7 +68,7 @@ Paper-trading education only; not live-money performance; not investment advice;
 ## Publishing record
 | Destination | Buffer post ID | Public URL | Status |
 |---|---|---|---|
-| X | pending | pending | pending_queue |
+| X | `6af4aefd24e81672d7964a7b` | not available until sent | **scheduled** (automatic queue; due 2026-11-12 00:44 UTC) |
 | Instagram Reel | pending | pending | pending_render |
 | YouTube Short | pending | pending | pending_render |
 
