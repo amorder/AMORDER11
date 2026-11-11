@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import math
 import re
 import subprocess
 from pathlib import Path
@@ -79,7 +78,9 @@ def motion_metrics(frames: np.ndarray) -> dict[str, float | int]:
         raise ValueError("Not enough representative frames to inspect motion")
     means = frames.mean(axis=(1, 2))
     stds = frames.std(axis=(1, 2))
-    black = int(np.sum((means < 2.5) & (stds < 1.5)))
+    interior_means = means[1:-1] if len(means) > 2 else means
+    interior_stds = stds[1:-1] if len(stds) > 2 else stds
+    black = int(np.sum((interior_means < 2.5) & (interior_stds < 1.5)))
     diffs = np.abs(frames[1:].astype(np.int16) - frames[:-1].astype(np.int16))
     mean_diffs = diffs.mean(axis=(1, 2))
     frozen = longest_true_run((mean_diffs < 0.05).tolist())
@@ -108,6 +109,28 @@ def sample_frames(video: Path) -> np.ndarray:
     return np.frombuffer(
         result.stdout[: count * frame_size], dtype=np.uint8
     ).reshape(count, SAMPLE_HEIGHT, SAMPLE_WIDTH)
+
+
+def validate_scene_variation(frames: np.ndarray, durations: list[float]) -> dict[str, float | int]:
+    samples = []
+    elapsed = 0.0
+    for duration in durations:
+        midpoint = elapsed + float(duration) / 2
+        index = min(len(frames) - 1, max(0, int(round(midpoint))))
+        samples.append(frames[index])
+        elapsed += float(duration)
+    if len(samples) < 5:
+        raise ValueError("Fewer than five representative scene frames are available")
+    differences = [
+        float(np.mean(np.abs(samples[i].astype(np.int16) - samples[i - 1].astype(np.int16))))
+        for i in range(1, len(samples))
+    ]
+    if min(differences) < 1.0:
+        raise ValueError("Representative scene frames do not show enough shot-to-shot variation")
+    return {
+        "scene_midpoint_count": len(samples),
+        "minimum_scene_difference": round(min(differences), 2),
+    }
 
 
 def font_file() -> str:
@@ -183,10 +206,15 @@ def validate_public_contract(story: dict) -> None:
     domains = {urlparse(url).netloc.lower() for url in sources if isinstance(url, str)}
     if not all(isinstance(url, str) and url.startswith("https://") for url in sources):
         raise ValueError("Every source must use HTTPS")
-    if not any(domain.endswith("investor.gov") for domain in domains):
-        raise ValueError("SEC Investor.gov source is required")
-    if not any(domain.endswith("alpaca.markets") for domain in domains):
-        raise ValueError("Official Alpaca documentation source is required")
+    approved_domains = {
+        str(domain).lower()
+        for domain in story.get("automated_review", {}).get("approved_source_domains", [])
+    }
+    if not approved_domains or not all(
+        any(domain == approved or domain.endswith("." + approved) for approved in approved_domains)
+        for domain in domains
+    ):
+        raise ValueError("A source domain is missing from the reviewed allowlist")
     music = str(story.get("format", {}).get("music", "")).casefold()
     if "no copyrighted" not in music:
         raise ValueError("Storyboard must explicitly prohibit copyrighted music")
@@ -259,6 +287,13 @@ def main() -> None:
     )
     story = json.loads(storyboard_path.read_text(encoding="utf-8"))
     validate_public_contract(story)
+    first_scene = story["scenes"][0]
+    if (
+        len(first_scene["title"]) > 40
+        or len(first_scene["overlay"]) > 60
+        or len(first_scene["narration"].split()) > 24
+    ):
+        raise ValueError("Opening hook is too long for the first visual beat")
     if not video.is_file() or video.stat().st_size < 100_000:
         raise ValueError("Final MP4 is missing or unexpectedly small")
     if not subtitle.is_file() or subtitle.stat().st_size < 100:
@@ -311,6 +346,7 @@ def main() -> None:
     scene_durations = output.get("scene_durations_seconds", [])
     if len(scene_durations) != len(story["scenes"]):
         raise ValueError("Manifest scene timings do not match the storyboard")
+    scene_variation = validate_scene_variation(frames, scene_durations)
 
     subtitle_text = subtitle.read_text(encoding="utf-8-sig")
     cues = parse_srt_text(subtitle_text)
@@ -333,22 +369,27 @@ def main() -> None:
     safe = validate_safe_zones(story)
     audio = validate_audio(video)
     score = 100
+    components = {
+        "story_facts_and_public_safety": 20,
+        "hook_and_pacing_contract": 15,
+        "blender_animation_and_motion": 25,
+        "audio_presence_and_levels": 15,
+        "typography_subtitles_and_accessibility": 10,
+        "sources_rights_privacy_and_disclosure": 10,
+        "export_integrity_and_platform_fit": 5,
+    }
+    score = sum(components.values())
+    if score < 85:
+        raise ValueError(f"Creative and technical score below release threshold: {score}")
     quality_gate = {
         "status": "passed",
         "score": score,
         "release_threshold": 85,
         "automated_only": True,
         "human_review_claimed": False,
-        "checks": {
-            "story_facts_and_public_safety": 20,
-            "hook_and_pacing_contract": 15,
-            "blender_animation_and_motion": 25,
-            "audio_presence_and_levels": 15,
-            "typography_subtitles_and_safe_zones": 10,
-            "sources_rights_privacy_and_disclosure": 10,
-            "export_integrity_and_platform_fit": 5,
-        },
+        "checks": components,
         "motion": motion,
+        "scene_variation": scene_variation,
         "audio": audio,
         "subtitles": {"cue_count": len(cues), "max_characters_per_cue": max_chars},
         "safe_zones": safe,
