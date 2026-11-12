@@ -91,3 +91,13 @@ Paper-trading education only; not live-money performance; not investment advice;
 - GitHub still reports render run 43260259476 as in_progress more than 90 minutes after it started at 16:35:04Z, even though the job declares timeout-minutes: 90. The Blender render step remains in progress; independent MP4 validation, visual/subtitle/audio/source gates and asset commit remain pending.
 - GitHub has not exposed the in-progress job log (the logs endpoint returned BlobNotFound). This is an ambiguous render state, not a successful render or a verified failure.
 - Do not cancel, duplicate, rerun or publish while the original run remains active. Instagram and YouTube stay HOLD; no video Buffer posts exist.
+
+
+## Render optimization and rerun — 2026-11-12 13:26 ET
+- The first render attempt (run 43260259476) ended at the workflow's 90-minute job timeout. Its log shows 33 Blender output frames in approximately 86 minutes; the MP4 validation, independent release gates and asset commit were skipped. No media from that run is approved.
+- Verified bottleneck: full 1080x1920 Blender Eevee rendering at 64 TAA samples on the hosted CPU runner. The renderer was optimized without replacing Blender scenes or weakening any release gate: each scene still uses genuine keyframed PBR camera/object animation at 12 fps, with depth of field and motion blur retained. Blender now renders at 720x1280 with 4 TAA samples; FFmpeg motion-compensates to 30 fps and Lanczos-upscales to the required 1080x1920 delivery.
+- The render job timeout is now 180 minutes. The final delivery remains H.264/AAC, under 159 seconds, with burned English captions and an SRT sidecar. All full-decode, motion, black/frozen-frame, safe-zone, subtitle, audio, source/rights, privacy and disclosure gates remain mandatory.
+- Focused public renderer/test commits: `bf760b7`, `913248e`, `4521880`, `d6a7b38`, `3767ea6`; storyboard revision 3 commit: `ad8d4c7`.
+- New render run [43279634075](https://github.com/amorder/AMORDER11/actions/runs/43279634075) started from the revision 3 storyboard. Caption-contract regression, media-tool installation and Kokoro model download passed; the Blender scene-render step is currently in progress. The independent MP4 and release gates have not yet run.
+- Latest public secret-guard run [43279634128](https://github.com/amorder/AMORDER11/actions/runs/43279634128) passed.
+- The MP4, SRT and manifest are still absent from the public repository. Instagram and YouTube remain HOLD; no video Buffer post has been created. The X text-first companion remains verified as sent. No human watch-through is claimed.
