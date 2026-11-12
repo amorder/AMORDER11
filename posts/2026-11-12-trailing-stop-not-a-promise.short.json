@@ -17,11 +17,13 @@
     "duration_seconds_target": "105-145",
     "duration_seconds_max_exclusive": 159,
     "video": "MP4 H.264, AAC narration, 30 fps",
-    "visual_engine": "Blender Eevee PBR scenes with genuine keyframed camera and object animation in every scene; 12 fps scene renders motion-compensated to 30 fps",
-    "post_production": "FFmpeg frame interpolation, scene-specific motion graphics, burned English captions, SRT sidecar, full decode and audio mastering",
+    "visual_engine": "Blender Eevee PBR scenes with genuine keyframed camera and object animation in every scene; 720x1280 base render at 12 fps, motion-compensated and Lanczos-upscaled to 1080x1920 at 30 fps",
+    "post_production": "FFmpeg motion-compensated interpolation to 30 fps, Lanczos upscale to 1080x1920, scene-specific motion graphics, burned English captions, SRT sidecar, full decode and audio mastering",
     "voiceover_model": "Kokoro-82M ONNX",
     "voice": "af_heart",
-    "music": "No copyrighted music; original restrained sound design only."
+    "music": "No copyrighted music; original restrained sound design only.",
+    "blender_base_resolution": "720x1280",
+    "blender_eevee_taa_samples": 4
   },
   "creative_direction": {
     "style": "Ultra-realistic cinematic product-film language: deep graphite studio, physically based glass and brushed-metal forms, realistic reflections, softbox key and rim lighting, controlled depth of field, restrained cyan and warm amber accents, generous negative space and precise camera choreography. Every scene has a distinct Blender camera path and animated object action.",
@@ -101,6 +103,6 @@
       "status": "pending_render"
     }
   },
-  "render_revision": 2,
-  "render_note": "Updated for the 2026-11-12 production run. The SEC's current investor bulletin on stop, stop-limit and trailing-stop orders and Alpaca's current order documentation support the mechanics described. The vertical cut targets 105-145 seconds, uses six distinct Blender scene setups and includes the complete paper-trading disclosure. No audience-performance or trade-result claim is made."
+  "render_revision": 3,
+  "render_note": "Revision 3: the previous run was stopped by the 90-minute job timeout after only 33 Blender output frames. The verified bottleneck was full-resolution 1080x1920 Eevee rendering at 64 TAA samples on a CPU-only hosted runner. The production path now renders genuine 720x1280 keyframed Blender scenes at 4 TAA samples, retains the PBR geometry, lighting, depth of field and motion blur, then motion-compensates to 30 fps and Lanczos-upscales to the required 1080x1920 delivery. The render timeout is 180 minutes. All source, subtitle, audio, privacy, disclosure, full-decode and visual release gates remain mandatory; this optimization does not bypass them."
 }
