@@ -2,7 +2,7 @@
 
 - **Publication date:** 2026-11-12
 - **Language / audience:** English / global
-- **Channels:** Instagram Reels, YouTube Shorts
+- **Channels:** X (separate text-first companion), Instagram Reels, YouTube Shorts
 - **Topic:** Why a trailing-stop trigger is not a guaranteed execution price
 
 ## Story and production
@@ -15,6 +15,7 @@ A concise explanation of the high-water mark, the one-way trailing rule, market-
 - **Delivery:** 1080x1920, 9:16, 30 fps, H.264 MP4, AAC English narration, burned captions and SRT sidecar.
 - **Voice:** Kokoro-82M ONNX, af_heart; restrained original sound design only.
 - **Editorial note:** this explainer distinguishes a trigger condition from an execution price and includes the broker-specific regular-hours caveat without implying that every broker follows the same rules.
+- **Evidence-based improvement:** the latest successful vertical asset (2026-11-09) ran 156.82 seconds, close to the 159-second hard cap. This cut targets 105-145 seconds, opens with the trigger-versus-fill distinction within the first sentence, and uses six scene setups. The 2026-11-07 and 2026-11-06 Buffer assets were 22.937 and 21.859 seconds respectively; matching technical manifests were not present in the public asset index, so no unsupported motion-coverage or audience-performance comparison is claimed.
 
 ## YouTube
 **Title:** A Trailing Stop Is Not a Price Promise | AMORDER #Shorts
@@ -37,6 +38,16 @@ Paper-trading education only; not live-money performance; not investment advice;
 #AMORDER #RiskEducation
 
 **Alt text:** Six cinematic graphite-studio 3D scenes use glass, metal, a clock-like high-water marker and a broken signal line to explain how a trailing stop moves, triggers and may fill at a different price.
+
+## X text-first companion
+**Copy sent:**
+"Trailing stops can follow a favorable move, but the trigger is not a guaranteed fill. Fast markets and gaps can change execution. Know your broker's rules. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER"
+
+- **Buffer post ID:** 6af4aefd24e81672d7964a7b
+- **Public URL:** https://x.com/2118017267829190656/status/2120678973537398850
+- **Sent at:** 2026-11-12T00:44:02.459Z
+- **Verified status:** sent (re-read from Buffer)
+- This matching text-first post was queued on 2026-11-11 and sent on 2026-11-12; no duplicate was created in this cycle.
 
 ## Sources
 - [SEC Investor Bulletin: Stop, Stop-Limit, and Trailing Stop Orders](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15)
@@ -64,7 +75,13 @@ Paper-trading education only; not live-money performance; not investment advice;
 ## Publishing record
 | Destination | Buffer post ID | Public URL | Status |
 |---|---|---|---|
+| X text-first | 6af4aefd24e81672d7964a7b | https://x.com/2118017267829190656/status/2120678973537398850 | sent |
 | Instagram Reel | pending | pending | pending_render |
 | YouTube Short | pending | pending | pending_render |
 
-No destination is reported as published until its provider status is confirmed as `sent`.
+## Render status — 2026-11-12 12:53 ET
+- Public render workflow run 43260259476 is still in progress at the Blender scene-render step. Caption-contract regression, media-tool installation and Kokoro model download passed.
+- Independent MP4 validation, visual/subtitle/audio/source release gates and public asset commit have not started/completed.
+- The MP4, SRT and manifest are not yet present in the public repository. Instagram and YouTube remain HOLD; no video Buffer post has been created.
+- The latest private release poll completed successfully but logged "Waiting: vertical video render is not complete yet." It created no video posts.
+- No human watch-through is claimed; only automated gates will be used under the standing authorization.
