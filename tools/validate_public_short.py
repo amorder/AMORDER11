@@ -336,6 +336,15 @@ def main() -> None:
         raise ValueError("Short manifest must contain exactly one vertical output")
     output = outputs[0]
     if (
+        manifest.get("blender_render_width") != 720
+        or manifest.get("blender_render_height") != 1280
+        or manifest.get("blender_taa_render_samples") != 4
+        or manifest.get("delivery_upscale_filter") != "lanczos"
+        or manifest.get("blender_animation_fps") != 12
+        or manifest.get("delivery_fps") != 30
+    ):
+        raise ValueError("Manifest does not confirm the bounded Blender render and 1080p delivery profile")
+    if (
         output.get("blender_keyframed_animation") is not True
         or int(output.get("genuine_motion_coverage_percent", 0)) < 60
         or output.get("captions_burned") is not True
