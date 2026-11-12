@@ -106,7 +106,7 @@ def area_light(name, location, target, power, color, size):
     return obj
 
 
-def setup(width=1080, height=1920):
+def setup(width=1080, height=1920, samples=4):
     scene = bpy.context.scene
     engines = {item.identifier for item in scene.render.bl_rna.properties["engine"].enum_items}
     scene.render.engine = "BLENDER_EEVEE_NEXT" if "BLENDER_EEVEE_NEXT" in engines else "BLENDER_EEVEE"
@@ -120,9 +120,9 @@ def setup(width=1080, height=1920):
     scene.render.threads = 4
     eevee = getattr(scene, "eevee", None)
     if eevee is not None and hasattr(eevee, "taa_render_samples"):
-        eevee.taa_render_samples = 64
+        eevee.taa_render_samples = samples
     if eevee is not None and hasattr(eevee, "taa_samples"):
-        eevee.taa_samples = 32
+        eevee.taa_samples = 8
     try:
         scene.view_settings.view_transform = "AgX"
         scene.view_settings.look = "AgX - Medium High Contrast"
@@ -366,9 +366,10 @@ def main():
     p.add_argument("--height", type=int, default=1920)
     p.add_argument("--duration", type=float, default=0)
     p.add_argument("--fps", type=int, default=15)
+    p.add_argument("--samples", type=int, default=4)
     a = p.parse_args(sys.argv[sys.argv.index("--") + 1:])
     clear()
-    scene = setup(a.width, a.height)
+    scene = setup(a.width, a.height, a.samples)
     build(a.visual)
     if a.duration > 0:
         animate_scene(scene, a.visual, a.duration, a.fps)
