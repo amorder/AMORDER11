@@ -1,0 +1,106 @@
+{
+  "title": "A Trailing Stop Is Not a Price Promise | AMORDER",
+  "publication_date": "2026-11-12",
+  "render_slug": "amorder-trailing-stop-not-a-promise",
+  "topic": "Why a trailing-stop trigger is not a guaranteed execution price",
+  "language": "en",
+  "audience": "global",
+  "intended_channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds_target": "105-145",
+    "duration_seconds_max_exclusive": 159,
+    "video": "MP4 H.264, AAC narration, 30 fps",
+    "visual_engine": "Blender Eevee PBR scenes with genuine keyframed camera and object animation in every scene; 12 fps scene renders motion-compensated to 30 fps",
+    "post_production": "FFmpeg frame interpolation, scene-specific motion graphics, burned English captions, SRT sidecar, full decode and audio mastering",
+    "voiceover_model": "Kokoro-82M ONNX",
+    "voice": "af_heart",
+    "music": "No copyrighted music; original restrained sound design only."
+  },
+  "creative_direction": {
+    "style": "Ultra-realistic cinematic product-film language: deep graphite studio, physically based glass and brushed-metal forms, realistic reflections, softbox key and rim lighting, controlled depth of field, restrained cyan and warm amber accents, generous negative space and precise camera choreography. Every scene has a distinct Blender camera path and animated object action.",
+    "voiceover_direction": "Natural, measured English narration for a global audience. Clear consonants, deliberate pauses, no exaggerated urgency and no rushed delivery.",
+    "overlay_direction": "One short high-contrast title and one supporting line per scene. Keep all text inside mobile-safe margins and away from the main 3D subject.",
+    "sound_direction": "Voice-led mix with subtle original mechanical ambience only; no third-party footage or copyrighted music."
+  },
+  "scenes": [
+    {
+      "visual": "idea",
+      "title": "TRIGGER IS NOT THE FILL",
+      "overlay": "A stop level is not a fill.",
+      "narration": "A trailing stop can trigger and still fill at a different price. The trigger is a condition, not a promise."
+    },
+    {
+      "visual": "timestamp",
+      "title": "TRACKS A NEW HIGH",
+      "overlay": "Percentage or dollar trail.",
+      "narration": "A sell trailing stop tracks the highest price reached after the order is accepted. The trail is set as a percentage or a dollar amount below that high-water mark. When the market makes a new high, the stop can move upward with it. The reference is the high-water mark, not your original entry."
+    },
+    {
+      "visual": "source",
+      "title": "DOES NOT LOOSEN",
+      "overlay": "It does not follow price down.",
+      "narration": "If price falls, the stop level does not move back down. It stays at its last higher level while the market reverses. A small pullback may leave the order waiting; a larger move may reach the trigger. The order reacts to its rule. It does not predict the next move."
+    },
+    {
+      "visual": "gaps",
+      "title": "MARKET ORDER. NOT A PROMISE.",
+      "overlay": "Fast markets can change execution.",
+      "narration": "When the trigger is reached, the stop becomes a market order. A market order seeks available liquidity, not a guaranteed price. In a fast move, a price gap, or a trading halt, the next available fill can be worse than the trigger. The stop level is not an execution promise."
+    },
+    {
+      "visual": "stand_down",
+      "title": "REGULAR HOURS MATTER",
+      "overlay": "GTC does not mean 24/7 triggering.",
+      "narration": "Broker rules matter. Alpaca says trailing stops do not trigger outside regular market hours. An overnight gap can happen before the order is eligible again. A good-till-canceled order may persist across sessions, but it is not an around-the-clock safety net."
+    },
+    {
+      "visual": "brand",
+      "title": "KNOW THE LIMITS",
+      "overlay": "Paper-trading education only.",
+      "narration": "Before relying on any stop, learn how your broker defines the trigger. Check whether it uses trades or quotes, when it can trigger, and what happens after a halt. A trailing stop is an order-management tool, not a guaranteed maximum loss or profit lock. It does not replace checking order status. What rule would you verify first? Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
+    }
+  ],
+  "instagram_caption": "A trailing stop is an order rule, not a guaranteed execution price. Learn what the high-water mark does, why the stop can ratchet upward, and how gaps or market hours can change the result.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #RiskEducation",
+  "youtube_title": "A Trailing Stop Is Not a Price Promise | AMORDER #Shorts",
+  "youtube_description": "A trailing stop can trigger and still fill at a different price. This short explains the high-water mark, why the stop can ratchet upward but not downward, and why gaps, market hours and execution rules matter.\n\nSources:\nSEC Investor Bulletin: https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15\nAlpaca order documentation: https://docs.alpaca.markets/us/docs/orders-at-alpaca\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #RiskEducation #Shorts",
+  "sources": [
+    "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15",
+    "https://docs.alpaca.markets/us/docs/orders-at-alpaca"
+  ],
+  "automated_review": {
+    "approved_source_domains": [
+      "investor.gov",
+      "alpaca.markets"
+    ],
+    "public_safety_reviewed": true,
+    "claims_checked_against_sources": true,
+    "rights_and_asset_origin_reviewed": true,
+    "disclosure_verified": true
+  },
+  "asset_path": "assets/amorder-trailing-stop-not-a-promise-2026-11-12.mp4",
+  "asset_url": "https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-trailing-stop-not-a-promise-2026-11-12.mp4",
+  "subtitle_path": "subtitles/amorder-trailing-stop-not-a-promise-2026-11-12.srt",
+  "manifest_path": "assets/amorder-trailing-stop-not-a-promise-manifest-2026-11-12.json",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "publishing_record": {
+    "instagram": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    },
+    "youtube": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    }
+  },
+  "render_revision": 2,
+  "render_note": "Updated for the 2026-11-12 production run. The SEC's current investor bulletin on stop, stop-limit and trailing-stop orders and Alpaca's current order documentation support the mechanics described. The vertical cut targets 105-145 seconds, uses six distinct Blender scene setups and includes the complete paper-trading disclosure. No audience-performance or trade-result claim is made."
+}
