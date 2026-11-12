@@ -85,3 +85,9 @@ Paper-trading education only; not live-money performance; not investment advice;
 - The MP4, SRT and manifest are not yet present in the public repository. Instagram and YouTube remain HOLD; no video Buffer post has been created.
 - The latest private release poll completed successfully but logged "Waiting: vertical video render is not complete yet." It created no video posts.
 - No human watch-through is claimed; only automated gates will be used under the standing authorization.
+
+
+## Render watchdog checkpoint — 2026-11-12 13:05 ET
+- GitHub still reports render run 43260259476 as in_progress more than 90 minutes after it started at 16:35:04Z, even though the job declares timeout-minutes: 90. The Blender render step remains in progress; independent MP4 validation, visual/subtitle/audio/source gates and asset commit remain pending.
+- GitHub has not exposed the in-progress job log (the logs endpoint returned BlobNotFound). This is an ambiguous render state, not a successful render or a verified failure.
+- Do not cancel, duplicate, rerun or publish while the original run remains active. Instagram and YouTube stay HOLD; no video Buffer posts exist.
