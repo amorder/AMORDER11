@@ -18,10 +18,10 @@ CoreWeave shares rose 25% after the company guided to adjusted profitability in 
 
 ## Publishing record
 - **Buffer post ID:** 6af533bfbfa789f621071c27
-- **Public URL:** pending (Buffer list response did not expose an external permalink for this post)
+- **Public URL:** https://x.com/2118017267829190656/status/2120721844743336414
 - **Created:** 2026-11-12T03:34:23.383Z
 - **Sent:** 2026-11-12T03:34:23.678Z
-- **Status:** sent (verified in recent Buffer post history)
+- **Status:** sent (verified by Buffer get_post)
 - **Mode:** shareNow (already sent; no retry or duplicate was created)
 
 ## Disclosure
