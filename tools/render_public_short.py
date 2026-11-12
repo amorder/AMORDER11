@@ -14,6 +14,7 @@ from kokoro_onnx import Kokoro
 from motion_graphics import build_motion_graphics_filter
 
 WIDTH, HEIGHT, FPS = 1080, 1920, 30
+BLENDER_WIDTH, BLENDER_HEIGHT, BLENDER_TAA_SAMPLES = 720, 1280, 4
 BLENDER_FPS = 12
 MAX_RUNTIME_SECONDS = 159.0
 DISCLOSURE = "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
@@ -184,8 +185,9 @@ def main():
             # FFmpeg motion-compensated interpolation brings it to the 30 fps deliverable.
             animation=clips_dir/f"blender-{index:02d}.mp4"
             run([a.blender,"--background","--python",str(script),"--","--visual",scene["visual"],
-                 "--output",str(animation),"--width",str(WIDTH),"--height",str(HEIGHT),
-                 "--duration",f"{duration:.3f}","--fps",str(BLENDER_FPS)])
+                 "--output",str(animation),"--width",str(BLENDER_WIDTH),"--height",str(BLENDER_HEIGHT),
+                 "--duration",f"{duration:.3f}","--fps",str(BLENDER_FPS),
+                 "--samples",str(BLENDER_TAA_SAMPLES)])
             if not animation.exists() or animation.stat().st_size<100000:
                 raise RuntimeError(f"Missing Blender keyframed animation for scene {index}: {animation}")
 
@@ -195,7 +197,7 @@ def main():
             clip=clips_dir/f"clip-{index:02d}.mp4"
             motion=build_motion_graphics_filter(WIDTH,HEIGHT,duration,scene["visual"])
             fc=(f"[0:v]minterpolate=fps={FPS}:mi_mode=mci:mc_mode=aobmc:vsbmc=1,"
-                f"{motion},fade=t=in:st=0:d=0.35,fade=t=out:st={fade_out:.3f}:d=0.35,"
+                f"scale={WIDTH}:{HEIGHT}:flags=lanczos,{motion},fade=t=in:st=0:d=0.35,fade=t=out:st={fade_out:.3f}:d=0.35,"
                 "setsar=1[base];[base][1:v]overlay=0:0:format=auto,format=yuv420p[v]")
             run(["ffmpeg","-y","-hide_banner","-loglevel","error","-i",str(animation),
                  "-loop","1","-framerate",str(FPS),"-i",str(overlay),"-i",str(wav),
@@ -249,6 +251,9 @@ def main():
         "title":story.get("youtube_title",story.get("title","AMORDER educational short")),
         "publication_date":story["publication_date"],"language":"English","audience":"global",
         "visual_engine":"Blender Eevee PBR 3D with genuine keyframed camera and object animation",
+        "blender_render_width":BLENDER_WIDTH,"blender_render_height":BLENDER_HEIGHT,
+        "blender_taa_render_samples":BLENDER_TAA_SAMPLES,"blender_taa_samples":8,
+        "delivery_upscale_filter":"lanczos",
         "blender_animation_fps":BLENDER_FPS,"delivery_fps":FPS,
         "motion_graphics":"Scene-specific animated vector overlays with motion-compensated frame interpolation",
         "post_production":"FFmpeg motion-design compositing, loudness mastering and burned English captions",
@@ -258,6 +263,9 @@ def main():
             "video_codec":"h264","audio_codec":"aac","voice":a.voice,
             "disclosure":"verified","captions_burned":True,"thumbnail":None,
             "scene_durations_seconds":[round(x,3) for x in durations],
+            "blender_render_width":BLENDER_WIDTH,"blender_render_height":BLENDER_HEIGHT,
+            "blender_taa_render_samples":BLENDER_TAA_SAMPLES,"blender_taa_samples":8,
+            "delivery_upscale_filter":"lanczos",
             "blender_keyframed_animation":True,"genuine_motion_coverage_percent":100
         }],
         "chapters":chapters,"disclosure":DISCLOSURE
