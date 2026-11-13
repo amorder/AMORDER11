@@ -88,3 +88,10 @@ No destination is reported as published until Buffer confirms the post as `sent`
 - Independent MP4 validation, representative-frame/motion checks, subtitle/safe-zone checks, audio checks and final asset commit have not yet run. The MP4, SRT and manifest are not yet present in the public repository.
 - Buffer history was checked before publishing: the last Instagram and YouTube video posts were sent on November 10, 2026, and no queued/sending post uses this new asset URL. Both channels are connected.
 - No Instagram or YouTube post has been created for this asset. Both destinations remain HOLD until the final export passes every critical release gate.
+
+
+## Render retry — 2026-11-13
+- First daily render run [43427943599](https://github.com/amorder/AMORDER11/actions/runs/43427943599) failed in the Blender animation-export step. Blender rendered 100 frames for scene 1, but produced no MP4 at the expected path; the renderer stopped before independent MP4 validation, visual/motion checks, subtitle/audio/source gates and asset commit. No video was approved or published.
+- Root cause is the Blender 5.0.1 FFMPEG animation writer not producing the expected MP4 in the hosted runner. The prior file-size-only gate was already replaced with media probing; this failure showed the file itself was absent.
+- Fix committed in [42905ca](https://github.com/amorder/AMORDER11/commit/42905ca74cd421452d33c702c3bcadccd490a9eb): Blender now renders numbered PNG frames for each genuinely keyframed scene, verifies the exact frame count, then uses FFmpeg to encode and fully decode the H.264 scene MP4. The downstream ffprobe and final-file release gates remain mandatory and unchanged.
+- A new render run will be triggered by the revision 2 storyboard. Instagram and YouTube remain HOLD until the new run completes all independent gates and commits the final assets.
