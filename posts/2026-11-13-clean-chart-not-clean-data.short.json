@@ -1,0 +1,126 @@
+{
+  "title": "A Clean Chart Is Not Proof of Clean Data | AMORDER",
+  "publication_date": "2026-11-13",
+  "render_slug": "amorder-clean-chart-not-clean-data",
+  "topic": "How feed selection, timestamps, pagination and adjustment settings affect market-data quality",
+  "language": "en",
+  "audience": "global",
+  "intended_channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds_target": "105-145",
+    "duration_seconds_max_exclusive": 159,
+    "video": "MP4 H.264, AAC English narration, 30 fps",
+    "visual_engine": "Blender Eevee PBR scenes with genuine keyframed camera and object animation in every scene; 720x1280 base render at 12 fps and 4 TAA samples, motion-compensated and Lanczos-upscaled to 1080x1920 at 30 fps",
+    "post_production": "FFmpeg motion-compensated interpolation, scene-specific original motion graphics, burned English captions, SRT sidecar, loudness mastering and full decode",
+    "voiceover_model": "Kokoro-82M ONNX",
+    "voice": "af_heart",
+    "music": "No copyrighted music; original restrained sound design only.",
+    "blender_base_resolution": "720x1280",
+    "blender_eevee_taa_samples": 4
+  },
+  "creative_direction": {
+    "style": "Ultra-realistic cinematic graphite studio with physically based glass, brushed metal and anodised forms, realistic reflections, softbox key and rim lighting, controlled depth of field, restrained cyan and warm amber accents, deliberate negative space and purposeful camera choreography. Six distinct original 3D setups; no stock footage or fake market screens.",
+    "voiceover_direction": "Natural, measured English narration for a global audience. Clear consonants, purposeful pauses and calm professional delivery; no hype.",
+    "overlay_direction": "One concise high-contrast headline and one supporting line per scene, within phone-safe margins and away from the hero object.",
+    "sound_direction": "Voice-led mix with subtle original mechanical ambience only; no third-party footage or copyrighted music."
+  },
+  "scenes": [
+    {
+      "visual": "idea",
+      "title": "SMOOTH DOES NOT MEAN CLEAN",
+      "overlay": "Check the data behind the chart.",
+      "narration": "A chart can look smooth and still be misleading. Before trusting a signal, ask what feed produced it, when each bar belongs, and whether the history is complete."
+    },
+    {
+      "visual": "source",
+      "title": "NAME THE FEED",
+      "overlay": "IEX and SIP are not the same.",
+      "narration": "Feed choice changes coverage. Alpaca's market data documentation distinguishes IEX, a single exchange, from SIP, which consolidates activity across US exchanges. A chart built from one feed is not automatically comparable with a chart built from another. Record the feed, not just the symbol."
+    },
+    {
+      "visual": "timestamp",
+      "title": "READ THE BAR TIME",
+      "overlay": "A bar marks an interval.",
+      "narration": "A bar timestamp labels its aggregation interval. Alpaca explains that a one-minute bar is timestamped at the start of the minute, not at the time you happen to view it. Check the interval, timezone, session and latest update before calling data current."
+    },
+    {
+      "visual": "gaps",
+      "title": "CHECK EVERY PAGE",
+      "overlay": "A short response may be incomplete.",
+      "narration": "A missing candle is not a zero-price candle. Historical-bars responses can contain fewer points than the requested limit, and the API provides a next-page token when more data is available. Check pagination and gaps before calculating indicators or assuming the series is complete."
+    },
+    {
+      "visual": "stand_down",
+      "title": "KEEP ADJUSTMENTS CONSISTENT",
+      "overlay": "Raw, split, dividend or all.",
+      "narration": "Corporate-action settings matter too. The historical-bars endpoint supports raw, split, dividend and all adjustment modes. Keep the chosen adjustment consistent across the test and document it. If the feed, session or adjustment is unclear, pause the paper test instead of guessing."
+    },
+    {
+      "visual": "brand",
+      "title": "VERIFY BEFORE YOU TEST",
+      "overlay": "Source. Time. Session. Completeness.",
+      "narration": "Build a small data checklist: source, timestamp, session, pagination, adjustment and missing values. Then test the same rules in a paper simulation, record the limitations, and accept NO TRADE when the inputs fail. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
+    }
+  ],
+  "instagram_caption": "A smooth chart is not a data-quality check. Before trusting a signal, verify the feed, bar timestamp, session, pagination and corporate-action adjustment. If the inputs are unclear, pause the paper test rather than guessing.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #MarketDataQuality #RiskDiscipline",
+  "youtube_title": "A Clean Chart Is Not Proof of Clean Data | AMORDER #Shorts",
+  "youtube_description": "Why can a clean-looking chart still hide a data problem? This short walks through feed coverage, bar timestamps, pagination, session context and adjustment settings. No market performance or trade result is claimed.\n\nSources:\nAlpaca Market Data FAQ: https://docs.alpaca.markets/us/v1.1/docs/market-data-faq\nAlpaca Historical Bars API: https://docs.alpaca.markets/us/v1.1/reference/stockbars\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #MarketDataQuality #Shorts",
+  "sources": [
+    "https://docs.alpaca.markets/us/v1.1/docs/market-data-faq",
+    "https://docs.alpaca.markets/us/v1.1/reference/stockbars"
+  ],
+  "claims": [
+    {
+      "claim": "Alpaca describes IEX as a single exchange and SIP as consolidated activity from all US exchanges.",
+      "source": "https://docs.alpaca.markets/us/v1.1/docs/market-data-faq"
+    },
+    {
+      "claim": "Alpaca's market-data FAQ describes a minute bar timestamp as the left side, or start, of the aggregation interval.",
+      "source": "https://docs.alpaca.markets/us/v1.1/docs/market-data-faq"
+    },
+    {
+      "claim": "The historical-bars API may return fewer data points than requested and exposes next_page_token when more pages are available.",
+      "source": "https://docs.alpaca.markets/us/v1.1/reference/stockbars"
+    },
+    {
+      "claim": "The historical-bars API offers raw, split, dividend and all adjustment modes.",
+      "source": "https://docs.alpaca.markets/us/v1.1/reference/stockbars"
+    }
+  ],
+  "automated_review": {
+    "approved_source_domains": [
+      "docs.alpaca.markets"
+    ],
+    "public_safety_reviewed": true,
+    "claims_checked_against_sources": true,
+    "rights_and_asset_origin_reviewed": true,
+    "disclosure_verified": true
+  },
+  "alt_text": "Six cinematic graphite-studio Blender scenes use a lens, source panels, a clock-like timestamp, missing data blocks, a protective pause symbol and an orbital brand form to explain market-data feed coverage, timestamps, pagination and adjustment settings.",
+  "asset_path": "assets/amorder-clean-chart-not-clean-data-2026-11-13.mp4",
+  "asset_url": "https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-clean-chart-not-clean-data-2026-11-13.mp4",
+  "subtitle_path": "subtitles/amorder-clean-chart-not-clean-data-2026-11-13.srt",
+  "manifest_path": "assets/amorder-clean-chart-not-clean-data-manifest-2026-11-13.json",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "publishing_record": {
+    "instagram": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    },
+    "youtube": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    }
+  },
+  "render_revision": 1,
+  "render_note": "The prior short render exposed an arbitrary per-scene 100 KB size gate that could reject a valid low-complexity Blender clip before downstream checks. The renderer now validates each scene clip with ffprobe (H.264, expected dimensions and frame rate, expected duration) and a full decode. The final MP4 retains the original independent release gates; no check on the final deliverable has been relaxed."
+}
