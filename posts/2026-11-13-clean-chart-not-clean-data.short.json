@@ -121,6 +121,6 @@
       "status": "pending_render"
     }
   },
-  "render_revision": 2,
-  "render_note": "Revision 2 replaces Blender's failing direct FFMPEG animation writer with numbered PNG-frame rendering followed by FFmpeg H.264 encoding. Each scene must render the exact expected frame count; the resulting scene MP4 must pass ffprobe codec/dimensions/frame-rate/duration checks and a full decode. The final vertical MP4 still must pass all existing independent quality gates; no release criteria are relaxed."
+  "render_revision": 3,
+  "render_note": "Revision 3 uses the Blender PNG-frame-sequence and FFmpeg H.264 encoding path. The repository's static regression test now checks that path, exact frame count, per-scene probe and full decode. The final vertical MP4 must still pass all original independent release gates."
 }
