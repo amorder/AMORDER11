@@ -123,3 +123,8 @@ No destination is reported as published until Buffer confirms the post as `sent`
 - Revision 3 render run 43430121736 remains in_progress; its Blender scene-render step (step 8) is still running. The subsequent independent MP4, visual/subtitle/audio/source gates and asset commit are pending.
 - The expected MP4, SRT and manifest are not committed. No public HTTPS MP4 can yet be verified. Instagram Reel and YouTube Short remain HOLD; no video Buffer posts have been created.
 - The private automatic-release poll completed successfully but the private release-state record contains no 2026-11-13 release. The video must not be queued until the validated assets and exact public URL exist.
+
+
+## Buffer draft copy — 2026-11-13
+- Buffer Idea `6af72bc1603c44ae002a6435` stores the Instagram Reel caption and YouTube Shorts title/description as a draft idea for the connected Instagram and YouTube destinations.
+- Exact state: draft idea only; no Instagram or YouTube post was created because the final MP4, SRT, manifest and public HTTPS fetch are not ready. This does not count as a scheduled or published post.
