@@ -41,7 +41,7 @@ The short MP4 and SRT remained present on main after the long-form render commit
 - **Short trailer:** [Download MP4](https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-ko-paper-case-study-2026-11-09.mp4)
 - **Short subtitles:** [SRT](https://raw.githubusercontent.com/amorder/AMORDER11/main/subtitles/amorder-ko-paper-case-study-2026-11-09.srt)
 
-A revision 5 short render is currently running against the latest storyboard and updated regression check. The direct URLs are stable and will resolve to the latest committed file after that run finishes.
+The short-form visual revision 7 render (run 42849598771) and long-form visual revision 6 render (run 42849607033) both completed successfully on November 10. Both jobs passed their independent media validation and committed their generated assets. The files listed above are the current committed outputs.
 
 **Automatic release gate:** the owner has authorized automatic publication of public-safe AMORDER educational media. No per-video human signoff is required. Before Buffer publishing, the automation must still complete technical validation, full-file decode, representative-frame and motion checks, subtitle/safe-zone checks, narration/audio checks, source/rights/factual review, disclosure verification, and duplicate/status checks. Any failed or uncertain check keeps the affected destination on HOLD.
 
@@ -66,9 +66,17 @@ The AMORDER renderers now use a hybrid cinematic pipeline:
 
 ### Render status
 
-- Short, visual revision 7: [GitHub Actions run](https://github.com/amorder/AMORDER11/actions/runs/42849598771) — rendering; technical MP4 validation and final asset commit are pending.
-- Long-form, visual revision 6: [GitHub Actions run](https://github.com/amorder/AMORDER11/actions/runs/42849607033) — rendering; technical MP4 validation and final asset commit are pending.
-- Secret-guard scans for both storyboard revisions passed.
+- Short, visual revision 7: [GitHub Actions run](https://github.com/amorder/AMORDER11/actions/runs/42849598771) — completed successfully; independent MP4 validation and asset commit passed.
+- Long-form, visual revision 6: [GitHub Actions run](https://github.com/amorder/AMORDER11/actions/runs/42849607033) — completed successfully; independent media validation and asset commit passed.
+- The latest Buffer history confirms the November 9 vertical case-study asset was sent to Instagram and YouTube on November 10.
 
-The existing MP4 links above continue to resolve to the last committed versions until the new render runs pass validation and commit their replacements. Do not treat an in-progress render as a finished or published upgrade.
+## November 13, 2026 — A Clean Chart Is Not Proof of Clean Data
+
+- [Public content record](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-13-clean-chart-not-clean-data.md)
+- [Short storyboard](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-13-clean-chart-not-clean-data.short.json)
+- Topic: feed coverage, bar timestamps, pagination and corporate-action adjustment settings.
+- [Render workflow run](https://github.com/amorder/AMORDER11/actions/runs/43427943599) — in progress at the Blender scene-render step.
+- [Secret guard](https://github.com/amorder/AMORDER11/actions/runs/43428194762) — passed.
+- The MP4, SRT and manifest are not yet committed. Instagram and YouTube remain HOLD; no Buffer post has been created for this asset.
+- Do not treat this storyboard or an in-progress render as a finished or published video. The full independent decode, visual/motion, subtitle/safe-zone, audio, source/rights, privacy and disclosure gates must pass first.
 
