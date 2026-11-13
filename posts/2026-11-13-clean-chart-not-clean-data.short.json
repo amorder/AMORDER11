@@ -121,6 +121,6 @@
       "status": "pending_render"
     }
   },
-  "render_revision": 1,
-  "render_note": "The prior short render exposed an arbitrary per-scene 100 KB size gate that could reject a valid low-complexity Blender clip before downstream checks. The renderer now validates each scene clip with ffprobe (H.264, expected dimensions and frame rate, expected duration) and a full decode. The final MP4 retains the original independent release gates; no check on the final deliverable has been relaxed."
+  "render_revision": 2,
+  "render_note": "Revision 2 replaces Blender's failing direct FFMPEG animation writer with numbered PNG-frame rendering followed by FFmpeg H.264 encoding. Each scene must render the exact expected frame count; the resulting scene MP4 must pass ffprobe codec/dimensions/frame-rate/duration checks and a full decode. The final vertical MP4 still must pass all existing independent quality gates; no release criteria are relaxed."
 }
