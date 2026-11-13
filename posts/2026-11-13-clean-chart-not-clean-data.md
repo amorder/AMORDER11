@@ -95,3 +95,9 @@ No destination is reported as published until Buffer confirms the post as `sent`
 - Root cause is the Blender 5.0.1 FFMPEG animation writer not producing the expected MP4 in the hosted runner. The prior file-size-only gate was already replaced with media probing; this failure showed the file itself was absent.
 - Fix committed in [42905ca](https://github.com/amorder/AMORDER11/commit/42905ca74cd421452d33c702c3bcadccd490a9eb): Blender now renders numbered PNG frames for each genuinely keyframed scene, verifies the exact frame count, then uses FFmpeg to encode and fully decode the H.264 scene MP4. The downstream ffprobe and final-file release gates remain mandatory and unchanged.
 - A new render run will be triggered by the revision 2 storyboard. Instagram and YouTube remain HOLD until the new run completes all independent gates and commits the final assets.
+
+
+## Caption-contract correction — 2026-11-13
+- Retry run [43429892365](https://github.com/amorder/AMORDER11/actions/runs/43429892365) stopped before installing media tools or rendering. The regression test still expected Blender's old FFMPEG writer and rejected the new PNG-sequence pipeline; no media was produced and no release gates were bypassed.
+- Test correction committed in [9cf34dc](https://github.com/amorder/AMORDER11/commit/9cf34dcfc3f8e4a1ba243ad56afae9f2c0db15fa): the static contract now requires exact PNG frame-count validation, FFmpeg H.264 scene encoding and a full scene-file decode.
+- The latest secret-guard scan for the test update is pending. A revision 3 storyboard will trigger the next render attempt. No Instagram or YouTube post has been created.
