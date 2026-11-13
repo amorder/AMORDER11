@@ -14,7 +14,8 @@ An original process-led explainer. It uses no live market snapshot, stock-specif
 - **Motion:** keyframed camera and object animation in each Blender scene, followed by FFmpeg motion-compensated delivery at 30 fps.
 - **Target runtime:** 105–145 seconds; hard maximum strictly below 159 seconds (2:39).
 - **Delivery:** 1080×1920, 9:16, 30 fps, H.264 MP4, AAC English narration, burned captions and SRT sidecar.
-- **Voice:** Kokoro-82M ONNX, af_heart; restrained original sound design only.
+- **Voice:** Kokoro-82M v1.0 ONNX, af_heart; restrained original sound design only.
+- **AI/rights provenance:** [hexgrad/Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) is listed as Apache-2.0; [kokoro-onnx](https://github.com/thewh1teagle/kokoro-onnx) is MIT. The renderer downloads `kokoro-v1.0.onnx` and `voices-v1.0.bin` from the [model-files-v1.1 release](https://github.com/thewh1teagle/kokoro-onnx/releases/tag/model-files-v1.1); `af_heart` is listed in the upstream [voice catalogue](https://huggingface.co/hexgrad/Kokoro-82M/blob/main/VOICES.md).
 - **Visual rights:** original procedural Blender geometry and animation; no third-party footage or copyrighted music.
 - **Disclosure:** shown on the closing card and included in both platform descriptions.
 
@@ -78,4 +79,4 @@ Paper-trading education only; not live-money performance; not investment advice;
 | Instagram Reel | pending | pending | pending_render |
 | YouTube Short | pending | pending | pending_render |
 
-No destination is reported as published until Buffer confirms the post as `sent` and a public post URL is verified. No human watch-through is claimed; only the repository's documented automated gates are used under the standing publishing authorization.
+No destination is reported as published until Buffer confirms the post as `sent` and a public post URL is verified. No human watch-through or headphone/speaker audition is claimed. The release workflow must verify the audio stream, full decode, loudness, clipping and narration/subtitle alignment; only automated checks are reported under the standing publishing authorization.
