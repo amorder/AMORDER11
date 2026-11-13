@@ -80,7 +80,7 @@ Paper-trading education only; not live-money performance; not investment advice;
 ## Publishing record
 | Destination | Buffer post ID | Public URL | Status |
 |---|---|---|---|
-| X text companion | pending | pending | pending_buffer |
+| X text companion | `6af72af15d42e353d99b6820` | pending until sent | scheduled (Buffer automatic queue; due 2026-11-13 20:58 IST) |
 | Instagram Reel | pending | pending | pending_render |
 | YouTube Short | pending | pending | pending_render |
 
@@ -106,3 +106,7 @@ No destination is reported as published until Buffer confirms the post as `sent`
 - Retry run [43429892365](https://github.com/amorder/AMORDER11/actions/runs/43429892365) stopped before installing media tools or rendering. The regression test still expected Blender's old FFMPEG writer and rejected the new PNG-sequence pipeline; no media was produced and no release gates were bypassed.
 - Test correction committed in [9cf34dc](https://github.com/amorder/AMORDER11/commit/9cf34dcfc3f8e4a1ba243ad56afae9f2c0db15fa): the static contract now requires exact PNG frame-count validation, FFmpeg H.264 scene encoding and a full scene-file decode.
 - [Revision 3 render run 43430121736](https://github.com/amorder/AMORDER11/actions/runs/43430121736) is now in progress at the Blender PNG-frame render step. [Secret guard 43430121745](https://github.com/amorder/AMORDER11/actions/runs/43430121745) passed. No MP4, SRT or manifest has been committed, and no Instagram or YouTube post has been created.
+
+
+## X queue verification — 2026-11-13
+- Buffer post `6af72af15d42e353d99b6820` was independently re-read; exact status: **scheduled**, automatic queue, due 2026-11-13 20:58 IST. No public permalink exists before sending. This is a separate text-first X post, not a video upload.
