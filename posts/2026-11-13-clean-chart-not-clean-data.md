@@ -80,3 +80,11 @@ Paper-trading education only; not live-money performance; not investment advice;
 | YouTube Short | pending | pending | pending_render |
 
 No destination is reported as published until Buffer confirms the post as `sent` and a public post URL is verified. No human watch-through or headphone/speaker audition is claimed. The release workflow must verify the audio stream, full decode, loudness, clipping and narration/subtitle alignment; only automated checks are reported under the standing publishing authorization.
+
+
+## Render status — 2026-11-13
+- [GitHub Actions run 43427943599](https://github.com/amorder/AMORDER11/actions/runs/43427943599) passed the caption-contract precheck and completed media-tool and Kokoro model installation. The Blender scene-render step is in progress.
+- [Public secret-guard run 43428194762](https://github.com/amorder/AMORDER11/actions/runs/43428194762) passed.
+- Independent MP4 validation, representative-frame/motion checks, subtitle/safe-zone checks, audio checks and final asset commit have not yet run. The MP4, SRT and manifest are not yet present in the public repository.
+- Buffer history was checked before publishing: the last Instagram and YouTube video posts were sent on November 10, 2026, and no queued/sending post uses this new asset URL. Both channels are connected.
+- No Instagram or YouTube post has been created for this asset. Both destinations remain HOLD until the final export passes every critical release gate.
