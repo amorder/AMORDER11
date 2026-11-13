@@ -188,8 +188,23 @@ def main():
                  "--output",str(animation),"--width",str(BLENDER_WIDTH),"--height",str(BLENDER_HEIGHT),
                  "--duration",f"{duration:.3f}","--fps",str(BLENDER_FPS),
                  "--samples",str(BLENDER_TAA_SAMPLES)])
-            if not animation.exists() or animation.stat().st_size<100000:
-                raise RuntimeError(f"Missing Blender keyframed animation for scene {index}: {animation}")
+            # A short, dark PBR scene can encode to less than 100 KB. File size
+            # alone is not a valid completeness test: probe its stream, exact
+            # duration and frame rate, then decode the entire scene clip.
+            if not animation.exists() or animation.stat().st_size<1024:
+                raise RuntimeError(f"Missing or empty Blender keyframed animation for scene {index}: {animation}")
+            clip_meta=json.loads(subprocess.check_output([
+                "ffprobe","-v","error","-show_streams","-show_format","-of","json",str(animation)
+            ],text=True))
+            clip_video=next((s for s in clip_meta.get("streams",[]) if s.get("codec_type")=="video"),None)
+            clip_duration=float(clip_meta.get("format",{}).get("duration",0))
+            if not clip_video or (clip_video.get("codec_name"),clip_video.get("width"),clip_video.get("height"))!=("h264",BLENDER_WIDTH,BLENDER_HEIGHT):
+                raise RuntimeError(f"Blender scene {index} has an invalid video stream: {clip_video}")
+            if clip_video.get("avg_frame_rate")!=f"{BLENDER_FPS}/1":
+                raise RuntimeError(f"Blender scene {index} has an unexpected frame rate: {clip_video.get('avg_frame_rate')}")
+            if abs(clip_duration-duration)>0.5:
+                raise RuntimeError(f"Blender scene {index} is incomplete: {clip_duration:.3f}s vs {duration:.3f}s expected")
+            run(["ffmpeg","-v","error","-i",str(animation),"-f","null","-"])
 
             overlay=temp/f"overlay-{index:02d}.png"
             render_overlay(scene,index,len(scenes),font_file,overlay)
