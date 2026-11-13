@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Deterministic original Blender 3D plates for public AMORDER educational shorts."""
-import argparse, json, math, sys
+import argparse, json, math, sys, subprocess, shutil
 from pathlib import Path
 import bpy
 from mathutils import Vector
@@ -334,26 +334,26 @@ def animate_scene(scene, visual, duration, fps):
 
 
 def configure_animation_output(scene, output, fps):
+    """Render a numbered PNG sequence; FFmpeg encodes the scene MP4 afterward."""
     scene.render.fps = fps
     image_settings = scene.render.image_settings
-    # Blender 5.0 separates image/video output types. Set VIDEO before FFMPEG.
     if hasattr(image_settings, "media_type"):
-        image_settings.media_type = "VIDEO"
-    image_settings.file_format = "FFMPEG"
-    scene.render.ffmpeg.format = "MPEG4"
-    scene.render.ffmpeg.codec = "H264"
-    scene.render.ffmpeg.constant_rate_factor = "HIGH"
-    scene.render.ffmpeg.ffmpeg_preset = "GOOD"
-    scene.render.ffmpeg.video_bitrate = 16000
-    scene.render.ffmpeg.maxrate = 24000
-    scene.render.ffmpeg.buffersize = 2000
-    scene.render.ffmpeg.audio_codec = "NONE"
-    scene.render.filepath = str(Path(output).resolve().with_suffix(""))
+        image_settings.media_type = "IMAGE"
+    image_settings.file_format = "PNG"
+    image_settings.color_mode = "RGB"
+    image_settings.color_depth = "8"
+    image_settings.compression = 15
+    frame_dir = Path(output).resolve().parent / (Path(output).stem + "_frames")
+    if frame_dir.exists():
+        shutil.rmtree(frame_dir)
+    frame_dir.mkdir(parents=True, exist_ok=True)
+    scene.render.filepath = str(frame_dir / "frame_")
     scene.render.use_file_extension = True
     if hasattr(scene.render, "use_motion_blur"):
         scene.render.use_motion_blur = True
         if hasattr(scene.render, "motion_blur_shutter"):
             scene.render.motion_blur_shutter = .35
+    return frame_dir
 
 
 def main():
@@ -373,11 +373,34 @@ def main():
     build(a.visual)
     if a.duration > 0:
         animate_scene(scene, a.visual, a.duration, a.fps)
-        configure_animation_output(scene, a.output, a.fps)
+        frame_dir = configure_animation_output(scene, a.output, a.fps)
         bpy.ops.render.render(animation=True)
         output = Path(a.output).resolve()
+        expected_frames = scene.frame_end - scene.frame_start + 1
+        frames = sorted(frame_dir.glob("frame_*.png"))
+        if len(frames) != expected_frames:
+            raise RuntimeError(
+                f"Blender PNG sequence incomplete: found {len(frames)} of "
+                f"{expected_frames} frames in {frame_dir}"
+            )
+        print("Blender PNG sequence complete:", len(frames), "frames;",
+              "first:", frames[0].name, "last:", frames[-1].name)
+        command = [
+            "ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
+            "-framerate", str(a.fps), "-start_number", "1",
+            "-i", str(frame_dir / "frame_%04d.png"),
+            "-c:v", "libx264", "-preset", "medium", "-crf", "17",
+            "-pix_fmt", "yuv420p", "-r", str(a.fps),
+            "-movflags", "+faststart", str(output),
+        ]
+        subprocess.run(command, check=True, capture_output=True, text=True)
         if not output.exists() or output.stat().st_size < 1024:
-            raise RuntimeError("Blender animation export is missing or empty")
+            raise RuntimeError("FFmpeg scene encode is missing or empty")
+        subprocess.run(
+            ["ffmpeg", "-v", "error", "-i", str(output), "-f", "null", "-"],
+            check=True, capture_output=True, text=True,
+        )
+        shutil.rmtree(frame_dir)
         print("Rendered genuine Blender camera/object animation:", a.visual,
               a.width, a.height, a.duration, "seconds at", a.fps, "fps")
     else:
