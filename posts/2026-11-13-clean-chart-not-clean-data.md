@@ -83,7 +83,7 @@ No destination is reported as published until Buffer confirms the post as `sent`
 
 
 ## Render status — 2026-11-13
-- [GitHub Actions run 43427943599](https://github.com/amorder/AMORDER11/actions/runs/43427943599) passed the caption-contract precheck and completed media-tool and Kokoro model installation. The Blender scene-render step is in progress.
+- [GitHub Actions run 43427943599](https://github.com/amorder/AMORDER11/actions/runs/43427943599) failed in Blender animation export after the hosted Blender 5.0.1 writer produced no MP4. No media validation or publication occurred.
 - [Public secret-guard run 43428194762](https://github.com/amorder/AMORDER11/actions/runs/43428194762) passed.
 - Independent MP4 validation, representative-frame/motion checks, subtitle/safe-zone checks, audio checks and final asset commit have not yet run. The MP4, SRT and manifest are not yet present in the public repository.
 - Buffer history was checked before publishing: the last Instagram and YouTube video posts were sent on November 10, 2026, and no queued/sending post uses this new asset URL. Both channels are connected.
@@ -94,10 +94,10 @@ No destination is reported as published until Buffer confirms the post as `sent`
 - First daily render run [43427943599](https://github.com/amorder/AMORDER11/actions/runs/43427943599) failed in the Blender animation-export step. Blender rendered 100 frames for scene 1, but produced no MP4 at the expected path; the renderer stopped before independent MP4 validation, visual/motion checks, subtitle/audio/source gates and asset commit. No video was approved or published.
 - Root cause is the Blender 5.0.1 FFMPEG animation writer not producing the expected MP4 in the hosted runner. The prior file-size-only gate was already replaced with media probing; this failure showed the file itself was absent.
 - Fix committed in [42905ca](https://github.com/amorder/AMORDER11/commit/42905ca74cd421452d33c702c3bcadccd490a9eb): Blender now renders numbered PNG frames for each genuinely keyframed scene, verifies the exact frame count, then uses FFmpeg to encode and fully decode the H.264 scene MP4. The downstream ffprobe and final-file release gates remain mandatory and unchanged.
-- A new render run will be triggered by the revision 2 storyboard. Instagram and YouTube remain HOLD until the new run completes all independent gates and commits the final assets.
+- The revision 2 retry is tracked separately below. Instagram and YouTube remain HOLD until a later run completes all independent gates and commits the final assets.
 
 
 ## Caption-contract correction — 2026-11-13
 - Retry run [43429892365](https://github.com/amorder/AMORDER11/actions/runs/43429892365) stopped before installing media tools or rendering. The regression test still expected Blender's old FFMPEG writer and rejected the new PNG-sequence pipeline; no media was produced and no release gates were bypassed.
 - Test correction committed in [9cf34dc](https://github.com/amorder/AMORDER11/commit/9cf34dcfc3f8e4a1ba243ad56afae9f2c0db15fa): the static contract now requires exact PNG frame-count validation, FFmpeg H.264 scene encoding and a full scene-file decode.
-- The latest secret-guard scan for the test update is pending. A revision 3 storyboard will trigger the next render attempt. No Instagram or YouTube post has been created.
+- [Revision 3 render run 43430121736](https://github.com/amorder/AMORDER11/actions/runs/43430121736) is now in progress at the Blender PNG-frame render step. [Secret guard 43430121745](https://github.com/amorder/AMORDER11/actions/runs/43430121745) passed. No MP4, SRT or manifest has been committed, and no Instagram or YouTube post has been created.
