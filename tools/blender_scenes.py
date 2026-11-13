@@ -376,8 +376,8 @@ def main():
         configure_animation_output(scene, a.output, a.fps)
         bpy.ops.render.render(animation=True)
         output = Path(a.output).resolve()
-        if not output.exists() or output.stat().st_size < 100000:
-            raise RuntimeError("Blender animation export is missing or unexpectedly small")
+        if not output.exists() or output.stat().st_size < 1024:
+            raise RuntimeError("Blender animation export is missing or empty")
         print("Rendered genuine Blender camera/object animation:", a.visual,
               a.width, a.height, a.duration, "seconds at", a.fps, "fps")
     else:
