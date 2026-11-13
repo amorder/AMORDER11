@@ -2,7 +2,7 @@
 
 - **Publication date:** 2026-11-13
 - **Language / audience:** English / global
-- **Channels:** Instagram Reels and YouTube Shorts
+- **Channels:** X text companion (text-first), Instagram Reels and YouTube Shorts
 - **Topic:** How feed selection, timestamps, pagination and adjustment settings affect market-data quality
 - **Viewer promise:** A practical checklist for checking what a chart is actually showing before using it in a paper test
 
@@ -44,6 +44,10 @@ Paper-trading education only; not live-money performance; not investment advice;
 
 #AMORDER #MarketDataQuality #Shorts
 
+## X text companion (text-first; separate from video)
+
+Clean charts can hide bad inputs. Before a paper test, verify feed, bar time, session, pagination and adjustment mode. If any input is unclear, pause. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER
+
 ## Instagram
 A smooth chart is not a data-quality check. Before trusting a signal, verify the feed, bar timestamp, session, pagination and corporate-action adjustment. If the inputs are unclear, pause the paper test rather than guessing.
 
@@ -76,6 +80,7 @@ Paper-trading education only; not live-money performance; not investment advice;
 ## Publishing record
 | Destination | Buffer post ID | Public URL | Status |
 |---|---|---|---|
+| X text companion | pending | pending | pending_buffer |
 | Instagram Reel | pending | pending | pending_render |
 | YouTube Short | pending | pending | pending_render |
 
