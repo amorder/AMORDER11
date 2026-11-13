@@ -110,3 +110,16 @@ No destination is reported as published until Buffer confirms the post as `sent`
 
 ## X queue verification — 2026-11-13
 - Buffer post `6af72af15d42e353d99b6820` was independently re-read; exact status: **scheduled**, automatic queue, due 2026-11-13 20:58 IST. No public permalink exists before sending. This is a separate text-first X post, not a video upload.
+
+
+## Prior-release comparison — 2026-11-13
+- Reviewed the three preceding vertical releases through their public content records, Buffer publication history and available media manifest.
+- 2026-11-06 trade-journey short: 21.859 seconds, 720×1280, H.264/AAC; its content record reports a successful render and sent Instagram/YouTube posts. No separate technical manifest is present in the current public tree.
+- 2026-11-07 data-quality short: 22.937 seconds, 1080×1920, 30 fps, H.264/AAC; its record reports independent ffprobe validation and scheduled Buffer posts. No separate technical manifest is present in the current public tree.
+- 2026-11-09 case-study vertical: 156.82 seconds, 1080×1920, 30 fps, H.264/AAC; its manifest is present and confirms burned captions and disclosure. The vertical asset was sent through Buffer on 2026-11-10. No audience-performance metrics were used.
+- Concrete improvement in this release: target 105–145 seconds rather than the previous 156.82-second near-cap asset, retain six distinct scene keys, and lead with a direct data-quality hook. Missing manifests for 2026-11-06 and 2026-11-07 are recorded as an evidence gap; no unverified frame-coverage claims are made about those older files.
+
+## Render watchdog — 2026-11-13 10:19 ET
+- Revision 3 render run 43430121736 remains in_progress; its Blender scene-render step (step 8) is still running. The subsequent independent MP4, visual/subtitle/audio/source gates and asset commit are pending.
+- The expected MP4, SRT and manifest are not committed. No public HTTPS MP4 can yet be verified. Instagram Reel and YouTube Short remain HOLD; no video Buffer posts have been created.
+- The private automatic-release poll completed successfully but the private release-state record contains no 2026-11-13 release. The video must not be queued until the validated assets and exact public URL exist.
