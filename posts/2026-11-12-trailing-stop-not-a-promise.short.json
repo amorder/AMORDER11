@@ -95,14 +95,18 @@
     "instagram": {
       "buffer_post_id": null,
       "public_url": null,
-      "status": "pending_render"
+      "status": "held_render_failed"
     },
     "youtube": {
       "buffer_post_id": null,
       "public_url": null,
-      "status": "pending_render"
+      "status": "held_render_failed"
     }
   },
   "render_revision": 3,
-  "render_note": "Revision 3: the previous run was stopped by the 90-minute job timeout after only 33 Blender output frames. The verified bottleneck was full-resolution 1080x1920 Eevee rendering at 64 TAA samples on a CPU-only hosted runner. The production path now renders genuine 720x1280 keyframed Blender scenes at 4 TAA samples, retains the PBR geometry, lighting, depth of field and motion blur, then motion-compensates to 30 fps and Lanczos-upscales to the required 1080x1920 delivery. The render timeout is 180 minutes. All source, subtitle, audio, privacy, disclosure, full-decode and visual release gates remain mandatory; this optimization does not bypass them."
+  "render_note": "Revision 3: the previous run was stopped by the 90-minute job timeout after only 33 Blender output frames. The verified bottleneck was full-resolution 1080x1920 Eevee rendering at 64 TAA samples on a CPU-only hosted runner. The production path now renders genuine 720x1280 keyframed Blender scenes at 4 TAA samples, retains the PBR geometry, lighting, depth of field and motion blur, then motion-compensates to 30 fps and Lanczos-upscales to the required 1080x1920 delivery. The render timeout is 180 minutes. All source, subtitle, audio, privacy, disclosure, full-decode and visual release gates remain mandatory; this optimization does not bypass them.",
+  "render_status": "failed",
+  "render_run_id": "43279634075",
+  "render_blocker": "Blender scene MP4 did not meet the old arbitrary 100 KB minimum-size check after 80 frames; independent final MP4 and quality gates were skipped. No asset was approved or published.",
+  "render_retry": "A safer per-scene ffprobe and full-decode check was committed in tools/blender_scenes.py and tools/render_public_short.py; this November 12 storyboard is superseded by the November 13 data-quality storyboard."
 }
