@@ -24,11 +24,19 @@ checks = {
         and "Top edge softbox" in blender_scenes
         and '"BLENDER_EEVEE_NEXT"' in blender_scenes
     ),
-    "Blender 5 video output media type is set before FFmpeg": (
-        'image_settings.media_type = "VIDEO"' in blender_scenes
-        and 'image_settings.file_format = "FFMPEG"' in blender_scenes
-        and blender_scenes.index('image_settings.media_type = "VIDEO"')
-            < blender_scenes.index('image_settings.file_format = "FFMPEG"')
+    "Blender renders genuine PNG frame sequences before FFmpeg scene encoding": (
+        'image_settings.media_type = "IMAGE"' in blender_scenes
+        and 'image_settings.file_format = "PNG"' in blender_scenes
+        and 'scene.render.filepath = str(frame_dir / "frame_")' in blender_scenes
+        and 'bpy.ops.render.render(animation=True)' in blender_scenes
+        and '"-i", str(frame_dir / "frame_%04d.png")' in blender_scenes
+        and '"-c:v", "libx264"' in blender_scenes
+        and "len(frames) != expected_frames" in blender_scenes
+    ),
+    "Blender scene MP4 is fully decoded before use": (
+        '["ffmpeg", "-v", "error", "-i", str(output), "-f", "null", "-"]' in blender_scenes
+        and '"ffprobe"' in short
+        and '["ffmpeg","-v","error","-i",str(animation),"-f","null","-"]' in short
     ),
     "Motion-graphics layer includes scene-specific animation": (
         "def build_motion_graphics_filter(" in motion_graphics
