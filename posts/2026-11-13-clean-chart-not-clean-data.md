@@ -9,7 +9,7 @@
 ## Story and production
 An original process-led explainer. It uses no live market snapshot, stock-specific call, account data, trading result or performance claim.
 
-- **Opening hook:** "A chart can look smooth and still be misleading."
+- **Opening hook:** "A chart can look smooth and still mislead."
 - **Scene design:** six distinct Blender Eevee PBR setups: idea, source, timestamp, gaps, stand-down and brand.
 - **Motion:** keyframed camera and object animation in each Blender scene, followed by FFmpeg motion-compensated delivery at 30 fps.
 - **Target runtime:** 105–145 seconds; hard maximum strictly below 159 seconds (2:39).
