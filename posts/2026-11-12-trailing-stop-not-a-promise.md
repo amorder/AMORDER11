@@ -76,8 +76,8 @@ Paper-trading education only; not live-money performance; not investment advice;
 | Destination | Buffer post ID | Public URL | Status |
 |---|---|---|---|
 | X text-first | 6af4aefd24e81672d7964a7b | https://x.com/2118017267829190656/status/2120678973537398850 | sent |
-| Instagram Reel | pending | pending | pending_render |
-| YouTube Short | pending | pending | pending_render |
+| Instagram Reel | — | — | held_render_failed |
+| YouTube Short | — | — | held_render_failed |
 
 ## Render status — 2026-11-12 12:53 ET
 - Public render workflow run 43260259476 is still in progress at the Blender scene-render step. Caption-contract regression, media-tool installation and Kokoro model download passed.
@@ -101,3 +101,10 @@ Paper-trading education only; not live-money performance; not investment advice;
 - New render run [43279634075](https://github.com/amorder/AMORDER11/actions/runs/43279634075) started from the revision 3 storyboard. Caption-contract regression, media-tool installation and Kokoro model download passed; the Blender scene-render step is currently in progress. The independent MP4 and release gates have not yet run.
 - Latest public secret-guard run [43279634128](https://github.com/amorder/AMORDER11/actions/runs/43279634128) passed.
 - The MP4, SRT and manifest are still absent from the public repository. Instagram and YouTube remain HOLD; no video Buffer post has been created. The X text-first companion remains verified as sent. No human watch-through is claimed.
+
+
+## Final render outcome — 2026-11-13
+- Render run [43279634075](https://github.com/amorder/AMORDER11/actions/runs/43279634075) failed at the first Blender scene export check. The log shows 80 frames rendered, but the scene MP4 did not meet the renderer's arbitrary 100 KB minimum-size check. Final MP4 validation, independent release gates and asset commit were skipped.
+- Earlier run [43260259476](https://github.com/amorder/AMORDER11/actions/runs/43260259476) was cancelled after the hosted runner timeout. Neither run produced an approved public video.
+- Renderer correction: commits [7b510e2](https://github.com/amorder/AMORDER11/commit/7b510e28e7a00089c983dc417a8507e847366969) and [cb39236](https://github.com/amorder/AMORDER11/commit/cb39236fe4bb313703353afe3efcc3f25d159e3a) replace the arbitrary per-scene size gate with ffprobe codec, dimensions, frame-rate and duration checks plus a full decode of every scene clip. The final deliverable still has its original size, duration, decode, motion, audio, subtitle, source, rights, privacy and disclosure gates.
+- This November 12 storyboard remains unpublished. No Instagram or YouTube video post was created. The separate X text-first companion remains verified as sent.
