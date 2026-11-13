@@ -36,7 +36,7 @@
       "visual": "idea",
       "title": "SMOOTH DOES NOT MEAN CLEAN",
       "overlay": "Check the data behind the chart.",
-      "narration": "A chart can look smooth and still be misleading. Before trusting a signal, ask what feed produced it, when each bar belongs, and whether the history is complete."
+      "narration": "A chart can look smooth and still mislead. Before trusting a signal, ask which feed produced it and whether its history is complete."
     },
     {
       "visual": "source",
