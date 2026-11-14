@@ -1,0 +1,134 @@
+{
+  "title": "Submitted Is Not Filled",
+  "publication_date": "2026-11-14",
+  "render_slug": "amorder-submitted-is-not-filled",
+  "topic": "How to distinguish an order request from accepted, new, partial, filled, canceled, rejected and expired order states",
+  "language": "en",
+  "audience": "global",
+  "intended_channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds_target": "105-145",
+    "duration_seconds_max_exclusive": 159,
+    "video": "MP4 H.264, AAC English narration, 30 fps",
+    "visual_engine": "Blender Eevee PBR scenes with genuine keyframed camera and object animation in every scene; 720x1280 base render at 6 fps and 2 TAA samples, motion-compensated and Lanczos-upscaled to 1080x1920 at 30 fps",
+    "post_production": "FFmpeg motion-compensated interpolation, scene-specific original motion graphics, burned English captions, SRT sidecar, loudness mastering and full decode",
+    "voiceover_model": "Kokoro-82M ONNX",
+    "voice": "af_heart",
+    "music": "No copyrighted music; original restrained sound design only.",
+    "blender_base_resolution": "720x1280",
+    "blender_eevee_taa_samples": 2
+  },
+  "creative_direction": {
+    "style": "Ultra-realistic cinematic graphite studio with physically based glass, brushed metal and anodised forms, softbox key and rim lighting, controlled depth of field, restrained cyan and warm amber accents, deliberate negative space and purposeful camera choreography. Six distinct original 3D setups; no stock footage, broker screenshots or fake account screens.",
+    "voiceover_direction": "Natural, measured English narration for a global audience. Clear consonants, purposeful pauses and calm professional delivery; no hype.",
+    "overlay_direction": "One concise high-contrast headline and one supporting line per scene, within phone-safe margins and away from the hero object.",
+    "sound_direction": "Voice-led mix with subtle original mechanical ambience only; no third-party footage or copyrighted music."
+  },
+  "scenes": [
+    {
+      "visual": "idea",
+      "title": "SUBMITTED IS NOT FILLED",
+      "overlay": "Verify the broker-reported status.",
+      "narration": "An order request is not proof of execution. Check the broker-reported status before you record a fill or update a position."
+    },
+    {
+      "visual": "source",
+      "title": "READ THE LIFECYCLE",
+      "overlay": "Accepted and new are different.",
+      "narration": "Alpaca defines accepted as an order received by the broker but not yet routed to an execution venue. New means it has been received and routed to exchanges for execution. Neither status means a fill has occurred. Status names are evidence, not decoration."
+    },
+    {
+      "visual": "timestamp",
+      "title": "PARTIAL IS NOT COMPLETE",
+      "overlay": "Only executed quantity counts.",
+      "narration": "A partially filled order has executed only in part. The remaining quantity is still outstanding. Keep the filled quantity separate from the unfilled balance, and check later updates before recording the order as complete. A fill record is evidence of execution, not a prediction."
+    },
+    {
+      "visual": "gaps",
+      "title": "CANCEL REQUESTS TAKE TIME",
+      "overlay": "Pending cancel is not canceled.",
+      "narration": "Pending cancel means the order is waiting for cancellation. Canceled is a separate status. A cancel request can arrive after an order has already filled, so check the confirmed status rather than assuming the request succeeded. Do not mark an order closed while its status is still pending."
+    },
+    {
+      "visual": "stand_down",
+      "title": "REJECTED OR EXPIRED?",
+      "overlay": "Neither status is a fill.",
+      "narration": "A rejected order has been rejected and receives no further updates. An expired order has reached the end of its time in force. Record those outcomes accurately; do not turn either into an executed trade. Keep the broker's time-in-force rules beside the status when you review the order."
+    },
+    {
+      "visual": "brand",
+      "title": "LOG WHAT IS CONFIRMED",
+      "overlay": "Submission. Updates. Final outcome.",
+      "narration": "In a paper simulation, preserve the sequence: submission, status changes, any partial execution, and final outcome. Report only the quantity the broker confirms as filled. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
+    }
+  ],
+  "instagram_caption": "An order request is not proof of execution. Learn the difference between accepted, new, partially filled, pending cancel, canceled, rejected, expired and filled. Keep the paper-trading log tied to confirmed status updates, not assumptions.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #TradingDiscipline #RiskManagement",
+  "youtube_title": "Submitted Is Not Filled: Read Order Status | AMORDER #Shorts",
+  "youtube_description": "An order request is not proof of execution. This short explains the difference between accepted, new, partially filled, pending cancel, canceled, rejected, expired and filled. Keep paper-trading records tied to broker-confirmed status updates; never infer a fill from submission alone.\n\nSources:\nAlpaca Trading API — Create an Order / Order Status: https://docs.alpaca.markets/us/reference/postorder\nAlpaca — Placing Orders / Order Lifecycle: https://docs.alpaca.markets/us/docs/orders-at-alpaca\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #TradingDiscipline #Shorts",
+  "sources": [
+    "https://docs.alpaca.markets/us/reference/postorder",
+    "https://docs.alpaca.markets/us/docs/orders-at-alpaca"
+  ],
+  "claims": [
+    {
+      "claim": "accepted means an order has been received by Alpaca but has not yet been routed to the execution venue.",
+      "source": "https://docs.alpaca.markets/us/reference/postorder"
+    },
+    {
+      "claim": "new means the order has been received by Alpaca and routed to exchanges for execution.",
+      "source": "https://docs.alpaca.markets/us/reference/postorder"
+    },
+    {
+      "claim": "partially_filled means an order has been partially filled; filled means the order has been filled and no further updates will occur.",
+      "source": "https://docs.alpaca.markets/us/reference/postorder"
+    },
+    {
+      "claim": "pending_cancel means the order is waiting to be canceled; canceled is a distinct completed status.",
+      "source": "https://docs.alpaca.markets/us/reference/postorder"
+    },
+    {
+      "claim": "rejected and expired are distinct order statuses with no further updates.",
+      "source": "https://docs.alpaca.markets/us/reference/postorder"
+    },
+    {
+      "claim": "an order may be canceled through the API until it reaches filled, canceled or expired.",
+      "source": "https://docs.alpaca.markets/us/reference/postorder"
+    }
+  ],
+  "automated_review": {
+    "approved_source_domains": [
+      "docs.alpaca.markets"
+    ],
+    "public_safety_reviewed": true,
+    "claims_checked_against_sources": true,
+    "rights_and_asset_origin_reviewed": true,
+    "disclosure_verified": true
+  },
+  "alt_text": "Six cinematic graphite-studio Blender scenes use a lens, linked source panels, a precision clock, separated data blocks, a protective pause symbol and an orbital brand form to explain order status transitions and why submission is not proof of a fill.",
+  "asset_path": "assets/amorder-submitted-is-not-filled-2026-11-14.mp4",
+  "asset_url": "https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-submitted-is-not-filled-2026-11-14.mp4",
+  "subtitle_path": "subtitles/amorder-submitted-is-not-filled-2026-11-14.srt",
+  "manifest_path": "assets/amorder-submitted-is-not-filled-manifest-2026-11-14.json",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "publishing_record": {
+    "instagram": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    },
+    "youtube": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    }
+  },
+  "render_revision": 1,
+  "render_note": "Revision 1 uses the optimized Blender PNG-frame and FFmpeg encoding path at 6 Blender FPS and 2 Eevee TAA samples, retaining a 720x1280 PBR base, 1080x1920 Lanczos delivery, 30 fps motion-compensated finishing and the full independent release gate. The vertical MP4 must remain strictly below 159 seconds."
+}
