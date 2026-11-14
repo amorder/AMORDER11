@@ -79,8 +79,8 @@ Paper-trading education only; not live-money performance; not investment advice;
 ## Publishing record
 | Destination | Buffer post ID | Public URL | Status |
 |---|---|---|---|
-| Instagram Reel | pending | pending | pending_render |
-| YouTube Short | pending | pending | pending_render |
+| Instagram Reel | — | — | HOLD (render in progress; no Buffer post created) |
+| YouTube Short | — | — | HOLD (render in progress; no Buffer post created) |
 
 No destination is reported as published until Buffer confirms the post as `sent` and a public post URL is verified. No human watch-through or headphone/speaker audition is claimed; only automated checks are reported.
 
