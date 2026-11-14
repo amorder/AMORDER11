@@ -106,7 +106,7 @@ def area_light(name, location, target, power, color, size):
     return obj
 
 
-def setup(width=1080, height=1920, samples=4):
+def setup(width=1080, height=1920, samples=2):
     scene = bpy.context.scene
     engines = {item.identifier for item in scene.render.bl_rna.properties["engine"].enum_items}
     scene.render.engine = "BLENDER_EEVEE_NEXT" if "BLENDER_EEVEE_NEXT" in engines else "BLENDER_EEVEE"
@@ -122,7 +122,7 @@ def setup(width=1080, height=1920, samples=4):
     if eevee is not None and hasattr(eevee, "taa_render_samples"):
         eevee.taa_render_samples = samples
     if eevee is not None and hasattr(eevee, "taa_samples"):
-        eevee.taa_samples = 8
+        eevee.taa_samples = samples
     try:
         scene.view_settings.view_transform = "AgX"
         scene.view_settings.look = "AgX - Medium High Contrast"
