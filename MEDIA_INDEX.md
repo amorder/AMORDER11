@@ -81,3 +81,14 @@ The AMORDER renderers now use a hybrid cinematic pipeline:
 - The MP4, SRT and manifest are not yet committed. Instagram and YouTube remain HOLD; no Buffer post has been created for this asset.
 - Do not treat this storyboard or the cancelled render as a finished or published video. The full independent decode, visual/motion, subtitle/safe-zone, audio, source/rights, privacy and disclosure gates did not run and must pass before release.
 
+
+
+## November 14, 2026 — Submitted Is Not Filled
+
+- [Public content record](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-14-submitted-is-not-filled.md)
+- [Short storyboard](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-14-submitted-is-not-filled.short.json)
+- Topic: order lifecycle integrity — accepted, new, partially filled, pending cancel, canceled, rejected, expired and filled are distinct states.
+- [Render workflow run 43598788407](https://github.com/amorder/AMORDER11/actions/runs/43598788407) — running with the optimized Blender profile: 720x1280 base, 6 fps, 2 TAA samples, FFmpeg motion-compensated 1080x1920/30 fps delivery.
+- [Public secret guard 43598788472](https://github.com/amorder/AMORDER11/actions/runs/43598788472) — passed.
+- The expected MP4, SRT and manifest are not yet committed. The independent decode, visual/motion, subtitle/safe-zone, audio and source release gates have not yet passed. Instagram and YouTube remain HOLD; no Buffer video post has been created.
+- The story is based on Alpaca's public order lifecycle documentation and contains no account, order or performance data.
