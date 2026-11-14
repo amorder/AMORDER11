@@ -104,3 +104,9 @@ The X companion is text-only and is not represented as a video. It is queued sep
 | Destination | Buffer post ID | Public URL | Status |
 |---|---|---|---|
 | X text companion | `6af8a08d918fe79d2e95c0c5` | pending until sent | scheduled (automatic Buffer queue; due 2026-11-15 00:32 UTC) |
+
+
+## Controlled render retry status — 2026-11-14
+- Public short render retry: [GitHub Actions run 43623624656](https://github.com/amorder/AMORDER11/actions/runs/43623624656), currently in progress at the Blender scene-render step. The independent MP4 validation, visual/subtitle/audio/source gates and generated-asset commit have not run yet.
+- Latest public secret-guard run 43623740809 passed for the content record commit.
+- Private automatic release poll [43623887146](https://github.com/amorder/AMORDER/actions/runs/43623887146) completed successfully and explicitly reported: “Waiting: vertical video render is not complete yet.” It created no YouTube or Instagram post. Both destinations remain HOLD.
