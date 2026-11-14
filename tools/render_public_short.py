@@ -14,8 +14,8 @@ from kokoro_onnx import Kokoro
 from motion_graphics import build_motion_graphics_filter
 
 WIDTH, HEIGHT, FPS = 1080, 1920, 30
-BLENDER_WIDTH, BLENDER_HEIGHT, BLENDER_TAA_SAMPLES = 720, 1280, 4
-BLENDER_FPS = 12
+BLENDER_WIDTH, BLENDER_HEIGHT, BLENDER_TAA_SAMPLES = 720, 1280, 2
+BLENDER_FPS = 6
 MAX_RUNTIME_SECONDS = 159.0
 DISCLOSURE = "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
 
