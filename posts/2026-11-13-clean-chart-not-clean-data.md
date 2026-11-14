@@ -128,3 +128,11 @@ No destination is reported as published until Buffer confirms the post as `sent`
 ## Buffer draft copy — 2026-11-13
 - Buffer Idea `6af72bc1603c44ae002a6435` stores the Instagram Reel caption and YouTube Shorts title/description as a draft idea for the connected Instagram and YouTube destinations.
 - Exact state: draft idea only; no Instagram or YouTube post was created because the final MP4, SRT, manifest and public HTTPS fetch are not ready. This does not count as a scheduled or published post.
+
+
+## Final render status — 2026-11-14 (supersedes earlier watchdog)
+- Render run [43430121736](https://github.com/amorder/AMORDER11/actions/runs/43430121736) completed with conclusion **cancelled** at the workflow's 180-minute job limit. Blender was still rendering PNG frames for scene 6 when the job was canceled.
+- The workflow log shows only 89 frame files for scene 6 at cancellation. The independent MP4 validation, visual/motion, subtitle/safe-zone, audio/source release gates and generated-asset commit were skipped.
+- The run produced no workflow artifact. The expected MP4, SRT and manifest are not present in the public repository.
+- Instagram and YouTube remain HOLD for this November 13 item. No Buffer post was created for it.
+- A render-profile optimization was committed on November 14: Blender base remains 720x1280, but keyframed rendering now uses 6 fps and 2 Eevee TAA samples before FFmpeg motion-compensated 30 fps delivery. This is a production-cost adjustment, not evidence that the November 13 asset passed quality checks.
