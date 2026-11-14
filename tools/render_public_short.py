@@ -22,6 +22,26 @@ DISCLOSURE = "Paper-trading education only; not live-money performance; not inve
 def run(command):
     subprocess.run(command, check=True)
 
+
+def run_blender_scene(command, output):
+    """Accept only a post-output Blender SIGSEGV; media validation remains mandatory."""
+    try:
+        subprocess.run(command, check=True)
+    except subprocess.CalledProcessError as exc:
+        # Blender 5.0.1 may segfault during process teardown after the PNG sequence
+        # and FFmpeg scene MP4 have both been written and decoded. Never suppress
+        # other failures, or a SIGSEGV that did not leave a non-empty scene file.
+        if exc.returncode not in (-11, 139):
+            raise
+        if not output.is_file() or output.stat().st_size < 1024:
+            raise RuntimeError(
+                f"Blender exited with SIGSEGV before producing a usable scene file: {output}"
+            ) from exc
+        print(
+            "WARNING: Blender exited with SIGSEGV after writing the scene MP4; "
+            "continuing only to mandatory ffprobe, duration, frame-rate and full-decode checks."
+        )
+
 def font_path():
     for family in ("Noto Sans", "DejaVu Sans"):
         try:
@@ -181,13 +201,13 @@ def main():
             )
 
         for index,(scene,wav,duration) in enumerate(audio_jobs,1):
-            # Blender renders an actual keyframed camera + moving 3D scene at 12 fps.
+            # Blender renders an actual keyframed camera + moving 3D scene at 6 fps.
             # FFmpeg motion-compensated interpolation brings it to the 30 fps deliverable.
             animation=clips_dir/f"blender-{index:02d}.mp4"
-            run([a.blender,"--background","--python",str(script),"--","--visual",scene["visual"],
+            run_blender_scene([a.blender,"--background","--python",str(script),"--","--visual",scene["visual"],
                  "--output",str(animation),"--width",str(BLENDER_WIDTH),"--height",str(BLENDER_HEIGHT),
                  "--duration",f"{duration:.3f}","--fps",str(BLENDER_FPS),
-                 "--samples",str(BLENDER_TAA_SAMPLES)])
+                 "--samples",str(BLENDER_TAA_SAMPLES)], animation)
             # A short, dark PBR scene can encode to less than 100 KB. File size
             # alone is not a valid completeness test: probe its stream, exact
             # duration and frame rate, then decode the entire scene clip.
