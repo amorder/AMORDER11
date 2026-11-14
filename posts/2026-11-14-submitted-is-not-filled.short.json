@@ -129,6 +129,10 @@
       "status": "pending_render"
     }
   },
-  "render_revision": 1,
-  "render_note": "Revision 1 uses the optimized Blender PNG-frame and FFmpeg encoding path at 6 Blender FPS and 2 Eevee TAA samples, retaining a 720x1280 PBR base, 1080x1920 Lanczos delivery, 30 fps motion-compensated finishing and the full independent release gate. The vertical MP4 must remain strictly below 159 seconds."
+  "render_revision": 2,
+  "render_note": "Revision 2 addresses a verified Blender 5.0.1 teardown SIGSEGV (signal 11) after the timestamp scene's PNG sequence and scene MP4 had been written and decoded. The parent renderer now tolerates only that post-output signal when a non-empty scene MP4 exists; its independent ffprobe codec/resolution/fps/duration checks and full FFmpeg decode remain mandatory. Missing, partial, malformed or undecodable output still fails.",
+  "render_status": "retry_pending",
+  "render_run_id": "43598788407",
+  "render_blocker": "The November 14 render run stopped at the Blender subprocess return code -11 after the timestamp scene reported a completed PNG sequence and scene MP4 encode/decode. Parent-level ffprobe, full decode, final media QA and asset commit were skipped; no video was published.",
+  "render_retry": "One controlled retry follows the focused teardown-exit guard and regression check. The guard does not bypass any media-integrity or release gate."
 }
