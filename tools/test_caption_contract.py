@@ -84,12 +84,12 @@ checks["episode workflow stages only manifest-listed outputs"] = (
 )
 checks["short workflow cancels superseded renders"] = "cancel-in-progress: true" in short_workflow
 checks["Blender uses a bounded Eevee sample budget"] = (
-    "def setup(width=1080, height=1920, samples=4)" in blender_scenes
+    "def setup(width=1080, height=1920, samples=2)" in blender_scenes
     and "eevee.taa_render_samples = samples" in blender_scenes
-    and "eevee.taa_samples = 8" in blender_scenes
+    and "eevee.taa_samples = samples" in blender_scenes
 )
 checks["Short render uses 720p Blender scenes and 1080p Lanczos delivery"] = (
-    "BLENDER_WIDTH, BLENDER_HEIGHT, BLENDER_TAA_SAMPLES = 720, 1280, 4" in short
+    "BLENDER_WIDTH, BLENDER_HEIGHT, BLENDER_TAA_SAMPLES = 720, 1280, 2" in short
     and '"--samples",str(BLENDER_TAA_SAMPLES)' in short
     and "scale={WIDTH}:{HEIGHT}:flags=lanczos" in short
     and '"blender_render_width":BLENDER_WIDTH' in short
