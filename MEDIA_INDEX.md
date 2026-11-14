@@ -76,8 +76,8 @@ The AMORDER renderers now use a hybrid cinematic pipeline:
 - [Short storyboard](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-13-clean-chart-not-clean-data.short.json)
 - Topic: feed coverage, bar timestamps, pagination and corporate-action adjustment settings.
 - [First render attempt](https://github.com/amorder/AMORDER11/actions/runs/43427943599) — failed during Blender animation export; no usable MP4 was produced.
-- [Latest render attempt](https://github.com/amorder/AMORDER11/actions/runs/43430121736) — in progress at the Blender PNG-frame render step after the renderer and caption-contract fixes.
+- [Latest render attempt](https://github.com/amorder/AMORDER11/actions/runs/43430121736) — completed with conclusion **cancelled** at the 180-minute job limit while Blender was rendering scene 6; no final MP4 was produced.
 - [Latest public secret guard](https://github.com/amorder/AMORDER11/actions/runs/43430121745) — passed.
 - The MP4, SRT and manifest are not yet committed. Instagram and YouTube remain HOLD; no Buffer post has been created for this asset.
-- Do not treat this storyboard or an in-progress render as a finished or published video. The full independent decode, visual/motion, subtitle/safe-zone, audio, source/rights, privacy and disclosure gates must pass first.
+- Do not treat this storyboard or the cancelled render as a finished or published video. The full independent decode, visual/motion, subtitle/safe-zone, audio, source/rights, privacy and disclosure gates did not run and must pass before release.
 
