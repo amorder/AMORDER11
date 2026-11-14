@@ -89,7 +89,7 @@ checks["Blender uses a bounded Eevee sample budget"] = (
     and "eevee.taa_samples = samples" in blender_scenes
 )
 checks["Short render uses 720p Blender scenes and 1080p Lanczos delivery"] = (
-    "BLENDER_WIDTH, BLENDER_HEIGHT, BLENDER_TAA_SAMPLES = 720, 1280, 2" in short
+    "BLENDER_WIDTH, BLENDER_HEIGHT, BLENDER_TAA_SAMPLES = 720, 1280, 2" in short and "BLENDER_FPS = 6" in short
     and '"--samples",str(BLENDER_TAA_SAMPLES)' in short
     and "scale={WIDTH}:{HEIGHT}:flags=lanczos" in short
     and '"blender_render_width":BLENDER_WIDTH' in short
