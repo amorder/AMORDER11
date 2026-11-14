@@ -83,3 +83,11 @@ Paper-trading education only; not live-money performance; not investment advice;
 | YouTube Short | pending | pending | pending_render |
 
 No destination is reported as published until Buffer confirms the post as `sent` and a public post URL is verified. No human watch-through or headphone/speaker audition is claimed; only automated checks are reported.
+
+
+## Render retry — 2026-11-14
+- First render attempt [43598788407](https://github.com/amorder/AMORDER11/actions/runs/43598788407) failed in the Blender subprocess for scene 3 (the timestamp setup). The log shows the 106-frame PNG sequence completed and the scene MP4 was encoded and decoded; Blender 5.0.1 then exited with SIGSEGV (signal 11) during process teardown. The parent renderer treated every non-zero Blender exit as fatal, so its own ffprobe, duration/FPS and full-decode checks plus final visual, subtitle, audio, source and asset-commit gates were skipped.
+- Focused fix: the renderer now tolerates only exit codes -11/139 when the expected scene MP4 exists and is non-empty. It then still requires parent-level H.264/720×1280/6-fps metadata, expected duration and a complete FFmpeg decode. Any other exit code, missing file, malformed stream, wrong duration or decode error remains a hard failure.
+- Regression coverage was added to the public render-contract test. The storyboard is revision 2 and this is the single controlled retry; no MP4, SRT, manifest or video Buffer post is claimed until the workflow and all release gates complete.
+- Concrete creative improvement versus the prior 156.82-second near-cap vertical: this story is structured around six distinct moving Blender setups and a short direct opening hook; the final runtime remains unverified until the narration render completes.
+- Prior-release evidence review: the November 9 manifest confirms the 156.82-second vertical export at 1080×1920, 30 fps, H.264/AAC with burned captions. The November 6 and November 7 content records report earlier exports, but their detailed manifests are absent from the current public tree; no unsupported motion-coverage or audience-metric claims are inferred from those missing records.
