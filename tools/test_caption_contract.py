@@ -88,6 +88,15 @@ checks["Blender uses a bounded Eevee sample budget"] = (
     and "eevee.taa_render_samples = samples" in blender_scenes
     and "eevee.taa_samples = samples" in blender_scenes
 )
+checks["Blender post-render SIGSEGV is tolerated only with a non-empty scene MP4 and mandatory validation"] = (
+    "def run_blender_scene(command, output):" in short
+    and "exc.returncode not in (-11, 139)" in short
+    and "not output.is_file()" in short
+    and "output.stat().st_size < 1024" in short
+    and "run_blender_scene([" in short
+    and 'clip_meta=json.loads(subprocess.check_output([' in short
+    and '["ffmpeg","-v","error","-i",str(animation),"-f","null","-"]' in short
+)
 checks["Short render uses 720p Blender scenes and 1080p Lanczos delivery"] = (
     "BLENDER_WIDTH, BLENDER_HEIGHT, BLENDER_TAA_SAMPLES = 720, 1280, 2" in short and "BLENDER_FPS = 6" in short
     and '"--samples",str(BLENDER_TAA_SAMPLES)' in short
