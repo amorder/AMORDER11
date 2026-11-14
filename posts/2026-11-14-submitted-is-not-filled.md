@@ -91,3 +91,16 @@ No destination is reported as published until Buffer confirms the post as `sent`
 - Regression coverage was added to the public render-contract test. The storyboard is revision 2 and this is the single controlled retry; no MP4, SRT, manifest or video Buffer post is claimed until the workflow and all release gates complete.
 - Concrete creative improvement versus the prior 156.82-second near-cap vertical: this story is structured around six distinct moving Blender setups and a short direct opening hook; the final runtime remains unverified until the narration render completes.
 - Prior-release evidence review: the November 9 manifest confirms the 156.82-second vertical export at 1080×1920, 30 fps, H.264/AAC with burned captions. The November 6 and November 7 content records report earlier exports, but their detailed manifests are absent from the current public tree; no unsupported motion-coverage or audience-metric claims are inferred from those missing records.
+
+
+## X text-first companion
+An order request is not a fill. “New” means routed; “partially filled” means only part executed; “filled” means complete. Record only broker-confirmed quantities.
+
+Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER
+
+The X companion is text-only and is not represented as a video. It is queued separately from the Instagram Reel and YouTube Short release path.
+
+## X publishing record
+| Destination | Buffer post ID | Public URL | Status |
+|---|---|---|---|
+| X text companion | pending | pending | pending_queue |
