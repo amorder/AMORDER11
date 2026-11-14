@@ -94,7 +94,7 @@ No destination is reported as published until Buffer confirms the post as `sent`
 
 
 ## X text-first companion
-An order request is not a fill. “New” means routed; “partially filled” means only part executed; “filled” means complete. Record only broker-confirmed quantities.
+Submitted is not filled. New = routed; partial = some quantity executed; filled = complete. Log only broker-confirmed quantities.
 
 Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER
 
