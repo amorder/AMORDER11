@@ -338,9 +338,9 @@ def main() -> None:
     if (
         manifest.get("blender_render_width") != 720
         or manifest.get("blender_render_height") != 1280
-        or manifest.get("blender_taa_render_samples") != 4
+        or manifest.get("blender_taa_render_samples") != 2
         or manifest.get("delivery_upscale_filter") != "lanczos"
-        or manifest.get("blender_animation_fps") != 12
+        or manifest.get("blender_animation_fps") != 6
         or manifest.get("delivery_fps") != 30
     ):
         raise ValueError("Manifest does not confirm the bounded Blender render and 1080p delivery profile")
