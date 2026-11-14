@@ -103,4 +103,4 @@ The X companion is text-only and is not represented as a video. It is queued sep
 ## X publishing record
 | Destination | Buffer post ID | Public URL | Status |
 |---|---|---|---|
-| X text companion | pending | pending | pending_queue |
+| X text companion | `6af8a08d918fe79d2e95c0c5` | pending until sent | scheduled (automatic Buffer queue; due 2026-11-15 00:32 UTC) |
