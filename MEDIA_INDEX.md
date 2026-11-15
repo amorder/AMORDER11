@@ -92,3 +92,16 @@ The AMORDER renderers now use a hybrid cinematic pipeline:
 - [Public secret guard 43598788472](https://github.com/amorder/AMORDER11/actions/runs/43598788472) — passed.
 - The expected MP4, SRT and manifest are not yet committed. The independent decode, visual/motion, subtitle/safe-zone, audio and source release gates have not yet passed. Instagram and YouTube remain HOLD; no Buffer video post has been created.
 - The story is based on Alpaca's public order lifecycle documentation and contains no account, order or performance data.
+
+
+## November 15, 2026 — Paper Trading Has Blind Spots
+
+- [Public content record](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-15-paper-trading-blind-spots.md)
+- [Short storyboard](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-15-paper-trading-blind-spots.short.json)
+- Topic: simulation limits — live exchange routing, market impact, latency, queue position, displayed liquidity and simulator assumptions.
+- Primary source: [Alpaca — Paper Trading](https://docs.alpaca.markets/us/docs/paper-trading).
+- Renderer fix: final scene concatenation and subtitle burn now force constant 30 fps; the public caption/render contract precheck passed.
+- [Current render run 43716379478](https://github.com/amorder/AMORDER11/actions/runs/43716379478) — started November 15; Blender/Kokoro render and exact 30/1 export check are pending.
+- [Secret guard 43716382985](https://github.com/amorder/AMORDER11/actions/runs/43716382985) — running at last check.
+- The MP4, SRT and manifest are not yet committed. Independent decode, visual/motion, subtitle/safe-zone, audio, source/rights and disclosure gates must pass before publishing. Instagram and YouTube remain HOLD; no Buffer post has been created.
+- No private account, order, fill or performance data is included.
