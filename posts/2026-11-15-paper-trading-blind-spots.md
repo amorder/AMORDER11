@@ -2,7 +2,7 @@
 
 - **Publication date:** 2026-11-15
 - **Language / audience:** English / global
-- **Channels:** Instagram Reels, YouTube Shorts
+- **Channels:** YouTube Shorts only for this run; Instagram is not requested
 - **Topic:** What paper-trading simulations omit and why a simulated fill is not a forecast of live execution
 
 ## Viewer promise
@@ -98,3 +98,10 @@ No destination is reported as published until Buffer confirms the post as `sent`
 - GitHub Actions run [43716423585](https://github.com/amorder/AMORDER11/actions/runs/43716423585) completed the Blender/Kokoro render and passed the H.264/AAC, 1080×1920, nominal 30 fps, 94.094-second and full-file decode checks.
 - The independent release validator then failed because one SRT subtitle cue exceeded the 120-character mobile-readability limit.
 - The workflow did not commit the MP4, SRT or manifest. No YouTube or Instagram Buffer post was created; both destinations remain HOLD.
+
+## Self-healing repair and current YouTube Shorts run — November 15, 2026
+- The first export (run [43716423585](https://github.com/amorder/AMORDER11/actions/runs/43716423585)) passed the technical MP4 and full-decode checks but failed the independent mobile-caption gate because one SRT cue exceeded the 120-character limit.
+- The short renderer now splits narration at sentence and word boundaries into cues capped at 96 characters, writes standard SRT timestamps/newlines, and is covered by the caption-contract regression test.
+- A follow-up preflight run [43738542416](https://github.com/amorder/AMORDER11/actions/runs/43738542416) exposed a faulty escaping assertion in the new test; no render was started. The test was corrected to use raw literals.
+- Latest corrected render: [GitHub Actions run 43738749524](https://github.com/amorder/AMORDER11/actions/runs/43738749524). The caption-contract regression test passed; media-tool installation is in progress. Blender rendering and all independent release gates remain pending.
+- Only YouTube Shorts is in scope for this run. No Instagram post or long-form episode is requested. Buffer publication remains HOLD until this exact asset is committed and every release gate passes.
