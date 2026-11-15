@@ -106,7 +106,9 @@ The X companion is text-only and is not represented as a video. It is queued sep
 | X text companion | `6af8a08d918fe79d2e95c0c5` | pending until sent | scheduled (automatic Buffer queue; due 2026-11-15 00:32 UTC) |
 
 
-## Controlled render retry status — 2026-11-14
-- Public short render retry: [GitHub Actions run 43623624656](https://github.com/amorder/AMORDER11/actions/runs/43623624656), currently in progress at the Blender scene-render step. The independent MP4 validation, visual/subtitle/audio/source gates and generated-asset commit have not run yet.
-- Latest public secret-guard run 43623740809 passed for the content record commit.
-- Private automatic release poll [43623887146](https://github.com/amorder/AMORDER/actions/runs/43623887146) completed successfully and explicitly reported: “Waiting: vertical video render is not complete yet.” It created no YouTube or Instagram post. Both destinations remain HOLD.
+## Final controlled render retry result — 2026-11-14
+- Render run [43623624656](https://github.com/amorder/AMORDER11/actions/runs/43623624656) completed Blender/Kokoro rendering and created a candidate 1080×1920 H.264/AAC file with a reported duration of 101.47 seconds.
+- The independent workflow export check failed at the exact-frame-rate assertion: `ffprobe avg_frame_rate=91260/3043` (29.99014 fps), while the release contract requires `30/1`.
+- Because that assertion failed, the independent visual/motion, subtitle/safe-zone, audio, source/rights validator and generated-asset commit were skipped.
+- The candidate MP4, SRT and manifest were not committed to the public repository. Neither Instagram nor YouTube received a Buffer video post.
+- A focused renderer correction now applies `-r 30 -fps_mode cfr` to the final scene-concatenation encode and the caption-burn encode. A regression test checks both stages and the workflow's existing exact 30/1 gate remains in place.
