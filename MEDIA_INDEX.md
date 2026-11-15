@@ -105,3 +105,7 @@ The AMORDER renderers now use a hybrid cinematic pipeline:
 - [Secret guard 43716428415](https://github.com/amorder/AMORDER11/actions/runs/43716428415) — passed.
 - The MP4, SRT and manifest are not yet committed. Independent decode, visual/motion, subtitle/safe-zone, audio, source/rights and disclosure gates must pass before publishing. Instagram and YouTube remain HOLD; no Buffer post has been created.
 - No private account, order, fill or performance data is included.
+### November 15 release-gate result
+
+- Follow-up render run [43716423585](https://github.com/amorder/AMORDER11/actions/runs/43716423585) completed the Blender/Kokoro render and passed its technical MP4 checks and full decode.
+- The independent validator rejected one subtitle cue for exceeding 120 characters. Because the release gate failed, the generated MP4, SRT and manifest were not committed, and no Buffer video post was created. YouTube and Instagram remain HOLD.
