@@ -4,6 +4,11 @@ on:
     branches: [main]
     paths:
       - 'posts/*.short.json'
+      - 'tools/render_public_short.py'
+      - 'tools/validate_public_short.py'
+      - 'tools/blender_scenes.py'
+      - 'tools/motion_graphics.py'
+      - 'tools/test_caption_contract.py'
   workflow_dispatch:
 
 permissions:
