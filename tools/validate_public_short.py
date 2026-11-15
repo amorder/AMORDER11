@@ -11,6 +11,7 @@ import argparse
 import json
 import re
 import subprocess
+from fractions import Fraction
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -33,6 +34,15 @@ def run(command: list[str]) -> subprocess.CompletedProcess[str]:
 
 def normalized(value: str) -> str:
     return re.sub(r"\s+", " ", value).strip()
+
+
+def is_nominal_30_fps(value: str) -> bool:
+    """Accept rational probe averages within 0.05 fps of nominal 30 fps."""
+    try:
+        rate = Fraction(value)
+    except (ValueError, ZeroDivisionError):
+        return False
+    return abs(float(rate) - FPS) <= 0.05
 
 
 def parse_srt_text(content: str) -> list[tuple[float, float, str]]:
@@ -308,8 +318,8 @@ def main() -> None:
     duration = float(info.get("format", {}).get("duration", 0))
     if not v or (v.get("codec_name"), v.get("width"), v.get("height")) != ("h264", WIDTH, HEIGHT):
         raise ValueError(f"Video must be H.264 1080x1920: {v}")
-    if v.get("avg_frame_rate") != "30/1":
-        raise ValueError(f"Video must be 30 fps: {v.get('avg_frame_rate')}")
+    if not is_nominal_30_fps(str(v.get("avg_frame_rate", ""))):
+        raise ValueError(f"Video must be nominal 30 fps (±0.05): {v.get('avg_frame_rate')}")
     if not a or a.get("codec_name") != "aac":
         raise ValueError(f"AAC narration stream missing: {a}")
     if not 15 <= duration < 159:
