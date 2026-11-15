@@ -249,14 +249,14 @@ def main():
             for i in range(1,len(scenes)+1)
         ),encoding="utf-8")
         run(["ffmpeg","-y","-hide_banner","-loglevel","error","-f","concat","-safe","0","-i",str(concat),
-             "-c:v","libx264","-preset","slow","-crf","17","-pix_fmt","yuv420p",
+             "-r",str(FPS),"-fps_mode","cfr","-c:v","libx264","-preset","slow","-crf","17","-pix_fmt","yuv420p",
              "-c:a","aac","-b:a","192k","-ar","48000","-movflags","+faststart",str(output)])
 
         subtitles_for_scenes(scenes,durations,subtitle)
         captioned=output.with_name(output.stem+"-captioned.mp4")
         style="FontName=Noto Sans,FontSize=34,PrimaryColour=&H00FFFFFF,OutlineColour=&HAA000000,BorderStyle=1,Outline=2,Shadow=1,Alignment=2,MarginV=290"
         subtitle_filter=f"subtitles=filename='{subtitle.as_posix()}':force_style='{style}'"
-        run(["ffmpeg","-y","-hide_banner","-loglevel","error","-i",str(output),"-vf",subtitle_filter,
+        run(["ffmpeg","-y","-hide_banner","-loglevel","error","-i",str(output),"-vf",subtitle_filter,"-r",str(FPS),"-fps_mode","cfr",
              "-c:v","libx264","-preset","slow","-crf","17","-pix_fmt","yuv420p",
              "-c:a","copy","-movflags","+faststart",str(captioned)])
         captioned.replace(output)
