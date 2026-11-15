@@ -146,23 +146,55 @@ def srt_time(seconds):
     return f"{h:02d}:{m:02d}:{s:02d},{ms:03d}"
 
 
+MAX_SUBTITLE_CUE_CHARS = 96
+
+def split_subtitle_sentence(sentence, max_chars=MAX_SUBTITLE_CUE_CHARS):
+    """Split narration at word boundaries into phone-readable SRT cues."""
+    words = sentence.split()
+    segments = []
+    current = []
+    for word in words:
+        candidate = " ".join(current + [word])
+        if current and len(candidate) > max_chars:
+            segments.append(" ".join(current))
+            current = [word]
+        else:
+            current.append(word)
+    if current:
+        segments.append(" ".join(current))
+    if any(len(segment) > max_chars for segment in segments):
+        raise ValueError("A subtitle word or segment exceeds the mobile cue limit")
+    return segments
+
+
 def subtitles_for_scenes(scenes, durations, output):
     cues = []
     current = 0.0
     number = 1
     for scene, duration in zip(scenes, durations):
-        sentences = [x.strip() for x in re.split(r"(?<=[.!?])\s+", scene["narration"].strip()) if x.strip()]
-        weights = [max(1, len(x.split())) for x in sentences]
+        sentences = [
+            x.strip()
+            for x in re.split(r"(?<=[.!?])\\s+", scene["narration"].strip())
+            if x.strip()
+        ]
+        segments = [
+            segment
+            for sentence in sentences
+            for segment in split_subtitle_sentence(sentence)
+        ]
+        weights = [max(1, len(segment.split())) for segment in segments]
         total = sum(weights) or 1
         cursor = current
-        for sentence, weight in zip(sentences, weights):
+        for segment, weight in zip(segments, weights):
             end = cursor + duration * weight / total
-            cues.append(f"{number}\n{srt_time(cursor)} --> {srt_time(end)}\n{sentence}\n")
+            cues.append(
+                f"{number}\\n{srt_time(cursor)} --> {srt_time(end)}\\n{segment}\\n"
+            )
             cursor = end
             number += 1
         current += duration
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text("\n".join(cues), encoding="utf-8")
+    output.write_text("\\n".join(cues), encoding="utf-8")
 
 
 def main():
