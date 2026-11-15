@@ -93,3 +93,8 @@ No destination is reported as published until Buffer confirms the post as `sent`
 - [GitHub Actions render run 43716423585](https://github.com/amorder/AMORDER11/actions/runs/43716423585) — caption-contract precheck passed; media-tool installation and Kokoro model download passed; Blender scene rendering is in progress.
 - [Public secret guard 43716428415](https://github.com/amorder/AMORDER11/actions/runs/43716428415) — passed.
 - No final MP4, SRT or manifest is committed yet. All independent release gates remain pending; Instagram and YouTube are HOLD.
+## Release attempt — November 15, 2026
+
+- GitHub Actions run [43716423585](https://github.com/amorder/AMORDER11/actions/runs/43716423585) completed the Blender/Kokoro render and passed the H.264/AAC, 1080×1920, nominal 30 fps, 94.094-second and full-file decode checks.
+- The independent release validator then failed because one SRT subtitle cue exceeded the 120-character mobile-readability limit.
+- The workflow did not commit the MP4, SRT or manifest. No YouTube or Instagram Buffer post was created; both destinations remain HOLD.
