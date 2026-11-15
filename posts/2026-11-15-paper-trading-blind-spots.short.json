@@ -6,7 +6,6 @@
   "language": "en",
   "audience": "global",
   "intended_channels": [
-    "instagram_reels",
     "youtube_shorts"
   ],
   "format": {
@@ -173,18 +172,18 @@
     "instagram": {
       "buffer_post_id": null,
       "public_url": null,
-      "status": "HOLD — pending render and independent release gates"
+      "status": "NOT REQUESTED — YouTube Short only"
     },
     "youtube": {
       "buffer_post_id": null,
       "public_url": null,
-      "status": "HOLD — pending render and independent release gates"
+      "status": "HOLD — pending corrected render and independent release gates"
     }
   },
-  "render_revision": 1,
-  "render_note": "Fresh November 15 short. Claims are grounded in the current Alpaca paper-trading documentation. The renderer now forces constant 30 fps at both the final scene-concatenation and caption-burn stages after the November 14 export measured 29.990 fps and failed the strict 30/1 check. This run must pass the existing full independent release validator before any Buffer action.",
+  "render_revision": 2,
+  "render_note": "Revision 2 splits long narration sentences into word-boundary subtitle cues capped at 96 characters, with proportional cue timing. YouTube Shorts only for this requested run; do not create an Instagram post. Keep the full independent decode, visual, subtitle, safe-zone, audio, source, rights, privacy and disclosure release gates mandatory.",
   "render_status": "pending_render",
   "render_run_id": null,
   "render_blocker": null,
-  "render_retry": "Renderer CFR fix and static regression guard were committed before this storyboard. The workflow will run the caption-contract test, Blender/Kokoro render, exact 30 fps probe, full FFmpeg decode and independent visual/audio/subtitle/source gates."
+  "render_retry": "The prior export passed technical MP4 checks but failed mobile subtitle readability because a cue exceeded 120 characters. The renderer fix now caps SRT cues at 96 characters and the regression test verifies the split contract. This revision must pass the complete independent validator before YouTube publishing."
 }
