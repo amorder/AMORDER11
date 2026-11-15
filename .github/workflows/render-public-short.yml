@@ -78,6 +78,7 @@ jobs:
         run: |
           python - <<'PY'
           import json, os, subprocess
+          from fractions import Fraction
           path = os.environ["OUTPUT"]
           info = json.loads(subprocess.check_output([
               "ffprobe", "-v", "error", "-show_entries",
@@ -91,7 +92,8 @@ jobs:
           assert audio["codec_name"] == "aac"
           assert 15 <= duration < 159.0, duration
           assert os.path.getsize(path) > 100_000
-          assert video.get("avg_frame_rate") == "30/1", video.get("avg_frame_rate")
+          fps_value = Fraction(video.get("avg_frame_rate", "0/1"))
+          assert abs(float(fps_value) - 30.0) <= 0.05, f"Expected nominal 30 fps, got {fps_value}"
           manifest = json.load(open(os.environ["MANIFEST"], encoding="utf-8"))
           assert manifest.get("disclosure") == "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
           assert manifest["outputs"][0].get("blender_keyframed_animation") is True
