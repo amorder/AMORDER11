@@ -17,6 +17,12 @@ checks = {
     "long-form chapter timing": "scene_durations_seconds" in episode and '"chapters": chapters' in episode,
     "YouTube thumbnail generation": "def create_thumbnail(" in episode and '"thumbnail": str(thumbnail_path)' in episode,
     "short-form SRT generation": "subtitles_for_scenes(scenes,durations,subtitle)" in short,
+    "Short subtitles split long narration into mobile-readable cues": (
+        "MAX_SUBTITLE_CUE_CHARS = 96" in short
+        and "def split_subtitle_sentence(" in short
+        and "for sentence in sentences" in short
+        and "split_subtitle_sentence(sentence)" in short
+    ),
     "short-form burned captions": "subtitles=filename=" in short and '"captions_burned":True' in short,
     "Blender creates the PBR studio stage and 3D hero scenes": (
         "def setup(" in blender_scenes
