@@ -177,13 +177,13 @@
     "youtube": {
       "buffer_post_id": null,
       "public_url": null,
-      "status": "HOLD — pending corrected render and independent release gates"
+      "status": "HOLD — corrected subtitle renderer awaiting complete release gates"
     }
   },
-  "render_revision": 2,
-  "render_note": "Revision 2 splits long narration sentences into word-boundary subtitle cues capped at 96 characters, with proportional cue timing. YouTube Shorts only for this requested run; do not create an Instagram post. Keep the full independent decode, visual, subtitle, safe-zone, audio, source, rights, privacy and disclosure release gates mandatory.",
+  "render_revision": 3,
+  "render_note": "Revision 3: renderer splits narration at sentence boundaries, then at word boundaries into SRT cues no longer than 96 characters. It writes standard SRT line breaks and cue timing proportionally. YouTube Shorts only for this request; no Instagram post or long-form episode. All media, visual, caption, audio, source, rights, privacy, disclosure and duplicate checks remain mandatory.",
   "render_status": "pending_render",
   "render_run_id": null,
   "render_blocker": null,
-  "render_retry": "The prior export passed technical MP4 checks but failed mobile subtitle readability because a cue exceeded 120 characters. The renderer fix now caps SRT cues at 96 characters and the regression test verifies the split contract. This revision must pass the complete independent validator before YouTube publishing."
+  "render_retry": "Revision 2 introduced an escaping defect in SRT generation; corrected revision 3 explicitly tests sentence splitting, real SRT newlines and <=96-character cues. Re-render from the current main branch and require both static contract tests and independent media validation before Buffer upload."
 }
