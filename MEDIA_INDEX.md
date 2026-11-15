@@ -109,3 +109,10 @@ The AMORDER renderers now use a hybrid cinematic pipeline:
 
 - Follow-up render run [43716423585](https://github.com/amorder/AMORDER11/actions/runs/43716423585) completed the Blender/Kokoro render and passed its technical MP4 checks and full decode.
 - The independent validator rejected one subtitle cue for exceeding 120 characters. Because the release gate failed, the generated MP4, SRT and manifest were not committed, and no Buffer video post was created. YouTube and Instagram remain HOLD.
+
+### November 15 YouTube Shorts recovery
+- The first vertical MP4 passed technical encode/decode checks but failed the independent subtitle readability gate (>120 characters in one cue).
+- The renderer now creates sentence/word-bounded SRT cues capped at 96 characters and uses standard SRT newlines; caption-contract tests verify the exact source contract.
+- Preflight run [43738542416](https://github.com/amorder/AMORDER11/actions/runs/43738542416) identified a faulty escape in the newly added test assertion (no render began); the assertion was corrected.
+- Latest YouTube Shorts render run [43738749524](https://github.com/amorder/AMORDER11/actions/runs/43738749524): caption-contract check passed; media-tool installation in progress. No final MP4/SRT/manifest committed and no Buffer upload has been created. YouTube remains HOLD.
+- This run targets YouTube Shorts only; no Instagram post or long-form video is requested.
