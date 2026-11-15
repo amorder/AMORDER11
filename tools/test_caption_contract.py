@@ -20,9 +20,9 @@ checks = {
     "Short subtitles split long narration into mobile-readable cues": (
         "MAX_SUBTITLE_CUE_CHARS = 96" in short
         and "def split_subtitle_sentence(" in short
-        and 're.split(r"(?<=[.!?])\s+"' in short
-        and 'f"{number}\n{srt_time(cursor)} --> {srt_time(end)}\n{segment}\n"' in short
-        and 'output.write_text("\n".join(cues), encoding="utf-8")' in short
+        and r're.split(r"(?<=[.!?])\s+"' in short
+        and r'f"{number}\n{srt_time(cursor)} --> {srt_time(end)}\n{segment}\n"' in short
+        and r'output.write_text("\n".join(cues), encoding="utf-8")' in short
         and "split_subtitle_sentence(sentence)" in short
     ),
     "short-form burned captions": "subtitles=filename=" in short and '"captions_burned":True' in short,
