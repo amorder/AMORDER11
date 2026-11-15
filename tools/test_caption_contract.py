@@ -116,6 +116,13 @@ checks["short workflow runs the independent release validator"] = (
     "validate_public_short.py" in short_workflow
     and 'echo "STORYBOARD=$STORYBOARD"' in short_workflow
 )
+checks["30 fps validation tolerates rational MP4 duration rounding"] = (
+    "from fractions import Fraction" in validator
+    and "def is_nominal_30_fps(value: str) -> bool:" in validator
+    and "abs(float(rate) - FPS) <= 0.05" in validator
+    and "from fractions import Fraction" in short_workflow
+    and "abs(float(fps_value) - 30.0) <= 0.05" in short_workflow
+)
 checks["short validator checks motion, black/frozen frames, SRT, audio and safe zones"] = (
     all(key in validator for key in (
         "black_frame_count", "longest_frozen_run_seconds", "motion_coverage_percent",
