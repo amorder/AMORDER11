@@ -1,0 +1,190 @@
+{
+  "title": "Paper Trading Has Blind Spots",
+  "publication_date": "2026-11-15",
+  "render_slug": "amorder-paper-trading-blind-spots",
+  "topic": "What paper-trading simulations omit and why a simulated fill is not a forecast of live execution",
+  "language": "en",
+  "audience": "global",
+  "intended_channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds_target": "105-145",
+    "duration_seconds_max_exclusive": 159,
+    "video": "MP4 H.264, AAC English narration, constant 30 fps",
+    "visual_engine": "Blender Eevee PBR scenes with genuine keyframed camera and object animation in every scene; 720x1280 base render at 6 fps and 2 TAA samples, motion-compensated and Lanczos-upscaled to 1080x1920 at constant 30 fps",
+    "post_production": "FFmpeg motion-compensated interpolation, constant-frame-rate scene concatenation and caption burn, original scene-specific motion graphics, burned English captions, SRT sidecar, loudness mastering and full decode",
+    "voiceover_model": "Kokoro-82M ONNX",
+    "voice": "af_heart",
+    "music": "No copyrighted music; original restrained sound design only.",
+    "blender_base_resolution": "720x1280",
+    "blender_eevee_taa_samples": 2
+  },
+  "creative_direction": {
+    "style": "Original cinematic graphite studio with physically based glass, brushed metal and anodised forms, motivated softbox key and rim lighting, controlled reflections, restrained cyan and amber accents, precise negative space and six distinct 3D compositions. No stock footage, broker screenshots, account screens or fabricated market imagery.",
+    "voiceover_direction": "Natural, measured international English; calm and precise, with purposeful pauses and no promotional hype.",
+    "overlay_direction": "One short high-contrast headline and one supporting line per scene, kept inside phone-safe margins and clear of the hero object.",
+    "sound_direction": "Voice-led mix with restrained original mechanical ambience only; no third-party music or sound effects."
+  },
+  "scenes": [
+    {
+      "visual": "idea",
+      "title": "A PAPER FILL IS NOT A PROMISE",
+      "overlay": "Simulation is not live execution.",
+      "narration": "A paper-trading fill can look convincing. But it is not proof that a live order would have filled the same way. The gap matters."
+    },
+    {
+      "visual": "source",
+      "title": "NO LIVE EXCHANGE ROUTING",
+      "overlay": "Quotes drive the simulated fill.",
+      "narration": "In Alpaca's paper environment, an order is not routed to a live exchange. The system simulates a fill using real-time quotes. That makes paper trading useful for testing code and workflow, but the result is still a simulation."
+    },
+    {
+      "visual": "timestamp",
+      "title": "SOME COSTS ARE NOT MODELED",
+      "overlay": "Impact. Latency. Queue position. Fees.",
+      "narration": "The documentation lists important omissions: market impact, information leakage, price slippage caused by latency, queue position for non-marketable limit orders, price improvement, regulatory fees and dividends. Those effects can change a real outcome."
+    },
+    {
+      "visual": "gaps",
+      "title": "DISPLAYED LIQUIDITY MATTERS",
+      "overlay": "A simulated fill can exceed shown size.",
+      "narration": "There is another limitation. Order quantity is not checked against the displayed best bid and offer quantities, known as NBBO. A simulated order can receive a fill larger than the liquidity shown at that moment. Do not treat that as proof of real-world capacity."
+    },
+    {
+      "visual": "stand_down",
+      "title": "SIMULATORS DIFFER",
+      "overlay": "Fill, liquidity and data assumptions vary.",
+      "narration": "Different simulators may also use different fill prices, liquidity assumptions, return calculations and market data sources. Results from one environment do not automatically transfer to another."
+    },
+    {
+      "visual": "brand",
+      "title": "LOG THE LIMITATIONS",
+      "overlay": "Paper results are not live results.",
+      "narration": "Keep a paper-trading journal that names the simulator, data source and assumptions. Test conservative costs and partial execution scenarios where your tools allow it. Separate simulated outcomes from live-money performance. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
+    }
+  ],
+  "shot_list": [
+    {
+      "planned_timecode": "00:00-00:15",
+      "purpose": "Open on a visually compelling simulated fill that separates from a live venue symbolically.",
+      "framing": "Macro hero object, shallow depth of field.",
+      "camera_motion": "Fast but controlled dolly-in followed by a short orbit; order token moves into a glass simulation chamber.",
+      "asset_source": "Original Blender geometry and procedural materials.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "00:15-00:34",
+      "purpose": "Show the difference between quote input and live exchange routing.",
+      "framing": "Wide-to-medium view of a glass quote plane and isolated simulation chamber.",
+      "camera_motion": "Lateral tracking move; animated quote pulses stop at the simulation boundary.",
+      "asset_source": "Original Blender geometry and schematic graphics.",
+      "rights": "Original generated scene; schematic, not broker UI."
+    },
+    {
+      "planned_timecode": "00:34-00:53",
+      "purpose": "Reveal the list of omitted real-world frictions without overstating them.",
+      "framing": "Layered macro composition of separated metal plates and labels.",
+      "camera_motion": "Slow arc with sequential object reveals and precise rack focus.",
+      "asset_source": "Original Blender geometry and text overlays.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "00:53-01:14",
+      "purpose": "Explain displayed liquidity and simulated size as separate quantities.",
+      "framing": "Two clearly separated schematic columns and a bounded glass volume.",
+      "camera_motion": "Measured push-through and parallax between displayed size and simulated fill.",
+      "asset_source": "Original Blender geometry; illustrative, no market values.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "01:14-01:32",
+      "purpose": "Show that simulator assumptions are not interchangeable.",
+      "framing": "Three distinct glass modules with visibly different internal rules.",
+      "camera_motion": "Smooth orbit and match cut between modules.",
+      "asset_source": "Original Blender geometry and schematic labels.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "01:32-01:55",
+      "purpose": "Close with a practical process checklist and full disclosure.",
+      "framing": "Minimal brand-stage hero composition with ample caption/footer space.",
+      "camera_motion": "Slow crane-out and restrained object rotation; disclosure remains legible.",
+      "asset_source": "Original Blender geometry and AMORDER wordmark.",
+      "rights": "Original generated scene; AMORDER branding."
+    }
+  ],
+  "instagram_caption": "A paper-trading fill is useful evidence about a simulation — not a promise about live execution. This explainer covers market impact, latency, queue position, displayed liquidity and why simulator assumptions matter.\n\nSource: Alpaca Paper Trading documentation: https://docs.alpaca.markets/us/docs/paper-trading\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #MarketData #RiskManagement",
+  "youtube_title": "Paper Trading Has Blind Spots | AMORDER #Shorts",
+  "youtube_description": "A simulated fill is not a forecast of live execution. This short explains what Alpaca's published paper-trading documentation says the simulation does not model: market impact, information leakage, latency-related slippage, queue position for non-marketable limit orders, price improvement, regulatory fees and dividends. It also explains the displayed-liquidity limitation and why simulator assumptions differ.\n\nSource: Alpaca — Paper Trading: https://docs.alpaca.markets/us/docs/paper-trading\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #RiskManagement #Shorts",
+  "sources": [
+    "https://docs.alpaca.markets/us/docs/paper-trading"
+  ],
+  "claims": [
+    {
+      "claim": "Alpaca's paper environment does not route orders to a live exchange; it simulates fills using real-time quotes.",
+      "source": "https://docs.alpaca.markets/us/docs/paper-trading"
+    },
+    {
+      "claim": "The published paper-versus-live limitations include market impact, information leakage, latency-related price slippage, queue position for non-marketable limit orders, price improvement, regulatory fees and dividends.",
+      "source": "https://docs.alpaca.markets/us/docs/paper-trading"
+    },
+    {
+      "claim": "The paper environment does not check order quantity against NBBO quantities, so a simulated fill can exceed the displayed available liquidity.",
+      "source": "https://docs.alpaca.markets/us/docs/paper-trading"
+    },
+    {
+      "claim": "Different paper-trading platforms may use different fill prices, fill assumptions, liquidity assumptions, return methodologies and market data sources.",
+      "source": "https://docs.alpaca.markets/us/docs/paper-trading"
+    }
+  ],
+  "rights_and_asset_origin": {
+    "visual_assets": "Original Blender Eevee scenes and procedural graphics created for this AMORDER explainer; no stock footage, broker UI or third-party video.",
+    "narration": "Kokoro-82M model weights licensed Apache-2.0; kokoro-onnx runtime licensed MIT; voice af_heart from the bundled public voice pack.",
+    "fonts": "Noto Sans from the system Noto font package; OFL family licence.",
+    "audio": "No copyrighted music or third-party sound effects; original restrained sound design only.",
+    "source_review_date": "2026-11-15",
+    "references": [
+      "https://huggingface.co/hexgrad/Kokoro-82M",
+      "https://github.com/thewh1teagle/kokoro-onnx/blob/main/LICENSE"
+    ]
+  },
+  "automated_review": {
+    "approved_source_domains": [
+      "docs.alpaca.markets"
+    ],
+    "public_safety_reviewed": true,
+    "claims_checked_against_sources": true,
+    "rights_and_asset_origin_reviewed": true,
+    "disclosure_verified": true
+  },
+  "alt_text": "Six original cinematic graphite-studio Blender scenes use a glass simulation chamber, quote plane, separated metal plates, schematic liquidity columns and modular glass systems to explain why paper-trading fills do not reproduce every condition of live execution.",
+  "asset_path": "assets/amorder-paper-trading-blind-spots-2026-11-15.mp4",
+  "asset_url": "https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-paper-trading-blind-spots-2026-11-15.mp4",
+  "subtitle_path": "subtitles/amorder-paper-trading-blind-spots-2026-11-15.srt",
+  "manifest_path": "assets/amorder-paper-trading-blind-spots-manifest-2026-11-15.json",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "publishing_record": {
+    "instagram": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "HOLD — pending render and independent release gates"
+    },
+    "youtube": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "HOLD — pending render and independent release gates"
+    }
+  },
+  "render_revision": 1,
+  "render_note": "Fresh November 15 short. Claims are grounded in the current Alpaca paper-trading documentation. The renderer now forces constant 30 fps at both the final scene-concatenation and caption-burn stages after the November 14 export measured 29.990 fps and failed the strict 30/1 check. This run must pass the existing full independent release validator before any Buffer action.",
+  "render_status": "pending_render",
+  "render_run_id": null,
+  "render_blocker": null,
+  "render_retry": "Renderer CFR fix and static regression guard were committed before this storyboard. The workflow will run the caption-contract test, Blender/Kokoro render, exact 30 fps probe, full FFmpeg decode and independent visual/audio/subtitle/source gates."
+}
