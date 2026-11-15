@@ -131,8 +131,8 @@
   },
   "render_revision": 2,
   "render_note": "Revision 2 addresses a verified Blender 5.0.1 teardown SIGSEGV (signal 11) after the timestamp scene's PNG sequence and scene MP4 had been written and decoded. The parent renderer now tolerates only that post-output signal when a non-empty scene MP4 exists; its independent ffprobe codec/resolution/fps/duration checks and full FFmpeg decode remain mandatory. Missing, partial, malformed or undecodable output still fails.",
-  "render_status": "retry_pending",
-  "render_run_id": "43598788407",
-  "render_blocker": "The November 14 render run stopped at the Blender subprocess return code -11 after the timestamp scene reported a completed PNG sequence and scene MP4 encode/decode. Parent-level ffprobe, full decode, final media QA and asset commit were skipped; no video was published.",
-  "render_retry": "One controlled retry follows the focused teardown-exit guard and regression check. The guard does not bypass any media-integrity or release gate."
+  "render_status": "failed_validation",
+  "render_run_id": "43623624656",
+  "render_blocker": "The November 14 controlled retry completed the Blender/Kokoro render and produced a 1080x1920 H.264/AAC candidate at 101.47 seconds, but the workflow's strict constant-30-fps check failed: ffprobe reported avg_frame_rate 91260/3043 (29.99014 fps), not 30/1. The independent visual/audio/subtitle/source validator and generated-asset commit were skipped. No public MP4, SRT or manifest was committed and no Buffer video post was created.",
+  "render_retry": "A subsequent renderer fix adds -r 30 and -fps_mode cfr to both final scene concatenation and subtitle-burn encoding, with static regression coverage. The November 15 run must independently pass the existing exact 30/1 probe and every release gate; the failed November 14 candidate remains unpublished."
 }
