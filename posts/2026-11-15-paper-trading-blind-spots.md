@@ -87,3 +87,9 @@ Paper-trading education only; not live-money performance; not investment advice;
 | YouTube Short | pending | pending | HOLD — pending render and independent release gates |
 
 No destination is reported as published until Buffer confirms the post as `sent` and a public post URL is verified. No human watch-through or headphone/speaker audition is claimed; only automated checks will be reported.
+
+
+## Render status — 2026-11-15
+- [GitHub Actions render run 43716423585](https://github.com/amorder/AMORDER11/actions/runs/43716423585) — caption-contract precheck passed; media-tool installation and Kokoro model download passed; Blender scene rendering is in progress.
+- [Public secret guard 43716428415](https://github.com/amorder/AMORDER11/actions/runs/43716428415) — passed.
+- No final MP4, SRT or manifest is committed yet. All independent release gates remain pending; Instagram and YouTube are HOLD.
