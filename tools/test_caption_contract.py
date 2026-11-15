@@ -44,6 +44,10 @@ checks = {
         and "drawbox=" in motion_graphics
         and "mod(t*" in motion_graphics
     ),
+    "Short delivery normalizes the concatenated master and caption burn to constant 30 fps": (
+        short.count('" -fps_mode","cfr"') >= 2
+        and short.count('" -r",str(FPS)') >= 3
+    ),
     "Short renderer uses real keyframed Blender scene animation": (
         "from motion_graphics import build_motion_graphics_filter" in short
         and '"--duration",f"{duration:.3f}"' in short
