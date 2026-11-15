@@ -1,0 +1,95 @@
+1
+00:00:00,000 --> 00:00:01,991
+A paper-trading fill can look convincing.
+
+2
+00:00:01,991 --> 00:00:06,968
+But it is not proof that a live order would have filled the same way.
+
+3
+00:00:06,968 --> 00:00:07,964
+The gap matters.
+
+4
+00:00:07,964 --> 00:00:13,247
+In Alpaca's paper environment, an order is not routed to a live exchange.
+
+5
+00:00:13,247 --> 00:00:16,498
+The system simulates a fill using real-time quotes.
+
+6
+00:00:16,498 --> 00:00:23,001
+That makes paper trading useful for testing code and workflow, but the result is still a
+
+7
+00:00:23,001 --> 00:00:23,407
+simulation.
+
+8
+00:00:23,407 --> 00:00:29,344
+The documentation lists important omissions: market impact, information leakage, price slippage
+
+9
+00:00:29,344 --> 00:00:35,820
+caused by latency, queue position for non-marketable limit orders, price improvement, regulatory
+
+10
+00:00:35,820 --> 00:00:37,439
+fees and dividends.
+
+11
+00:00:37,439 --> 00:00:41,217
+Those effects can change a real outcome.
+
+12
+00:00:41,217 --> 00:00:42,829
+There is another limitation.
+
+13
+00:00:42,829 --> 00:00:48,874
+Order quantity is not checked against the displayed best bid and offer quantities, known as
+
+14
+00:00:48,874 --> 00:00:49,277
+NBBO.
+
+15
+00:00:49,277 --> 00:00:55,321
+A simulated order can receive a fill larger than the liquidity shown at that moment.
+
+16
+00:00:55,321 --> 00:00:58,948
+Do not treat that as proof of real-world capacity.
+
+17
+00:00:58,948 --> 00:01:04,534
+Different simulators may also use different fill prices, liquidity assumptions, return
+
+18
+00:01:04,534 --> 00:01:07,073
+calculations and market data sources.
+
+19
+00:01:07,073 --> 00:01:12,151
+Results from one environment do not automatically transfer to another.
+
+20
+00:01:12,151 --> 00:01:18,408
+Keep a paper-trading journal that names the simulator, data source and assumptions.
+
+21
+00:01:18,408 --> 00:01:24,666
+Test conservative costs and partial execution scenarios where your tools allow it.
+
+22
+00:01:24,666 --> 00:01:27,794
+Separate simulated outcomes from live-money performance.
+
+23
+00:01:27,794 --> 00:01:33,530
+Paper-trading education only; not live-money performance; not investment advice; no guaranteed
+
+24
+00:01:33,530 --> 00:01:34,051
+returns.

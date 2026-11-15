@@ -1,0 +1,122 @@
+{
+  "title": "Paper Trading Has Blind Spots | AMORDER #Shorts",
+  "publication_date": "2026-11-15",
+  "language": "English",
+  "audience": "global",
+  "visual_engine": "Blender Eevee PBR 3D with genuine keyframed camera and object animation",
+  "blender_render_width": 720,
+  "blender_render_height": 1280,
+  "blender_taa_render_samples": 2,
+  "blender_taa_samples": 8,
+  "delivery_upscale_filter": "lanczos",
+  "blender_animation_fps": 6,
+  "delivery_fps": 30,
+  "motion_graphics": "Scene-specific animated vector overlays with motion-compensated frame interpolation",
+  "post_production": "FFmpeg motion-design compositing, loudness mastering and burned English captions",
+  "narration": "Kokoro-82M ONNX",
+  "outputs": [
+    {
+      "file": "/home/runner/work/AMORDER11/AMORDER11/assets/amorder-paper-trading-blind-spots-2026-11-15.mp4",
+      "subtitle": "/home/runner/work/AMORDER11/AMORDER11/subtitles/amorder-paper-trading-blind-spots-2026-11-15.srt",
+      "bytes": 35030485,
+      "duration_seconds": 94.094,
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "voice": "af_heart",
+      "disclosure": "verified",
+      "captions_burned": true,
+      "thumbnail": null,
+      "scene_durations_seconds": [
+        7.964,
+        15.443,
+        17.81,
+        17.731,
+        13.203,
+        21.9
+      ],
+      "blender_render_width": 720,
+      "blender_render_height": 1280,
+      "blender_taa_render_samples": 2,
+      "blender_taa_samples": 8,
+      "delivery_upscale_filter": "lanczos",
+      "blender_keyframed_animation": true,
+      "genuine_motion_coverage_percent": 100
+    }
+  ],
+  "chapters": [
+    {
+      "timestamp": "00:00",
+      "title": "A PAPER FILL IS NOT A PROMISE"
+    },
+    {
+      "timestamp": "00:07",
+      "title": "NO LIVE EXCHANGE ROUTING"
+    },
+    {
+      "timestamp": "00:23",
+      "title": "SOME COSTS ARE NOT MODELED"
+    },
+    {
+      "timestamp": "00:41",
+      "title": "DISPLAYED LIQUIDITY MATTERS"
+    },
+    {
+      "timestamp": "00:58",
+      "title": "SIMULATORS DIFFER"
+    },
+    {
+      "timestamp": "01:12",
+      "title": "LOG THE LIMITATIONS"
+    }
+  ],
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "quality_gate": {
+    "status": "passed",
+    "score": 100,
+    "release_threshold": 85,
+    "automated_only": true,
+    "human_review_claimed": false,
+    "checks": {
+      "story_facts_and_public_safety": 20,
+      "hook_and_pacing_contract": 15,
+      "blender_animation_and_motion": 25,
+      "audio_presence_and_levels": 15,
+      "typography_subtitles_and_accessibility": 10,
+      "sources_rights_privacy_and_disclosure": 10,
+      "export_integrity_and_platform_fit": 5
+    },
+    "motion": {
+      "black_frame_count": 0,
+      "longest_frozen_run_seconds": 0,
+      "motion_coverage_percent": 100.0,
+      "sampled_frame_count": 94
+    },
+    "scene_variation": {
+      "scene_midpoint_count": 6,
+      "minimum_scene_difference": 16.04
+    },
+    "audio": {
+      "mean_volume_db": -15.5,
+      "max_volume_db": -1.5
+    },
+    "subtitles": {
+      "cue_count": 24,
+      "max_characters_per_cue": 96
+    },
+    "safe_zones": {
+      "max_title_lines": 2,
+      "max_support_lines": 1,
+      "subtitle_margin_bottom_px": 290
+    },
+    "duration_seconds": 94.094,
+    "resolution": "1080x1920",
+    "fps": 30,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "full_decode": "passed",
+    "sources_and_disclosure": "passed"
+  }
+}
