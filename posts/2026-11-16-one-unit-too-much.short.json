@@ -1,0 +1,188 @@
+{
+  "title": "When One Unit Is Too Much",
+  "publication_date": "2026-11-16",
+  "render_slug": "amorder-one-unit-too-much",
+  "topic": "How planned loss, stop distance and unit value determine a risk-based position size, and why the minimum permitted unit may still be too large",
+  "language": "en",
+  "audience": "global",
+  "intended_channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds_target": "85-115",
+    "duration_seconds_max_exclusive": 159,
+    "video": "MP4 H.264, AAC English narration, constant 30 fps",
+    "visual_engine": "Blender Eevee PBR scenes with genuine keyframed camera and object animation in every scene; 720x1280 base render at 6 fps and 2 TAA samples, motion-compensated and Lanczos-upscaled to 1080x1920 at constant 30 fps",
+    "post_production": "FFmpeg motion-compensated interpolation, constant-frame-rate scene concatenation and caption burn, original scene-specific motion graphics, burned English captions, SRT sidecar, loudness mastering and full decode",
+    "voiceover_model": "Kokoro-82M ONNX",
+    "voice": "af_heart",
+    "music": "No copyrighted music; original restrained sound design only.",
+    "blender_base_resolution": "720x1280",
+    "blender_eevee_taa_samples": 2
+  },
+  "creative_direction": {
+    "style": "Original cinematic graphite studio with six distinct tactile compositions: a bounded risk chamber, a calibrated distance rail, a single unit token, modular size blocks, a minimum-unit gate and the AMORDER brand stage. Physically based glass and brushed metal, motivated softbox lighting, controlled reflections, restrained cyan and amber accents, precise negative space. No stock footage, broker screenshots, account screens or fabricated market imagery.",
+    "voiceover_direction": "Natural, measured international English; calm and precise, with purposeful pauses and no promotional hype.",
+    "overlay_direction": "One short high-contrast headline and one supporting line per scene, kept inside phone-safe margins and clear of the hero object.",
+    "sound_direction": "Voice-led mix with restrained original mechanical ambience only; no third-party music or sound effects."
+  },
+  "scenes": [
+    {
+      "visual": "minimum_unit",
+      "title": "ZERO CAN BE THE RIGHT SIZE",
+      "overlay": "The minimum unit may still be too large.",
+      "narration": "If the smallest tradable unit breaks your risk limit, the disciplined position size may be zero. Size comes last."
+    },
+    {
+      "visual": "risk_budget",
+      "title": "SET THE LIMIT BEFORE SIZE",
+      "overlay": "Choose the planned loss amount first.",
+      "narration": "If the smallest tradable unit breaks your risk limit, the disciplined position size may be zero. Size comes last."
+    },
+    {
+      "visual": "stop_distance",
+      "title": "MEASURE THE STOP DISTANCE",
+      "overlay": "Stop distance is only one input.",
+      "narration": "Measure the distance from entry to the stop. That distance is only one part of the calculation; it is not the loss amount by itself."
+    },
+    {
+      "visual": "unit_value",
+      "title": "CALCULATE LOSS PER UNIT",
+      "overlay": "Distance x point or tick value.",
+      "narration": "Multiply the stop distance by the instrument's point or tick value to estimate planned loss per unit. Check contract rules and minimum size increments."
+    },
+    {
+      "visual": "position_size",
+      "title": "CALCULATE, THEN ROUND DOWN",
+      "overlay": "Risk budget / loss per unit.",
+      "narration": "Divide the planned risk amount by the loss per unit. Round down to the permitted increment. If even one unit exceeds the plan, passing is a valid decision."
+    },
+    {
+      "visual": "brand",
+      "title": "PLANNED RISK IS NOT A PROMISE",
+      "overlay": "A stop can execute at a different price.",
+      "narration": "This is a planning estimate, not a guaranteed loss cap. The SEC says a stop price triggers a market order; the execution price can differ. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
+    }
+  ],
+  "shot_list": [
+    {
+      "planned_timecode": "00:00-00:13",
+      "purpose": "Open with the minimum-unit block visibly exceeding a defined risk boundary.",
+      "framing": "Macro hero composition with the unit token and a bright boundary gate.",
+      "camera_motion": "Immediate controlled dolly-in, then a short lateral reveal as the gate moves.",
+      "asset_source": "Original Blender geometry and procedural materials.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "00:13-00:30",
+      "purpose": "Show that the planned loss amount is chosen before calculating size.",
+      "framing": "Wide-to-medium view of a bounded risk chamber and moving marker.",
+      "camera_motion": "Slow tracking move following the marker toward the fixed boundary.",
+      "asset_source": "Original Blender geometry and schematic graphics.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "00:30-00:47",
+      "purpose": "Make stop distance a measurable input rather than a visual guess.",
+      "framing": "Calibrated rail with distinct entry and stop markers.",
+      "camera_motion": "Measured push along the rail with parallax across the tick marks.",
+      "asset_source": "Original Blender geometry and procedural labels.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "00:47-01:04",
+      "purpose": "Isolate the value of one point, tick or unit.",
+      "framing": "Single metal token on a restrained pedestal.",
+      "camera_motion": "Short orbit around the token with a controlled focus pull.",
+      "asset_source": "Original Blender geometry and schematic graphics.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "01:04-01:22",
+      "purpose": "Translate the risk budget into a theoretical size and apply the permitted increment.",
+      "framing": "Modular block array beneath a fixed sizing guide.",
+      "camera_motion": "Sequential block reveals with a slow diagonal tracking move.",
+      "asset_source": "Original Blender geometry and procedural graphics.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "01:22-01:45",
+      "purpose": "Deliver the stop-execution caveat and full disclosure.",
+      "framing": "The sizing apparatus resolves into the AMORDER brand stage.",
+      "camera_motion": "Measured pull-back and restrained orbital move; no filler hold.",
+      "asset_source": "Original Blender geometry and procedural materials.",
+      "rights": "Original generated scene."
+    }
+  ],
+  "instagram_caption": "A risk limit is a ceiling, not a target. Start with the planned loss amount, calculate the loss per unit from stop distance and point or tick value, then size down to the permitted increment. If even one unit is too large, passing can be the disciplined choice. A stop price is a trigger, not a guaranteed execution price.\n\nSources: CME Group — Proper Position Size: https://www.cmegroup.com/education/courses/trade-and-risk-management/proper-position-size\nSEC Investor Bulletin — Stop, Stop-Limit, and Trailing Stop Orders: https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #RiskManagement #PositionSizing #TradingEducation",
+  "youtube_title": "When One Unit Is Too Much | AMORDER #Shorts",
+  "youtube_description": "If the smallest permitted position size exceeds a pre-defined risk limit, the planned size may be zero. This short explains the relationship between a planned loss amount, stop distance, point or tick value and position size. It also explains why the calculation is a planning estimate, not a guaranteed loss cap.\n\nSources:\nCME Group — Proper Position Size: https://www.cmegroup.com/education/courses/trade-and-risk-management/proper-position-size\nSEC Investor Bulletin — Stop, Stop-Limit, and Trailing Stop Orders: https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #RiskManagement #PositionSizing #Shorts",
+  "sources": [
+    "https://www.cmegroup.com/education/courses/trade-and-risk-management/proper-position-size",
+    "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
+  ],
+  "claims": [
+    {
+      "claim": "CME Group's position-sizing lesson identifies stop location and the amount a trader is prepared to risk as key inputs to position size.",
+      "source": "https://www.cmegroup.com/education/courses/trade-and-risk-management/proper-position-size"
+    },
+    {
+      "claim": "CME Group illustrates planned risk per contract using stop distance in ticks and the value of each tick.",
+      "source": "https://www.cmegroup.com/education/courses/trade-and-risk-management/proper-position-size"
+    },
+    {
+      "claim": "The SEC states that a stop price triggers a market order and is not a guaranteed execution price; the actual execution price can differ.",
+      "source": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
+    }
+  ],
+  "rights_and_asset_origin": {
+    "visual_assets": "Original Blender Eevee scenes and procedural graphics created for this AMORDER explainer; no stock footage, broker UI or third-party video.",
+    "narration": "Kokoro-82M model weights licensed Apache-2.0; kokoro-onnx runtime licensed MIT; voice af_heart from the bundled public voice pack.",
+    "fonts": "Noto Sans from the system Noto font package; OFL family licence.",
+    "audio": "No copyrighted music or third-party sound effects; original restrained sound design only.",
+    "source_review_date": "2026-11-16",
+    "references": [
+      "https://huggingface.co/hexgrad/Kokoro-82M",
+      "https://github.com/thewh1teagle/kokoro-onnx/blob/main/LICENSE"
+    ]
+  },
+  "automated_review": {
+    "approved_source_domains": [
+      "cmegroup.com",
+      "investor.gov"
+    ],
+    "public_safety_reviewed": true,
+    "claims_checked_against_sources": true,
+    "rights_and_asset_origin_reviewed": true,
+    "disclosure_verified": true
+  },
+  "alt_text": "Six original cinematic graphite-studio Blender scenes show a bounded risk chamber, a calibrated stop-distance rail, a single unit token, modular size blocks, a minimum-unit gate and a brand stage to explain why the smallest permitted size may still exceed a planned risk limit.",
+  "asset_path": "assets/amorder-one-unit-too-much-2026-11-16.mp4",
+  "asset_url": "https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-one-unit-too-much-2026-11-16.mp4",
+  "subtitle_path": "subtitles/amorder-one-unit-too-much-2026-11-16.srt",
+  "manifest_path": "assets/amorder-one-unit-too-much-manifest-2026-11-16.json",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "publishing_record": {
+    "instagram": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    },
+    "youtube": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    }
+  },
+  "render_revision": 1,
+  "render_note": "Quality audit compared the ten most recent approved/public items: November 6 paper-trading journey, November 7 data-first short, November 8 calendar short, November 9 paper-fill case study, November 11 and 12 trailing-stop explainers, November 12 CoreWeave market-reaction record, November 13 clean-chart/data-quality short, November 14 order-lifecycle short and November 15 paper-simulation-limitations short. This topic avoids repeating feed coverage, clocks, calendar checks, order lifecycle, stop triggers or simulation omissions. Testable improvement: replace the repeated clock/source/gap visual grammar with five new tactile risk-sizing Blender setups and open on the minimum-unit boundary in the first 1.5 seconds. No market statistics, hypothetical trade results or return claims are used.",
+  "render_status": "pending_render",
+  "render_run_id": null,
+  "render_blocker": null,
+  "render_retry": null
+}

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Static regression checks for AMORDER public render and asset publishing contracts."""
+import json
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
@@ -48,7 +49,7 @@ checks = {
     ),
     "Motion-graphics layer includes scene-specific animation": (
         "def build_motion_graphics_filter(" in motion_graphics
-        and all(key in motion_graphics for key in ("timestamp", "idea", "source", "gaps", "stand_down", "brand"))
+        and all(key in motion_graphics for key in ("timestamp", "idea", "source", "gaps", "stand_down", "brand", "risk_budget", "stop_distance", "unit_value", "position_size", "minimum_unit"))
         and "drawbox=" in motion_graphics
         and "mod(t*" in motion_graphics
     ),
@@ -95,6 +96,24 @@ checks["episode workflow stages only manifest-listed outputs"] = (
     and "git add assets/*-youtube-*.mp4" not in episode_workflow
 )
 checks["short workflow cancels superseded renders"] = "cancel-in-progress: true" in short_workflow
+checks["short workflow retriggers when its own configuration changes"] = "      - '.github/workflows/render-public-short.yml'" in short_workflow
+checks["short workflow commit message identifies the actual storyboard"] = 'git commit -m "content: render ${BASE} short with captions"' in short_workflow
+checks["daily short validator enforces shared Instagram and YouTube scope"] = (
+    'channels != {"instagram_reels", "youtube_shorts"}' in validator
+    and 'fmt.get("aspect_ratio") != "9:16"' in validator
+)
+checks["new position-sizing scene keys have Blender geometry, camera motion and animated overlays"] = all(
+    key in blender_scenes and key in motion_graphics
+    for key in ("risk_budget", "stop_distance", "unit_value", "position_size", "minimum_unit")
+)
+latest_short_path = sorted((root / "posts").glob("*.short.json"))[-1]
+latest_short = json.loads(latest_short_path.read_text(encoding="utf-8"))
+latest_visuals = {scene.get("visual") for scene in latest_short.get("scenes", [])}
+supported_visuals = {"idea", "timestamp", "gaps", "source", "stand_down", "brand",
+                     "risk_budget", "stop_distance", "unit_value", "position_size", "minimum_unit"}
+checks["latest daily storyboard uses at least five supported visual keys"] = (
+    len(latest_visuals) >= 5 and latest_visuals <= supported_visuals
+)
 checks["Blender uses a bounded Eevee sample budget"] = (
     "def setup(width=1080, height=1920, samples=2)" in blender_scenes
     and "eevee.taa_render_samples = samples" in blender_scenes

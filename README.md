@@ -31,6 +31,7 @@ Final, public-safe MP4 exports, thumbnails, subtitle sidecars and render manifes
 3. A reviewed short storyboard at posts/YYYY-MM-DD-short-title.short.json can trigger .github/workflows/render-public-short.yml, which creates a vertical MP4 in assets/.
 4. A reviewed long-form storyboard at posts/YYYY-MM-DD-episode.episode.json can trigger .github/workflows/render-public-episode.yml, which creates a YouTube master, an Instagram episode and subtitle sidecars.
 5. The renderers use Blender Eevee, Kokoro-82M ONNX, FFmpeg and Pillow. They do not connect to broker accounts, trading records, private research, Buffer or social publishing APIs.
+   - **Daily publisher scope:** exactly one shared 9:16 short master strictly under 160 seconds for Instagram Reels and YouTube Shorts. The daily publisher does not create or upload 16:9 long-form episodes; the separate episode workflow is outside the daily schedule.
 6. Publish or queue approved posts through the separate AMORDER automation and connected Buffer integration. These GitHub rendering workflows do not publish directly to YouTube or Instagram.
 7. Record only public-safe status and destination URLs. Do not store access tokens, account identifiers, private analytics or unpublished platform payloads.
 8. Check existing publication status before retrying. Never label a failed post as published.

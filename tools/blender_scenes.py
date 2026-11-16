@@ -223,6 +223,40 @@ def build(key):
         for i,a in enumerate((.4,2.3,4.55)):
             ball("Brand satellite "+str(i),(2.25*math.cos(a),-.05,2.7+2.25*math.sin(a)),.16,amber if i==1 else cyan)
         box("Brand plinth",(0,.3,.15),(3.4,.8,.22),blue,.10)
+    elif key=="risk_budget":
+        box("Budget base",(0,.35,-.02),(4.7,.85,.22),blue,.10)
+        ring("Budget boundary",(0,-.15,2.65),1.72,.10,cyan)
+        box("Budget committed",(-.72,-.25,1.25),(1.55,.22,.20),ice,.06)
+        box("Budget reserve",(1.08,-.25,1.25),(1.05,.22,.20),amber,.06)
+        rod("Budget marker",(-1.28,-.40,1.15),(-1.28,-.40,3.55),.07,amber)
+        ball("Budget node",(-1.28,-.45,3.58),.20,white)
+    elif key=="stop_distance":
+        box("Distance base",(0,.35,-.02),(4.7,.85,.22),blue,.10)
+        rod("Distance rail",(-1.82,-.35,1.55),(1.82,-.35,1.55),.065,cyan)
+        box("Entry marker",(-1.55,-.42,1.82),(.22,.30,1.58),ice,.04)
+        box("Stop marker",(1.55,-.42,1.82),(.22,.30,1.58),amber,.04)
+        for i in range(9):
+            x=-1.55+i*.3875
+            rod("Distance tick "+str(i),(x,-.42,1.45),(x,-.42,1.72),.025,white)
+    elif key=="unit_value":
+        box("Unit pedestal",(0,.35,.05),(3.8,.9,.22),blue,.10)
+        ring("Unit orbit",(0,-.30,2.05),1.24,.085,cyan)
+        box("Unit token",(0,-.42,2.05),(1.02,.34,1.02),ice,.12)
+        rod("Unit stem",(0,-.30,.45),(0,-.30,1.38),.075,amber)
+        ball("Unit pivot",(0,-.45,2.05),.18,white)
+    elif key=="position_size":
+        box("Sizing platform",(0,.35,.05),(4.8,.85,.22),blue,.10)
+        for i in range(5):
+            x=(i-2)*.78
+            height=.62+.13*i
+            color=(ice,cyan,blue,amber,white)[i]
+            box("Size block "+str(i),(x,-.25,.42+height/2),(.50,.42,height),color,.07)
+        rod("Sizing guide",(-2.12,-.42,2.95),(2.12,-.42,2.95),.045,cyan)
+    elif key=="minimum_unit":
+        box("Minimum unit base",(0,.35,.05),(4.6,.85,.22),blue,.10)
+        box("Minimum unit token",(-1.02,-.42,1.48),(.96,.36,.96),ice,.10)
+        box("Risk boundary gate",(1.0,-.35,2.12),(.18,.34,2.42),amber,.035)
+        ring("Minimum boundary",(0,-.20,2.55),1.68,.075,cyan)
     else:
         raise ValueError("Unsupported Blender visual: "+str(key))
 
@@ -254,6 +288,16 @@ def animate_scene(scene, visual, duration, fps):
             offset = (.16 * math.sin(math.pi * p), -.78 * p, .06 * math.sin(math.tau * p))
         elif visual == "stand_down":
             offset = (.10 * math.sin(math.tau * p), -.48 * p, .18 * math.sin(math.pi * p))
+        elif visual == "risk_budget":
+            offset = (.48 * (p - .5), -.28 * math.sin(math.pi * p), .12 * math.sin(math.tau * p))
+        elif visual == "stop_distance":
+            offset = (.12 * math.sin(math.pi * p), -.62 * p, .10 * math.sin(math.tau * p))
+        elif visual == "unit_value":
+            offset = (.52 * math.sin(math.tau * p), -.12 * p, .16 * math.sin(math.pi * p))
+        elif visual == "position_size":
+            offset = (.42 * (p - .5), -.42 * p, .10 * math.sin(math.tau * p))
+        elif visual == "minimum_unit":
+            offset = (.14 * math.sin(math.tau * p), -.68 * p, .18 * math.sin(math.pi * p))
         elif visual == "brand":
             offset = (.54 * math.sin(math.tau * p), -.16 * (1 - math.cos(math.tau * p)), .24 * math.sin(math.tau * p))
         else:
@@ -315,6 +359,18 @@ def animate_scene(scene, visual, duration, fps):
             elif "clock marker" in name:
                 pulse = 1 + .025 * math.sin(math.tau * p + phase)
                 obj.scale = base_scale * pulse
+            elif visual == "risk_budget" and "budget marker" in name:
+                obj.location = base_loc + Vector((1.05 * math.sin(math.pi * p), 0, 0))
+            elif visual == "stop_distance" and "stop marker" in name:
+                obj.location = base_loc + Vector((.30 * math.sin(math.pi * p), 0, 0))
+            elif visual == "unit_value" and "unit token" in name:
+                obj.rotation_euler = base_rot.copy()
+                obj.rotation_euler[2] += math.tau * p
+                obj.scale = base_scale * (1 + .035 * math.sin(math.tau * p))
+            elif visual == "position_size" and "size block" in name:
+                obj.location = base_loc + Vector((0, 0, .12 * max(0, math.sin(math.pi * p + phase))))
+            elif visual == "minimum_unit" and "risk boundary gate" in name:
+                obj.location = base_loc + Vector((.42 * math.sin(math.pi * p), 0, 0))
             else:
                 obj.location = base_loc + Vector((.025 * wave, 0, .065 * wave))
                 obj.rotation_euler = base_rot.copy()

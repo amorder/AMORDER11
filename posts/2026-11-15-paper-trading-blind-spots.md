@@ -2,57 +2,33 @@
 
 - **Publication date:** 2026-11-15
 - **Language / audience:** English / global
-- **Channels:** YouTube Shorts only for this run; Instagram is not requested
+- **Channels:** Instagram Reels and YouTube Shorts
 - **Topic:** What paper-trading simulations omit and why a simulated fill is not a forecast of live execution
 
 ## Viewer promise
 A paper fill can be useful for testing code and process, but it does not reproduce every condition of live execution. This explainer identifies the limitations in Alpaca's published paper-trading specification and gives viewers a practical way to document them.
 
 ## Editorial and production
-- **Opening hook:** "A paper-trading fill can look convincing. But it is not proof that a live order would have filled the same way."
+- **Opening hook:** "A paper-trading fill can look convincing. But it is not proof that a live order would have filled the same way. The gap matters."
 - **Visual direction:** six original Blender Eevee PBR setups in a cinematic graphite studio; physically based glass and metal, motivated softbox lighting, restrained cyan/amber accents and clear negative space
 - **Motion:** genuine keyframed camera and object movement in each Blender scene; FFmpeg motion-compensated finishing and scene-specific animated overlays
-- **Planned runtime:** 105–145 seconds; hard maximum strictly below 160 seconds
-- **Delivery:** 1080×1920, 9:16, constant 30 fps, H.264 MP4, AAC English narration, burned English captions and SRT sidecar
+- **Delivery:** 1080x1920, 9:16, constant 30 fps, H.264 MP4, AAC English narration, burned English captions and SRT sidecar
+- **Runtime:** 94.094 seconds
 - **Voice:** Kokoro-82M ONNX, af_heart; calm international English
 - **Audio:** no copyrighted music or third-party sound effects; original restrained sound design only
 - **Visual safety:** all graphics are schematic; no market values, broker UI, real orders or trading account data
 
 ## Claim ledger and primary source
-All material factual claims are supported by the same official source:
-- Alpaca's paper environment does not route orders to a live exchange; it simulates fills using real-time quotes.
+All material factual claims are supported by Alpaca's official paper-trading documentation:
+- The paper environment does not route orders to a live exchange; it simulates fills using real-time quotes.
 - Published limitations include market impact, information leakage, latency-related slippage, queue position for non-marketable limit orders, price improvement, regulatory fees and dividends.
 - Paper order quantity is not checked against NBBO quantities; a simulated fill can exceed displayed available liquidity.
-- Other simulators may differ in fill prices, fill assumptions, liquidity assumptions, return methodologies and market data sources.
+- Other simulators may use different fill prices, liquidity assumptions, return methodologies and market data sources.
 
-Source: [Alpaca — Paper Trading](https://docs.alpaca.markets/us/docs/paper-trading) (accessed 2026-11-15).
-
-## Platform copy
-
-### YouTube
-**Title:** Paper Trading Has Blind Spots | AMORDER #Shorts
-
-A simulated fill is not a forecast of live execution. This short explains what Alpaca's published paper-trading documentation says the simulation does not model: market impact, information leakage, latency-related slippage, queue position for non-marketable limit orders, price improvement, regulatory fees and dividends. It also explains the displayed-liquidity limitation and why simulator assumptions differ.
-
-Source: Alpaca — Paper Trading: https://docs.alpaca.markets/us/docs/paper-trading
-
-Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
-
-#AMORDER #PaperTrading #RiskManagement #Shorts
-
-### Instagram
-A paper-trading fill is useful evidence about a simulation — not a promise about live execution. This explainer covers market impact, latency, queue position, displayed liquidity and why simulator assumptions matter.
-
-Source: Alpaca Paper Trading documentation: https://docs.alpaca.markets/us/docs/paper-trading
-
-Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
-
-#AMORDER #PaperTrading #MarketData #RiskManagement
-
-**Alt text:** Six original cinematic graphite-studio Blender scenes use a glass simulation chamber, quote plane, separated metal plates, schematic liquidity columns and modular glass systems to explain why paper-trading fills do not reproduce every condition of live execution.
+Source: [Alpaca — Paper Trading](https://docs.alpaca.markets/us/docs/paper-trading), accessed 2026-11-15.
 
 ## Rights and provenance
-- Original Blender scenes and procedural graphics; no stock footage or third-party video
+- Original Blender Eevee scenes and procedural graphics; no stock footage or third-party video
 - Kokoro-82M model weights: Apache-2.0
 - kokoro-onnx runtime: MIT
 - Noto Sans: OFL family licence
@@ -63,45 +39,32 @@ Paper-trading education only; not live-money performance; not investment advice;
 Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
 
 ## Assets
-- Storyboard: `posts/2026-11-15-paper-trading-blind-spots.short.json`
-- Expected MP4: `assets/amorder-paper-trading-blind-spots-2026-11-15.mp4` (pending render)
-- Expected SRT: `subtitles/amorder-paper-trading-blind-spots-2026-11-15.srt`
-- Expected manifest: `assets/amorder-paper-trading-blind-spots-manifest-2026-11-15.json`
+- Storyboard: [posts/2026-11-15-paper-trading-blind-spots.short.json](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-15-paper-trading-blind-spots.short.json)
+- MP4: [download vertical master](https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-paper-trading-blind-spots-2026-11-15.mp4)
+- SRT: [subtitle sidecar](https://raw.githubusercontent.com/amorder/AMORDER11/main/subtitles/amorder-paper-trading-blind-spots-2026-11-15.srt)
+- Manifest: [technical and release evidence](https://github.com/amorder/AMORDER11/blob/main/assets/amorder-paper-trading-blind-spots-manifest-2026-11-15.json)
 
-## Release gates
-- [ ] Blender keyframed render completed; at least five distinct animated visual setups
-- [ ] 1080×1920, 9:16, H.264/AAC, constant 30 fps; runtime below 160 seconds
-- [ ] Public HTTPS MP4 fetch returns non-empty MP4 bytes
-- [ ] Full FFmpeg decode and ffprobe verification pass
-- [ ] Representative frames show scene variation; no black/frozen sections
-- [ ] Motion coverage and safe-zone checks pass
-- [ ] English SRT matches narration, is readable and stays within safe areas
-- [ ] Audio stream, loudness, clipping and subtitle/narration alignment checks pass
-- [ ] Claims, public sources, rights, privacy and disclosure checks pass
-- [ ] Automated quality score at least 85/100; no critical gate failed
+## Automated release evidence
+- [x] GitHub Actions render run [43738749524](https://github.com/amorder/AMORDER11/actions/runs/43738749524) completed successfully and committed the MP4, SRT and manifest
+- [x] 1080x1920, 9:16, H.264/AAC, constant 30 fps; 94.094 seconds
+- [x] Full FFmpeg decode and ffprobe verification passed
+- [x] Six scene midpoint frames varied; 100% sampled motion coverage; zero black frames and zero frozen sections
+- [x] English SRT matches narration; 24 cues, maximum 96 characters; subtitle safe-zone margin 290 px
+- [x] Audio stream and measured levels passed: mean -15.5 dB, peak -1.5 dB
+- [x] Sources, rights, public-safety and required disclosure checks passed
+- [x] Independent automated release score 100/100 (threshold 85)
+- No human watch-through or headphone/speaker audition is claimed
 
-## Publishing record
-| Destination | Buffer post ID | Public URL | Status |
-|---|---|---|---|
-| Instagram Reel | pending | pending | HOLD — pending render and independent release gates |
-| YouTube Short | pending | pending | HOLD — pending render and independent release gates |
+**Non-blocking renderer warning:** Blender 5.0.1 exited with SIGSEGV after the final scene MP4 had been written. The output file then passed ffprobe, full decode and every independent release gate. The crash report contents were not available, so the precise Blender/EGL root cause is undetermined. No unchanged rerun was made after the exact output passed.
 
-No destination is reported as published until Buffer confirms the post as `sent` and a public post URL is verified. No human watch-through or headphone/speaker audition is claimed; only automated checks will be reported.
+## Buffer publication record
 
+| Destination | Status | Public URL |
+|---|---|---|
+| Instagram Reel | **sent** — 2026-11-16 01:27:58 UTC | [View Reel](https://www.instagram.com/reel/DfyK7krR9RR/) |
+| YouTube Short | **scheduled** — 2026-11-19 14:58 UTC (20:28 IST) | Not available until sent |
 
-## Render status — 2026-11-15
-- [GitHub Actions render run 43716423585](https://github.com/amorder/AMORDER11/actions/runs/43716423585) — caption-contract precheck passed; media-tool installation and Kokoro model download passed; Blender scene rendering is in progress.
-- [Public secret guard 43716428415](https://github.com/amorder/AMORDER11/actions/runs/43716428415) — passed.
-- No final MP4, SRT or manifest is committed yet. All independent release gates remain pending; Instagram and YouTube are HOLD.
-## Release attempt — November 15, 2026
+The Instagram post is verified as sent. The YouTube item remains scheduled, not published. No duplicate upload was created.
 
-- GitHub Actions run [43716423585](https://github.com/amorder/AMORDER11/actions/runs/43716423585) completed the Blender/Kokoro render and passed the H.264/AAC, 1080×1920, nominal 30 fps, 94.094-second and full-file decode checks.
-- The independent release validator then failed because one SRT subtitle cue exceeded the 120-character mobile-readability limit.
-- The workflow did not commit the MP4, SRT or manifest. No YouTube or Instagram Buffer post was created; both destinations remain HOLD.
-
-## Self-healing repair and current YouTube Shorts run — November 15, 2026
-- The first export (run [43716423585](https://github.com/amorder/AMORDER11/actions/runs/43716423585)) passed the technical MP4 and full-decode checks but failed the independent mobile-caption gate because one SRT cue exceeded the 120-character limit.
-- The short renderer now splits narration at sentence and word boundaries into cues capped at 96 characters, writes standard SRT timestamps/newlines, and is covered by the caption-contract regression test.
-- A follow-up preflight run [43738542416](https://github.com/amorder/AMORDER11/actions/runs/43738542416) exposed a faulty escaping assertion in the new test; no render was started. The test was corrected to use raw literals.
-- Latest corrected render: [GitHub Actions run 43738749524](https://github.com/amorder/AMORDER11/actions/runs/43738749524). The caption-contract regression test passed; media-tool installation is in progress. Blender rendering and all independent release gates remain pending.
-- Only YouTube Shorts is in scope for this run. No Instagram post or long-form episode is requested. Buffer publication remains HOLD until this exact asset is committed and every release gate passes.
+## Analytics and comparison
+Buffer analytics were reviewed. The Instagram snapshot was early and the available prior Reels had materially different runtimes/reporting ages; the previous 156.82-second Reel had no metrics returned. No like-for-like retention comparison is supportable. YouTube has no current metrics because its November 15 item is still scheduled. Private reach/watch-time analytics are not stored in this public repository.

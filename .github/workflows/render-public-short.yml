@@ -9,6 +9,7 @@ on:
       - 'tools/blender_scenes.py'
       - 'tools/motion_graphics.py'
       - 'tools/test_caption_contract.py'
+      - '.github/workflows/render-public-short.yml'
   workflow_dispatch:
 
 permissions:
@@ -126,7 +127,7 @@ jobs:
               echo "No generated asset changes."
               exit 0
             fi
-            git commit -m "content: render English AMORDER calendar short with captions"
+            git commit -m "content: render ${BASE} short with captions"
             if git push origin "HEAD:$GITHUB_REF_NAME"; then
               exit 0
             fi

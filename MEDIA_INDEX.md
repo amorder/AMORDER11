@@ -88,7 +88,8 @@ The AMORDER renderers now use a hybrid cinematic pipeline:
 - [Public content record](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-14-submitted-is-not-filled.md)
 - [Short storyboard](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-14-submitted-is-not-filled.short.json)
 - Topic: order lifecycle integrity — accepted, new, partially filled, pending cancel, canceled, rejected, expired and filled are distinct states.
-- [Render workflow run 43598788407](https://github.com/amorder/AMORDER11/actions/runs/43598788407) — running with the optimized Blender profile: 720x1280 base, 6 fps, 2 TAA samples, FFmpeg motion-compensated 1080x1920/30 fps delivery.
+- [Render workflow run 43598788407](https://github.com/amorder/AMORDER11/actions/runs/43598788407) — failed during Blender scene 3 with SIGSEGV before a usable scene MP4 was produced; no independent validation or asset commit.
+- [Second render attempt 43623624656](https://github.com/amorder/AMORDER11/actions/runs/43623624656) — Blender/Kokoro rendering completed, but the technical validator rejected the probed average frame rate 91260/3043 (29.990141 fps) against the exact 30/1 contract; no independent release gate or asset commit.
 - [Public secret guard 43598788472](https://github.com/amorder/AMORDER11/actions/runs/43598788472) — passed.
 - The expected MP4, SRT and manifest are not yet committed. The independent decode, visual/motion, subtitle/safe-zone, audio and source release gates have not yet passed. Instagram and YouTube remain HOLD; no Buffer video post has been created.
 - The story is based on Alpaca's public order lifecycle documentation and contains no account, order or performance data.
@@ -98,21 +99,27 @@ The AMORDER renderers now use a hybrid cinematic pipeline:
 
 - [Public content record](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-15-paper-trading-blind-spots.md)
 - [Short storyboard](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-15-paper-trading-blind-spots.short.json)
-- Topic: simulation limits — live exchange routing, market impact, latency, queue position, displayed liquidity and simulator assumptions.
+- Topic: paper-simulation limitations — live exchange routing, market impact, latency, queue position, displayed liquidity and simulator assumptions.
 - Primary source: [Alpaca — Paper Trading](https://docs.alpaca.markets/us/docs/paper-trading).
-- Renderer fix: final scene concatenation and subtitle burn now force constant 30 fps; the public caption/render contract precheck passed.
-- [Current render run 43716379478](https://github.com/amorder/AMORDER11/actions/runs/43716379478) — started November 15; Blender/Kokoro render and exact 30/1 export check are pending.
-- [Secret guard 43716428415](https://github.com/amorder/AMORDER11/actions/runs/43716428415) — passed.
-- The MP4, SRT and manifest are not yet committed. Independent decode, visual/motion, subtitle/safe-zone, audio, source/rights and disclosure gates must pass before publishing. Instagram and YouTube remain HOLD; no Buffer post has been created.
-- No private account, order, fill or performance data is included.
-### November 15 release-gate result
+- [First render attempt 43716423585](https://github.com/amorder/AMORDER11/actions/runs/43716423585) — Blender/Kokoro render and technical H.264/AAC, 1080x1920, nominal 30 fps and full-decode checks passed; the independent validator failed because one SRT cue exceeded 120 characters.
+- [Preflight attempt 43738542416](https://github.com/amorder/AMORDER11/actions/runs/43738542416) — caption-contract regression test failed because the newly added SRT assertion used an incorrect escaped newline; no render started. The assertion was corrected.
+- [Corrected render 43738749524](https://github.com/amorder/AMORDER11/actions/runs/43738749524) — completed successfully. It committed the 94.094-second vertical MP4, SRT and manifest. Independent automated release score: 100/100.
+- Exact export: 1080x1920, H.264/AAC, 30 fps, 35,030,485 bytes. Full-file decode passed. Six representative scene midpoints varied; sampled motion coverage 100%; zero black frames and zero frozen sections. SRT: 24 cues, maximum 96 characters; safe-zone subtitle margin 290 px. Audio mean -15.5 dB, peak -1.5 dB.
+- **Non-blocking warning:** Blender 5.0.1 exited with SIGSEGV after the final scene MP4 was written. The output then passed ffprobe, full decode and every independent release gate. The crash report content was not available, so the precise Blender/EGL root cause remains undetermined; no unchanged rerun was made.
+- [Latest secret guard 43804950026](https://github.com/amorder/AMORDER11/actions/runs/43804950026) — passed on the current main head.
+- Instagram Reel: **sent** on November 16 at 01:27:58 UTC — [verified public Reel](https://www.instagram.com/reel/DfyK7krR9RR/).
+- YouTube Short: **scheduled**, not published, for November 19 at 14:58 UTC (20:28 IST). No public URL exists until Buffer confirms sent.
+- Buffer analytics were reviewed privately. The Instagram snapshot was early; prior comparable Reels had materially different runtimes/reporting ages, and the 156.82-second prior Reel had no metrics returned. No like-for-like retention conclusion is supported. Private reach/watch-time analytics are not stored in this public repository.
+- No human watch-through or headphone/speaker audition is claimed.
 
-- Follow-up render run [43716423585](https://github.com/amorder/AMORDER11/actions/runs/43716423585) completed the Blender/Kokoro render and passed its technical MP4 checks and full decode.
-- The independent validator rejected one subtitle cue for exceeding 120 characters. Because the release gate failed, the generated MP4, SRT and manifest were not committed, and no Buffer video post was created. YouTube and Instagram remain HOLD.
+## November 16, 2026 — When One Unit Is Too Much
 
-### November 15 YouTube Shorts recovery
-- The first vertical MP4 passed technical encode/decode checks but failed the independent subtitle readability gate (>120 characters in one cue).
-- The renderer now creates sentence/word-bounded SRT cues capped at 96 characters and uses standard SRT newlines; caption-contract tests verify the exact source contract.
-- Preflight run [43738542416](https://github.com/amorder/AMORDER11/actions/runs/43738542416) identified a faulty escape in the newly added test assertion (no render began); the assertion was corrected.
-- Latest YouTube Shorts render run [43738749524](https://github.com/amorder/AMORDER11/actions/runs/43738749524): caption-contract check passed; media-tool installation in progress. No final MP4/SRT/manifest committed and no Buffer upload has been created. YouTube remains HOLD.
-- This run targets YouTube Shorts only; no Instagram post or long-form video is requested.
+- [Public content record](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-16-one-unit-too-much.md)
+- [Short storyboard](https://github.com/amorder/AMORDER11/blob/main/posts/2026-11-16-one-unit-too-much.short.json)
+- Topic: position-size arithmetic — planned loss, stop distance, point/tick value, permitted increments and the valid decision to pass when the minimum unit is too large.
+- Sources: [CME Group — Proper Position Size](https://www.cmegroup.com/education/courses/trade-and-risk-management/proper-position-size) and [SEC Investor Bulletin — Stop Orders](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15), updated August 18, 2026.
+- Quality audit: compared the ten most recent approved/public items (November 6-15), including data quality, market calendar, timestamps, order lifecycle, trailing stops, paper-fill management and simulation limitations. This topic avoids repeating those lessons.
+- Visual improvement: five new Blender scene keys — risk_budget, stop_distance, unit_value, position_size and minimum_unit — plus the existing brand close. The first 1.5-second hook is the minimum-unit/risk-boundary reveal.
+- Pipeline repair: the short workflow now triggers when its own YAML changes and uses the actual storyboard name in its asset commit message. The validator enforces a single shared 9:16 master for both Instagram Reels and YouTube Shorts; long-form remains outside the daily workflow. Regression tests cover the new scene keys and workflow triggers.
+- The storyboard and pipeline changes are committed together so only the November 16 short is selected by the next render. Render status is pending; no MP4, SRT or manifest is yet approved, and no Buffer post has been created.
+- No private trading data, account information, symbols, orders, fills or performance claims are included.

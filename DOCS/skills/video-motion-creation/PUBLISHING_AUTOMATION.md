@@ -53,3 +53,8 @@ Do not publish when:
 - the platform reports a warning or policy rejection.
 
 Automation may report errors and recommend corrections. It must not override a stop condition or claim human approval. It may mark only the documented automated release checks as passed.
+
+
+## Daily AMORDER publisher scope
+
+The standing daily publisher is short-form only: one shared 9:16 vertical master, strictly under 160 seconds, for Instagram Reels and YouTube Shorts. It does not create or upload 16:9 masters or long-form episodes. The separate long-form renderer remains outside the daily schedule. Verify each destination independently; a sent Reel does not imply a sent Short, and a scheduled item is not published.

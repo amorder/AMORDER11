@@ -2,6 +2,8 @@
 
 Mark every item PASS, FAIL or N/A and record evidence. Any critical failure blocks release. A high score cannot override missing rights, incorrect facts, missing disclosure or absent owner authorization. AMORDER has standing owner authorization for automatic publication of public-safe educational content; per-asset human signoff is not required while that authorization remains active. Never claim a human watched or approved a file when only automated checks were performed.
 
+**Daily publisher scope:** one shared 9:16 master strictly under 160 seconds for Instagram Reels and YouTube Shorts. No 16:9 or long-form upload is part of the daily publishing workflow. Record a separate Buffer state and verified URL for each destination.
+
 ## A. Story and editorial
 - [ ] For Shorts/Reels, encoded runtime is strictly under 160 seconds (2:40); target 105–145 seconds where the narrative supports it.
 - [ ] The story is designed for a 9:16 vertical master, not a blind crop of landscape content.

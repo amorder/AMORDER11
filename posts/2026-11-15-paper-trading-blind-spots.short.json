@@ -6,6 +6,7 @@
   "language": "en",
   "audience": "global",
   "intended_channels": [
+    "instagram_reels",
     "youtube_shorts"
   ],
   "format": {
@@ -171,19 +172,21 @@
   "publishing_record": {
     "instagram": {
       "buffer_post_id": null,
-      "public_url": null,
-      "status": "NOT REQUESTED — YouTube Short only"
+      "public_url": "https://www.instagram.com/reel/DfyK7krR9RR/",
+      "status": "sent",
+      "sent_at_utc": "2026-11-16T01:27:58.202Z"
     },
     "youtube": {
       "buffer_post_id": null,
       "public_url": null,
-      "status": "HOLD — corrected subtitle renderer awaiting complete release gates"
+      "status": "scheduled",
+      "scheduled_at_utc": "2026-11-19T14:58:00.000Z"
     }
   },
   "render_revision": 3,
-  "render_note": "Revision 3: renderer splits narration at sentence boundaries, then at word boundaries into SRT cues no longer than 96 characters. It writes standard SRT line breaks and cue timing proportionally. YouTube Shorts only for this request; no Instagram post or long-form episode. All media, visual, caption, audio, source, rights, privacy, disclosure and duplicate checks remain mandatory.",
-  "render_status": "pending_render",
-  "render_run_id": null,
+  "render_note": "The final 94.094-second shared vertical master is committed. Automated quality gate: 100/100; 100% sampled motion coverage; no black or frozen frames; 24 SRT cues, maximum 96 characters; audio mean -15.5 dB and peak -1.5 dB. No human watch-through or headphone/speaker audition is claimed.",
+  "render_status": "automated_release_gate_passed",
+  "render_run_id": 43738749524,
   "render_blocker": null,
-  "render_retry": "Revision 2 introduced an escaping defect in SRT generation; corrected revision 3 explicitly tests sentence splitting, real SRT newlines and <=96-character cues. Re-render from the current main branch and require both static contract tests and independent media validation before Buffer upload."
+  "render_retry": "The first rendered candidate failed the 120-character subtitle-cue gate (run 43716423585). A preflight then exposed an escaped-newline regression assertion (run 43738542416); the assertion was corrected. The corrected render (run 43738749524) passed the caption contract, H.264/AAC and 1080x1920/30 fps checks, full decode, motion/black/freeze and scene-variation checks, subtitle agreement/readability/safe zones, audio levels, source/rights/privacy/disclosure checks and the 85-point release threshold. Blender 5.0.1 logged a SIGSEGV after the final scene MP4 had been written; the final master and all downstream checks passed, so no unchanged rerun was made."
 }

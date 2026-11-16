@@ -62,6 +62,35 @@ def build_motion_graphics_filter(width: int, height: int, duration: float, visua
             f"drawbox=x='{w}*0.81':y='{h}*0.33':w=3:h='{h}*(0.16+0.015*sin(t*2))':color={ACCENT}:t=fill",
             f"drawbox=x='{w}*0.76':y='{h}*0.33':w='{w}*(0.055+0.006*sin(t*2))':h=3:color={ACCENT}:t=fill",
         ])
+    elif key == "risk_budget":
+        filters.extend([
+            f"drawbox=x='{w}*0.16':y='{h}*0.61':w='{w}*0.68':h=3:color={SOFT}:t=fill",
+            f"drawbox=x='{w}*0.16+mod(t*{w * .09:.3f}\\,{w}*0.62)':y='{h}*0.57':w=8:h='{h}*0.08':color={ACCENT}:t=fill",
+            f"drawbox=x='{w}*0.78':y='{h}*0.55':w=3:h='{h}*0.12':color={AMBER}:t=fill",
+        ])
+    elif key == "stop_distance":
+        filters.extend([
+            f"drawbox=x='{w}*0.22+sin(t*1.4)*{w}*0.018':y='{h}*0.30':w=3:h='{h}*0.22':color={ACCENT}:t=fill",
+            f"drawbox=x='{w}*0.78-sin(t*1.4)*{w}*0.018':y='{h}*0.30':w=3:h='{h}*0.22':color={AMBER}:t=fill",
+            f"drawbox=x='{w}*0.22':y='{h}*0.41':w='{w}*0.56':h=2:color={SOFT}:t=fill",
+        ])
+    elif key == "unit_value":
+        filters.extend([
+            f"drawbox=x='{w}*0.50+cos(t*1.6)*{w}*0.12':y='{h}*0.44+sin(t*1.6)*{h}*0.04':w=8:h=8:color={ACCENT}:t=fill",
+            f"drawbox=x='{w}*0.40':y='{h}*0.49':w='{w}*(0.20+0.02*sin(t*2))':h=2:color={AMBER}:t=fill",
+        ])
+    elif key == "position_size":
+        for index, x_ratio in enumerate((.28, .38, .48, .58, .68)):
+            phase = index * .65
+            filters.append(
+                f"drawbox=x='{w}*{x_ratio:.3f}':y='{h}*0.66-(8+8*(1+sin(t*2+{phase:.2f})))':w=5:h='8+8*(1+sin(t*2+{phase:.2f}))':color={ACCENT if index % 2 == 0 else SOFT}:t=fill"
+            )
+    elif key == "minimum_unit":
+        filters.extend([
+            f"drawbox=x='{w}*0.22':y='{h}*0.32':w=3:h='{h}*0.20':color={ACCENT}:t=fill",
+            f"drawbox=x='{w}*0.78':y='{h}*0.32':w=3:h='{h}*0.20':color={AMBER}:t=fill",
+            f"drawbox=x='{w}*0.22+mod(t*{w * .05:.3f}\\,{w}*0.56)':y='{h}*0.52':w=8:h=3:color={SOFT}:t=fill",
+        ])
     elif key == "brand":
         # A subtle orbital point and a counter-moving detail.
         filters.extend([

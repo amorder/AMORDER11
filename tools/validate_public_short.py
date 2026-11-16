@@ -203,6 +203,12 @@ def validate_safe_zones(story: dict) -> dict[str, int]:
 
 
 def validate_public_contract(story: dict) -> None:
+    channels = set(story.get("intended_channels", []))
+    if channels != {"instagram_reels", "youtube_shorts"}:
+        raise ValueError("Daily short must use one shared master for Instagram Reels and YouTube Shorts")
+    fmt = story.get("format", {})
+    if fmt.get("aspect_ratio") != "9:16" or (fmt.get("width"), fmt.get("height")) != (WIDTH, HEIGHT):
+        raise ValueError("Daily publisher accepts only a 1080x1920 vertical master")
     if story.get("language") != "en" or story.get("audience") != "global":
         raise ValueError("Public video must be English and global-audience")
     if story.get("disclosure") != DISCLOSURE:
