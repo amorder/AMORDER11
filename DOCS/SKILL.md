@@ -40,6 +40,9 @@ A no-trade day is valid editorial material. Explain patience, process discipline
 
 ## Production tools
 
+Use the current AMORDER tools first: Blender scene generation, FFmpeg/ffprobe finishing and validation, Python/Pillow graphics and the existing short/episode renderers. Add HyperFrames as an optional local HTML/CSS/JavaScript motion-graphics renderer for kinetic typography, animated diagrams and data-led scenes; it complements rather than replaces Blender's cinematic 3D work. See [HYPERFRAMES_INTEGRATION.md](skills/video-motion-creation/HYPERFRAMES_INTEGRATION.md) for setup and the reusable project example. The local CLI requires Node.js 22+ and FFmpeg. Keep the existing AMORDER release checks and single publishing path unchanged.
+
+
 Use the current AMORDER tools first: Blender scene generation, FFmpeg/ffprobe finishing and validation, Python/Pillow graphics and the existing short/episode renderers. Optional local AI models may assist with ideation, assets, speech or transcription only after the exact model revision, license, hardware needs and output rights are reviewed. Free-to-download does not automatically mean commercially reusable.
 
 ## Release states
