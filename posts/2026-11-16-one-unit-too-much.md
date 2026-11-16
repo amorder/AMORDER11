@@ -56,6 +56,13 @@ Paper-trading education only; not live-money performance; not investment advice;
 - [ ] Sources, rights, privacy, factual accuracy and disclosure checks pass
 - [ ] Automated quality score at least 85/100; no critical gate failed
 
+## Production repair log
+- Initial render run [43876452663](https://github.com/amorder/AMORDER11/actions/runs/43876452663) was superseded before completion after source review narrowed the SEC execution-price statement to standard stop orders.
+- Corrected render run [43878038044](https://github.com/amorder/AMORDER11/actions/runs/43878038044) reached the Blender rendering step, then was superseded by the editorial repair below. No MP4/SRT validation or asset commit occurred in that run.
+- Deterministic editorial defect: scenes 1 and 2 contained identical narration. Scene 2 was rewritten to explain the risk budget before position-size arithmetic.
+- Regression repair: `tools/test_caption_contract.py` now rejects duplicate scene narration. The next workflow run is the one corrected render attempt for this repair; its ID and test result will be recorded after GitHub Actions starts.
+- No media is approved and no Buffer post has been created while these checks are pending.
+
 ## Publishing record
 | Destination | Status | Public URL |
 |---|---|---|

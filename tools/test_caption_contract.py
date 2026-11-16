@@ -111,6 +111,14 @@ latest_short = json.loads(latest_short_path.read_text(encoding="utf-8"))
 latest_visuals = {scene.get("visual") for scene in latest_short.get("scenes", [])}
 supported_visuals = {"idea", "timestamp", "gaps", "source", "stand_down", "brand",
                      "risk_budget", "stop_distance", "unit_value", "position_size", "minimum_unit"}
+scene_narration = [
+    " ".join(scene.get("narration", "").split()).casefold()
+    for scene in latest_short.get("scenes", [])
+]
+checks["daily storyboard does not repeat narration across scenes"] = (
+    len(scene_narration) == len(set(scene_narration))
+    and all(scene_narration)
+)
 checks["latest daily storyboard uses at least five supported visual keys"] = (
     len(latest_visuals) >= 5 and latest_visuals <= supported_visuals
 )

@@ -42,7 +42,7 @@
       "visual": "risk_budget",
       "title": "SET THE LIMIT BEFORE SIZE",
       "overlay": "Choose the planned loss amount first.",
-      "narration": "If the smallest tradable unit breaks your risk limit, the disciplined position size may be zero. Size comes last."
+      "narration": "Start by deciding the amount you are prepared to risk if the stop is reached. That amount sets the budget before you calculate any size."
     },
     {
       "visual": "stop_distance",
@@ -179,10 +179,10 @@
       "status": "pending_render"
     }
   },
-  "render_revision": 1,
-  "render_note": "Quality audit compared the ten most recent approved/public items: November 6 paper-trading journey, November 7 data-first short, November 8 calendar short, November 9 paper-fill case study, November 11 and 12 trailing-stop explainers, November 12 CoreWeave market-reaction record, November 13 clean-chart/data-quality short, November 14 order-lifecycle short and November 15 paper-simulation-limitations short. This topic avoids repeating feed coverage, clocks, calendar checks, order lifecycle, stop triggers or simulation omissions. Testable improvement: replace the repeated clock/source/gap visual grammar with five new tactile risk-sizing Blender setups and open on the minimum-unit boundary in the first 1.5 seconds. No market statistics, hypothetical trade results or return claims are used. Factual precision repair: the SEC execution-price caveat is explicitly scoped to a standard stop order, not generalized to stop-limit orders.",
+  "render_revision": 2,
+  "render_note": "Quality audit compared the ten most recent approved/public items: November 6 paper-trading journey, November 7 data-first short, November 8 calendar short, November 9 paper-fill case study, November 11 and 12 trailing-stop explainers, November 12 CoreWeave market-reaction record, November 13 clean-chart/data-quality short, November 14 order-lifecycle short and November 15 paper-simulation-limitations short. This topic avoids repeating feed coverage, clocks, calendar checks, order lifecycle, stop triggers or simulation omissions. Testable improvement: replace the repeated clock/source/gap visual grammar with five new tactile risk-sizing Blender setups and open on the minimum-unit boundary in the first 1.5 seconds. No market statistics, hypothetical trade results or return claims are used. Factual precision repair: the SEC execution-price caveat is explicitly scoped to a standard stop order, not generalized to stop-limit orders. Editorial regression repair: scenes 1 and 2 previously repeated the same narration verbatim. Scene 2 now explains the risk budget before position-size arithmetic. A regression check rejects duplicate scene narration. The corrected render must pass the existing full independent release gate before Buffer publishing.",
   "render_status": "pending_render",
   "render_run_id": null,
   "render_blocker": null,
-  "render_retry": "The initial render run 43876452663 was superseded before completion after factual copy review found that the SEC execution-price caveat needed to be explicitly scoped to standard stop orders. The narration, platform captions and a regression test were corrected; the next run is the single corrected render attempt."
+  "render_retry": "The first attempt 43876452663 was superseded after the standard-stop factual wording correction. Run 43878038044 was then superseded while Blender rendering was in progress when a pre-release editorial audit found duplicated narration in scenes 1 and 2. Scene 2 now has distinct risk-budget narration; tools/test_caption_contract.py adds a duplicate-scene-narration regression check. The next workflow run is the single corrected render attempt for this editorial repair."
 }
