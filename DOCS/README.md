@@ -20,6 +20,7 @@ The active AMORDER production path remains:
 
 - Short render: \`.github/workflows/render-public-short.yml\` and \`tools/render_public_short.py\`
 - Long-form render: \`.github/workflows/render-public-episode.yml\` and \`tools/render_public_episode.py\`
+- HyperFrames starter smoke test: .github/workflows/hyperframes-smoke-test.yml (read-only, no publishing)
 - Blender scene generation: \`tools/blender_scenes.py\`
 - Public post records and storyboards: \`posts/\`
 - Approved public media: \`assets/\`
