@@ -2,11 +2,15 @@
 
 - **Publication date:** 2026-11-16
 - **Language / audience:** English / global
-- **Channels:** Instagram Reels and YouTube Shorts
+- **Channels:** X (text-first companion), Instagram Reels and YouTube Shorts
 - **Topic:** How planned loss, stop distance and unit value determine a risk-based position size, and why the minimum permitted unit may still be too large
 
 ## Viewer promise
 Learn why position size is the last step of a risk calculation, and why the correct planned size can be zero when the minimum permitted unit exceeds the risk limit.
+
+## X text-first companion
+
+Position size comes last: set a risk budget, measure stop distance, apply point/tick value, then round down. If one unit exceeds the limit, zero is valid. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER
 
 ## Editorial and production
 - **Opening hook:** "If the smallest tradable unit breaks your risk limit, the disciplined position size may be zero. Size comes last."
@@ -65,9 +69,10 @@ Paper-trading education only; not live-money performance; not investment advice;
 - No media is approved and no Buffer post has been created while these checks are pending.
 
 ## Publishing record
-| Destination | Status | Public URL |
-|---|---|---|
-| Instagram Reel | pending_render | pending |
-| YouTube Short | pending_render | pending |
+| Destination | Status | Buffer post ID | Public URL |
+|---|---|---|---|
+| X text-first post | pending_queue | pending | pending |
+| Instagram Reel | pending_render | pending | pending |
+| YouTube Short | pending_render | pending | pending |
 
 No destination is reported as published until Buffer confirms the post as `sent` and a public URL is verified. No human watch-through or headphone/speaker audition is claimed.
