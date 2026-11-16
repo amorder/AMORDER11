@@ -1,0 +1,67 @@
+1
+00:00:00,000 --> 00:00:06,536
+If the smallest tradable unit breaks your risk limit, the disciplined position size may be zero.
+
+2
+00:00:06,536 --> 00:00:07,762
+Size comes last.
+
+3
+00:00:07,762 --> 00:00:12,989
+Start by deciding the amount you are prepared to risk if the stop is reached.
+
+4
+00:00:12,989 --> 00:00:16,474
+That amount sets the budget before you calculate any size.
+
+5
+00:00:16,474 --> 00:00:19,300
+Measure the distance from entry to the stop.
+
+6
+00:00:19,300 --> 00:00:25,304
+That distance is only one part of the calculation; it is not the loss amount by itself.
+
+7
+00:00:25,304 --> 00:00:32,356
+Multiply the stop distance by the instrument's point or tick value to estimate planned loss per
+
+8
+00:00:32,356 --> 00:00:32,797
+unit.
+
+9
+00:00:32,797 --> 00:00:35,882
+Check contract rules and minimum size increments.
+
+10
+00:00:35,882 --> 00:00:39,702
+Divide the planned risk amount by the loss per unit.
+
+11
+00:00:39,702 --> 00:00:41,994
+Round down to the permitted increment.
+
+12
+00:00:41,994 --> 00:00:46,578
+If even one unit exceeds the plan, passing is a valid decision.
+
+13
+00:00:46,578 --> 00:00:51,121
+This is a planning estimate, not a guaranteed loss cap.
+
+14
+00:00:51,121 --> 00:00:58,845
+For a standard stop order, the SEC says the trigger becomes a market order; the execution price
+
+15
+00:00:58,845 --> 00:00:59,754
+can differ.
+
+16
+00:00:59,754 --> 00:01:04,752
+Paper-trading education only; not live-money performance; not investment advice; no guaranteed
+
+17
+00:01:04,752 --> 00:01:05,206
+returns.
