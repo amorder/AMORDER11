@@ -421,7 +421,7 @@ def main():
     p.add_argument("--width", type=int, default=1080)
     p.add_argument("--height", type=int, default=1920)
     p.add_argument("--duration", type=float, default=0)
-    p.add_argument("--fps", type=int, default=15)
+    p.add_argument("--fps", type=int, default=12)
     p.add_argument("--samples", type=int, default=4)
     a = p.parse_args(sys.argv[sys.argv.index("--") + 1:])
     clear()
