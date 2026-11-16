@@ -60,7 +60,8 @@ Paper-trading education only; not live-money performance; not investment advice;
 - Initial render run [43876452663](https://github.com/amorder/AMORDER11/actions/runs/43876452663) was superseded before completion after source review narrowed the SEC execution-price statement to standard stop orders.
 - Corrected render run [43878038044](https://github.com/amorder/AMORDER11/actions/runs/43878038044) reached the Blender rendering step, then was superseded by the editorial repair below. No MP4/SRT validation or asset commit occurred in that run.
 - Deterministic editorial defect: scenes 1 and 2 contained identical narration. Scene 2 was rewritten to explain the risk budget before position-size arithmetic.
-- Regression repair: `tools/test_caption_contract.py` now rejects duplicate scene narration. The next workflow run is the one corrected render attempt for this repair; its ID and test result will be recorded after GitHub Actions starts.
+- Regression repair commit: [3a2b62a](https://github.com/amorder/AMORDER11/commit/3a2b62ad089d846ef106f93b3a256a406becdabd) updates the scene 2 narration and adds `tools/test_caption_contract.py` coverage that rejects duplicate narration across scenes. The workflow pre-render contract-test step passed on this commit (run 43880610537, step 4); the matching secret guard [43880610230](https://github.com/amorder/AMORDER11/actions/runs/43880610230) also passed.
+- Corrected render attempt: [43880610537](https://github.com/amorder/AMORDER11/actions/runs/43880610537) is the single retry for this editorial repair. It is currently in the Blender rendering step; independent MP4 and release validation have not started, and no generated MP4/SRT/manifest is committed yet.
 - No media is approved and no Buffer post has been created while these checks are pending.
 
 ## Publishing record
