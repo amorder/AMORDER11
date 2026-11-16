@@ -41,16 +41,17 @@ Requirements:
 - FFmpeg available on `PATH`.
 - A supported local browser runtime; the HyperFrames engine uses Puppeteer/Chromium.
 
-From the HyperFrames project folder, run:
+From the HyperFrames project folder, the AMORDER smoke-test workflow currently pins CLI version `0.9.58`:
 
 ```bash
-npx hyperframes --help
-npx hyperframes lint
-npx hyperframes check
-npx hyperframes render --fps 30 --quality high --output render.mp4
+npx --yes hyperframes@0.9.58 --help
+npx --yes hyperframes@0.9.58 browser ensure
+npx --yes hyperframes@0.9.58 lint
+npx --yes hyperframes@0.9.58 check
+npx --yes hyperframes@0.9.58 render --fps 30 --quality high --output render.mp4
 ```
 
-The project root composition is normally `index.html`. Check the installed CLI's help before relying on a less-common flag; the CLI's installed version is authoritative. Use a locally installed/pinned CLI version for a production run where exact reproducibility is required, and record that version in the render manifest.
+The project root composition is normally `index.html`. Check the installed CLI's help before relying on a less-common flag; the installed version is authoritative. Keep the CLI version pinned for production and update the pin only after the starter composition passes the smoke test. Record that version in the render manifest.
 
 To install the agent skills in a local working copy, use the official installer from that project's folder and select Core Skills:
 
@@ -78,6 +79,8 @@ npx hyperframes render --fps 30 --quality high --output ../../../../work/vertica
 ```
 
 Keep project-local source and temporary renders out of the public media library until the content has passed the normal review. Only reviewed, public-safe final exports and their approved evidence belong in this public repository.
+
+The non-publishing CI smoke test lives at `.github/workflows/hyperframes-smoke-test.yml`. It pins HyperFrames `0.9.58`, installs Node.js 22 and FFmpeg, ensures the local browser, then runs lint, browser/layout/motion/contrast checks, a vertical render and ffprobe/full-decode validation. It has read-only repository permission and does not upload or publish anything.
 
 ## Joining HyperFrames shots to an AMORDER master
 
