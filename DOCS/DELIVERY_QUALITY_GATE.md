@@ -30,6 +30,7 @@ Mark every item PASS, FAIL or N/A and record evidence. Any critical failure bloc
 - [ ] First 1.5 seconds has a meaningful visual/action hook.
 - [ ] Moving footage/animation coverage meets the Reel standard or an exception is documented.
 - [ ] Blender scenes render at 12 fps with genuine keyframed camera and object motion; FFmpeg motion-compensated interpolation delivers constant 30 fps, and the manifest records both rates and motion coverage.
+- [ ] If HyperFrames is used, each insert has a retained source composition, exact CLI version, render provenance and rights-cleared external dependencies; it supplements rather than silently replaces the required Blender motion path.
 - [ ] No still-image zooms are counted as genuine moving-shot coverage.
 - [ ] No asset is repeated merely to pad runtime.
 - [ ] Footage does not falsely imply an event, place, time or person.
@@ -61,6 +62,7 @@ Mark every item PASS, FAIL or N/A and record evidence. Any critical failure bloc
 ## F. Technical export
 - [ ] Correct aspect ratio, resolution, FPS and duration for the intended destination.
 - [ ] ffprobe confirms expected video/audio streams, codec and duration.
+- [ ] If HyperFrames is used, its composition passes `npx hyperframes lint` and `npx hyperframes check`; the rendered insert is probed and the exact combined master still passes all applicable final-export checks.
 - [ ] Full media decode completes without corruption.
 - [ ] No black/frozen frames, flashes, missing shots or broken transitions.
 - [ ] Subtitles are synced, spelled correctly and within safe areas.
