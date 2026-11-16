@@ -25,13 +25,13 @@ concurrency:
 
 jobs:
   render-example:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v7
 
       - name: Set up Node.js 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
 
@@ -43,9 +43,24 @@ jobs:
       - name: Install the pinned HyperFrames browser
         run: npx --yes hyperframes@0.9.58 browser ensure
 
-      - name: Lint the sample composition
+      - name: Lint the sample composition and retain machine-readable diagnostics
         working-directory: examples/hyperframes/vertical-data-reveal
-        run: npx --yes hyperframes@0.9.58 lint
+        shell: bash
+        run: |
+          set +e
+          npx --yes hyperframes@0.9.58 lint --json > "$RUNNER_TEMP/hyperframes-lint.json" 2>&1
+          status=$?
+          cat "$RUNNER_TEMP/hyperframes-lint.json"
+          exit "$status"
+
+      - name: Upload HyperFrames lint diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hyperframes-lint-diagnostics
+          path: ${{ runner.temp }}/hyperframes-lint.json
+          if-no-files-found: warn
+          retention-days: 3
 
       - name: Check browser render, layout, motion and contrast
         working-directory: examples/hyperframes/vertical-data-reveal
