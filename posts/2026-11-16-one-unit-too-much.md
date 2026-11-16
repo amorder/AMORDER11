@@ -60,13 +60,19 @@ Paper-trading education only; not live-money performance; not investment advice;
 - [ ] Sources, rights, privacy, factual accuracy and disclosure checks pass
 - [ ] Automated quality score at least 85/100; no critical gate failed
 
+## Improvement versus recent vertical releases
+- The latest committed vertical manifest (2026-11-15) records 94.094 seconds, 1080x1920 at 30 fps, H.264/AAC, six scenes, genuine Blender keyframed animation, 100% sampled motion coverage, 24 subtitle cues, zero sampled black frames, zero frozen-run seconds, mean audio -15.5 dB and peak -1.5 dB, with a 290 px bottom subtitle margin and an automated score of 100/100.
+- The 2026-11-09 release used separate masters: a 156.82-second 1080x1920 Instagram export and a 277.83-second 1920x1080 YouTube export. Today's workflow retains one shared 9:16 master for both destinations.
+- A 2026-11-08 vertical MP4 exists, but no committed manifest was found, so its exact motion/audio/export checks cannot be compared. November 14 and 13 storyboards have no committed MP4/manifest and are not counted as completed releases.
+- This episode narrows the subject to one decision boundary—whether the minimum permitted unit fits the risk limit—and uses six distinct Blender visual keys. The Blender scene rate is being raised from the previous manifest's 6 fps to the required 12 fps, with motion-compensated 30 fps delivery; the new manifest must confirm this before release.
+
 ## Production repair log
-- Initial render run [43876452663](https://github.com/amorder/AMORDER11/actions/runs/43876452663) was superseded before completion after source review narrowed the SEC execution-price statement to standard stop orders.
-- Corrected render run [43878038044](https://github.com/amorder/AMORDER11/actions/runs/43878038044) reached the Blender rendering step, then was superseded by the editorial repair below. No MP4/SRT validation or asset commit occurred in that run.
-- Deterministic editorial defect: scenes 1 and 2 contained identical narration. Scene 2 was rewritten to explain the risk budget before position-size arithmetic.
-- Regression repair commit: [3a2b62a](https://github.com/amorder/AMORDER11/commit/3a2b62ad089d846ef106f93b3a256a406becdabd) updates the scene 2 narration and adds `tools/test_caption_contract.py` coverage that rejects duplicate narration across scenes. The workflow pre-render contract-test step passed on this commit (run 43880610537, step 4); the matching secret guard [43880610230](https://github.com/amorder/AMORDER11/actions/runs/43880610230) also passed.
-- Corrected render attempt: [43880610537](https://github.com/amorder/AMORDER11/actions/runs/43880610537) is the single retry for this editorial repair. It is currently in the Blender rendering step; independent MP4 and release validation have not started, and no generated MP4/SRT/manifest is committed yet.
-- No media is approved and no Buffer post has been created while these checks are pending.
+- Earlier render runs [43876452663](https://github.com/amorder/AMORDER11/actions/runs/43876452663) and [43878038044](https://github.com/amorder/AMORDER11/actions/runs/43878038044) were superseded before media validation after source review and narration repair.
+- Deterministic editorial defect: scenes 1 and 2 contained identical narration. Scene 2 was rewritten to explain the risk budget before position-size arithmetic. Regression coverage now rejects duplicate narration across scenes; the contract test passed on run 43880610537.
+- Render attempt [43880610537](https://github.com/amorder/AMORDER11/actions/runs/43880610537) produced a 65.257-second 1080x1920, 30 fps H.264/AAC MP4 with burned captions and SRT. Automated checks reported score 100/100, 100% sampled motion coverage, zero black frames, zero frozen-run seconds, mean audio -15.5 dB, peak -1.5 dB, and 290 px bottom subtitle margin. These are evidence from an uncommitted attempt, not an approved release.
+- That attempt failed at the asset commit step because the workflow referenced undefined `${BASE}` under `set -u`. The workflow was corrected to derive the commit message from exported `${OUTPUT%.mp4}`, and a regression assertion was added. The public secret guard passed after these changes.
+- A further requirement audit found the renderer and manifest validator still used 6 fps Blender scenes, while the standing production specification requires 12 fps Blender renders interpolated to 30 fps. The renderer constant, Blender CLI default, independent manifest validator, regression test and delivery-quality documentation were all updated to require 12 fps. No quality gate was weakened.
+- Corrected 12 fps render run [43901178823](https://github.com/amorder/AMORDER11/actions/runs/43901178823) is pending / rendering. The caption-contract step must pass, the manifest must confirm 12 fps Blender animation and 30 fps delivery, and all media/source/privacy gates must pass before any video post is created. No November 16 MP4, SRT or manifest is committed yet.
 
 ## Publishing record
 | Destination | Status | Buffer post ID | Public URL |
