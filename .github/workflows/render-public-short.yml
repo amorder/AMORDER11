@@ -127,7 +127,7 @@ jobs:
               echo "No generated asset changes."
               exit 0
             fi
-            git commit -m "content: render ${BASE} short with captions"
+            git commit -m "content: render ${OUTPUT%.mp4} short with captions"
             if git push origin "HEAD:$GITHUB_REF_NAME"; then
               exit 0
             fi
