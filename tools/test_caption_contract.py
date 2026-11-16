@@ -143,7 +143,9 @@ checks["Blender post-render SIGSEGV is tolerated only with a non-empty scene MP4
     and '["ffmpeg","-v","error","-i",str(animation),"-f","null","-"]' in short
 )
 checks["Short render uses 720p Blender scenes and 1080p Lanczos delivery"] = (
-    "BLENDER_WIDTH, BLENDER_HEIGHT, BLENDER_TAA_SAMPLES = 720, 1280, 2" in short and "BLENDER_FPS = 6" in short
+    "BLENDER_WIDTH, BLENDER_HEIGHT, BLENDER_TAA_SAMPLES = 720, 1280, 2" in short and "BLENDER_FPS = 12" in short
+    and "default=12" in blender_scenes
+    and 'manifest.get("blender_animation_fps") != 12' in validator
     and '"--samples",str(BLENDER_TAA_SAMPLES)' in short
     and "scale={WIDTH}:{HEIGHT}:flags=lanczos" in short
     and '"blender_render_width":BLENDER_WIDTH' in short
