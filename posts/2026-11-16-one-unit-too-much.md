@@ -71,7 +71,7 @@ Paper-trading education only; not live-money performance; not investment advice;
 ## Publishing record
 | Destination | Status | Buffer post ID | Public URL |
 |---|---|---|---|
-| X text-first post | pending_queue | pending | pending |
+| X text-first post | scheduled (2026-11-16 16:14 UTC) | 6afb24d7aa36fe9e61225417 | not available until sent |
 | Instagram Reel | pending_render | pending | pending |
 | YouTube Short | pending_render | pending | pending |
 
