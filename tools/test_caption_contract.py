@@ -97,7 +97,9 @@ checks["episode workflow stages only manifest-listed outputs"] = (
 )
 checks["short workflow cancels superseded renders"] = "cancel-in-progress: true" in short_workflow
 checks["short workflow retriggers when its own configuration changes"] = "      - '.github/workflows/render-public-short.yml'" in short_workflow
-checks["short workflow commit message identifies the actual storyboard"] = 'git commit -m "content: render ${BASE} short with captions"' in short_workflow
+checks["short workflow commit message uses an exported variable available to the commit step"] = (
+    'git commit -m "content: render ${OUTPUT%.mp4} short with captions"' in short_workflow and "${BASE}" not in short_workflow
+)
 checks["daily short validator enforces shared Instagram and YouTube scope"] = (
     'channels != {"instagram_reels", "youtube_shorts"}' in validator
     and 'fmt.get("aspect_ratio") != "9:16"' in validator
