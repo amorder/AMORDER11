@@ -29,7 +29,7 @@ Mark every item PASS, FAIL or N/A and record evidence. Any critical failure bloc
 - [ ] Timecoded shot list records purpose, framing, camera/object movement and source/rights status.
 - [ ] First 1.5 seconds has a meaningful visual/action hook.
 - [ ] Moving footage/animation coverage meets the Reel standard or an exception is documented.
-- [ ] Blender scenes use genuine keyframed camera and object motion; the manifest records Blender FPS, delivery FPS and motion coverage.
+- [ ] Blender scenes render at 12 fps with genuine keyframed camera and object motion; FFmpeg motion-compensated interpolation delivers constant 30 fps, and the manifest records both rates and motion coverage.
 - [ ] No still-image zooms are counted as genuine moving-shot coverage.
 - [ ] No asset is repeated merely to pad runtime.
 - [ ] Footage does not falsely imply an event, place, time or person.
