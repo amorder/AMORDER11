@@ -66,7 +66,7 @@
       "visual": "brand",
       "title": "PLANNED RISK IS NOT A PROMISE",
       "overlay": "A stop can execute at a different price.",
-      "narration": "This is a planning estimate, not a guaranteed loss cap. The SEC says a stop price triggers a market order; the execution price can differ. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
+      "narration": "This is a planning estimate, not a guaranteed loss cap. For a standard stop order, the SEC says the trigger becomes a market order; the execution price can differ. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
     }
   ],
   "shot_list": [
@@ -119,9 +119,9 @@
       "rights": "Original generated scene."
     }
   ],
-  "instagram_caption": "A risk limit is a ceiling, not a target. Start with the planned loss amount, calculate the loss per unit from stop distance and point or tick value, then size down to the permitted increment. If even one unit is too large, passing can be the disciplined choice. A stop price is a trigger, not a guaranteed execution price.\n\nSources: CME Group — Proper Position Size: https://www.cmegroup.com/education/courses/trade-and-risk-management/proper-position-size\nSEC Investor Bulletin — Stop, Stop-Limit, and Trailing Stop Orders: https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #RiskManagement #PositionSizing #TradingEducation",
+  "instagram_caption": "A risk limit is a ceiling, not a target. Start with the planned loss amount, calculate the loss per unit from stop distance and point or tick value, then size down to the permitted increment. If even one unit is too large, passing can be the disciplined choice. For a standard stop order, the trigger is not a guaranteed execution price.\n\nSources: CME Group — Proper Position Size: https://www.cmegroup.com/education/courses/trade-and-risk-management/proper-position-size\nSEC Investor Bulletin — Stop, Stop-Limit, and Trailing Stop Orders: https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #RiskManagement #PositionSizing #TradingEducation",
   "youtube_title": "When One Unit Is Too Much | AMORDER #Shorts",
-  "youtube_description": "If the smallest permitted position size exceeds a pre-defined risk limit, the planned size may be zero. This short explains the relationship between a planned loss amount, stop distance, point or tick value and position size. It also explains why the calculation is a planning estimate, not a guaranteed loss cap.\n\nSources:\nCME Group — Proper Position Size: https://www.cmegroup.com/education/courses/trade-and-risk-management/proper-position-size\nSEC Investor Bulletin — Stop, Stop-Limit, and Trailing Stop Orders: https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #RiskManagement #PositionSizing #Shorts",
+  "youtube_description": "If the smallest permitted position size exceeds a pre-defined risk limit, the planned size may be zero. This short explains the relationship between a planned loss amount, stop distance, point or tick value and position size. It also explains why the calculation is a planning estimate, not a guaranteed loss cap, and why a standard stop order can execute at a different price from its trigger.\n\nSources:\nCME Group — Proper Position Size: https://www.cmegroup.com/education/courses/trade-and-risk-management/proper-position-size\nSEC Investor Bulletin — Stop, Stop-Limit, and Trailing Stop Orders: https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #RiskManagement #PositionSizing #Shorts",
   "sources": [
     "https://www.cmegroup.com/education/courses/trade-and-risk-management/proper-position-size",
     "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
@@ -136,7 +136,7 @@
       "source": "https://www.cmegroup.com/education/courses/trade-and-risk-management/proper-position-size"
     },
     {
-      "claim": "The SEC states that a stop price triggers a market order and is not a guaranteed execution price; the actual execution price can differ.",
+      "claim": "The SEC states that a standard stop order becomes a market order when triggered; the execution price can differ from the stop price.",
       "source": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
     }
   ],
@@ -180,9 +180,9 @@
     }
   },
   "render_revision": 1,
-  "render_note": "Quality audit compared the ten most recent approved/public items: November 6 paper-trading journey, November 7 data-first short, November 8 calendar short, November 9 paper-fill case study, November 11 and 12 trailing-stop explainers, November 12 CoreWeave market-reaction record, November 13 clean-chart/data-quality short, November 14 order-lifecycle short and November 15 paper-simulation-limitations short. This topic avoids repeating feed coverage, clocks, calendar checks, order lifecycle, stop triggers or simulation omissions. Testable improvement: replace the repeated clock/source/gap visual grammar with five new tactile risk-sizing Blender setups and open on the minimum-unit boundary in the first 1.5 seconds. No market statistics, hypothetical trade results or return claims are used.",
+  "render_note": "Quality audit compared the ten most recent approved/public items: November 6 paper-trading journey, November 7 data-first short, November 8 calendar short, November 9 paper-fill case study, November 11 and 12 trailing-stop explainers, November 12 CoreWeave market-reaction record, November 13 clean-chart/data-quality short, November 14 order-lifecycle short and November 15 paper-simulation-limitations short. This topic avoids repeating feed coverage, clocks, calendar checks, order lifecycle, stop triggers or simulation omissions. Testable improvement: replace the repeated clock/source/gap visual grammar with five new tactile risk-sizing Blender setups and open on the minimum-unit boundary in the first 1.5 seconds. No market statistics, hypothetical trade results or return claims are used. Factual precision repair: the SEC execution-price caveat is explicitly scoped to a standard stop order, not generalized to stop-limit orders.",
   "render_status": "pending_render",
   "render_run_id": null,
   "render_blocker": null,
-  "render_retry": null
+  "render_retry": "The initial render run 43876452663 was superseded before completion after factual copy review found that the SEC execution-price caveat needed to be explicitly scoped to standard stop orders. The narration, platform captions and a regression test were corrected; the next run is the single corrected render attempt."
 }

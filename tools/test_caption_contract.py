@@ -114,6 +114,10 @@ supported_visuals = {"idea", "timestamp", "gaps", "source", "stand_down", "brand
 checks["latest daily storyboard uses at least five supported visual keys"] = (
     len(latest_visuals) >= 5 and latest_visuals <= supported_visuals
 )
+checks["SEC stop execution caveat is scoped to standard stop orders"] = (
+    "standard stop order" in latest_short["scenes"][-1]["narration"].lower()
+    and "stop-limit order" not in latest_short["scenes"][-1]["narration"].lower()
+)
 checks["Blender uses a bounded Eevee sample budget"] = (
     "def setup(width=1080, height=1920, samples=2)" in blender_scenes
     and "eevee.taa_render_samples = samples" in blender_scenes

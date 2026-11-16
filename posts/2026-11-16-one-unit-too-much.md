@@ -21,13 +21,13 @@ Learn why position size is the last step of a risk calculation, and why the corr
 ## Claim ledger and primary sources
 - CME Group's position-sizing lesson identifies stop location and the amount a trader is prepared to risk as key inputs to position size.
 - CME Group illustrates planned risk per contract using stop distance in ticks and the value of each tick.
-- The SEC states that a stop price triggers a market order and is not a guaranteed execution price; the actual execution price can differ.
+- For a standard stop order, the SEC states that the trigger becomes a market order and the execution price can differ from the stop price. This wording does not generalize the rule to stop-limit orders.
 
 Sources:
 - [CME Group — Proper Position Size](https://www.cmegroup.com/education/courses/trade-and-risk-management/proper-position-size)
 - [SEC Investor Bulletin — Stop, Stop-Limit, and Trailing Stop Orders](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15) (updated August 18, 2026)
 
-No universal risk percentage is prescribed. No numerical example, market statistic, trade result or return claim is used.
+No universal risk percentage is prescribed. No numerical example, market statistic, trade result or return claim is used. The November 9 paper-fill case study also mentioned risk-based sizing; this short is deliberately narrower, focusing on the minimum-increment feasibility boundary and the disciplined decision to pass, without reusing that case study or any specific trade.
 
 ## Rights and provenance
 - Original Blender Eevee scenes and procedural graphics; no stock footage or third-party video
