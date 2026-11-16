@@ -15,7 +15,7 @@ from motion_graphics import build_motion_graphics_filter
 
 WIDTH, HEIGHT, FPS = 1080, 1920, 30
 BLENDER_WIDTH, BLENDER_HEIGHT, BLENDER_TAA_SAMPLES = 720, 1280, 2
-BLENDER_FPS = 6
+BLENDER_FPS = 12
 MAX_RUNTIME_SECONDS = 159.0
 DISCLOSURE = "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
 
@@ -254,7 +254,7 @@ def main():
             )
 
         for index,(scene,wav,duration) in enumerate(audio_jobs,1):
-            # Blender renders an actual keyframed camera + moving 3D scene at 6 fps.
+            # Blender renders an actual keyframed camera + moving 3D scene at 12 fps.
             # FFmpeg motion-compensated interpolation brings it to the 30 fps deliverable.
             animation=clips_dir/f"blender-{index:02d}.mp4"
             run_blender_scene([a.blender,"--background","--python",str(script),"--","--visual",scene["visual"],
