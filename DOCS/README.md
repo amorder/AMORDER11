@@ -6,6 +6,7 @@ This folder preserves and adapts the reusable video-production skills and techni
 
 - [Core skill](SKILL.md) — the overall creative, research, rights, production and release standard.
 - [Video & Motion Creation](skills/video-motion-creation/skill.md) — the reusable production skill for films, explainers, Shorts and Reels.
+- [HyperFrames integration](skills/video-motion-creation/HYPERFRAMES_INTEGRATION.md) — local HTML-native motion graphics, CLI workflow, safety rules and starter composition.
 - [Marketing-agency Reel standard](skills/video-motion-creation/MARKETING_AGENCY_STANDARD.md) — visual coverage, motion, sound and scored release gate.
 - [Publishing automation](skills/video-motion-creation/PUBLISHING_AUTOMATION.md) — safe, verified publishing rules.
 - [Blender Python workflow](docs/BLENDER_PYTHON_API_WORKFLOW.md) — reproducible procedural scenes and motion.
