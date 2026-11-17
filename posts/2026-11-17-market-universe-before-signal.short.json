@@ -1,0 +1,203 @@
+{
+  "title": "A Market Scan Starts With What You Exclude",
+  "publication_date": "2026-11-17",
+  "render_slug": "amorder-universe-before-signal",
+  "topic": "Why a reliable research universe starts with instrument identity, tradability, quote quality, completed data and honest market scope before any candidate ranking",
+  "language": "en",
+  "audience": "global",
+  "intended_channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds_target": "105-125",
+    "duration_seconds_max_exclusive": 159,
+    "video": "MP4 H.264, AAC English narration, constant 30 fps",
+    "visual_engine": "Blender Eevee PBR scenes with genuine keyframed camera and object animation in every scene; 720x1280 base render at 12 fps and 2 TAA samples, motion-compensated and Lanczos-upscaled to 1080x1920 at constant 30 fps",
+    "post_production": "FFmpeg motion-compensated interpolation, constant-frame-rate scene assembly, scene-specific motion graphics, burned English captions, SRT sidecar, narration mastering, technical probing and full decode",
+    "voiceover_model": "Kokoro-82M ONNX",
+    "voice": "af_heart",
+    "music": "No copyrighted music; original restrained sound design only.",
+    "blender_base_resolution": "720x1280",
+    "blender_eevee_taa_samples": 2
+  },
+  "creative_direction": {
+    "style": "Original cinematic graphite studio with seven tactile research compositions: evidence lens, source gateway, missing-data grid, calibrated liquidity chamber, timestamp clock, decision boundary and AMORDER brand stage. Physically based glass and brushed metal, motivated softbox lighting, controlled reflections, restrained cyan and amber accents, deliberate depth and negative space. No stock footage, broker UI, fake market screens or fabricated market imagery.",
+    "voiceover_direction": "Natural, measured international English; calm and precise, with purposeful pauses and no promotional hype.",
+    "overlay_direction": "One short high-contrast headline and one supporting line per scene, kept inside phone-safe margins and clear of the hero object.",
+    "sound_direction": "Voice-led mix with restrained original mechanical ambience only; no third-party music or sound effects."
+  },
+  "scenes": [
+    {
+      "visual": "idea",
+      "title": "A SCAN IS NOT A STOCK LIST",
+      "overlay": "Define the universe before the signal.",
+      "narration": "A market scan is not just a list of tickers. It is a definition of what the research can actually trust."
+    },
+    {
+      "visual": "source",
+      "title": "START WITH THE INSTRUMENT",
+      "overlay": "Active does not always mean tradable.",
+      "narration": "Start with the asset catalogue. Confirm the instrument class, listing venue, current status and whether it is tradable through the route you intend to use. Data availability and execution availability are not always the same thing."
+    },
+    {
+      "visual": "gaps",
+      "title": "INSTRUMENT TYPES DIFFER",
+      "overlay": "A wrapper is not the same as a share.",
+      "narration": "Then separate instruments that answer different questions. A common share is not an exchange-traded fund, a warrant or a preferred security. A wrapper can carry a different structure and risk. The SEC notes that leveraged and inverse ETFs are designed around daily objectives, so longer-period results can diverge from the underlying benchmark."
+    },
+    {
+      "visual": "risk_budget",
+      "title": "CHECK THE QUOTE QUALITY",
+      "overlay": "Spread and depth are part of the evidence.",
+      "narration": "Next, test whether the quote is usable. A wide bid-ask spread, thin activity or inconsistent volume can make a screen price look more precise than the market really is. Liquidity is part of data quality, not decoration."
+    },
+    {
+      "visual": "timestamp",
+      "title": "USE COMPLETED, TIMESTAMPED BARS",
+      "overlay": "A moving candle is not a final observation.",
+      "narration": "Check the history too. Missing sessions, abrupt symbol changes or too few completed observations can distort averages and momentum measures. Keep the timestamp with every bar, and make sure the interval has actually closed before using its final value."
+    },
+    {
+      "visual": "stand_down",
+      "title": "DEFINE THE REAL MARKET SCOPE",
+      "overlay": "Do not imply coverage you do not have.",
+      "narration": "Now define the boundaries: which exchanges, which instrument types, what data feeds and what regions are genuinely connected. If a market is not connected, label it that way. Do not let a broad-looking watchlist imply coverage you do not have."
+    },
+    {
+      "visual": "brand",
+      "title": "A UNIVERSE IS NOT A FORECAST",
+      "overlay": "Scope first. Evidence second. Decisions last.",
+      "narration": "Only after those checks should a candidate enter a research ranking. A clean universe does not predict a return and does not create a recommendation. It simply makes the next question more honest: is the evidence complete enough to continue? Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
+    }
+  ],
+  "shot_list": [
+    {
+      "planned_timecode": "00:00-00:15",
+      "purpose": "Open on an evidence lens that separates a raw list from a defined research universe.",
+      "framing": "Macro hero composition with the evidence core framed inside a reflective lens.",
+      "camera_motion": "Immediate controlled dolly-in, then a short lateral reveal as the evidence tiles move into alignment.",
+      "asset_source": "Original Blender geometry and procedural materials.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "00:15-00:31",
+      "purpose": "Show that an asset catalogue contains identity and tradability fields that must be checked.",
+      "framing": "Three source panels feeding a single verified output gateway.",
+      "camera_motion": "Tracking move from the source panels through the gateway with visible parallax.",
+      "asset_source": "Original Blender geometry and schematic graphics.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "00:31-00:49",
+      "purpose": "Separate instrument categories and explain why different structures should not be mixed casually.",
+      "framing": "A structured grid with one deliberately missing segment and distinct material blocks.",
+      "camera_motion": "Measured diagonal slide across the grid, ending on the empty segment.",
+      "asset_source": "Original Blender geometry and procedural materials.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "00:49-01:05",
+      "purpose": "Make quote usability and liquidity part of the evidence rather than decorative metadata.",
+      "framing": "A bounded calibration chamber with a moving marker and separated reserve blocks.",
+      "camera_motion": "Short tracking move along the calibration boundary, then a restrained push toward the marker.",
+      "asset_source": "Original Blender geometry and schematic graphics.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "01:05-01:22",
+      "purpose": "Show why timestamps and completed intervals matter before calculating indicators.",
+      "framing": "Large precision clock with separate minute and second hands.",
+      "camera_motion": "Macro orbit around the clock face with a controlled focus shift to the moving hands.",
+      "asset_source": "Original Blender geometry and procedural labels.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "01:22-01:40",
+      "purpose": "Make the market boundary visible and normalize a valid stand-down decision.",
+      "framing": "Pause bars and a shield inside a clear decision boundary.",
+      "camera_motion": "Slow approach to the boundary, then a measured pull-back as the pause bars settle.",
+      "asset_source": "Original Blender geometry and procedural materials.",
+      "rights": "Original generated scene."
+    },
+    {
+      "planned_timecode": "01:40-02:00",
+      "purpose": "Close with the principle that a research universe is a scope definition, not a forecast.",
+      "framing": "AMORDER brand core on a graphite plinth with restrained orbital elements.",
+      "camera_motion": "Measured pull-back and restrained orbital move; no filler hold.",
+      "asset_source": "Original Blender geometry and procedural materials.",
+      "rights": "Original generated scene."
+    }
+  ],
+  "instagram_caption": "A market scan is only as reliable as the universe behind it. Start by checking what each instrument is, whether it is tradable through the intended route, whether its quote and history are usable, and which markets are genuinely connected. Different products can behave differently: the SEC notes that leveraged and inverse ETFs are built around daily objectives, so longer-period results can diverge from the underlying benchmark.\n\nA clean research universe does not predict returns or create a recommendation. It makes the evidence easier to interpret.\n\nSources:\nAlpaca — Working with Assets: https://docs.alpaca.markets/us/docs/working-with-assets\nAlpaca — Historical Stock Bars: https://docs.alpaca.markets/us/reference/stockbars\nSEC Investor Bulletin — Leveraged and Inverse ETFs: https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/sec\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #MarketData #DataQuality #ResearchProcess",
+  "youtube_title": "A Market Scan Starts With What You Exclude | AMORDER #Shorts",
+  "youtube_description": "A market scan is not just a list of tickers. It starts with a well-defined research universe: instrument identity, tradability, quote quality, complete timestamped history and honest market scope. This explainer shows why data availability and execution availability are not always the same, and why different instrument structures should not be mixed without a clear reason.\n\nA clean research universe does not predict returns and is not a recommendation.\n\nSources:\nAlpaca — Working with Assets: https://docs.alpaca.markets/us/docs/working-with-assets\nAlpaca — Historical Stock Bars: https://docs.alpaca.markets/us/reference/stockbars\nSEC Investor Bulletin — Leveraged and Inverse ETFs: https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/sec\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #MarketData #DataQuality #Shorts",
+  "sources": [
+    "https://docs.alpaca.markets/us/docs/working-with-assets",
+    "https://docs.alpaca.markets/us/reference/stockbars",
+    "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/sec"
+  ],
+  "claims": [
+    {
+      "claim": "Alpaca describes its assets endpoint as a master list for trade and data consumption, and notes that some listed assets are not tradable.",
+      "source": "https://docs.alpaca.markets/us/docs/working-with-assets"
+    },
+    {
+      "claim": "Alpaca historical stock bars are interval aggregates with timestamps and are returned in timestamp order.",
+      "source": "https://docs.alpaca.markets/us/reference/stockbars"
+    },
+    {
+      "claim": "The SEC notes leveraged and inverse ETFs are designed around daily objectives and longer-period performance may differ significantly from the underlying benchmark.",
+      "source": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/sec"
+    }
+  ],
+  "rights_and_asset_origin": {
+    "visual_assets": "Original Blender Eevee scenes and procedural graphics created for this AMORDER explainer; no stock footage, broker UI or third-party video.",
+    "narration": "Kokoro-82M model weights licensed Apache-2.0; kokoro-onnx runtime licensed MIT; voice af_heart from the bundled public voice pack.",
+    "fonts": "Noto Sans from the system Noto font package; OFL family licence.",
+    "audio": "No copyrighted music or third-party sound effects; original restrained sound design only.",
+    "source_review_date": "2026-11-17",
+    "references": [
+      "https://huggingface.co/hexgrad/Kokoro-82M",
+      "https://github.com/thewh1teagle/kokoro-onnx/blob/main/LICENSE"
+    ]
+  },
+  "automated_review": {
+    "approved_source_domains": [
+      "docs.alpaca.markets",
+      "investor.gov"
+    ],
+    "public_safety_reviewed": true,
+    "claims_checked_against_sources": true,
+    "rights_and_asset_origin_reviewed": true,
+    "disclosure_verified": true
+  },
+  "alt_text": "Seven original cinematic graphite-studio Blender scenes show an evidence lens, asset catalogue gateway, instrument grid, quote-quality calibration chamber, timestamp clock, decision boundary and AMORDER brand stage to explain why a reliable research universe begins with instrument identity and usable data.",
+  "asset_path": "assets/amorder-universe-before-signal-2026-11-17.mp4",
+  "asset_url": "https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-universe-before-signal-2026-11-17.mp4",
+  "subtitle_path": "subtitles/amorder-universe-before-signal-2026-11-17.srt",
+  "manifest_path": "assets/amorder-universe-before-signal-manifest-2026-11-17.json",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "publishing_record": {
+    "instagram": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    },
+    "youtube": {
+      "buffer_post_id": null,
+      "public_url": null,
+      "status": "pending_render"
+    }
+  },
+  "render_revision": 1,
+  "render_note": "Daily improvement audit compared the previous three vertical releases: 2026-11-09 (156.820 seconds), 2026-11-15 (94.094 seconds) and 2026-11-16 (65.257 seconds). The latest cut was materially shorter than its 85-115 second storyboard target. This story therefore uses seven distinct Blender setups and a more fully developed explanation with a 105-125 second target; no filler is added. The storyboard also corrects the prior file's inaccurate 6 fps Blender specification to the actual 12 fps keyframed Blender scene path recorded in the successful manifests, with 30 fps final delivery. No audience-performance metrics were available from Buffer, so no engagement claim is made.",
+  "render_status": "pending_render",
+  "render_run_id": null,
+  "render_blocker": null,
+  "render_retry": "No retry has been used. If any critical release gate fails, allow one focused correction and rerender; otherwise hold."
+}
