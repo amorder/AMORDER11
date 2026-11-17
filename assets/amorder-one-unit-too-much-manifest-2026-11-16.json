@@ -91,7 +91,7 @@
     "motion": {
       "black_frame_count": 0,
       "longest_frozen_run_seconds": 0,
-      "motion_coverage_percent": 100.0,
+      "motion_coverage_percent": 100,
       "sampled_frame_count": 65
     },
     "scene_variation": {
@@ -118,5 +118,31 @@
     "audio_codec": "aac",
     "full_decode": "passed",
     "sources_and_disclosure": "passed"
+  },
+  "render_status": "completed",
+  "render_run_id": 43901178823,
+  "render_blocker": null,
+  "render_retry": "The earlier attempts 43876452663 and 43878038044 were superseded before validation. The first fully validated attempt 43880610537 was blocked at asset commit by an undefined shell variable and was not published. The deterministic commit-message defect was fixed with regression coverage. The renderer and validator were then updated to require 12 fps Blender animation. Corrected render 43901178823 completed all workflow steps successfully and committed the exact MP4, SRT and manifest. The current manifest records the final validated export.",
+  "publishing_record": {
+    "instagram": {
+      "buffer_post_id": "6afb4271afba1286ca70aee9",
+      "status": "sent",
+      "destination": "instagram_reel",
+      "asset_url": "https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-one-unit-too-much-2026-11-16.mp4",
+      "due_at": "2026-11-17T03:28:00.000Z",
+      "sent_at": "2026-11-17T03:28:59.991Z",
+      "public_url": "https://www.instagram.com/reel/Df09whguCJd/",
+      "scheduling_type": "automatic"
+    },
+    "youtube": {
+      "buffer_post_id": "6afb426c9509e7b0ff1377a3",
+      "status": "scheduled",
+      "destination": "youtube_short",
+      "asset_url": "https://raw.githubusercontent.com/amorder/AMORDER11/main/assets/amorder-one-unit-too-much-2026-11-16.mp4",
+      "due_at": "2026-11-20T13:28:00.000Z",
+      "sent_at": null,
+      "public_url": null,
+      "scheduling_type": "customScheduled"
+    }
   }
 }
