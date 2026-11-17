@@ -1,0 +1,101 @@
+name: HyperFrames composition smoke test
+
+on:
+  pull_request:
+    paths:
+      - 'examples/hyperframes/**'
+      - 'DOCS/skills/video-motion-creation/**'
+      - 'DOCS/DELIVERY_QUALITY_GATE.md'
+      - '.github/workflows/hyperframes-smoke-test.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'examples/hyperframes/**'
+      - 'DOCS/skills/video-motion-creation/**'
+      - 'DOCS/DELIVERY_QUALITY_GATE.md'
+      - '.github/workflows/hyperframes-smoke-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hyperframes-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  render-example:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install the pinned HyperFrames browser
+        run: npx --yes hyperframes@0.9.58 browser ensure
+
+      - name: Lint the sample composition and retain machine-readable diagnostics
+        working-directory: examples/hyperframes/vertical-data-reveal
+        shell: bash
+        run: |
+          set +e
+          npx --yes hyperframes@0.9.58 lint --json > "$RUNNER_TEMP/hyperframes-lint.json" 2>&1
+          status=$?
+          cat "$RUNNER_TEMP/hyperframes-lint.json"
+          exit "$status"
+
+      - name: Upload HyperFrames lint diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hyperframes-lint-diagnostics
+          path: ${{ runner.temp }}/hyperframes-lint.json
+          if-no-files-found: warn
+          retention-days: 3
+
+      - name: Check browser render, layout, motion and contrast
+        working-directory: examples/hyperframes/vertical-data-reveal
+        run: npx --yes hyperframes@0.9.58 check
+
+      - name: Render the vertical sample
+        working-directory: examples/hyperframes/vertical-data-reveal
+        env:
+          OUTPUT: ${{ runner.temp }}/amorder-hyperframes-smoke.mp4
+        run: npx --yes hyperframes@0.9.58 render --fps 30 --quality high --output "$OUTPUT"
+
+      - name: Validate dimensions, frame rate, duration and complete decode
+        env:
+          OUTPUT: ${{ runner.temp }}/amorder-hyperframes-smoke.mp4
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import subprocess
+          from fractions import Fraction
+          from pathlib import Path
+
+          path = Path(os.environ["OUTPUT"])
+          assert path.is_file() and path.stat().st_size > 20_000, "Render output missing or unexpectedly small"
+          probe = json.loads(subprocess.check_output([
+              "ffprobe", "-v", "error", "-show_entries",
+              "stream=codec_type,codec_name,width,height,avg_frame_rate",
+              "-show_entries", "format=duration", "-of", "json", str(path)
+          ], text=True))
+          video = next(s for s in probe["streams"] if s["codec_type"] == "video")
+          duration = float(probe["format"]["duration"])
+          fps = float(Fraction(video["avg_frame_rate"]))
+          assert (video["width"], video["height"]) == (1080, 1920), video
+          assert abs(fps - 30.0) < 0.05, fps
+          assert 8.8 <= duration <= 9.2, duration
+          subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-f", "null", "-"], check=True)
+          print(f"PASS: {path.name} | 1080x1920 | {fps:.3f} fps | {duration:.2f}s | full decode")
+          PY

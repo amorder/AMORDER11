@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>AMORDER — Data quality reveal</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #07131b;
+        --panel: #10232d;
+        --text: #f3f7f8;
+        --muted: #9bb2bb;
+        --accent: #61c5cf;
+        --line: rgba(193, 221, 228, .18);
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, sans-serif;
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        isolation: isolate;
+        background:
+          radial-gradient(ellipse at 78% 18%, rgba(44, 119, 133, .22), transparent 36%),
+          linear-gradient(155deg, #0b1c26 0%, #07131b 54%, #091923 100%);
+      }
+      #root::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: .28;
+        background-image: linear-gradient(rgba(190, 218, 225, .06) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(190, 218, 225, .06) 1px, transparent 1px);
+        background-size: 72px 72px;
+        mask-image: linear-gradient(to bottom, black, transparent 78%);
+      }
+      .clip {
+        position: absolute;
+        inset: 0;
+        padding: 94px 78px;
+        display: flex;
+        flex-direction: column;
+      }
+      .topline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 22px;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+      }
+      .rule {
+        height: 1px;
+        background: var(--line);
+        margin-top: 30px;
+        transform-origin: left center;
+      }
+      .eyebrow {
+        margin-top: 185px;
+        color: var(--accent);
+        font-size: 24px;
+        font-weight: 650;
+        letter-spacing: .22em;
+        text-transform: uppercase;
+      }
+      h1 {
+        max-width: 880px;
+        margin: 30px 0 0;
+        font-size: 88px;
+        line-height: 1.06;
+        font-weight: 620;
+        letter-spacing: -.055em;
+      }
+      .subhead {
+        max-width: 760px;
+        margin-top: 32px;
+        color: #b5c8ce;
+        font-size: 32px;
+        line-height: 1.42;
+      }
+      .checks {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        margin-top: 116px;
+      }
+      .check {
+        position: relative;
+        padding: 34px 34px 36px;
+        min-height: 210px;
+        border: 1px solid rgba(187, 218, 226, .16);
+        border-radius: 18px;
+        background: linear-gradient(110deg, rgba(20, 47, 59, .95), rgba(11, 30, 40, .8));
+      }
+      .check-head {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .index {
+        display: grid;
+        place-items: center;
+        width: 54px;
+        height: 54px;
+        border: 1px solid rgba(97, 197, 207, .55);
+        border-radius: 50%;
+        color: var(--accent);
+        font-size: 22px;
+        font-variant-numeric: tabular-nums;
+      }
+      .label {
+        font-size: 29px;
+        font-weight: 650;
+        letter-spacing: .08em;
+      }
+      .detail {
+        margin: 22px 0 0 74px;
+        color: var(--muted);
+        font-size: 25px;
+        line-height: 1.38;
+      }
+      .meter {
+        height: 5px;
+        overflow: hidden;
+        margin: 26px 0 0 74px;
+        border-radius: 6px;
+        background: rgba(190, 221, 228, .14);
+      }
+      .fill {
+        height: 100%;
+        width: 100%;
+        transform: scaleX(0);
+        transform-origin: left center;
+        background: linear-gradient(90deg, #3c8998, #78d4d8);
+      }
+      .foot {
+        margin-top: auto;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 20px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+      .foot strong { color: var(--accent); font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <main
+      id="root"
+      class="clip"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="9"
+      data-width="1080"
+      data-height="1920"
+    >
+        <div class="topline" id="topline">
+          <span>AMORDER</span>
+          <span>Research / Risk / Discipline</span>
+        </div>
+        <div class="rule" id="top-rule"></div>
+
+        <div class="eyebrow" id="eyebrow">Before the chart</div>
+        <h1 id="headline">Trust begins with the data.</h1>
+        <p class="subhead" id="subhead">
+          A reliable market view starts with a few quiet checks behind the scenes.
+        </p>
+
+        <div class="checks">
+          <article class="check" id="check-one">
+            <div class="check-head">
+              <span class="index">01</span>
+              <span class="label">FRESHNESS</span>
+            </div>
+            <p class="detail">Is the information recent enough for the question?</p>
+            <div class="meter"><div class="fill" id="fill-one"></div></div>
+          </article>
+          <article class="check" id="check-two">
+            <div class="check-head">
+              <span class="index">02</span>
+              <span class="label">COMPLETENESS</span>
+            </div>
+            <p class="detail">Are key fields and time periods present?</p>
+            <div class="meter"><div class="fill" id="fill-two"></div></div>
+          </article>
+          <article class="check" id="check-three">
+            <div class="check-head">
+              <span class="index">03</span>
+              <span class="label">CONSISTENCY</span>
+            </div>
+            <p class="detail">Do units, timestamps and definitions agree?</p>
+            <div class="meter"><div class="fill" id="fill-three"></div></div>
+          </article>
+        </div>
+
+        <div class="foot" id="foot">
+          <span>Illustrative workflow</span>
+          <strong>Data quality</strong>
+        </div>
+    </main>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const timeline = gsap.timeline({ paused: true });
+
+      timeline
+        .fromTo("#topline", { y: -18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 0)
+        .fromTo("#top-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.65, ease: "power2.out" }, 0.12)
+        .fromTo("#eyebrow", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 0.55)
+        .fromTo("#headline", { y: 34, opacity: 0 }, { y: 0, opacity: 1, duration: 0.72, ease: "power3.out" }, 0.72)
+        .fromTo("#subhead", { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }, 1.15)
+        .fromTo("#check-one", { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 2.05)
+        .to("#fill-one", { scaleX: 1, duration: 0.9, ease: "power2.inOut" }, 2.35)
+        .fromTo("#check-two", { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 3.15)
+        .to("#fill-two", { scaleX: 1, duration: 0.9, ease: "power2.inOut" }, 3.45)
+        .fromTo("#check-three", { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 4.25)
+        .to("#fill-three", { scaleX: 1, duration: 0.9, ease: "power2.inOut" }, 4.55)
+        .fromTo("#foot", { opacity: 0 }, { opacity: 1, duration: 0.55 }, 5.6);
+
+      window.__timelines.main = timeline;
+    </script>
+  </body>
+</html>

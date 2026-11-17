@@ -83,6 +83,14 @@ Use Blender for procedural scenes, camera rigs, physically based materials, ligh
 
 Use Blender for high-quality PBR scenes with genuine keyframed camera and object motion in every setup: procedural geometry, physically based materials, controlled reflections, micro-surface detail, motivated key/fill/rim lighting and restrained depth of field. AMORDER11 renders Blender Eevee scenes at 12 fps with shot-specific camera/object animation, then uses FFmpeg motion-compensated interpolation and scene-specific animated motion graphics to deliver 30 fps. This is a true animated 3D scene path—not a still plate with a slow digital zoom. Require at least five distinct animated visual setups, use purposeful establishing/macro/tracking/reveal moves, and target at least 60% of picture time from genuinely animated 2D/3D sequences. Preserve a safe-area-aware overlay, full-file decode evidence, Blender version, render settings and source/rights metadata. Pin and smoke-test the installed Blender version.
 
+### HyperFrames — web-native motion graphics
+
+Use HyperFrames as an optional, local-first lane for kinetic typography, animated data explanations, diagrams, schematic sequences and restrained transitions. Keep Blender as the primary engine for cinematic PBR environments, true 3D hero scenes, and motivated camera/object animation. Use FFmpeg for assembly, compositing, captions, finishing and final validation.
+
+For AMORDER's practical setup, see [HYPERFRAMES_INTEGRATION.md](HYPERFRAMES_INTEGRATION.md) and the reusable [vertical data-reveal composition](../../../examples/hyperframes/vertical-data-reveal/index.html). HyperFrames uses HTML/CSS/JavaScript compositions and deterministic frame rendering; the local CLI uses Node.js 22+ and FFmpeg. Run `npx hyperframes lint`, `npx hyperframes check`, then `npx hyperframes render --fps 30 --quality high --output render.mp4` from the composition project folder. Check the installed CLI's help for exact flags.
+
+Prefer separate HyperFrames inserts that can be cut or composited with Blender footage. Do not silently replace required Blender motion coverage, bypass the release gate, or count static cards as moving footage. Keep cloud rendering, Studio sign-in, paid credits and separate publishing out of the default path. Record the renderer/version and composition provenance in the manifest, and run the existing AMORDER release checks on the final combined master.
+  
 ## Audio
 
 Human-recorded narration is preferred. Local TTS is acceptable only after a full-script audition for naturalness, pronunciation and timing. Do not use a robotic fallback voice simply to finish a job.

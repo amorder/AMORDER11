@@ -55,6 +55,7 @@ Content may explain general research, data quality, paper-trading and risk-manag
 ## Creative toolchain
 
 - Blender Eevee PBR for original cinematic 3D scenes.
+- HyperFrames local CLI for HTML-native kinetic typography, animated diagrams and data-led motion-design inserts; complements Blender and does not replace the existing renderer or publisher.
 - Kokoro-82M ONNX for English synthetic narration.
 - FFmpeg / ffprobe for editing, H.264/AAC encoding and output validation.
 - Pillow for high-resolution typography and caption overlays.
