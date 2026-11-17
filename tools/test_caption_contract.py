@@ -124,9 +124,36 @@ checks["daily storyboard does not repeat narration across scenes"] = (
 checks["latest daily storyboard uses at least five supported visual keys"] = (
     len(latest_visuals) >= 5 and latest_visuals <= supported_visuals
 )
-checks["SEC stop execution caveat is scoped to standard stop orders"] = (
-    "standard stop order" in latest_short["scenes"][-1]["narration"].lower()
-    and "stop-limit order" not in latest_short["scenes"][-1]["narration"].lower()
+def sec_stop_execution_caveat_is_scoped(scenes):
+    """Enforce precise SEC stop-order wording only when a storyboard makes that claim."""
+    for scene in scenes:
+        narration = " ".join(scene.get("narration", "").split()).casefold()
+        if "sec" in narration and any(
+            term in narration
+            for term in ("stop order", "stop-limit order", "stop execution", "execution price")
+        ):
+            if "standard stop order" not in narration or "stop-limit order" in narration:
+                return False
+    return True
+
+
+checks["SEC stop execution caveat is scoped to standard stop orders when present"] = (
+    sec_stop_execution_caveat_is_scoped(latest_short.get("scenes", []))
+)
+checks["topic rotation does not require an unrelated SEC stop-order caveat"] = (
+    sec_stop_execution_caveat_is_scoped([
+        {"narration": "A market scan starts with instrument identity and data quality."}
+    ])
+)
+checks["an unscoped SEC stop-order caveat is rejected"] = (
+    not sec_stop_execution_caveat_is_scoped([
+        {"narration": "The SEC says a stop order becomes a market order and the execution price can differ."}
+    ])
+)
+checks["a correctly scoped SEC standard-stop caveat is accepted"] = (
+    sec_stop_execution_caveat_is_scoped([
+        {"narration": "The SEC says a standard stop order becomes a market order when triggered; the execution price can differ."}
+    ])
 )
 checks["Blender uses a bounded Eevee sample budget"] = (
     "def setup(width=1080, height=1920, samples=2)" in blender_scenes
