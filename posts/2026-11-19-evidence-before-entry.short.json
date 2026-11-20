@@ -10,49 +10,45 @@
     "https://docs.alpaca.markets/us/docs/paper-trading",
     "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/sec"
   ],
-  "youtube": {
-    "title": "No Trade Is a Decision: Evidence Before Entry",
-    "description": "A short AMORDER explainer about why disciplined paper-trading sometimes means waiting for complete, current and interpretable evidence. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns."
-  },
-  "instagram": {
-    "caption": "A valid process includes the ability to wait. If the data is stale, incomplete or ambiguous, no trade can be the disciplined decision.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #DataQuality #RiskManagement"
-  },
   "scenes": [
     {
-      "visual": "macro_clock_and_data_stream",
+      "visual": "timestamp",
       "title": "The clock matters",
       "overlay": "Fresh timestamp first",
       "narration": "Before any paper-trading decision, start with time. A price without a reliable timestamp can make a clean chart look more certain than it is."
     },
     {
-      "visual": "glass_data_panels_with_missing_cells",
+      "visual": "source",
       "title": "Missing evidence",
       "overlay": "Incomplete data changes the decision",
       "narration": "Missing bars, stale quotes or unclear session boundaries are not small details. They change what the evidence means."
     },
     {
-      "visual": "camera_dolly_through_filter_gates",
+      "visual": "idea",
       "title": "Filters protect the process",
       "overlay": "Tradable. Liquid. Current.",
       "narration": "A disciplined workflow checks whether an instrument is tradable, whether the history is usable, and whether the market connection is actually available."
     },
     {
-      "visual": "rising_graph_stops_before_entry",
+      "visual": "gaps",
       "title": "No signal is still a result",
       "overlay": "Waiting is allowed",
       "narration": "If the required evidence does not line up, the correct output is not a forced order. It is a documented no-trade decision."
     },
     {
-      "visual": "risk_meter_zero_position",
+      "visual": "risk_budget",
       "title": "Zero can be the right size",
       "overlay": "Risk first",
       "narration": "When uncertainty is unresolved, position size can be zero. That is not a prediction. It is a risk-control choice."
     },
     {
-      "visual": "minimal_brand_closing_card",
+      "visual": "brand",
       "title": "Evidence before entry",
       "overlay": "AMORDER",
       "narration": "Good research is not about staying active. It is about staying honest. Evidence before entry."
     }
-  ]
+  ],
+  "youtube_title": "No Trade Is a Decision: Evidence Before Entry",
+  "youtube_description": "A short AMORDER explainer about why disciplined paper-trading sometimes means waiting for complete, current and interpretable evidence. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "instagram_caption": "A valid process includes the ability to wait. If the data is stale, incomplete or ambiguous, no trade can be the disciplined decision.\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #PaperTrading #DataQuality #RiskManagement"
 }
