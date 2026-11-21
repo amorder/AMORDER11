@@ -2,7 +2,7 @@
 
 Mark every item PASS, FAIL or N/A and record evidence. Any critical failure blocks release. A high score cannot override missing rights, incorrect facts, missing disclosure or absent owner authorization. AMORDER has standing owner authorization for automatic publication of public-safe educational content; per-asset human signoff is not required while that authorization remains active. Never claim a human watched or approved a file when only automated checks were performed.
 
-**Daily publisher scope:** one shared 9:16 master strictly under 160 seconds for Instagram Reels and YouTube Shorts. No 16:9 or long-form upload is part of the daily publishing workflow. Record a separate Buffer state and verified URL for each destination.
+**Current daily publisher scope (supersedes the legacy single-short scope):** produce two distinct 9:16 Shorts (each strictly under 160 seconds) and one approximately 10-minute full episode per daily cycle. Each Short has its own storyboard, render, captions, manifest and separate YouTube Shorts and Instagram Reels records. The full episode has two complete platform masters: 16:9 horizontal for YouTube and a fully recomposed 9:16 version retaining the same complete episode for Instagram Reels. Validate every master independently and record six separate destination outcomes (two Shorts × two platforms, plus the full episode × two platforms). Never treat a storyboard commit, workflow completion, scheduled Buffer item or a successful HOLD as a published video.
 
 ## A. Story and editorial
 - [ ] For Shorts/Reels, encoded runtime is strictly under 160 seconds (2:40); target 105–145 seconds where the narrative supports it.
@@ -76,3 +76,15 @@ Mark every item PASS, FAIL or N/A and record evidence. Any critical failure bloc
 - [ ] Remote post ID/permalink/status is re-read and recorded before calling it published.
 
 **Release decision:** PASS only when all critical sections pass and the scorecard in the Reel standard is at least 85/100. Otherwise: HOLD, document the failure and revise.
+
+
+## G. Long-form episode and six-destination release checks
+- [ ] Two distinct daily Shorts exist, each with its own topic, hook, storyboard, render, SRT and manifest; neither is a duplicate or a simple unedited cut of the other.
+- [ ] Each Short is independently validated as 9:16, 1080x1920, H.264/AAC, constant 30 fps and strictly under 160 seconds.
+- [ ] One complete long-form episode exists, with an editorially earned target of approximately 10 minutes (normally 8–12 minutes where supported; no padding).
+- [ ] The YouTube episode master is horizontal 16:9; the Instagram master is fully recomposed 9:16 and retains the complete episode's substantive narration, examples and conclusion.
+- [ ] Both episode masters have independently verified full duration, expected dimensions/aspect ratio, H.264/AAC, full decode, chapter timestamps, synced burned captions and SRT, thumbnail where applicable, motion, audio and source/rights evidence.
+- [ ] Every one of the four platform masters has its own manifest and passing critical checks; no aggregate score can hide a failed export.
+- [ ] Buffer duplicate checks and final status verification are completed separately for all six destinations: Short 1 on YouTube and Instagram; Short 2 on YouTube and Instagram; complete episode on YouTube and Instagram.
+- [ ] A destination is counted as published only when Buffer reports sent and a verified public URL is available. Scheduled, sending, error, missing, ambiguous or HOLD states are not published.
+- [ ] When compute, a source, a credential, platform support or a required validation is unavailable, hold the affected asset/destination and record the exact blocker. Never lower a gate to meet the daily count.
