@@ -1,0 +1,62 @@
+{
+  "publication_date": "2026-11-21",
+  "render_slug": "evidence-before-entry-2026-11-21",
+  "title": "Evidence Before Entry",
+  "topic": "Why incomplete intraday evidence should produce a no-trade decision",
+  "language": "en",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "asset_path": "assets/evidence-before-entry-2026-11-21.mp4",
+  "sources": [
+    "https://docs.alpaca.markets/us/docs/working-with-assets",
+    "https://docs.alpaca.markets/us/reference/stockbars",
+    "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
+  ],
+  "scenes": [
+    {
+      "visual": "brand",
+      "title": "Evidence first",
+      "overlay": "DATA > CHECK > DECISION",
+      "narration": "A disciplined trading process starts before any order. First, verify the evidence chain."
+    },
+    {
+      "visual": "timestamp",
+      "title": "Timestamp matters",
+      "overlay": "COMPLETED BARS ONLY",
+      "narration": "Use completed, timestamped bars. An unfinished candle can change the story."
+    },
+    {
+      "visual": "source",
+      "title": "Fresh quote",
+      "overlay": "FRESH QUOTE + SPREAD",
+      "narration": "Then verify that the quote is fresh and the spread is acceptable for the intended route."
+    },
+    {
+      "visual": "idea",
+      "title": "Intraday confirmation",
+      "overlay": "VWAP + 3 RISING CLOSES",
+      "narration": "For an intraday entry, price context matters. Check VWAP and the required completed candle sequence."
+    },
+    {
+      "visual": "stand_down",
+      "title": "No evidence, no order",
+      "overlay": "HOLD / NO TRADE",
+      "narration": "If any required check is missing or ambiguous, the correct action is to hold or take no trade."
+    },
+    {
+      "visual": "risk_budget",
+      "title": "Process over pressure",
+      "overlay": "PAPER EDUCATION ONLY",
+      "narration": "Good process does not promise returns. It protects the decision from unsupported assumptions."
+    }
+  ],
+  "status": "render_pending",
+  "blockers": [
+    "render pending",
+    "SRT pending",
+    "manifest pending",
+    "public HTTPS asset unavailable"
+  ],
+  "youtube_title": "Evidence Before Entry | Why No Trade Can Be the Right Decision",
+  "instagram_caption": "Incomplete evidence is a reason to pause, not a reason to guess. Verify the data chain before entry. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "audience": "global"
+}
