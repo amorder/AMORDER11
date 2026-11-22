@@ -1,0 +1,86 @@
+{
+  "publication_date": "2026-11-22",
+  "render_slug": "evidence-gate-before-entry-2026-11-22",
+  "title": "Evidence Gate Before Entry",
+  "topic": "Why a missing data check should stop an order",
+  "language": "en",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "asset_path": "assets/evidence-gate-before-entry-2026-11-22.mp4",
+  "sources": [
+    "https://docs.alpaca.markets/us/docs/working-with-assets",
+    "https://docs.alpaca.markets/us/reference/stockbars",
+    "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
+  ],
+  "scenes": [
+    {
+      "visual": "brand",
+      "title": "Start with evidence",
+      "overlay": "DATA > CHECK > DECISION",
+      "narration": "A disciplined process starts before the order. First, confirm the evidence chain."
+    },
+    {
+      "visual": "timestamp",
+      "title": "Use completed bars",
+      "overlay": "COMPLETED BARS ONLY",
+      "narration": "Use completed, timestamped bars. An unfinished candle can change the setup."
+    },
+    {
+      "visual": "source",
+      "title": "Check the quote",
+      "overlay": "FRESH QUOTE + SPREAD",
+      "narration": "Then verify that the quote is fresh and the spread is acceptable for the intended route."
+    },
+    {
+      "visual": "idea",
+      "title": "Confirm context",
+      "overlay": "VWAP + 3 RISING CLOSES",
+      "narration": "For an intraday entry, confirm the price context, including VWAP and the required completed candle sequence."
+    },
+    {
+      "visual": "stand_down",
+      "title": "Missing evidence means hold",
+      "overlay": "HOLD / NO TRADE",
+      "narration": "If a required check is missing or ambiguous, the correct action is to hold or take no trade."
+    },
+    {
+      "visual": "risk_budget",
+      "title": "Process over pressure",
+      "overlay": "PAPER EDUCATION ONLY",
+      "narration": "Good process does not promise returns. It protects decisions from unsupported assumptions."
+    }
+  ],
+  "status": "render_pending",
+  "blockers": [
+    "render pending",
+    "SRT pending",
+    "manifest pending",
+    "public HTTPS asset unavailable"
+  ],
+  "youtube_title": "Evidence Gate Before Entry | Why No Trade Can Be the Right Decision",
+  "instagram_caption": "If a required data check is missing, hold the order. Evidence first, decision second. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "audience": "global",
+  "intended_channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds_target": "105-145",
+    "duration_seconds_max_exclusive": 159,
+    "video": "MP4 H.264, AAC narration, 30 fps"
+  },
+  "youtube_description": "A disciplined process starts before any order: verify timestamps, freshness, context and risk evidence. If a required check is missing or ambiguous, hold or take no trade.\n\nSources:\nhttps://docs.alpaca.markets/us/docs/working-with-assets\nhttps://docs.alpaca.markets/us/reference/stockbars\nhttps://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #RiskEducation #PaperTrading #Shorts",
+  "automated_review": {
+    "public_safety_reviewed": true,
+    "claims_checked_against_sources": true,
+    "rights_and_asset_origin_reviewed": true,
+    "disclosure_verified": true,
+    "approved_source_domains": [
+      "docs.alpaca.markets",
+      "investor.gov"
+    ]
+  }
+}
