@@ -58,5 +58,29 @@
   ],
   "youtube_title": "Evidence Before Entry | Why No Trade Can Be the Right Decision",
   "instagram_caption": "Incomplete evidence is a reason to pause, not a reason to guess. Verify the data chain before entry. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
-  "audience": "global"
+  "audience": "global",
+  "intended_channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_seconds_target": "105-145",
+    "duration_seconds_max_exclusive": 159,
+    "video": "MP4 H.264, AAC narration, 30 fps"
+  },
+  "youtube_description": "A disciplined process starts before any order: verify timestamps, freshness, context and risk evidence. If a required check is missing or ambiguous, hold or take no trade.\n\nSources:\nhttps://docs.alpaca.markets/us/docs/working-with-assets\nhttps://docs.alpaca.markets/us/reference/stockbars\nhttps://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15\n\nPaper-trading education only; not live-money performance; not investment advice; no guaranteed returns.\n\n#AMORDER #RiskEducation #PaperTrading #Shorts",
+  "automated_review": {
+    "public_safety_reviewed": true,
+    "claims_checked_against_sources": true,
+    "rights_and_asset_origin_reviewed": true,
+    "disclosure_verified": true,
+    "approved_source_domains": [
+      "docs.alpaca.markets",
+      "investor.gov"
+    ]
+  }
 }
