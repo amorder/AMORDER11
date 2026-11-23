@@ -1,0 +1,22 @@
+# Evidence Before Entry
+
+- Publication date: 2026-11-23
+- Intended channels: Instagram Reels and YouTube Shorts
+- Topic: Evidence quality and no-trade discipline
+- Improvement versus prior release: clearer first-second hook and explicit evidence-gate sequence
+- Language: en
+- Audience: global
+- Render slug: amorder-evidence-before-entry
+- Asset path: assets/amorder-evidence-before-entry-2026-11-23.mp4
+- Runtime target: 105–145 seconds; hard cap below 159 seconds
+- Delivery target: 1080x1920, 30 fps, H.264/AAC, burned English captions plus SRT
+- Disclosure: Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
+- Sources:
+  - https://docs.alpaca.markets/docs/orders-at-alpaca
+  - https://docs.alpaca.markets/docs/market-data
+  - https://www.sec.gov/investor/pubs/stoporders.htm
+- YouTube title: Evidence Before Entry: Why No Trade Can Be the Right Decision
+- Instagram caption: A paper-trading process is not about forcing a trade. It is about checking completed bars, fresh quotes, liquidity, and intraday confirmation before any order. If evidence is incomplete, standing down is a valid decision. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER #PaperTrading #RiskManagement
+- Buffer records:
+  - Instagram: HOLD — no post until MP4, SRT, manifest and public HTTPS verification pass
+  - YouTube: HOLD — no post until MP4, SRT, manifest and public HTTPS verification pass
