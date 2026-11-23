@@ -1,0 +1,54 @@
+{
+  "publication_date": "2026-11-23",
+  "render_slug": "amorder-evidence-before-entry",
+  "language": "en",
+  "audience": "global",
+  "title": "Evidence Before Entry",
+  "youtube_title": "Evidence Before Entry: Why No Trade Can Be the Right Decision",
+  "instagram_caption": "A paper-trading process is not about forcing a trade. It is about checking completed bars, fresh quotes, liquidity, and intraday confirmation before any order. If evidence is incomplete, standing down is a valid decision. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER #PaperTrading #RiskManagement",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "sources": [
+    "https://docs.alpaca.markets/docs/orders-at-alpaca",
+    "https://docs.alpaca.markets/docs/market-data",
+    "https://www.sec.gov/investor/pubs/stoporders.htm"
+  ],
+  "asset_path": "assets/amorder-evidence-before-entry-2026-11-23.mp4",
+  "scenes": [
+    {
+      "visual": "brand",
+      "title": "A signal is not an order",
+      "overlay": "Start with evidence",
+      "narration": "A setup score is only a starting point. It is not a filled order, and it is not a reason to trade by itself."
+    },
+    {
+      "visual": "timestamp",
+      "title": "Use completed data",
+      "overlay": "Completed bars first",
+      "narration": "Begin with completed, timestamped bars. Incomplete candles can change the picture while you are still measuring it."
+    },
+    {
+      "visual": "source",
+      "title": "Check the source",
+      "overlay": "Fresh quote. Known source.",
+      "narration": "Then confirm the quote is fresh, the market source is known, and the spread is narrow enough for the setup to be meaningful."
+    },
+    {
+      "visual": "gaps",
+      "title": "Look for missing evidence",
+      "overlay": "Gaps matter",
+      "narration": "Missing history, stale data, wide spreads, or a broken sequence of rising closes are not small details. They are reasons to stop."
+    },
+    {
+      "visual": "risk_budget",
+      "title": "Respect the risk limit",
+      "overlay": "Risk comes before entry",
+      "narration": "Even when a setup looks attractive, the position must fit the risk budget. If one unit is too large, the correct size can be zero."
+    },
+    {
+      "visual": "stand_down",
+      "title": "No trade is a decision",
+      "overlay": "Stand down when evidence is incomplete",
+      "narration": "A disciplined process does not force a trade to meet a schedule. When the evidence is incomplete, standing down is the decision."
+    }
+  ]
+}
