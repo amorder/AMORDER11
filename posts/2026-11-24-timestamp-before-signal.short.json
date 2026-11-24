@@ -1,0 +1,54 @@
+{
+  "publication_date": "2026-11-24",
+  "render_slug": "amorder-timestamp-before-signal",
+  "language": "en",
+  "audience": "global",
+  "title": "Timestamp Before Signal",
+  "youtube_title": "Timestamp Before Signal: Why Data Time Matters",
+  "instagram_caption": "A chart is only as useful as the time behind it. Check the bar timestamp, session, source, and freshness before treating a signal as evidence. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER #MarketData #DataQuality",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "sources": [
+    "https://docs.alpaca.markets/docs/market-data",
+    "https://docs.alpaca.markets/docs/stock-bars",
+    "https://www.sec.gov/investor/pubs/stoporders.htm"
+  ],
+  "asset_path": "assets/amorder-timestamp-before-signal-2026-11-24.mp4",
+  "scenes": [
+    {
+      "visual": "timestamp",
+      "title": "A timestamp is evidence",
+      "overlay": "Time first",
+      "narration": "Before a signal means anything, confirm when the data was recorded. A bar without a trustworthy timestamp is not reliable evidence."
+    },
+    {
+      "visual": "source",
+      "title": "Know the source",
+      "overlay": "Source and session",
+      "narration": "Check the market source, the trading session, and whether the quote belongs to the market you intend to study."
+    },
+    {
+      "visual": "gaps",
+      "title": "Stale data changes the picture",
+      "overlay": "Freshness matters",
+      "narration": "Stale quotes, missing bars, or gaps in history can make a clean chart look more certain than it really is."
+    },
+    {
+      "visual": "idea",
+      "title": "A signal is a hypothesis",
+      "overlay": "Not a fill",
+      "narration": "A setup score is a hypothesis to test. It is not a fill, not a return, and not a reason to skip the evidence check."
+    },
+    {
+      "visual": "brand",
+      "title": "Measure before acting",
+      "overlay": "Evidence before action",
+      "narration": "Use completed data, fresh quotes, and known market conditions before you decide whether an entry is even eligible."
+    },
+    {
+      "visual": "stand_down",
+      "title": "Pause when time is unclear",
+      "overlay": "No trade is valid",
+      "narration": "If the timestamp or source cannot be verified, standing down is the disciplined result. The process does not need a trade every day."
+    }
+  ]
+}
