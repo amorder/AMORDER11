@@ -1,0 +1,22 @@
+# Timestamp Before Signal
+
+- Publication date: 2026-11-24
+- Intended channels: Instagram Reels and YouTube Shorts
+- Topic: Data timestamps, source identity and evidence quality
+- Improvement versus prior release: moves the hook earlier by opening with timestamp verification and separates source, freshness and eligibility into distinct scenes
+- Language: en
+- Audience: global
+- Render slug: amorder-timestamp-before-signal
+- Asset path: assets/amorder-timestamp-before-signal-2026-11-24.mp4
+- Runtime target: 105–145 seconds; hard cap below 159 seconds
+- Delivery target: 1080x1920, 30 fps, H.264/AAC, burned English captions plus SRT
+- Disclosure: Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
+- Sources:
+  - https://docs.alpaca.markets/docs/market-data
+  - https://docs.alpaca.markets/docs/stock-bars
+  - https://www.sec.gov/investor/pubs/stoporders.htm
+- YouTube title: Timestamp Before Signal: Why Data Time Matters
+- Instagram caption: A chart is only as useful as the time behind it. Check the bar timestamp, session, source, and freshness before treating a signal as evidence. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER #MarketData #DataQuality
+- Buffer records:
+  - Instagram: HOLD — no post until MP4, SRT, manifest and public HTTPS verification pass
+  - YouTube: HOLD — no post until MP4, SRT, manifest and public HTTPS verification pass
