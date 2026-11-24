@@ -50,5 +50,9 @@
       "overlay": "No trade is valid",
       "narration": "If the timestamp or source cannot be verified, standing down is the disciplined result. The process does not need a trade every day."
     }
+  ],
+  "channels": [
+    "instagram_reels",
+    "youtube_shorts"
   ]
 }
