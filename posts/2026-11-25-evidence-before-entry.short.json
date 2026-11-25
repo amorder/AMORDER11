@@ -1,0 +1,82 @@
+{
+  "publication_date": "2026-11-25",
+  "render_slug": "amorder-evidence-before-entry-2026-11-25",
+  "language": "en",
+  "audience": "global",
+  "title": "Evidence Before Entry",
+  "youtube_title": "Evidence Before Entry: Why No Trade Can Be the Right Decision",
+  "youtube_description": "A research setup is only eligible when the evidence chain is complete. This short explains why completed bars, fresh quotes, liquidity and intraday confirmation come before a paper-trading decision. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "instagram_caption": "A setup is not an entry. Check completed bars, fresh quotes, liquidity and intraday confirmation before treating a paper-trading idea as eligible. If the evidence chain is incomplete, standing down is valid. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER #DataQuality #RiskManagement",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "sources": [
+    "https://docs.alpaca.markets/docs/market-data",
+    "https://docs.alpaca.markets/docs/stock-bars",
+    "https://docs.alpaca.markets/docs/working-with-assets",
+    "https://www.sec.gov/investor/pubs/stoporders.htm"
+  ],
+  "asset_path": "assets/amorder-evidence-before-entry-2026-11-25.mp4",
+  "channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "intended_channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "music": "No copyrighted music; original or public-domain sound only"
+  },
+  "automated_review": {
+    "public_safety_reviewed": true,
+    "claims_checked_against_sources": true,
+    "approved_source_domains": [
+      "docs.alpaca.markets",
+      "sec.gov"
+    ],
+    "rights_reviewed": true,
+    "privacy_reviewed": true,
+    "disclosure_reviewed": true
+  },
+  "scenes": [
+    {
+      "visual": "idea",
+      "title": "A setup is not an entry",
+      "overlay": "Eligibility first",
+      "narration": "A setup can look attractive and still be ineligible. Before any paper order, the evidence chain has to be complete."
+    },
+    {
+      "visual": "timestamp",
+      "title": "Use completed bars",
+      "overlay": "No incomplete candles",
+      "narration": "Start with completed, timestamped bars. An unfinished candle can change the story before the session is over."
+    },
+    {
+      "visual": "source",
+      "title": "Check the source",
+      "overlay": "Know what you are measuring",
+      "narration": "Confirm the data source, the market scope, and whether the instrument is actually tradable through the intended route."
+    },
+    {
+      "visual": "gaps",
+      "title": "Freshness and liquidity matter",
+      "overlay": "Stale data can mislead",
+      "narration": "Missing history, stale quotes, wide spreads, or weak liquidity can make a chart look cleaner than the decision really is."
+    },
+    {
+      "visual": "risk_budget",
+      "title": "Intraday confirmation",
+      "overlay": "Evidence before action",
+      "narration": "Even a high setup quality score still needs fresh quotes, a sensible relationship to VWAP, and the required completed intraday sequence."
+    },
+    {
+      "visual": "stand_down",
+      "title": "No trade is valid",
+      "overlay": "Stand down when evidence is incomplete",
+      "narration": "If the evidence chain cannot be verified, standing down is the disciplined result. The process does not need a trade every day."
+    }
+  ]
+}
