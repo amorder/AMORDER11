@@ -5,6 +5,7 @@
   "audience": "global",
   "title": "Timestamp Before Signal",
   "youtube_title": "Timestamp Before Signal: Why Data Time Matters",
+  "youtube_description": "A timestamp is part of the evidence. This short explains why source, session, freshness, and completed data matter before a paper-trading research decision. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
   "instagram_caption": "A chart is only as useful as the time behind it. Check the bar timestamp, session, source, and freshness before treating a signal as evidence. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER #MarketData #DataQuality",
   "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
   "sources": [
@@ -13,6 +14,32 @@
     "https://www.sec.gov/investor/pubs/stoporders.htm"
   ],
   "asset_path": "assets/amorder-timestamp-before-signal-2026-11-24.mp4",
+  "channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "intended_channels": [
+    "instagram_reels",
+    "youtube_shorts"
+  ],
+  "format": {
+    "aspect_ratio": "9:16",
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "music": "No copyrighted music; original or public-domain sound only"
+  },
+  "automated_review": {
+    "public_safety_reviewed": true,
+    "claims_checked_against_sources": true,
+    "approved_source_domains": [
+      "docs.alpaca.markets",
+      "sec.gov"
+    ],
+    "rights_reviewed": true,
+    "privacy_reviewed": true,
+    "disclosure_reviewed": true
+  },
   "scenes": [
     {
       "visual": "timestamp",
@@ -50,9 +77,5 @@
       "overlay": "No trade is valid",
       "narration": "If the timestamp or source cannot be verified, standing down is the disciplined result. The process does not need a trade every day."
     }
-  ],
-  "channels": [
-    "instagram_reels",
-    "youtube_shorts"
   ]
 }
