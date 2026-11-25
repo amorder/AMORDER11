@@ -1,0 +1,23 @@
+# Evidence Before Entry
+
+- Publication date: 2026-11-25
+- Intended channels: Instagram Reels and YouTube Shorts
+- Topic: Completed bars, source quality, liquidity and intraday confirmation
+- Improvement versus prior release: uses a shorter first-scene hook and separates bar completeness, source identity, freshness/liquidity and intraday confirmation into distinct visual setups
+- Language: en
+- Audience: global
+- Render slug: amorder-evidence-before-entry-2026-11-25
+- Asset path: assets/amorder-evidence-before-entry-2026-11-25.mp4
+- Runtime target: 105–145 seconds; hard cap below 159 seconds
+- Delivery target: 1080x1920, 30 fps, H.264/AAC, burned English captions plus SRT
+- Disclosure: Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
+- Sources:
+  - https://docs.alpaca.markets/docs/market-data
+  - https://docs.alpaca.markets/docs/stock-bars
+  - https://docs.alpaca.markets/docs/working-with-assets
+  - https://www.sec.gov/investor/pubs/stoporders.htm
+- YouTube title: Evidence Before Entry: Why No Trade Can Be the Right Decision
+- Instagram caption: A setup is not an entry. Check completed bars, fresh quotes, liquidity and intraday confirmation before treating a paper-trading idea as eligible. If the evidence chain is incomplete, standing down is valid. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER #DataQuality #RiskManagement
+- Buffer records:
+  - Instagram: HOLD — no post until MP4, SRT, manifest and public HTTPS verification pass
+  - YouTube: HOLD — no post until MP4, SRT, manifest and public HTTPS verification pass
