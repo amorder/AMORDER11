@@ -1,0 +1,22 @@
+# Data Freshness Before Entry
+
+- Publication date: 2026-11-26
+- Intended channels: Instagram Reels, YouTube Shorts
+- Topic: Evidence quality, timestamps, completed bars and quote freshness
+- Improvement vs prior releases: Compared with the previous three vertical releases, this short makes the hook timestamp-driven in the first scene and uses a clearer evidence chain from time -> completed bar -> quote freshness -> market scope before the stand-down conclusion.
+- Asset path: assets/amorder-data-freshness-before-entry-2026-11-26.mp4
+- Asset URL: pending render and public verification
+- Runtime: pending render
+- Format target: 1080x1920, 30 fps, H.264/AAC, under 159 seconds
+- Animation requirement: Blender Eevee scene animation in every scene; at least five supported visual keys; shared master for Instagram Reels and YouTube Shorts
+- Sources:
+  - https://docs.alpaca.markets/docs/market-data
+  - https://docs.alpaca.markets/docs/stock-bars
+  - https://docs.alpaca.markets/docs/working-with-assets
+- Disclosure: Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
+- YouTube title: Data Freshness Before Entry: Why Stale Evidence Can Mislead
+- Instagram caption: A chart can look precise while the evidence is stale. Check timestamps, completed bars, quote freshness and market scope before treating a paper-trading setup as eligible. If the data chain is unclear, pause. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER #DataQuality #PaperTrading
+- Publishing record:
+  - Instagram Reel: HOLD — render/validation/public MP4 pending
+  - YouTube Short: HOLD — render/validation/public MP4 pending
+  - X: separate text-first workflow; no video post created
