@@ -1,0 +1,37 @@
+{
+  "publication_date": "2026-11-27",
+  "render_slug": "amorder-evidence-chain-before-entry-2026-11-27",
+  "language": "en",
+  "audience": "global",
+  "title": "Evidence Chain Before Entry",
+  "youtube_title": "Evidence Chain Before Entry: Verify Before You Trade",
+  "youtube_description": "A paper-trading process should verify the evidence chain before treating a setup as eligible: completed bars, source scope, fresh quotes, liquidity and intraday confirmation. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "instagram_caption": "Before treating a paper-trading setup as eligible, verify the evidence chain: completed bars, source scope, fresh quotes, liquidity and intraday confirmation. If a required link is missing, standing down is a valid process decision. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER #DataQuality #PaperTrading",
+  "disclosure": "Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.",
+  "sources": [
+    "https://docs.alpaca.markets/docs/market-data",
+    "https://docs.alpaca.markets/docs/stock-bars",
+    "https://docs.alpaca.markets/docs/working-with-assets"
+  ],
+  "asset_path": "assets/amorder-evidence-chain-before-entry-2026-11-27.mp4",
+  "channels": ["instagram_reels", "youtube_shorts"],
+  "intended_channels": ["instagram_reels", "youtube_shorts"],
+  "format": {"aspect_ratio":"9:16","width":1080,"height":1920,"fps":30,"music":"No copyrighted music; original or public-domain sound only"},
+  "automated_review": {
+    "public_safety_reviewed": true,
+    "claims_checked_against_sources": true,
+    "approved_source_domains": ["docs.alpaca.markets"],
+    "rights_reviewed": true,
+    "privacy_reviewed": true,
+    "disclosure_reviewed": true
+  },
+  "improvement": "Compared with the previous three releases, this short makes the evidence chain explicit in the first two scenes and uses a stronger stand-down conclusion when any required verification step is missing.",
+  "scenes": [
+    {"visual":"timestamp","title":"Start with the timestamp","overlay":"Freshness first","narration":"Before a setup can be reviewed, check when the underlying evidence was created."},
+    {"visual":"idea","title":"Use completed bars","overlay":"Finish the candle","narration":"Use completed, timestamped bars. An unfinished candle can change before the session is over."},
+    {"visual":"source","title":"Know the route","overlay":"Source and scope","narration":"Confirm the data source and the market scope. Different routes can show different evidence."},
+    {"visual":"gaps","title":"Find missing pieces","overlay":"Gaps change context","narration":"Look for stale quotes, missing history or material gaps before interpreting a setup."},
+    {"visual":"risk_budget","title":"Require confirmation","overlay":"Evidence before action","narration":"Only after freshness, liquidity and intraday confirmation are checked should a setup be considered eligible for further review."},
+    {"visual":"stand_down","title":"Pause when unclear","overlay":"No trade is valid","narration":"If the evidence chain cannot be verified, standing down is the disciplined result."}
+  ]
+}
