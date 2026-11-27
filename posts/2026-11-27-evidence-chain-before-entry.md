@@ -1,0 +1,22 @@
+# Evidence Chain Before Entry
+
+- Publication date: 2026-11-27
+- Intended channels: Instagram Reels, YouTube Shorts
+- Topic: Evidence quality, timestamps, completed bars, source scope and intraday confirmation
+- Improvement vs prior releases: The opening two scenes make the evidence chain explicit earlier, and the final scene gives a clearer stand-down decision when a required verification step is missing.
+- Asset path: assets/amorder-evidence-chain-before-entry-2026-11-27.mp4
+- Asset URL: pending render and public verification
+- Runtime: pending render
+- Format target: 1080x1920, 30 fps, H.264/AAC, under 159 seconds
+- Animation requirement: Blender Eevee scene animation in every scene; at least five supported visual keys; shared master for Instagram Reels and YouTube Shorts
+- Sources:
+  - https://docs.alpaca.markets/docs/market-data
+  - https://docs.alpaca.markets/docs/stock-bars
+  - https://docs.alpaca.markets/docs/working-with-assets
+- Disclosure: Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns.
+- YouTube title: Evidence Chain Before Entry: Verify Before You Trade
+- Instagram caption: Before treating a paper-trading setup as eligible, verify the evidence chain: completed bars, source scope, fresh quotes, liquidity and intraday confirmation. If a required link is missing, standing down is a valid process decision. Paper-trading education only; not live-money performance; not investment advice; no guaranteed returns. #AMORDER #DataQuality #PaperTrading
+- Publishing record:
+  - Instagram Reel: HOLD — render/validation/public MP4 pending
+  - YouTube Short: HOLD — render/validation/public MP4 pending
+  - X: separate text-first workflow; no video post created
